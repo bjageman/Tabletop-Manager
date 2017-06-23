@@ -1,9 +1,9 @@
-from . import PartyCrawlTesting
+from . import TestingBase
 from v1.apps.users.models import User
 
 import json
 
-class SocketTests(PartyCrawlTesting):
+class SocketTests(TestingBase):
 
     def test_login(self):
         username = "TestUser1"
