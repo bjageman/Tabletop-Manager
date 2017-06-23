@@ -22,10 +22,12 @@ async_mode = None
 socketio = SocketIO(app, async_mode=async_mode)
 
 from .users import users
+from .characters import characters
 
 #JWT System
 
 app.register_blueprint(users, url_prefix='/api/v1/users')
+app.register_blueprint(characters, url_prefix='/api/v1/characters')
 
 @app.after_request
 def add_headers(response):

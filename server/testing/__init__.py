@@ -32,14 +32,9 @@ class TestingBase(unittest.TestCase):
 
     def tearDown(self):
         self.socketio.disconnect()
+        self.db.session.rollback()
         self.db.session.expunge_all()
         self.db.session.flush()
         self.db.session.remove()
         self.db.session.close()
         self.db.drop_all()
-
-
-class PartyCrawlTesting(TestingBase):
-
-    def doStuff():
-        return True
