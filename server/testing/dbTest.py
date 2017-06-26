@@ -13,6 +13,7 @@ skills = [
     {"name": "Arcana",      "ability": "int"},
     {"name": "Athletics",   "ability": "str"},
     {"name": "Acrobatics",  "ability": "dex"},
+    {"name": "Persuasion",  "ability": "cha"},
     {"name": "Stealth",     "ability": "dex"},
     {"name": "Medicine",    "ability": "wis"},
     ]
@@ -24,7 +25,15 @@ player_classes = [{
     "skill_proficiencies": ["Arcana", "History", "Insight", "Investigation", "Medicine", "Religion" ],
     "weapon_proficiencies": ["dagger", "dart", "sling", "quarterstaff", "light crossbow"],
     "armor_proficiencies": [],
-    }]
+    },{
+    "name": "Fighter",
+    "spell_ability": "str",
+    "saving_throws": ["str", "dex"],
+    "skill_proficiencies": ["Athletics", "Medicine", "Religion" ],
+    "weapon_proficiencies": ["dagger", "dart", "sling", "quarterstaff", "light crossbow"],
+    "armor_proficiencies": [],
+    }
+    ]
 
 races = [{
     "name": "Elf",
@@ -42,7 +51,13 @@ races = [{
 
 characters =[{
     "name":"Tester1",
-    "class": "Wizard",
+    "classes": [{
+        "name": "Wizard",
+        "level": 5,
+        },{
+        "name": "Fighter",
+        "level": 3,
+        }],
     "race": "Elf",
     "abilities":{
         "str": 8,
@@ -53,7 +68,7 @@ characters =[{
         "cha": 6,
     },
     "skill_proficiencies":[
-        "Arcana", "Medicine", "Stealth"
+        "Arcana", "Medicine", "Stealth", "Persuasion"
     ],
 
 
@@ -105,13 +120,32 @@ class DBTests(TestingBase):
 
     def test_create_elf_wizard(self):
         data = characters[0]
-        char = Character(name=data["name"], player_character=True, race=self.get_race(data["race"]), class_info=self.get_class(data["class"]))
+        char = Character(name=data["name"], player_character=True, race=self.get_race(data["race"]))
+        class_start = True
+        for class_info in data["classes"]:
+            char.character_classes.append(CharacterClass(self.get_class(class_info['name']), class_info['level'], class_start))
+            class_start = False
         for ability, value in data['abilities'].items():
             char.abilities.append(CharacterAbility(self.get_ability(ability), value))
+        for skill in data['skill_proficiencies']:
+            char.skills.append(CharacterSkill(self.get_skill(skill)))
         db.session.add(char)
         db.session.commit()
-        print(char.name, char.class_info.name)
+        print(char.name)
+        for character_class in char.character_classes:
+            print(character_class.class_info.name, character_class.level)
         char.add_race_modifiers()
-        for ability in char.abilities:
-            mod = char.get_race_ability_modifier(ability.ability.name)
-            print(ability.ability.name, ability.score, "mod:", mod['modifier'])
+        for ability in abilities:
+            char_ability = char.get_ability(ability)
+            if char_ability is not None:
+                print(char_ability.ability.name, char_ability.score, char_ability.modifier)
+        # for ability in char.abilities:
+        #     mod = char.race.get_ability_modifier(ability.ability.name)
+        #     print(mod.ability.name, ability.score, "Race Mod:", mod.modifier, "Total Mod:" , ability.modifier)
+        for skill in skills:
+            char_skill = char.get_skill(skill['name'])
+            skill = Skill.query.filter_by(name=skill['name']).first()
+            modifier = char.get_ability(skill.ability.name).modifier
+            if char_skill is not None:
+                modifier = modifier + 2
+            print(skill.name, modifier)
