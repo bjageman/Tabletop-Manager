@@ -21,13 +21,18 @@
 ***REMOVED***
 ***REMOVED***
 
+from .blog import blog
+from .forum import forum
+
+from .maps import maps
 ***REMOVED***
-from .characters import characters
+from .wiki import wiki
+
 
 #JWT System
 
 ***REMOVED***
-app.register_blueprint(characters, url_prefix='/api/v1/characters')
+app.register_blueprint(forum, url_prefix='/api/v1/forum')
 
 ***REMOVED***
 ***REMOVED***
