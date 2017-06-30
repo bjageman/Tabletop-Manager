@@ -21,13 +21,18 @@ db.init_app(app)
 async_mode = None
 socketio = SocketIO(app, async_mode=async_mode)
 
+from .blog import blog
+from .forum import forum
+
+from .maps import maps
 from .users import users
-from .characters import characters
+from .wiki import wiki
+
 
 #JWT System
 
 app.register_blueprint(users, url_prefix='/api/v1/users')
-app.register_blueprint(characters, url_prefix='/api/v1/characters')
+app.register_blueprint(forum, url_prefix='/api/v1/forum')
 
 @app.after_request
 def add_headers(response):

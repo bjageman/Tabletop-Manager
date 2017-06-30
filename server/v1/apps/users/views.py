@@ -5,8 +5,7 @@ import string
 
 from . import users
 
-from .models import User
-from ..database import *
+from .models import User, authenticate
 
 from v1.apps import socketio, db
 from v1.apps.parsers import parse_user

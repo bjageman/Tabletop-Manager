@@ -3,8 +3,9 @@ from flask import Flask, request, jsonify, abort
 
 import string
 
-from .models import Character, Statistic, Dice
-from ..database import *
+from . import blog
+
+from .models import *
 
 from v1.apps import socketio, db
 from v1.apps.parsers import *
