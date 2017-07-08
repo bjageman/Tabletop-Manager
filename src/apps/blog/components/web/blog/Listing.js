@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom'
 
 import { connect } from 'react-redux'
-import { mapStateToProps, mapDispatchToProps } from '../../../../../redux/utils'
+import { mapStateToProps, mapDispatchToProps } from 'redux/utils.js'
 
 import data from '../../../data/blog.json'
 
