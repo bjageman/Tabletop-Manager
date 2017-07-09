@@ -4,7 +4,8 @@ import { Route, Link, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils.js'
 
-import data from '../../../data/blog.json'
+import '../styles/clean-blog.css'
+import data from 'apps/blog/data/blog.json'
 
 import BlogSearch from './Search'
 

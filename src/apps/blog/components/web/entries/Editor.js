@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { mapStateToProps, mapDispatchToProps } from '../../../../../redux/utils'
+import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import data from '../../../data/blog.json'
+import data from 'apps/blog/data/blog.json'
 
 
 class PostHeaderEditor extends Component {
