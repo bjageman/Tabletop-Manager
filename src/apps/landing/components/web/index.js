@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import RaisedButton from 'material-ui/RaisedButton';
 
 import ipad_img from './img/ipad.png'
 import dice_img from './img/dice.jpg'
-
-import './style/landing.css'
 
 class IntroHeader extends Component {
     render(){
@@ -20,7 +19,7 @@ class IntroHeader extends Component {
                                 <hr className="intro-divider" />
                                 <ul className="list-inline intro-social-buttons">
                                     <li>
-                                        <a href="https://twitter.com/SBootstrap" className="btn btn-default btn-lg"><i className="fa fa-twitter fa-fw"></i> <span className="network-name">Twitter</span></a>
+                                        <RaisedButton label="Default" />
                                     </li>
                                     <li>
                                         <a href="https://github.com/IronSummitMedia/startbootstrap" className="btn btn-default btn-lg"><i className="fa fa-github fa-fw"></i> <span className="network-name">Github</span></a>

@@ -1,10 +1,27 @@
 import React, { Component } from 'react';
-import { Route, Link, Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import { EntryHeader } from './Reader'
+const styles = {
+  container: {
+    paddingTop: 20,
+    paddingLeft: 20,
+  },
+  card: {
+    marginTop: 20,
+    marginBottom: 20,
+    marginLeft:40,
+    marginRight: 40,
+  },
+};
+
 
 class EntryListing extends Component {
     componentWillMount(props){
@@ -12,27 +29,42 @@ class EntryListing extends Component {
             "blog_id": this.props.match.params.blogId
         })
     }
+
+    handleEdit(title){
+        console.log("EDIT " + title)
+    }
+
+    handleDelete(title){
+        console.log("DELETE " + title)
+    }
+
     render(){
         if (this.props.blog != null) {
             return (
-                <div>
+
+                <div style={styles.container}>
+                    <Link to={`${this.props.match.url}/entry/create`}>
+                        <FloatingActionButton>
+                            <ContentAdd />
+                        </FloatingActionButton>
+                    </Link>
                 {
                     this.props.blog.entries.map((entry, i) => (
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                                    <EntryHeader
-                                        id = {i}
-                                        title = {entry.title}
-                                        subtitle = {entry.subtitle}
-                                        author = {entry.author}
-                                        date = {entry.date}
-                                        baseUrl = {`${this.props.match.url}`}
-                                        />
-                                    <hr />
-                                </div>
-                            </div>
-                        </div>
+                        <Card style={styles.card}>
+                            <CardHeader
+                              title={entry.title}
+                              subtitle={entry.subtitle}
+                              actAsExpander={true}
+                              showExpandableButton={true}
+                            />
+                            <CardText expandable={true}>
+                              {entry.content}
+                            </CardText>
+                            <CardActions>
+                              <FlatButton label="Edit" onTouchTap={() => this.handleEdit(entry.title)} />
+                              <FlatButton label="Delete" onTouchTap={() => this.handleDelete(entry.title)}/>
+                            </CardActions>
+                        </Card>
                     ))
                 }
                 </div>

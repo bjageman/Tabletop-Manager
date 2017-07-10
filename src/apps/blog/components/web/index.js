@@ -5,25 +5,22 @@ import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 import { EntryHeader } from './entries/Reader'
-import Entry from './entries/index'
 import Editor from './entries/Editor'
+import EntryRead from './entries/Reader'
 
 import BlogListing from './blog/Listing'
 import EntryListing from './entries/Listing'
 
-var wrapStyle = {
-  marginTop: '70px',
-  marginBottom: '50px',
-};
-
 class Blog extends Component {
   render() {
     return (
-    <div style={wrapStyle}>
+    <div>
       <Switch>
           <Route exact path={`${this.props.match.url}`} component = {BlogListing} />
           <Route exact path={`${this.props.match.url}/:blogId`} component = {EntryListing} />
-          <Route path={`${this.props.match.url}/:blogId/entry`} component = {Entry} />
+          <Route exact path={`${this.props.match.url}/:blogId/entry/create`} component = {Editor} />
+          <Route exact path={`${this.props.match.url}/:blogId/entry/:entryId`} component = {EntryRead} />
+          <Route exact path={`${this.props.match.url}/:blogId/entry/:entryId/edit`} component = {Editor} />
       </Switch>
     </div>
     );

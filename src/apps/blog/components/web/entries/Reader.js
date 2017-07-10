@@ -3,7 +3,7 @@ import { Route, Link, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import data from 'apps/blog/data/blog.json'
+import data from 'apps/blog/mock-data/blog.json'
 
 export class EntryHeader extends Component {
     renderTitle(title, subtitle){
@@ -52,8 +52,7 @@ export class EntryContent extends Component {
 
 class EntryRead extends Component {
     render(){
-        console.log(this.props.match.params, data[0].entries)
-        const entry = data[0].entries[this.props.match.params.entryId]
+        const entry = data[this.props.match.params.blogId].entries[this.props.match.params.entryId]
         if (entry != null){
             return(
                 <div className="blog-read">
