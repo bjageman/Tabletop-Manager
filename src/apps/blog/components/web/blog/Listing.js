@@ -1,46 +1,61 @@
 import React, { Component } from 'react';
-import { Route, Link, Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-import { connect } from 'react-redux'
-import { mapStateToProps, mapDispatchToProps } from 'redux/utils.js'
+import {GridList, GridTile} from 'material-ui/GridList';
+import IconButton from 'material-ui/IconButton';
+import Subheader from 'material-ui/Subheader';
+import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
-import '../styles/clean-blog.css'
-import data from 'apps/blog/data/blog.json'
+import data from 'apps/blog/mock-data/blog.json'
 
-import BlogSearch from './Search'
+const styles = {
+  container: {
+    textAlign: 'center',
+    paddingTop: 20,
+  },
+  root: {
+    paddingTop: 20,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  },
+  gridList: {
+    width: 800,
+    height: 500,
+    overflowY: 'auto',
+  },
+};
 
 class BlogListing extends Component {
-    renderBlogPanel(blog, i){
+    renderBlogGrid(blog, i){
         return (
-            <div className="row">
-            <div className="col-lg-4 col-md-4 col-sm-4">
-                <Link to={"/blog/" + i} >
-                <div className="panel panel-primary">
-                    <div className="panel-heading">
-                        {blog.name}
-                    </div>
-                    <div className="panel-body">
-                        <p>{blog.description}</p>
-                    </div>
-                    <div className="panel-footer">
-                        4/5 Stars
-                    </div>
-                </div>
-                </Link>
-            </div>
-            </div>
+            <Link to={"/blog/" + i} >
+                <GridTile
+                  key={i}
+                  title={blog.name}
+                  subtitle={<span>by <b>{blog.owner}</b></span>}
+                  actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+                >
+                  <img src={blog.img} />
+                </GridTile>
+            </Link>
         )
     }
     render(){
         if (data != null) {
             return (
-                <div className="container">
-                    <BlogSearch />
-                    {
-                        data.map((blog, i) => (
-                            this.renderBlogPanel(blog, i)
-                        ))
-                    }
+                <div style={styles.root}>
+                <GridList
+                    cols={2}
+                    cellHeight={180}
+                    style={styles.gridList}
+                    >
+                {
+                    data.map((blog, i) => (
+                        this.renderBlogGrid(blog, i)
+                    ))
+                }
+                </GridList>
                 </div>
             )
         }else{

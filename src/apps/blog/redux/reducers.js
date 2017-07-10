@@ -1,7 +1,7 @@
 import { createReducer } from 'redux-act';
 import * as actions from './actions';
 
-import data from '../data/blog.json'
+import data from '../mock-data/blog.json'
 
 
 const initial = {

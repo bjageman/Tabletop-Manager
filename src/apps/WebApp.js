@@ -8,12 +8,11 @@ import {
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from '../redux/utils'
 
-import NavBar from './base/components/web/NavBar'
+import TopAppBar from './base/components/web/TopAppBar'
 import Footer from './base/components/web/Footer'
 
 import LandingPage from './landing/components/web/index'
 import Blog from './blog/components/web/index'
-import Entry from './blog/components/web/entries/index'
 import Forum from './forum/components/web/index'
 import Maps from './maps/components/web/index'
 
@@ -27,7 +26,7 @@ class WebApp extends Component {
     return (
       <Router>
         <div className="app">
-          <NavBar />
+          <TopAppBar />
           <Switch>
               <Route exact path="/" component={LandingPage}/>
               <Route path="/blog" component={Blog}/>
