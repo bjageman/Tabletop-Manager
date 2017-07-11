@@ -4,7 +4,7 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
-import FlatButton from 'material-ui/FlatButton';
+import Button from 'material-ui/Button';
 
 import data from 'apps/blog/mock-data/blog.json'
 
@@ -77,8 +77,8 @@ class Editor extends Component {
             />
         </CardText>
         <CardActions>
-          <FlatButton label="Publish" />
-          <FlatButton label="Delete" />
+          <Button label="Publish" />
+          <Button label="Delete" />
         </CardActions>
       </Card>
       </div>

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import Typography from 'material-ui/Typography'
+import Card, {CardActions, CardContent} from 'material-ui/Card';
+import Button from 'material-ui/Button';
+import SvgIcon from 'material-ui/SvgIcon';
 
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
@@ -44,25 +44,21 @@ class EntryListing extends Component {
 
                 <div style={styles.container}>
                     <Link to={`${this.props.match.url}/entry/create`}>
-                        <FloatingActionButton>
-                            <ContentAdd />
-                        </FloatingActionButton>
+                        <Button>
+                            Add
+                        </Button>
                     </Link>
                 {
                     this.props.blog.entries.map((entry, i) => (
                         <Card style={styles.card}>
-                            <CardHeader
-                              title={entry.title}
-                              subtitle={entry.subtitle}
-                              actAsExpander={true}
-                              showExpandableButton={true}
-                            />
-                            <CardText expandable={true}>
-                              {entry.content}
-                            </CardText>
+                            <CardContent>
+
+                            </CardContent>
+                            <Typography type="headline" component="h2">{entry.title}</Typography>
+                            <Typography component="p">{entry.subtitle}</Typography>
                             <CardActions>
-                              <FlatButton label="Edit" onTouchTap={() => this.handleEdit(entry.title)} />
-                              <FlatButton label="Delete" onTouchTap={() => this.handleDelete(entry.title)}/>
+                              <Button label="Edit" onTouchTap={() => this.handleEdit(entry.title)}>Edit</Button>
+                              <Button label="Delete" onTouchTap={() => this.handleDelete(entry.title)}>Delete</Button>
                             </CardActions>
                         </Card>
                     ))

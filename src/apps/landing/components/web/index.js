@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'material-ui/Button';
 
 import ipad_img from './img/ipad.png'
 import dice_img from './img/dice.jpg'
@@ -19,7 +19,7 @@ class IntroHeader extends Component {
                                 <hr className="intro-divider" />
                                 <ul className="list-inline intro-social-buttons">
                                     <li>
-                                        <RaisedButton label="Default" />
+                                        <Button label="Default" />
                                     </li>
                                     <li>
                                         <a href="https://github.com/IronSummitMedia/startbootstrap" className="btn btn-default btn-lg"><i className="fa fa-github fa-fw"></i> <span className="network-name">Github</span></a>
