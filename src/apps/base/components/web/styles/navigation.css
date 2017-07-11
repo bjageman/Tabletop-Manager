@@ -1,0 +1,17 @@
+root: {
+  marginTop: 30;
+  width: '100%';
+}
+
+flex: {
+  flex: 1;
+}
+
+title: {
+  cursor: 'pointer';
+  color: 'white';
+}
+
+link: {
+  textDecoration: 'none';
+}

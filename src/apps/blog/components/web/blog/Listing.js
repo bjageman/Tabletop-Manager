@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
-import {GridList, GridTile} from 'material-ui/GridList';
+import Grid from 'material-ui/Grid';
 import IconButton from 'material-ui/IconButton';
-import Subheader from 'material-ui/Subheader';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-
+import SvgIcon from 'material-ui/SvgIcon';
 import data from 'apps/blog/mock-data/blog.json'
 
 const styles = {
@@ -28,16 +26,16 @@ const styles = {
 
 class BlogListing extends Component {
     renderBlogGrid(blog, i){
+        // key={i}
+        // title={blog.name}
+        // subtitle={<span>by <b>{blog.owner}</b></span>}
         return (
             <Link to={"/blog/" + i} >
-                <GridTile
-                  key={i}
-                  title={blog.name}
-                  subtitle={<span>by <b>{blog.owner}</b></span>}
-                  actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+                <Grid item xs={12}>
+
                 >
                   <img src={blog.img} />
-                </GridTile>
+                </Grid>
             </Link>
         )
     }
@@ -45,17 +43,13 @@ class BlogListing extends Component {
         if (data != null) {
             return (
                 <div style={styles.root}>
-                <GridList
-                    cols={2}
-                    cellHeight={180}
-                    style={styles.gridList}
-                    >
+                <Grid container>
                 {
                     data.map((blog, i) => (
                         this.renderBlogGrid(blog, i)
                     ))
                 }
-                </GridList>
+            </Grid>
                 </div>
             )
         }else{

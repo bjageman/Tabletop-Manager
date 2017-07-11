@@ -1,0 +1,128 @@
+[{
+    "id": 1,
+    "name": "Dragon Queen Campaign",
+    "description": "A 5e Campaign set in the world of Fantasmia",
+    "image": "http://dnd.wizards.com/sites/default/files/media/styles/story_banner/public/images/head-banner/HERO_StartBox.jpg?itok=C3fgGr5p",
+    "owner": {
+        "id": 1,
+        "username": "bjage",
+        "first_name": "Brodin",
+        "last_name": "Jag",
+        "email": "bjag@gmail.com",
+        "avatar": "https://placekitten.com/g/200/200"
+    },
+    "players":[{
+        "id": 2,
+        "username": "jsmith",
+        "first_name": "John",
+        "last_name": "Smith",
+        "email": "jsmith@gmail.com",
+        "avatar": "https://placekitten.com/g/200/200"
+    },{
+        "id": 3,
+        "username": "msure",
+        "first_name": "Mary",
+        "last_name": "Sue",
+        "email": "msue@gmail.com",
+        "avatar": "https://placekitten.com/g/200/200"
+    }],
+    "maps":[{
+        "name":"First Map",
+        "image": "http://www.andysowards.com/blog/assets/fantasy-cartography-moonshae-map-design.jpeg",
+        "width": 500,
+        "height": 500,
+        "markers":[
+        {
+            "name": "first marker",
+            "wiki": "first-post",
+            "x": 10,
+            "y": 10
+        },
+        {
+            "name": "second marker",
+            "wiki": "second-post",
+            "x": 10,
+            "y": 10
+        }
+        ]
+    }],
+    "wiki":{
+        "entries":[
+        {
+            "title":"First Post",
+            "slug": "first-post",
+            "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa"
+        },
+        {
+            "title":"Second Post",
+            "slug": "second-post",
+            "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa"
+        },
+        {
+            "title":"Third Post",
+            "slug": "third-post",
+            "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa"
+        }
+    ]},
+    "journal":{
+        "description": "A blog about queens of dragons",
+        "img": "https://placekitten.com/g/500/500",
+        "entries": [
+            {
+                "title": "Man must explore, and this is exploration at its greatest",
+                "subtitle": "Problems look mighty small from 150 miles up",
+                "author": {
+                    "name": "Brodin",
+                    "id": "1"
+                },
+                "date": "Feb 13th, 2020",
+                "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+            },
+            {
+                "title": "Test Blog2",
+                "subtitle": "More test bloggin",
+                "author": {
+                    "name": "Some Guy",
+                    "id": "2"
+                },
+                "date": "Jan 23rd, 2020",
+                "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+            },
+            {
+                "title": "Test Blog2",
+                "subtitle": "More test bloggin",
+                "author": {
+                    "name": "Some Guy",
+                    "id": "2"
+                },
+                "date": "Jan 23rd, 2020",
+                "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+            },
+            {
+                "title": "Test Blog2",
+                "subtitle": "More test bloggin",
+                "author": {
+                    "name": "Some Guy",
+                    "id": "2"
+                },
+                "date": "Jan 23rd, 2020",
+                "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+            }
+        ]
+    },
+    "calendar":[
+        {
+            "name": "First session",
+            "date": "Sep 1st, 2017",
+            "start_time": "7:00pm",
+            "end_time": "8:00pm"
+        },
+        {
+            "name": "Second session",
+            "date": "Sep 22nd, 2017",
+            "start_time": "4:00pm",
+            "end_time": "8:00pm"
+        }
+    ]
+
+}]

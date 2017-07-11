@@ -1,0 +1,18 @@
+[
+    {
+    "id": 1,
+    "username": "jsmith",
+    "first_name": "John",
+    "last_name": "Smith",
+    "email": "jsmith@gmail.com",
+    "avatar": "https://placekitten.com/g/200/200"
+    },
+    {
+    "id": 2,
+    "username": "msure",
+    "first_name": "Mary",
+    "last_name": "Sue",
+    "email": "msue@gmail.com",
+    "avatar": "https://placekitten.com/g/200/200"
+    }
+]
