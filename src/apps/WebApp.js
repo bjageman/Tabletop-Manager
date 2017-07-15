@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link
 } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from '../redux/utils'
@@ -13,8 +12,6 @@ import Footer from './base/components/web/Footer'
 
 import LandingPage from './landing/components/web/index'
 import Campaign from './campaign/components/web/index'
-import Blog from './blog/components/web/index'
-import Forum from './forum/components/web/index'
 import Maps from './maps/components/web/index'
 
 const NotFound = () => (
@@ -30,9 +27,8 @@ class WebApp extends Component {
           <Navigation />
           <Switch>
               <Route exact path="/" component={LandingPage}/>
-              <Route path="/campaign" component={Campaign}/>
-              <Route path="/blog" component={Blog}/>
-              <Route path="/forum" component={Forum}/>
+              <Route exact path="/campaign" component={Campaign}/>
+              <Route path="/campaign/:index" component={Campaign}/>
               <Route path="/maps" component={Maps}/>
               <Route component={NotFound} />
           </Switch>

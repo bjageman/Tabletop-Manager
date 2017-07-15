@@ -26,7 +26,6 @@ class LoginModal extends React.Component {
     };
 
     render(){
-        const classes = this.props.classes
         return(
             <Dialog open={this.props.open} onRequestClose={this.handleRequestClose}>
                 <DialogTitle>Login</DialogTitle>

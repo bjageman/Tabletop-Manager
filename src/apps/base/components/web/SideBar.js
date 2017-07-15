@@ -1,6 +1,5 @@
 import React from 'react'
 
-import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import { MenuItem } from 'material-ui/Menu';
 
@@ -18,7 +17,6 @@ class SideBar extends React.Component {
           >
           <UserCard />
           <InvisibleLink to="/"><MenuItem>Home</MenuItem></InvisibleLink>
-          <InvisibleLink to="/blog"><MenuItem>Blog</MenuItem></InvisibleLink>
           <InvisibleLink to="/campaign"><MenuItem>My Campaign</MenuItem></InvisibleLink>
         </Drawer>
         )
