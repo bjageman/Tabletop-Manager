@@ -95,33 +95,33 @@ function* registerUser() {
     }
 }
 
-function* saveBlogEntry() {
-    while (true) {
-        try{
-          let { payload } = yield take(`${actions.saveEntry}`);
-          console.log("Submit SAGA Save!" + payload)
-          let data = {"title": payload.title, "subtitle": payload.subtitle, "content": payload.content, "user_id": 1 }
-          console.log(data)
-          let url = 'blog/' + payload.blog_id + "/entry"
-          console.log(url)
-          const response = yield call(postDataApi, url, data);
-          if (verifyData(response)) {
-              console.log(" successfully saved entry!")
-            //   yield put(actions.registerSuccess(response.data))
-            }else{
-              var error = response.data.error
-              console.log(error)
-              yield put(actions.getError({ error }))
-            }
-          }catch(error){
-            console.log(error.message)
-            yield put(actions.getError({ "error": error.message }))
-          }
-    }
-}
+// function* saveBlogEntry() {
+//     while (true) {
+//         try{
+//           let { payload } = yield take(`${actions.saveEntry}`);
+//           console.log("Submit SAGA Save!" + payload)
+//           let data = {"title": payload.title, "subtitle": payload.subtitle, "content": payload.content, "user_id": 1 }
+//           console.log(data)
+//           let url = 'blog/' + payload.blog_id + "/entry"
+//           console.log(url)
+//           const response = yield call(postDataApi, url, data);
+//           if (verifyData(response)) {
+//               console.log(" successfully saved entry!")
+//             //   yield put(actions.registerSuccess(response.data))
+//             }else{
+//               var error = response.data.error
+//               console.log(error)
+//               yield put(actions.getError({ error }))
+//             }
+//           }catch(error){
+//             console.log(error.message)
+//             yield put(actions.getError({ "error": error.message }))
+//           }
+//     }
+// }
 
 export default function* rootSaga() {
   yield fork(flow);
   yield fork(registerUser);
-  yield fork(saveBlogEntry)
+  // yield fork(saveBlogEntry)
 }

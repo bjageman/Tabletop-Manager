@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "draft-js-plugins-editor": "2.0.0-rc2",
     "material-design-icons": "^3.0.1",
     "material-ui": "next",
+    "material-ui-icons": "next",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",

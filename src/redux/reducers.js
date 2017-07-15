@@ -1,7 +1,5 @@
 import { combineReducers } from 'redux';
 
-import { blog } from '../apps/blog/redux/reducers'
-
 import { createReducer } from 'redux-act';
 import * as actions from './actions'
 const initial = {
@@ -21,5 +19,5 @@ export const user = createReducer({
 
 
 export default combineReducers(
-  { blog, user }
+  { user }
 );

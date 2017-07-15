@@ -51,7 +51,7 @@
         {
             "title":"First Post",
             "slug": "first-post",
-            "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa"
+            "content": "<h1>This is where the title goes</h1> <br /> <p>Yup, here is more content!</p>"
         },
         {
             "title":"Second Post",
@@ -69,44 +69,53 @@
         "img": "https://placekitten.com/g/500/500",
         "entries": [
             {
-                "title": "Man must explore, and this is exploration at its greatest",
-                "subtitle": "Problems look mighty small from 150 miles up",
+                "title": "Entry #5: Wights on the Wall",
                 "author": {
-                    "name": "Brodin",
-                    "id": "1"
+                    "username": "jsmith",
+                    "first_name": "John",
+                    "last_name": "Smith",
+                    "email": "jsmith@gmail.com",
+                    "avatar": "https://placekitten.com/g/200/200"
                 },
                 "date": "Feb 13th, 2020",
-                "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+                "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? We were all skeptical that Donald Trump Jr. would actually go on Sean Hannity’s show tonight. But he did. And I watched it. It’s sort of amazing to me that you can hold an interview like this and make no news. But they managed to do it. The questions were silly. Since Hannity didn’t really ask any questions, Trump really didn’t answer any. On the core issue of why he took the meeting after being told that he would be receiving information that was part of an effort by the Russian government to elect his father, Trump’s answer was something to the effect that it was the middle of a campaign, everything was ‘going a million miles an hour.’ And basically that’s just how it was. The whole thing was a bit jarring for me since I haven’t watched Hannity in some time. But you didn’t miss anything."
             },
             {
-                "title": "Test Blog2",
-                "subtitle": "More test bloggin",
+                "title": "Last Home of the Thirty Slain Magi",
                 "author": {
-                    "name": "Some Guy",
-                    "id": "2"
+                    "username": "jsmith",
+                    "first_name": "John",
+                    "last_name": "Smith",
+                    "email": "jsmith@gmail.com",
+                    "avatar": "https://placekitten.com/g/200/200"
                 },
                 "date": "Jan 23rd, 2020",
                 "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
             },
             {
-                "title": "Test Blog2",
-                "subtitle": "More test bloggin",
+                "title": "Release the Kraken on New Cresthill!",
                 "author": {
-                    "name": "Some Guy",
-                    "id": "2"
+                    "username": "jsmith",
+                    "first_name": "John",
+                    "last_name": "Smith",
+                    "email": "jsmith@gmail.com",
+                    "avatar": "https://placekitten.com/g/200/200"
                 },
                 "date": "Jan 23rd, 2020",
                 "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
             },
             {
-                "title": "Test Blog2",
+                "title": "First Adventure!",
                 "subtitle": "More test bloggin",
                 "author": {
-                    "name": "Some Guy",
-                    "id": "2"
+                    "username": "jsmith",
+                    "first_name": "John",
+                    "last_name": "Smith",
+                    "email": "jsmith@gmail.com",
+                    "avatar": "https://placekitten.com/g/200/200"
                 },
                 "date": "Jan 23rd, 2020",
-                "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+                "content": "Short Message"
             }
         ]
     },

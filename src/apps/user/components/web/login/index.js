@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Dialog, { DialogTitle } from 'material-ui/Dialog';
 import Button from 'material-ui/Button'
+import Icon from 'material-ui/Icon'
 
 import LoginModal from './LoginModal'
 
@@ -20,7 +20,7 @@ class Login extends React.Component {
     render(){
         return(
             <div id="login">
-            <Button color={this.props.color} onClick={() => this.setState({ open: true })}>Login</Button>
+            <Button color={this.props.color} onClick={() => this.setState({ open: true })}><Icon>person</Icon> Login / Sign Up</Button>
             <LoginModal
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}

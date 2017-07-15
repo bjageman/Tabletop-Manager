@@ -1,4 +1,4 @@
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { createStyleSheet } from 'material-ui/styles';
 
 const styleSheet = createStyleSheet('SimpleMediaCard', {
   container: {

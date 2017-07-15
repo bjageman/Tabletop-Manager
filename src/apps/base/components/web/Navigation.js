@@ -20,7 +20,6 @@ class Navigation extends React.Component {
     }
 
     render(){
-        const brandName = "RPG Manager"
         return(
             <div className={styles.root}>
             <TopBar toggleSideBar={this.toggleSideBar} />
