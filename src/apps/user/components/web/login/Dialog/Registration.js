@@ -4,11 +4,9 @@ import Dialog, { DialogTitle, DialogContent, DialogContentText, DialogActions } 
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
-import { withStyles } from 'material-ui/styles';
+import { withStyles, createStyleSheet } from 'material-ui/styles';
 
-import styleSheet from './styles/login'
-
-class LoginModal extends React.Component {
+class RegistrationDialog extends React.Component {
     constructor(props){
         super(props)
         this.state ={
@@ -20,15 +18,15 @@ class LoginModal extends React.Component {
         this.props.onRequestClose();
     };
 
-    handleLogin = value => {
-        console.log("Login " + this.state.username + " with " + this.state.password)
+    handleRegistration = value => {
+        console.log("Registration " + this.state.username + " with " + this.state.password)
         this.props.onRequestClose();
     };
 
     render(){
         return(
             <Dialog open={this.props.open} onRequestClose={this.handleRequestClose}>
-                <DialogTitle>Login</DialogTitle>
+                <DialogTitle>Registration</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
                             <TextField
@@ -57,18 +55,38 @@ class LoginModal extends React.Component {
                           <Button onClick={this.handleRequestClose} color="primary">
                             Cancel
                           </Button>
-                          <Button onClick={this.handleLogin} color="primary">
-                            Login
+                          <Button onClick={this.handleRegistration} color="primary">
+                            Register
                           </Button>
                         </DialogActions>
-                        <Divider light />
-                        <DialogContentText>
-                            Need to Create an Account?
-                        </DialogContentText>
                 </DialogContent>
             </Dialog>
         )
     }
 }
 
-export default withStyles(styleSheet)(LoginModal);
+const styleSheet = createStyleSheet('RegistrationDialog', (theme) => ({
+  root: {
+    color: 'inherit',
+    textDecoration: 'inherit',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+  },
+  primary: {
+    paddingLeft: 40,
+    margingRight: 20,
+    color: "blue",
+  },
+  container: {
+    marginLeft: "5%",
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  input: {
+      marginRight: 10
+  }
+}));
+
+
+export default withStyles(styleSheet)(RegistrationDialog);
