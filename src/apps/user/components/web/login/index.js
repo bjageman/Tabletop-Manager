@@ -3,27 +3,38 @@ import React from 'react'
 import Button from 'material-ui/Button'
 import Icon from 'material-ui/Icon'
 
-import LoginModal from './LoginModal'
+import LoginDialog from './Dialog/Login'
+import RegistrationDialog from './Dialog/Registration'
 
 class Login extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            open: false,
+            openLogin: false,
+            openRegistration: false
         };
     }
 
-    handleRequestClose = value => {
-        this.setState({ open: false });
+    handleLoginRequestClose = value => {
+        this.setState({ openLogin: false });
+    };
+
+    handleRegistrationRequestClose = value => {
+        this.setState({ openRegistration: false });
     };
 
     render(){
         return(
             <div id="login">
-            <Button color={this.props.color} onClick={() => this.setState({ open: true })}><Icon>person</Icon> Login / Sign Up</Button>
-            <LoginModal
-                open={this.state.open}
-                onRequestClose={this.handleRequestClose}
+            <Button color={this.props.color} onClick={() => this.setState({ openLogin: true })}><Icon>person</Icon> Login / Sign Up</Button>
+            <LoginDialog
+                open={this.state.openLogin}
+                openRegistration ={() => this.setState({ openRegistration: true, openLogin: false })}
+                onRequestClose={this.handleLoginRequestClose}
+                />
+            <RegistrationDialog
+                open={this.state.openRegistration}
+                onRequestClose={this.handleRegistrationRequestClose}
                 />
             </div>
         )
