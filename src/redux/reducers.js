@@ -2,6 +2,9 @@ import { combineReducers } from 'redux';
 
 import { createReducer } from 'redux-act';
 import * as actions from './actions'
+
+import { journal } from 'apps/journal/redux/reducers'
+
 const initial = {
   user: {
     username: null,
@@ -19,5 +22,5 @@ export const user = createReducer({
 
 
 export default combineReducers(
-  { user }
+  { user, journal }
 );

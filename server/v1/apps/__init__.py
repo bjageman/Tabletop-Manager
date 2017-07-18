@@ -21,7 +21,7 @@
 ***REMOVED***
 ***REMOVED***
 
-from .blog import blog
+from .journal import journal
 from .forum import forum
 
 from .maps import maps
@@ -32,7 +32,7 @@ from .wiki import wiki
 #JWT System
 
 ***REMOVED***
-app.register_blueprint(forum, url_prefix='/api/v1/forum')
+app.register_blueprint(journal, url_prefix='/api/v1/journal')
 
 ***REMOVED***
 ***REMOVED***

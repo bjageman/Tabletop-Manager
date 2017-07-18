@@ -5,21 +5,22 @@ from sqlalchemy.ext.orderinglist import ordering_list
 
 from v1.apps.models import *
 
-class Blog(Base):
-    name = db.Column(db.String(80))
+class Journal(Base):
+    title = db.Column(db.String(80))
     slug = db.Column(db.String(80), unique=True)
     description = db.Column(db.Text)
-    entries = db.relationship('Entry', cascade='all,delete', backref='blog')
+    entries = db.relationship('Entry', cascade='all,delete', backref='journal')
 
     def __unicode__(self):
         return self.name
 
 
 class Entry(Base, TimestampMixin):
-    name = db.Column(db.String(80))
+    title = db.Column(db.String(80))
+    content = db.Column(db.String(2048))
     author_id = db.Column(db.ForeignKey('user.id'), index=True)
     author = db.relationship('User', backref='entrys')
-    blog_id = db.Column(db.ForeignKey('blog.id'), index=True)
+    journal_id = db.Column(db.ForeignKey('journal.id'), index=True)
     comments = db.relationship('Comment', backref='entry',
                             cascade='all,delete',
                             order_by='Comment.index',

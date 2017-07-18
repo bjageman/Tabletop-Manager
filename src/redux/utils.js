@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 export function mapStateToProps(state) {
   const props = {
     user: state.user,
+    journal: state.journal,
   }
   return props
 }
