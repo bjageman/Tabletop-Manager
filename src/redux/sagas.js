@@ -1,9 +1,11 @@
 import io from 'socket.io-client';
 import { eventChannel } from 'redux-saga';
-import { fork, take, call, put, cancel } from 'redux-saga/effects';
+import { fork, take, call, put, cancel, takeEvery } from 'redux-saga/effects';
 import * as actions from './actions';
 import { postDataApi, verifyData } from './api'
-import myConfig from '../config.js';
+import myConfig from 'config.js';
+
+import { saveJournalEntry } from 'apps/journal/redux/sagas'
 
 console.log(myConfig)
 var url = myConfig.API_URL
@@ -95,33 +97,8 @@ function* registerUser() {
     }
 }
 
-// function* saveBlogEntry() {
-//     while (true) {
-//         try{
-//           let { payload } = yield take(`${actions.saveEntry}`);
-//           console.log("Submit SAGA Save!" + payload)
-//           let data = {"title": payload.title, "subtitle": payload.subtitle, "content": payload.content, "user_id": 1 }
-//           console.log(data)
-//           let url = 'blog/' + payload.blog_id + "/entry"
-//           console.log(url)
-//           const response = yield call(postDataApi, url, data);
-//           if (verifyData(response)) {
-//               console.log(" successfully saved entry!")
-//             //   yield put(actions.registerSuccess(response.data))
-//             }else{
-//               var error = response.data.error
-//               console.log(error)
-//               yield put(actions.getError({ error }))
-//             }
-//           }catch(error){
-//             console.log(error.message)
-//             yield put(actions.getError({ "error": error.message }))
-//           }
-//     }
-// }
-
 export default function* rootSaga() {
   yield fork(flow);
   yield fork(registerUser);
-  // yield fork(saveBlogEntry)
+  yield takeEvery(actions.saveJournalEntry, saveJournalEntry)
 }

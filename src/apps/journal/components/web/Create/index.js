@@ -17,7 +17,7 @@ class CreateEntry extends React.Component {
         super(props)
         this.handleRequestClose = this.handleRequestClose.bind(this)
         this.state = {
-            open: false
+            open: false,
         }
     }
 
@@ -41,6 +41,9 @@ class CreateEntry extends React.Component {
             <EntryCreateDialog
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}
+                onRequestSave={this.handleSave}
+                title={this.state.title}
+                content={this.state.content}
             />
             </div>
         )

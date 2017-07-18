@@ -1,5 +1,7 @@
 import { createAction } from 'redux-act';
 
+export * from 'apps/journal/redux/actions';
+
 export const login = createAction('login');
 export const logout = createAction('logout');
 export const loginSuccess = createAction('login succeeded');

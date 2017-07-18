@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify, abort
 
 import string
 
-from . import blog
+from . import journal
 
 from .models import *
 

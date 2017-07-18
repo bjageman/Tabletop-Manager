@@ -1,5 +1,5 @@
 from flask import Blueprint
 
-blog = Blueprint('blog', __name__)
+journal = Blueprint('journal', __name__)
 
 from . import views

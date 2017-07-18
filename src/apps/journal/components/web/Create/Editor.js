@@ -1,11 +1,15 @@
 import React from 'react'
 import { withStyles, createStyleSheet } from 'material-ui/styles'
 
+import Grid from 'material-ui/Grid'
+import Input from 'material-ui/Input/Input';
+import InputLabel from 'material-ui/Input/InputLabel';
+import FormControl from 'material-ui/Form/FormControl';
+import Typography from 'material-ui/Typography'
 
 import Editor from 'draft-js-plugins-editor';
 import createHashtagPlugin from 'draft-js-hashtag-plugin';
 import createLinkifyPlugin from 'draft-js-linkify-plugin';
-import { EditorState } from 'draft-js';
 
 const hashtagPlugin = createHashtagPlugin();
 const linkifyPlugin = createLinkifyPlugin();
@@ -23,33 +27,47 @@ const styleSheet = createStyleSheet('EntryCreateDialog', {
     flex: 1,
   },
   editor: {
-      backgroundColor: "#e7e7e7",
-  }
+      boxSizing: "border-box",
+      border: "1px solid #ddd",
+      cursor: "text",
+      padding: "16px",
+      borderRadius: "2px",
+      marginBottom: "2em",
+      boxShadow: "inset 0px 1px 8px -3px #ABABAB",
+      backgroundColor: "#fefefe",
+      minHeight:140
+    }
+
 });
 
 class EntryCreateEditor extends React.Component {
     constructor(props){
         super(props)
-        this.state = {
-            editorState: EditorState.createEmpty(),
-        };
     }
 
-    onChange = (editorState) => {
-        this.setState({
-            editorState,
-        });
-    };
+    focus(){
+        this.refs.editor.focus()
+    }
+
     render() {
         const classes = this.props.classes
         return(
-            <div className={classes.editor} >
+        <div>
+            <FormControl className={classes.input}>
+                <InputLabel htmlFor="name">Name</InputLabel>
+                <Input id="title" name="title" value={this.props.title} onChange={this.props.handleInputChange} />
+            </FormControl>
+            <Typography type="caption" > Content </Typography>
+            <div className={classes.editor} onClick={this.focus.bind(this)}>
                 <Editor
-                    editorState={this.state.editorState}
-                    onChange={this.onChange}
+                    editorState={this.props.editorState}
+                    onChange={this.props.onChange}
                     plugins={plugins}
+                    spellCheck={true}
+                    ref="editor"
                     />
             </div>
+        </div>
         )
     }
 }

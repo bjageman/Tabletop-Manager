@@ -22,7 +22,7 @@ class Footer extends React.Component {
         return(
             <Grid container className={classes.footer}>
                 <Grid item xs>
-                    <Typography type="p">
+                    <Typography type="body2">
                         <Icon>copyright</Icon>RPG Manager 2017
                     </Typography>
                 </Grid>

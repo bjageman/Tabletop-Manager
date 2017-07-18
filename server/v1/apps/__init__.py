@@ -21,7 +21,7 @@ db.init_app(app)
 async_mode = None
 socketio = SocketIO(app, async_mode=async_mode)
 
-from .blog import blog
+from .journal import journal
 from .forum import forum
 
 from .maps import maps
@@ -32,7 +32,7 @@ from .wiki import wiki
 #JWT System
 
 app.register_blueprint(users, url_prefix='/api/v1/users')
-app.register_blueprint(forum, url_prefix='/api/v1/forum')
+app.register_blueprint(journal, url_prefix='/api/v1/journal')
 
 @app.after_request
 def add_headers(response):

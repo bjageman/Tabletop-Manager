@@ -2,13 +2,13 @@ from . import TestingBase
 from collections import Counter
 
 from v1.apps.users.models import User
-from v1.apps.blog.models import *
+from v1.apps.journal.models import *
 from v1.apps.forum.models import *
 
 from v1.apps import app, db
 import random
 
-class DBTests(TestingBase):
+class DatabaseTests(TestingBase):
 
     def user_login(self):
         username = "TestUser1"
@@ -20,37 +20,38 @@ class DBTests(TestingBase):
         assert not user.verify_password(incorrect_password)
 
 
-class ForumTests(DBTests):
-    blog_name = "Test Board"
-    entry_name = "Test Thread"
+class JournalTests(DatabaseTests):
+    journal_title = "Test Board"
+    entry_title = "Test Thread"
+    entry_content = "This is the beginning of a journal entry. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     author_id = 1
     commenter_id = 2
 
     def setUp(self):
         super().setUp()
-        blog = Blog(name=self.blog_name, description="This is a test board")
+        journal = Journal(title=self.journal_title, description="This is a test journal")
         author = User.query.get(self.author_id)
-        entry = Entry(name=self.entry_name, author=author)
-        blog.entry.append(entry)
-        db.session.add(blog)
+        entry = Entry(title=self.entry_title, author=author, content=self.entry_content)
+        journal.entries.append(entry)
+        db.session.add(journal)
         db.session.commit()
 
-    def test_create_forum_post(self):
+    def test_create_journal_entry(self):
         comment_content = "This is a test post!"
         author = User.query.get(self.commenter_id)
-        entry = Entry.query.filter_by(name=self.entry_name).first()
+        entry = Entry.query.filter_by(title=self.entry_title).first()
         entry.comments.append(Comment(content=comment_content, author=author))
-        db.session.add(thread)
+        db.session.add(entry)
         db.session.commit()
-        blog = Blog.query.filter_by(name=self.blog_name).first()
-        for entry in blog.entries:
-            assert blog.author.id == self.author_id
-            assert self.entry_name in blog.name
+        journal = Journal.query.filter_by(title=self.journal_title).first()
+        for entry in journal.entries:
+            assert entry.author.id == self.author_id
+            assert self.entry_title in entry.title
             for comment in entry.comments:
                 assert comment.author.id == self.commenter_id
-                assert comment_content in post.content
+                assert comment_content in comment.content
 
-class ForumTests(DBTests):
+class ForumTests(DatabaseTests):
     board_name = "Test Board"
     thread_name = "Test Thread"
     author_id = 1
