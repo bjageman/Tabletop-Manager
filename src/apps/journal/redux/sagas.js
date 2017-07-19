@@ -6,8 +6,8 @@ import { postDataApi, verifyData } from 'redux/api'
 export function* saveJournalEntry(action) {
     try{
       let payload = action.payload
-      let data = {"title": payload.title, "content": payload.content, "user_id": 1 }
-      let url = 'journal/' + payload.journal_id + "/entry"
+      let data = {"title": payload.title, "content": payload.content, "author_id": 1 }
+      let url = 'campaign/' + payload.campaign_id + "/entry"
       console.log(url)
       const response = yield call(postDataApi, url, data);
       if (verifyData(response)) {

@@ -1,4 +1,4 @@
-from v1.apps.campaign import campaign
+from . import campaign
 from flask import make_response, jsonify, abort
 
 @campaign.errorhandler(405)
