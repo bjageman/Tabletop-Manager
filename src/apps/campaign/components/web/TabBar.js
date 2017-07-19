@@ -2,10 +2,14 @@ import React from 'react'
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 
+import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { blue } from 'material-ui/colors';
+
 class CampaignTabBar extends React.Component {
     render(){
+        const classes = this.props.classes
         return(
-            <AppBar position="static">
+            <AppBar position="static" className={classes.tabbar}>
               <Tabs
                   index={this.props.index}
                   onChange={this.props.handleTabChange}
@@ -24,4 +28,11 @@ class CampaignTabBar extends React.Component {
     }
 }
 
-export default CampaignTabBar
+const styleSheet = createStyleSheet('CampaignTabBar', {
+  tabbar: {
+    color: "black",
+    backgroundColor:blue[200]
+  },
+});
+
+export default withStyles(styleSheet)(CampaignTabBar)

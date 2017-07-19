@@ -28,14 +28,12 @@ entry_base_url = '/<int:campaign_id>/entry'
 #Create
 @campaign.route(entry_base_url, methods=['POST'])
 def create_entry(campaign_id):
-    print("Creating entry with campaign #", campaign_id)
     data        = request.get_json()
     title       = get_required_data(data, "title")
     author_id   = get_required_data(data, "author_id")
     content     = get_required_data(data, "content")
     campaign    = Campaign.query.get(campaign_id)
     author      = User.query.get(author_id)
-    print("Camp:", campaign, "Author",  author)
     if campaign is not None and author is not None:
         entry = Entry(title=title, author=author, content=content, campaign=campaign)
         db.session.add(entry)
