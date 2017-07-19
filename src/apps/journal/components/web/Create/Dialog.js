@@ -59,7 +59,8 @@ class EntryCreateDialog extends React.Component {
         this.props.saveJournalEntry({
             title:this.state.title,
             content:this.state.content,
-            journal_id: 1,
+            campaign_id: 1,
+            author_id: 1, 
         })
         this.props.onRequestClose()
     }

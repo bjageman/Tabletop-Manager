@@ -31,7 +31,6 @@ class TestingBase(unittest.TestCase):
 
 
     def tearDown(self):
-        pass
         self.socketio.disconnect()
         self.db.session.rollback()
         self.db.session.expunge_all()
