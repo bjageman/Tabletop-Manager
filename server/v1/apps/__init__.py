@@ -3,6 +3,8 @@ from flask_jwt import JWT
 from flask_sqlalchemy import SQLAlchemy
 from flask_socketio import SocketIO
 from datetime import timedelta
+from flask import Blueprint
+
 
 from . import config
 
@@ -21,18 +23,12 @@ db.init_app(app)
 async_mode = None
 socketio = SocketIO(app, async_mode=async_mode)
 
-from .blog import blog
-from .forum import forum
-
-from .maps import maps
 from .users import users
-from .wiki import wiki
+from .campaign import campaign
 
-
-#JWT System
 
 app.register_blueprint(users, url_prefix='/api/v1/users')
-app.register_blueprint(forum, url_prefix='/api/v1/forum')
+app.register_blueprint(campaign, url_prefix='/api/v1/campaign')
 
 @app.after_request
 def add_headers(response):
