@@ -4,7 +4,8 @@ import Divider from 'material-ui/Divider'
 
 import data from 'mocks/characters.json'
 
-import CharacterEntry from './Entry/'
+import Read from './Read/'
+import Create from './Create/'
 
 class CampaignCharacters extends React.Component {
     render(){
@@ -12,9 +13,10 @@ class CampaignCharacters extends React.Component {
 
         return(
             <div id="campaign-characters">
+                <Create />
                 {characters.map((character, i) => (
-                    <div class="character-card">
-                        <CharacterEntry character={character} />
+                    <div className="character-card">
+                        <Read character={character} />
                         <Divider />
                     </div>
                 ))}

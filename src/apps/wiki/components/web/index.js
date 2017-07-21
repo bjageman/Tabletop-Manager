@@ -4,8 +4,10 @@ import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 
-import CampaignWikiContent from './Content'
-import CampaignWikiSideBar from './SideBar'
+import Content from './Content'
+import SideBar from './SideBar'
+
+import Create from './Create/'
 
 import data from 'mocks/campaign.json'
 
@@ -21,9 +23,10 @@ class CampaignWiki extends Component {
     const entry = wiki.entries[0]
     return (
         <div className={classes.container}>
-            <CampaignWikiContent entry={entry}>
-                <CampaignWikiSideBar entries={wiki.entries} />
-            </CampaignWikiContent>
+            <Create />
+            <Content entry={entry}>
+                <SideBar entries={wiki.entries} />
+            </Content>
         </div>
 
     );

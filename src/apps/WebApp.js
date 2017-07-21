@@ -10,9 +10,11 @@ import { mapStateToProps, mapDispatchToProps } from '../redux/utils'
 import Navigation from './base/components/web/Navigation'
 import Footer from './base/components/web/Footer'
 
-import LandingPage from './landing/components/web/index'
-import Campaign from './campaign/components/web/index'
-import Maps from './maps/components/web/index'
+import UserProfile from './user/components/web/profile/'
+
+import LandingPage from './landing/components/web/'
+import Campaign from './campaign/components/web/'
+import Maps from './maps/components/web/'
 
 const NotFound = () => (
     <p>Sorry, not Found!</p>
@@ -27,6 +29,8 @@ class WebApp extends Component {
           <Navigation />
           <Switch>
               <Route exact path="/" component={LandingPage}/>
+              <Route exact path="/profile" component={UserProfile}/>
+              <Route exact path="/profile/:userId" component={UserProfile}/>
               <Route exact path="/campaign" component={Campaign}/>
               <Route path="/campaign/:index" component={Campaign}/>
               <Route path="/maps" component={Maps}/>

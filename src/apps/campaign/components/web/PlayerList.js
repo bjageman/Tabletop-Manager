@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import List, { ListItem, ListItemText, ListSubheader, ListItemAvatar, } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 
 class PlayerList extends React.Component {
     renderPlayerItem(player, i){
         return(
+            <Link style={{ textDecoration: 'none' }} to={"/profile/" + player.id}>
             <ListItem key={i} button>
                 <ListItemAvatar>
                   <Avatar
@@ -12,8 +14,9 @@ class PlayerList extends React.Component {
                     src={player.avatar}
                   />
                 </ListItemAvatar>
-                <ListItemText primary={player.first_name + " " + player.last_name} />
+                    <ListItemText primary={player.first_name + " " + player.last_name} />
             </ListItem>
+            </Link>
         )
     }
 

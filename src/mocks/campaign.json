@@ -12,14 +12,14 @@
         "avatar": "https://placekitten.com/g/200/200"
     },
     "players":[{
-        "id": 2,
+        "id": 0,
         "username": "jsmith",
         "first_name": "John",
         "last_name": "Smith",
         "email": "jsmith@gmail.com",
         "avatar": "https://placekitten.com/g/200/200"
     },{
-        "id": 3,
+        "id": 1,
         "username": "msure",
         "first_name": "Mary",
         "last_name": "Sue",
@@ -232,6 +232,18 @@
         {
             "name": "Second session",
             "date": "Sep 22nd, 2017",
+            "start_time": "4:00pm",
+            "end_time": "8:00pm"
+        },
+        {
+            "name": "Third session",
+            "date": "Oct 12th, 2017",
+            "start_time": "7:00pm",
+            "end_time": "8:00pm"
+        },
+        {
+            "name": "Fourth session",
+            "date": "Jan 4th, 2018",
             "start_time": "4:00pm",
             "end_time": "8:00pm"
         }
