@@ -5,8 +5,23 @@ import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
 import Avatar from 'material-ui/Avatar';
 import Icon from 'material-ui/Icon';
+import { createStyleSheet, withStyles } from 'material-ui/styles';
 
 import EntryDialog from './Dialog'
+import Delete from '../Delete/'
+
+const styleSheet = createStyleSheet("JournalEntry", () => ({
+  card: {
+      marginTop: 20,
+      marginBottom: 20,
+      marginLeft:20,
+      marginRight: 40
+  },
+  link: {
+    textDecoration: 'none',
+    cursor: 'pointer'
+  },
+}));
 
 
 class JournalEntry extends React.Component {
@@ -23,12 +38,11 @@ class JournalEntry extends React.Component {
     }
 
     render(){
-        const entry = this.props.entry
+        const { entry, classes, ...other } = this.props
         return(
             <div className = "journal-entry">
-            <Card style={{marginTop: 20, marginBottom: 20, marginLeft:20, marginRight: 40 }}>
-                <a onClick={() => this.setState({ open: true })}
-                   style={{ textDecoration: 'none', cursor: 'pointer' }}>
+            <Card className={classes.card}>
+                <a onClick={() => this.setState({ open: true })} className={classes.link}>
                     <CardHeader
                         avatar={
                           <Avatar
@@ -63,4 +77,4 @@ class JournalEntry extends React.Component {
     }
 }
 
-export default JournalEntry
+export default withStyles(styleSheet)(JournalEntry)

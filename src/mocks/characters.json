@@ -1,4 +1,5 @@
 [{
+    "id": 1,
     "name": "DudeBro The Master",
     "subheader": "Fighter Ranger Human",
     "campaign": "Tomb of the Dragon Queen",
@@ -23,6 +24,7 @@
     }
 },
 {
+    "id": 1,
     "name": "Lady Ortelia",
     "subheader": "4th level Elven Priestess",
     "campaign": "Tomb of the Dragon Queen",

@@ -1,18 +1,11 @@
 import React from 'react'
 import Icon from 'material-ui/Icon'
 import Button from 'material-ui/Button';
-
 import { withStyles, createStyleSheet } from 'material-ui/styles'
 
-import EntryCreateDialog from './Dialog'
+import Dialog from './Dialog'
 
-const styleSheet = createStyleSheet('CreateEntry', theme => ({
-  button: {
-    margin: theme.spacing.unit,
-  },
-}));
-
-class CreateEntry extends React.Component {
+class CreateMap extends React.Component {
     constructor(props){
         super(props)
         this.handleRequestClose = this.handleRequestClose.bind(this)
@@ -29,6 +22,7 @@ class CreateEntry extends React.Component {
 
     render(){
         const classes = this.props.classes
+        console.log(this.state.open)
         return(
             <div>
             <Button
@@ -38,15 +32,19 @@ class CreateEntry extends React.Component {
                 >
                 <Icon>add</Icon>
             </Button>
-            <EntryCreateDialog
+            <Dialog
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}
-                title={this.state.title}
-                content={this.state.content}
-            />
+                />
             </div>
         )
     }
 }
 
-export default withStyles(styleSheet)(CreateEntry)
+const styleSheet = createStyleSheet('CreateMap', theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+}));
+
+export default withStyles(styleSheet)(CreateMap)

@@ -5,6 +5,7 @@ import Card, { CardContent, CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 
 import CampaignMapCard from './Card'
+import Create from './Create/'
 
 import data from 'mocks/campaign.json'
 
@@ -15,6 +16,7 @@ class CampaignMaps extends Component {
     const maps = campaign.maps
     return (
       <Grid container className={classes.container} >
+          <Create />
           {maps.map((map, i) => (
             <CampaignMapCard
                 key = {i}

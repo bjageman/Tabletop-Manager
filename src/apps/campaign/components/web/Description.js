@@ -2,13 +2,11 @@ import React from 'react'
 
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Grid from 'material-ui/Grid'
-import { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import PlayerList from './PlayerList'
 
 import data from 'mocks/campaign.json'
-
 
 class CampaignDescription extends React.Component {
     createMarkup(data){
@@ -20,31 +18,19 @@ class CampaignDescription extends React.Component {
         const classes = this.props.classes
         return(
             <div id="campaign-description">
-            <CardMedia >
-              <div className={classes.imageContainer}>
-                  <img className={classes.image} src={campaign.image} alt={campaign.name} />
-              </div>
-            </CardMedia>
             <Grid container gutter={24}>
+                <Grid item sm={12}>
+                  <div className={classes.imageContainer}>
+                      <img className={classes.image} src={campaign.image} alt={campaign.name} />
+                  </div>
+                </Grid>
                 <Grid item sm={8} >
-                    <CardContent>
-                      <Typography type="headline" component="h2">
+                    <Typography type="headline" component="h2">
                         {campaign.name}
-                      </Typography>
-                    </CardContent>
-                    <CardContent>
-                        <Typography component="body1">
-                            <div dangerouslySetInnerHTML={this.createMarkup(campaign.wiki.entries[0].content)} />
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button dense color="primary">
-                        Share
-                      </Button>
-                      <Button dense color="primary">
-                        Learn More
-                      </Button>
-                    </CardActions>
+                    </Typography>
+                    <Typography component="body1">
+                        <div dangerouslySetInnerHTML={this.createMarkup(campaign.wiki.entries[0].content)} />
+                    </Typography>
                 </Grid>
                 <Grid item sm={4}>
                     <PlayerList players={campaign.players}/>
@@ -55,7 +41,7 @@ class CampaignDescription extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('SimpleMediaCard', {
+const styleSheet = createStyleSheet('CampaignDescription', {
   container: {
     paddingTop: 20,
     paddingLeft: 20,

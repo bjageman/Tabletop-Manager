@@ -10,6 +10,7 @@ import Journal from 'apps/journal/components/web'
 import Characters from 'apps/characters/components/web/'
 import Wiki from 'apps/wiki/components/web/'
 import Maps from 'apps/maps/components/web/'
+import Calendar from 'apps/calendar/components/web/'
 
 class Campaign extends React.Component {
     constructor(props){
@@ -41,6 +42,8 @@ class Campaign extends React.Component {
                     <Wiki />}
                 {index === 4 &&
                     <Maps />}
+                {index === 5 &&
+                    <Calendar />}
             </Grid>
         )
     }

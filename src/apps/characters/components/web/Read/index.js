@@ -4,7 +4,10 @@ import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 
-const styleSheet = createStyleSheet('NowPlayingCard', {
+import Delete from '../Delete/'
+import Update from '../Update/'
+
+const styleSheet = createStyleSheet('CharacterEntry', {
   card: {
     marginTop: 20,
     marginBottom: 20,
@@ -23,6 +26,10 @@ const styleSheet = createStyleSheet('NowPlayingCard', {
     maxHeight: 300,
     maxWidth: 150,
   },
+  iconContainer: {
+    display: 'flex',
+    width: '100%',
+},
 });
 
 
@@ -49,6 +56,9 @@ class CharacterEntry extends React.Component {
                         <Typography type="body1">
                         Played By: <a href={`/users/profile/${character.author.id}`}>{character.author.username}</a>
                         </Typography>
+                        <Grid className={classes.iconContainer} item xs={2}>
+                            <Delete /> <Update character={character} />
+                        </Grid>
                         <Typography component="p">
                             {character.descriptors[0].content}
                         </Typography>

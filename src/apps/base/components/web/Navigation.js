@@ -1,9 +1,8 @@
 import React from 'react'
+import { withStyles, createStyleSheet } from 'material-ui/styles';
 
 import TopBar from './TopBar'
 import SideBar from './SideBar'
-
-import styles from './styles/navigation.css'
 
 class Navigation extends React.Component {
     constructor(props){
@@ -20,8 +19,9 @@ class Navigation extends React.Component {
     }
 
     render(){
+        const { classes, ...other } = this.props
         return(
-            <div className={styles.root}>
+            <div className={classes.root}>
             <TopBar toggleSideBar={this.toggleSideBar} />
             <SideBar open={this.state.sidebar} toggle={this.toggleSideBar} onRequestClose={this.toggleSideBar}/>
             </div>
@@ -29,4 +29,20 @@ class Navigation extends React.Component {
     }
 }
 
-export default Navigation
+const styleSheet = createStyleSheet('Navigation', {
+  root: {
+    width: '100%',
+    },
+  flex: {
+    flex: 1,
+    },
+  title: {
+    cursor: 'pointer',
+    color: 'white',
+    },
+  link: {
+    textDecoration: 'none',
+  }
+});
+
+export default withStyles(styleSheet)(Navigation)

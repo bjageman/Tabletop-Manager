@@ -1,18 +1,11 @@
 import React from 'react'
 import Icon from 'material-ui/Icon'
-import Button from 'material-ui/Button';
-
+import IconButton from 'material-ui/IconButton';
 import { withStyles, createStyleSheet } from 'material-ui/styles'
 
-import EntryCreateDialog from './Dialog'
+import Dialog from './Dialog'
 
-const styleSheet = createStyleSheet('CreateEntry', theme => ({
-  button: {
-    margin: theme.spacing.unit,
-  },
-}));
-
-class CreateEntry extends React.Component {
+class DeleteCharacter extends React.Component {
     constructor(props){
         super(props)
         this.handleRequestClose = this.handleRequestClose.bind(this)
@@ -29,24 +22,28 @@ class CreateEntry extends React.Component {
 
     render(){
         const classes = this.props.classes
+        console.log(this.state.open)
         return(
             <div>
-            <Button
-                fab color="primary"
+            <IconButton
                 className={classes.button}
-                onClick = {() => this.setState({open: true})}
-                >
-                <Icon>add</Icon>
-            </Button>
-            <EntryCreateDialog
+                color="red"
+                onClick = {() => this.setState({open: true})}>
+                <Icon>delete</Icon>
+            </IconButton>
+            <Dialog
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}
-                title={this.state.title}
-                content={this.state.content}
-            />
+                />
             </div>
         )
     }
 }
 
-export default withStyles(styleSheet)(CreateEntry)
+const styleSheet = createStyleSheet('DeleteCharacter', theme => ({
+  button: {
+      color: "red",
+  },
+}));
+
+export default withStyles(styleSheet)(DeleteCharacter)
