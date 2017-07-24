@@ -1,4 +1,4 @@
-from . import CampaignTests
+from testing.requests import CampaignTests
 
 import json
 

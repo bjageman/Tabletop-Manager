@@ -1,6 +1,6 @@
 import React from 'react'
 //Material-UI Imports
-import Dialog, {DialogContent} from 'material-ui/Dialog'
+import Dialog, {DialogContent, DialogActions} from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import TextField from 'material-ui/TextField';
@@ -46,12 +46,16 @@ class CreateDialogCharacter extends React.Component {
                 <DialogContent>
                     <Editor character = {character}/>
                 </DialogContent>
+                <DialogActions>
                 <Button
-                    raised
                     color="primary"
                     onClick = {this.handleSave}>
                     Save
                 </Button>
+                <Button onClick = {this.props.onRequestClose} color="primary">
+                  Cancel
+                </Button>
+                </DialogActions>
             </DialogContent>
             </Dialog>
         )

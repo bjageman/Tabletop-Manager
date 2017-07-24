@@ -10,7 +10,7 @@ class RequestTests(TestingBase):
 
 class CampaignTests(RequestTests):
     campaign_id = 1
-    campaign_title = "Test Campaign"
+    campaign_name = "Test Campaign"
     campaign_slug = "test-campaign" #Must match above
     owner_id = 1
 
@@ -19,7 +19,7 @@ class CampaignTests(RequestTests):
         self.url = self.base_url + "campaign"
         rv = self.app.post(self.url,
             data=json.dumps({
-                "title": self.campaign_title,
+                "name": self.campaign_name,
                 "owner_id": self.owner_id,
                 }),
             content_type='application/json'

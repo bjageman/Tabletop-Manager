@@ -1,36 +1,41 @@
-from . import JournalTests
-
 from collections import Counter
 import json
 
+from testing.requests import CampaignTests
 from testing.utils import bytes_to_json
 
 import random
 
-class JournalEntryTests(JournalTests):
-    campaign_id = 1
+class JournalTests(CampaignTests):
     start_entries = 5
+    entry_name = "Test Entry"
+    entry_slug = "test-entry"
+    entry_content = "This is the beginning of a campaign entry. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    owner_id = 1
+    author_id = 2
+    commenter_id = 3
 
-    def createEntry(self, url, title, content, author_id):
+    def setUp(self):
+        super().setUp()
+        self.url = self.url + "/"+ str(self.campaign_id) + "/entry"
+        for i in range(self.start_entries):
+            self.createEntry(self.url, self.entry_name, self.entry_content, self.author_id)
+
+
+    def createEntry(self, url, name, content, author_id):
         return self.app.post(url,
             data=json.dumps({
-                "title": title,
+                "name": name,
                 "content": content,
                 "author_id": author_id,
                 }),
             content_type='application/json'
         )
 
-    def setUp(self):
-        super().setUp()
-        self.url = self.url + "/"+ str(self.campaign_id) + "/entry"
-        for i in range(self.start_entries):
-            self.createEntry(self.url, self.entry_title, self.entry_content, self.author_id)
-
     def test_create_multiple_entry(self):
         size = 10
         for i in range(size):
-            rv = self.createEntry(self.url, self.entry_title, self.entry_content, self.author_id)
+            rv = self.createEntry(self.url, self.entry_name, self.entry_content, self.author_id)
         result = bytes_to_json(rv.data)
         assert self.entry_content in result['content']
         rv = self.app.get("/api/v1/campaign/1")
