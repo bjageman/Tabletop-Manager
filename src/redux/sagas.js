@@ -5,6 +5,7 @@ import * as actions from './actions';
 import { postDataApi, verifyData } from './api'
 import myConfig from 'config.js';
 
+import { registerUser, loginUser } from 'apps/user/redux/sagas'
 import { saveJournalEntry } from 'apps/journal/redux/sagas'
 
 console.log(myConfig)
@@ -52,7 +53,7 @@ function* readSockets(socket) {
 function* handleIO(socket) {
   try{
     yield fork(readSockets, socket);
-    yield fork(loginUser, socket);
+    yield fork(loginWebSocket, socket);
   }catch(err){
     console.log("readSockets ERROR: " + err.message)
   }
@@ -68,7 +69,7 @@ function* flow() {
   }
 }
 
-function* loginUser(socket) {
+function* loginWebSocket(socket) {
   while (true) {
     const { payload } = yield take(`${actions.login}`);
     console.log("PAYLOAD:",payload)
@@ -76,29 +77,9 @@ function* loginUser(socket) {
   }
 }
 
-function* registerUser() {
-    while (true) {
-        try{
-          let { payload } = yield take(`${actions.register}`);
-          let data = {"username": payload.username, "password": payload.password }
-          const response = yield call(postDataApi, 'users', data);
-          if (verifyData(response)) {
-              console.log(response.data.username + " successfully registered!")
-              yield put(actions.registerSuccess(response.data))
-            }else{
-              var error = response.data.error
-              console.log(error)
-              yield put(actions.getError({ error }))
-            }
-          }catch(error){
-            console.log(error.message)
-            yield put(actions.getError({ "error": error.message }))
-          }
-    }
-}
-
 export default function* rootSaga() {
   yield fork(flow);
-  yield fork(registerUser);
+  yield takeEvery(actions.register, registerUser);
+  yield takeEvery(actions.login, loginUser);
   yield takeEvery(actions.saveJournalEntry, saveJournalEntry)
 }

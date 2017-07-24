@@ -16,10 +16,10 @@ export function* saveJournalEntry(action) {
         }else{
           var error = response.data.error
           console.log(error)
-          yield put(actions.getError({ error }))
+          yield put(actions.error({ error }))
         }
       }catch(error){
         console.log(error.message)
-        yield put(actions.getError({ "error": error.message }))
+        yield put(actions.error({ "error": error.message }))
       }
 }

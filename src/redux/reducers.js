@@ -4,23 +4,25 @@ import { createReducer } from 'redux-act';
 import * as actions from './actions'
 
 import { journal } from 'apps/journal/redux/reducers'
+import { user } from 'apps/user/redux/reducers'
 
 const initial = {
-  user: {
-    username: null,
+  response: {
+    success: null,
+    error: null,
   },
 };
 
-export const user = createReducer({
-  [actions.register]: (state, payload) => {
-    return { username: payload.username, password:payload.password, fetching:true }
+export const response = createReducer({
+  [actions.success]: (state, payload) => {
+    return { success: payload.message };
   },
-  [actions.registerSuccess]: (state, payload) => {
-    return { username: payload.username, message:payload.password, fetching:true }
+  [actions.error]: (state, payload) => {
+    return { error: payload.message };
   }
-}, initial.user);
+}, initial.response);
 
 
 export default combineReducers(
-  { user, journal }
+  { response, user, journal }
 );

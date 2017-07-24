@@ -13,7 +13,7 @@ from v1.apps.users.models import User
 #DB/Sockets
 from v1.apps import socketio, db
 #Parsers
-from v1.apps.parsers import *
+from v1.apps.users.parsers import *
 from .parsers import *
 
 #Error handling
@@ -27,12 +27,11 @@ from v1.apps.utils import *
 @campaign.route('', methods=['POST'])
 def create_campaign():
     data = request.get_json()
-    title       =   get_required_data(data, "title")
+    name       =   get_required_data(data, "name")
     owner_id    =   get_required_data(data, "owner_id")
-    description =   get_optional_data(data, "description")
     owner = User.query.get(owner_id)
     if owner is not None:
-        campaign = Campaign(title=title, owner=owner)
+        campaign = Campaign(name=name, owner=owner)
         db.session.add(campaign)
         db.session.commit()
         return jsonify(parse_campaign(campaign))
@@ -62,12 +61,11 @@ def get_campaign_by_slug(campaign_slug):
 @campaign.route('/<int:campaign_id>', methods=['POST'])
 def update_campaign_by_id(campaign_id):
     data = request.get_json()
-    title       =   get_required_data(data, "title")
-    description =   get_optional_data(data, "description")
+    name       =   get_required_data(data, "name")
     campaign = Campaign.query.filter_by(id=campaign_id)
-    campaign.update({"title":title, "description":description})
+    campaign.update({"name":name})
     campaign = campaign.first()
-    campaign.slug = slugify(campaign.title, '')
+    campaign.slug = slugify(campaign.name, '')
     db.session.commit()
     return jsonify(parse_campaign(campaign))
 

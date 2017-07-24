@@ -14,12 +14,12 @@ from v1.apps.users.models import User
 #DB/Sockets
 from v1.apps import socketio, db
 #Parsers
-from v1.apps.parsers import *
+from v1.apps.users.parsers import *
 from .parsers import *
 
 #Error handling
 from v1.apps.errors import *
-from .errors import *
+from v1.apps.campaign.errors import *
 
 #Utils
 from v1.apps.utils import *
@@ -29,13 +29,13 @@ entry_base_url = '/<int:campaign_id>/entry'
 @campaign.route(entry_base_url, methods=['POST'])
 def create_entry(campaign_id):
     data        = request.get_json()
-    title       = get_required_data(data, "title")
+    name       = get_required_data(data, "name")
     author_id   = get_required_data(data, "author_id")
     content     = get_required_data(data, "content")
     campaign    = Campaign.query.get(campaign_id)
     author      = User.query.get(author_id)
     if campaign is not None and author is not None:
-        entry = Entry(title=title, author=author, content=content, campaign=campaign)
+        entry = Entry(name=name, author=author, content=content, campaign=campaign)
         db.session.add(entry)
         db.session.commit()
         return jsonify(parse_entry(entry))
@@ -74,12 +74,12 @@ def get_entry_by_slug(campaign_id, entry_slug):
 # @campaign.route('/<int:campaign_id>', methods=['POST'])
 # def update_journal_by_id(campaign_id):
 #     data = request.get_json()
-#     title       =   get_required_data(data, "title")
+#     name       =   get_required_data(data, "name")
 #     description =   get_optional_data(data, "description")
 #     journal = Journal.query.filter_by(id=campaign_id)
-#     journal.update({"title":title, "description":description})
+#     journal.update({"name":name, "description":description})
 #     journal = journal.first()
-#     journal.slug = slugify(journal.title, '')
+#     journal.slug = slugify(journal.name, '')
 #     db.session.commit()
 #     return jsonify(parse_journal(journal))
 #

@@ -7,7 +7,7 @@ import string
 from v1.apps.campaign import campaign
 
 #Models
-from .models import Wiki
+from .models import Calendar
 from v1.apps.campaign.models import Campaign
 from v1.apps.users.models import User
 
@@ -24,46 +24,46 @@ from v1.apps.campaign.errors import *
 #Utils
 from v1.apps.utils import *
 
-wiki_base_url = '/<int:campaign_id>/wiki'
+calendar_base_url = '/<int:campaign_id>/calendar'
 #Create
-@campaign.route(wiki_base_url, methods=['POST'])
-def create_wiki(campaign_id):
+@campaign.route(calendar_base_url, methods=['POST'])
+def create_calendar(campaign_id):
     data        = request.get_json()
     name       = get_required_data(data, "name")
     author_id   = get_required_data(data, "author_id")
     campaign    = Campaign.query.get(campaign_id)
     author      = User.query.get(author_id)
     if campaign is not None and author is not None:
-        wiki = Wiki(name=name, author=author, campaign=campaign)
-        db.session.add(wiki)
+        calendar = Calendar(name=name, author=author, campaign=campaign)
+        db.session.add(calendar)
         db.session.commit()
-        return jsonify(parse_wiki_post(wiki))
+        return jsonify(parse_calendar(calendar))
     else:
         abort(400)
 
 #Read
 
-@campaign.route(wiki_base_url, methods=['GET'])
-def get_wikis(campaign_id):
+@campaign.route(calendar_base_url, methods=['GET'])
+def get_calendar(campaign_id):
     campaign = Campaign.query.get(campaign_id)
     if campaign is not None:
-        return jsonify(parse_wiki(campaign.wiki))
+        return jsonify(parse_calendars(campaign.calendar))
     else:
         abort(404)
 
-@campaign.route(wiki_base_url + '/<int:wiki_id>', methods=['GET'])
-def get_wiki_by_id(campaign_id, wiki_id):
-    wiki = Wiki.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Wiki.id == wiki_id).first()
-    if wiki is not None:
-        return jsonify(parse_wiki_post(wiki))
+@campaign.route(calendar_base_url + '/<int:calendar_id>', methods=['GET'])
+def get_calendar_by_id(campaign_id, calendar_id):
+    calendar = Calendar.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Calendar.id == calendar_id).first()
+    if calendar is not None:
+        return jsonify(parse_calendar(calendar))
     else:
         abort(404)
 
-@campaign.route(wiki_base_url + '/<string:wiki_slug>', methods=['GET'])
-def get_wiki_by_slug(campaign_id, wiki_slug):
-    wiki = Wiki.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Wiki.slug == wiki_slug).first()
-    if wiki is not None:
-        return jsonify(parse_wiki_post(wiki))
+@campaign.route(calendar_base_url + '/<string:calendar_slug>', methods=['GET'])
+def get_calendar_by_slug(campaign_id, calendar_slug):
+    calendar = Calendar.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Calendar.slug == calendar_slug).first()
+    if calendar is not None:
+        return jsonify(parse_calendar(calendar))
     else:
         abort(404)
 

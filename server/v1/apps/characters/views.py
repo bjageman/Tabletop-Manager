@@ -7,7 +7,7 @@ import string
 from v1.apps.campaign import campaign
 
 #Models
-from .models import Wiki
+from .models import Character
 from v1.apps.campaign.models import Campaign
 from v1.apps.users.models import User
 
@@ -24,46 +24,46 @@ from v1.apps.campaign.errors import *
 #Utils
 from v1.apps.utils import *
 
-wiki_base_url = '/<int:campaign_id>/wiki'
+character_base_url = '/<int:campaign_id>/characters'
 #Create
-@campaign.route(wiki_base_url, methods=['POST'])
-def create_wiki(campaign_id):
+@campaign.route(character_base_url, methods=['POST'])
+def create_character(campaign_id):
     data        = request.get_json()
     name       = get_required_data(data, "name")
     author_id   = get_required_data(data, "author_id")
     campaign    = Campaign.query.get(campaign_id)
     author      = User.query.get(author_id)
     if campaign is not None and author is not None:
-        wiki = Wiki(name=name, author=author, campaign=campaign)
-        db.session.add(wiki)
+        character = Character(name=name, author=author, campaign=campaign)
+        db.session.add(character)
         db.session.commit()
-        return jsonify(parse_wiki_post(wiki))
+        return jsonify(parse_character(character))
     else:
         abort(400)
 
 #Read
 
-@campaign.route(wiki_base_url, methods=['GET'])
-def get_wikis(campaign_id):
+@campaign.route(character_base_url, methods=['GET'])
+def get_characters(campaign_id):
     campaign = Campaign.query.get(campaign_id)
     if campaign is not None:
-        return jsonify(parse_wiki(campaign.wiki))
+        return jsonify(parse_characters(campaign.characters))
     else:
         abort(404)
 
-@campaign.route(wiki_base_url + '/<int:wiki_id>', methods=['GET'])
-def get_wiki_by_id(campaign_id, wiki_id):
-    wiki = Wiki.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Wiki.id == wiki_id).first()
-    if wiki is not None:
-        return jsonify(parse_wiki_post(wiki))
+@campaign.route(character_base_url + '/<int:character_id>', methods=['GET'])
+def get_character_by_id(campaign_id, character_id):
+    character = Character.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Character.id == character_id).first()
+    if character is not None:
+        return jsonify(parse_character(character))
     else:
         abort(404)
 
-@campaign.route(wiki_base_url + '/<string:wiki_slug>', methods=['GET'])
-def get_wiki_by_slug(campaign_id, wiki_slug):
-    wiki = Wiki.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Wiki.slug == wiki_slug).first()
-    if wiki is not None:
-        return jsonify(parse_wiki_post(wiki))
+@campaign.route(character_base_url + '/<string:character_slug>', methods=['GET'])
+def get_character_by_slug(campaign_id, character_slug):
+    character = Character.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Character.slug == character_slug).first()
+    if character is not None:
+        return jsonify(parse_character(character))
     else:
         abort(404)
 
