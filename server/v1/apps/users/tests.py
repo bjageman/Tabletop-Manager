@@ -1,4 +1,4 @@
-from . import RequestTests
+from testing.requests import RequestTests
 import json
 from testing.utils import bytes_to_json
 
