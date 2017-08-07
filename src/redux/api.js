@@ -33,7 +33,7 @@ export function postDataApi(url, postData, token = null) {
     });
 }
 
-export function fetchDataApi(url, token = null) {
+export function getDataApi(url, token = null) {
     if (token){
         axiosRequest.defaults.headers.common['Authorization'] = 'JWT ' + token;
     }

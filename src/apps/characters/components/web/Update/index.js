@@ -26,7 +26,6 @@ class UpdateCharacter extends React.Component {
             <div>
             <IconButton
                 className={classes.button}
-                color="primary"
                 onClick = {() => this.setState({open: true})}>
                 <Icon>create</Icon>
             </IconButton>

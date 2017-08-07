@@ -15,6 +15,9 @@ export const user = createReducer({
   [actions.login]: (state, payload) => {
     return { username: payload.username };
   },
+  [actions.logout]: (state) => {
+    return { username: null };
+  },
   [actions.loginSuccess]: (state, payload) => {
     return { data: payload.data };
   }

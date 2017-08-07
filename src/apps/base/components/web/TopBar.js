@@ -24,7 +24,7 @@ class TopBar extends React.Component {
         return(
             <AppBar className={classes.topbar} position="static">
                 <Toolbar>
-                  <IconButton color="contrast" aria-label="Menu" onTouchTap={this.props.toggleSideBar}>
+                  <IconButton aria-label="Menu" onTouchTap={this.props.toggleSideBar}>
                       <Icon>dehaze</Icon>
                   </IconButton>
                   <Typography type="title" color="inherit" className={classes.flex}>

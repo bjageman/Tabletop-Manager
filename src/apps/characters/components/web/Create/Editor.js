@@ -17,14 +17,14 @@ class CharacterEditor extends React.Component {
                   id="name"
                   label="Name"
                   margin="normal"
-                  placeholder={character.name || ""}
+                  defaultValue={character.name || ""}
                 />
                 <TextField
                   className={classes.textField}
                   id="subtitle"
                   label="Title"
                   margin="normal"
-                  placeholder={character.subheader || ""}
+                  defaultValue={character.subheader || ""}
                 />
             </div>
         )

@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 
 export function mapStateToProps(state) {
   const props = {
+    campaign: state.campaign,
     user: state.user.data,
     journal: state.journal,
   }
