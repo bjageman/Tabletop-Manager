@@ -26,11 +26,12 @@ class CreateItem extends React.Component {
         return(
             <div>
             <Button
-                fab color="primary"
+                raised
+                color="primary"
                 className={classes.button}
                 onClick = {() => this.setState({open: true})}
                 >
-                <Icon>add</Icon>
+                New Wiki Page
             </Button>
             <Dialog
                 open={this.state.open}

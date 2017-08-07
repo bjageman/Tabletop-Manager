@@ -12,23 +12,12 @@ import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
+import Input from 'material-ui/Input/Input';
 
 import { withStyles, createStyleSheet } from 'material-ui/styles'
 
 import { EditorState } from 'draft-js';
-import EntryCreateEditor from './Editor'
-
-const styleSheet = createStyleSheet('EntryCreateDialog', {
-  appBar: {
-    position: 'relative',
-  },
-  flex: {
-    flex: 1,
-  },
-  editor: {
-      backgroundColor: "green",
-  }
-});
+import Editor from './Editor'
 
 class EntryCreateDialog extends React.Component {
     constructor(props){
@@ -36,8 +25,8 @@ class EntryCreateDialog extends React.Component {
         this.handleSave = this.handleSave.bind(this)
         this.state = {
             editorState: EditorState.createEmpty(),
-            name: "",
-            content: "",
+            name: this.props.entry ? this.props.entry.name : "",
+            content: this.props.entry ? this.props.entry.content : ""
         };
     }
 
@@ -59,6 +48,7 @@ class EntryCreateDialog extends React.Component {
         this.props.saveJournalEntry({
             name:this.state.name,
             content:this.state.content,
+            //Use REDUX to set the following
             campaign_id: 1,
             author_id: 1,
         })
@@ -67,7 +57,7 @@ class EntryCreateDialog extends React.Component {
 
     render(){
         const classes = this.props.classes;
-        const name = this.props.name || "Create Entry"
+        const entry = this.props.entry || {name: "", content: ""}
         return(
             <Dialog
                 fullScreen
@@ -80,16 +70,24 @@ class EntryCreateDialog extends React.Component {
                   <IconButton color="contrast" onClick={this.props.onRequestClose} aria-label="Close">
                     <Icon>close</Icon>
                   </IconButton>
-                  <Typography type="name" color="inherit" className={classes.flex}>
-                    {name}
-                  </Typography>
+                  <Input
+                      fullWidth
+                      color="contrast"
+                      id="name"
+                      name="name"
+                      label="Name"
+                      placeholder="Entry Title"
+                      defaultValue={entry.name || ""}
+                      onChange={this.handleInputChange}
+                    />
                   <Button color="contrast" onClick={this.handleSave}>
                     save
                   </Button>
                 </Toolbar>
             </AppBar>
             <DialogContent className={classes.editor}>
-                <EntryCreateEditor
+                <Editor
+                    entry = {entry}
                     editorState={this.state.editorState}
                     onChange={this.onChange}
                     handleInputChange={this.handleInputChange}
@@ -99,5 +97,19 @@ class EntryCreateDialog extends React.Component {
         )
     }
 }
+
+const styleSheet = createStyleSheet('EntryCreateDialog', {
+  appBar: {
+    position: 'relative',
+  },
+  flex: {
+    flex: 1,
+  },
+  title:{
+    color: "white"
+},
+  editor: {
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(EntryCreateDialog))

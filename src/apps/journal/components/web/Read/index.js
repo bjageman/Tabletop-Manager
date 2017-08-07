@@ -7,8 +7,9 @@ import Avatar from 'material-ui/Avatar';
 import Icon from 'material-ui/Icon';
 import { createStyleSheet, withStyles } from 'material-ui/styles';
 
-import EntryDialog from './Dialog'
+import Dialog from './Dialog'
 import Delete from '../Delete/'
+import Update from '../Update/'
 
 const styleSheet = createStyleSheet("JournalEntry", () => ({
   card: {
@@ -50,7 +51,7 @@ class JournalEntry extends React.Component {
                             src={entry.author.avatar}
                           />
                         }
-                        title={entry.title}
+                        title={entry.name}
                         subheader={entry.date}
                       />
                     <CardContent>
@@ -66,9 +67,10 @@ class JournalEntry extends React.Component {
                     <IconButton aria-label="Share">
                       <Icon>share</Icon>
                     </IconButton>
+                    <Update entry={entry} />
                 </CardActions>
             </Card>
-            <EntryDialog
+            <Dialog
                 entry={entry}
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose} />

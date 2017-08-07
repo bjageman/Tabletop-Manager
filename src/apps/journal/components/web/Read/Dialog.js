@@ -29,7 +29,7 @@ class EntryDialog extends React.Component {
                 open={this.props.open}
                 onRequestClose={this.handleRequestClose}
                 onBackdropClick={this.handleRequestClose} >
-                <DialogTitle>{entry.title}</DialogTitle>
+                <DialogTitle>{entry.name}</DialogTitle>
                 <DialogContent className={classes.content}>
                     <Typography component="p">
                     {entry.content}

@@ -19,7 +19,7 @@ const plugins = [
   linkifyPlugin,
 ];
 
-const styleSheet = createStyleSheet('EntryCreateDialog', {
+const styleSheet = createStyleSheet('EntryCreateEditor', {
   appBar: {
     position: 'relative',
   },
@@ -53,10 +53,6 @@ class EntryCreateEditor extends React.Component {
         const classes = this.props.classes
         return(
         <div>
-            <FormControl className={classes.input}>
-                <InputLabel htmlFor="name">Name</InputLabel>
-                <Input id="title" name="title" value={this.props.title} onChange={this.props.handleInputChange} />
-            </FormControl>
             <Typography type="caption" > Content </Typography>
             <div className={classes.editor} onClick={this.focus.bind(this)}>
                 <Editor
