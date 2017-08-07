@@ -26,11 +26,12 @@ class CreateCharacter extends React.Component {
         return(
             <div>
             <Button
-                fab color="primary"
+                raised
+                color="primary"
                 className={classes.button}
                 onClick = {() => this.setState({open: true})}
                 >
-                <Icon>add</Icon>
+            Create Character
             </Button>
             <Dialog
                 open={this.state.open}

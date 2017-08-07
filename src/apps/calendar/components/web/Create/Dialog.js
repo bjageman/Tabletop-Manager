@@ -1,6 +1,6 @@
 import React from 'react'
 //Material-UI Imports
-import Dialog, {DialogContent} from 'material-ui/Dialog'
+import Dialog, {DialogContent, DialogActions} from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import { withStyles, createStyleSheet } from 'material-ui/styles'
@@ -40,13 +40,18 @@ class CreateDialog extends React.Component {
                 <Typography type="headline">
                     Create Content Here:
                 </Typography>
+            </DialogContent>
+            <DialogActions>
                 <Button
                     raised
                     color="primary"
                     onClick = {this.handleSave}>
                     Save
                 </Button>
-            </DialogContent>
+                <Button onClick = {this.props.onRequestClose} color="primary">
+                  Cancel
+                </Button>
+            </DialogActions>
             </Dialog>
         )
     }
