@@ -36,7 +36,7 @@ class EntryCreateDialog extends React.Component {
         this.handleSave = this.handleSave.bind(this)
         this.state = {
             editorState: EditorState.createEmpty(),
-            title: "",
+            name: "",
             content: "",
         };
     }
@@ -57,17 +57,17 @@ class EntryCreateDialog extends React.Component {
 
     handleSave() {
         this.props.saveJournalEntry({
-            title:this.state.title,
+            name:this.state.name,
             content:this.state.content,
             campaign_id: 1,
-            author_id: 1, 
+            author_id: 1,
         })
         this.props.onRequestClose()
     }
 
     render(){
         const classes = this.props.classes;
-        const title = this.props.title || "Create Entry"
+        const name = this.props.name || "Create Entry"
         return(
             <Dialog
                 fullScreen
@@ -80,8 +80,8 @@ class EntryCreateDialog extends React.Component {
                   <IconButton color="contrast" onClick={this.props.onRequestClose} aria-label="Close">
                     <Icon>close</Icon>
                   </IconButton>
-                  <Typography type="title" color="inherit" className={classes.flex}>
-                    {title}
+                  <Typography type="name" color="inherit" className={classes.flex}>
+                    {name}
                   </Typography>
                   <Button color="contrast" onClick={this.handleSave}>
                     save

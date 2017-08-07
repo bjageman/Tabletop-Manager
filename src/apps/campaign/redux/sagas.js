@@ -1,17 +1,15 @@
 import * as actions from 'redux/actions';
 import { put, call } from 'redux-saga/effects';
-import { postDataApi, verifyData } from 'redux/api'
+import { postDataApi, getDataApi, verifyData } from 'redux/api'
 
 
-export function* saveJournalEntry(action) {
+export function* getCharacters(action) {
     try{
       let payload = action.payload
-      let data = {"name": payload.name, "content": payload.content, "author_id": 1 }
-      let url = 'campaign/' + payload.campaign_id + "/entry"
-      console.log(url)
-      const response = yield call(postDataApi, url, data);
+      let url = 'campaign/' + payload.campaign_id + "/characters"
+      const response = yield call(getDataApi, url);
       if (verifyData(response)) {
-          console.log(" successfully saved entry!")
+          console.log("Success! " + response.data)
         //   yield put(actions.registerSuccess(response.data))
         }else{
           var error = response.data.error

@@ -7,6 +7,7 @@ import myConfig from 'config.js';
 
 import { registerUser, loginUser } from 'apps/user/redux/sagas'
 import { saveJournalEntry } from 'apps/journal/redux/sagas'
+import { getCharacters } from 'apps/characters/redux/sagas'
 
 console.log(myConfig)
 var url = myConfig.API_URL
@@ -78,8 +79,9 @@ function* loginWebSocket(socket) {
 }
 
 export default function* rootSaga() {
-  yield fork(flow);
+  //yield fork(flow);
   yield takeEvery(actions.register, registerUser);
   yield takeEvery(actions.login, loginUser);
   yield takeEvery(actions.saveJournalEntry, saveJournalEntry)
+  yield takeEvery(actions.getCharacters, getCharacters)
 }
