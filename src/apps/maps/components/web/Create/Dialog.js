@@ -1,6 +1,6 @@
 import React from 'react'
 //Material-UI Imports
-import Dialog, {DialogContent} from 'material-ui/Dialog'
+import Dialog, {DialogContent, DialogActions} from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import { withStyles, createStyleSheet } from 'material-ui/styles'
@@ -10,7 +10,7 @@ import { withStyles, createStyleSheet } from 'material-ui/styles'
 class CreateDialogEvent extends React.Component {
     constructor(props){
         super(props)
-        this.handleSave = this.handleSave.bind(this)
+        this.handleUpload = this.handleUpload.bind(this)
     }
 
     onChange = (editorState) => {
@@ -24,8 +24,8 @@ class CreateDialogEvent extends React.Component {
         })
     }
 
-    handleSave() {
-        console.log("Saved Item")
+    handleUpload() {
+        console.log("Upload File")
         this.props.onRequestClose()
     }
 
@@ -40,13 +40,15 @@ class CreateDialogEvent extends React.Component {
                 <Typography type="headline">
                     Create Content Here:
                 </Typography>
+            </DialogContent>
+            <DialogActions>
                 <Button
                     raised
                     color="primary"
-                    onClick = {this.handleSave}>
-                    Save
+                    onClick = {this.handleUpload}>
+                    Upload
                 </Button>
-            </DialogContent>
+            </DialogActions>
             </Dialog>
         )
     }

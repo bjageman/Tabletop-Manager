@@ -7,32 +7,6 @@ import Grid from 'material-ui/Grid';
 import Delete from '../Delete/'
 import Update from '../Update/'
 
-const styleSheet = createStyleSheet('CharacterEntry', {
-  card: {
-    marginTop: 20,
-    marginBottom: 20,
-    marginLeft:20,
-    marginRight: 40,
-    display: 'flex',
-  },
-  details: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  content: {
-    flex: '1 0 auto',
-  },
-  image: {
-    maxHeight: 300,
-    maxWidth: 150,
-  },
-  iconContainer: {
-    display: 'flex',
-    width: '100%',
-},
-});
-
-
 class CharacterEntry extends React.Component {
 
     handleClick(event){
@@ -67,5 +41,31 @@ class CharacterEntry extends React.Component {
         )
     }
 }
+
+
+const styleSheet = createStyleSheet('CharacterEntry', {
+  card: {
+    marginTop: 20,
+    marginBottom: 20,
+    marginLeft:20,
+    marginRight: 40,
+    display: 'flex',
+  },
+  details: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  content: {
+    flex: '1 0 auto',
+  },
+  image: {
+    maxHeight: 300,
+    maxWidth: 150,
+  },
+  iconContainer: {
+    display: 'flex',
+    width: '100%',
+},
+});
 
 export default withStyles(styleSheet)(CharacterEntry)

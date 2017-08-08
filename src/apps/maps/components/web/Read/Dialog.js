@@ -8,42 +8,33 @@ import Typography from 'material-ui/Typography'
 import Dialog, {DialogTitle, DialogContent} from 'material-ui/Dialog'
 import { createStyleSheet, withStyles } from 'material-ui/styles';
 
-class EntryDialog extends React.Component {
+class CampaignMapDialog extends React.Component {
     handleRequestClose = () => {
         this.props.onRequestClose();
     };
 
     render() {
-        const entry = this.props.entry
+        const map = this.props.map
         const classes = this.props.classes
         return (
             <Dialog
-                fullScreen
                 className={classes.dialog}
                 open={this.props.open}
                 onRequestClose={this.handleRequestClose} >
-                <AppBar className={classes.appBar}>
-                    <Toolbar>
-                      <IconButton color="contrast" onClick={this.props.onRequestClose} aria-label="Close">
-                        <Icon>close</Icon>
-                      </IconButton>
-                      {entry.name}
-                    </Toolbar>
-                </AppBar>
-                <DialogTitle>{entry.name}</DialogTitle>
                 <DialogContent className={classes.content}>
-                    <Typography component="p">
-                    {entry.content}
-                    </Typography>
+                    <img className={classes.map} src={map.image} alt={map.name} />
                 </DialogContent>
             </Dialog>
         )
     }
 }
 
-const styleSheet = createStyleSheet('EntryDialog', () => ({
+const styleSheet = createStyleSheet('CampaignMapDialog', () => ({
   dialog: {
-
+      width: "100%"
+  },
+  map: {
+      width: "100%"
   },
   content: {
     paddingTop: 20,
@@ -52,4 +43,4 @@ const styleSheet = createStyleSheet('EntryDialog', () => ({
   },
 }));
 
-export default withStyles(styleSheet)(EntryDialog)
+export default withStyles(styleSheet)(CampaignMapDialog)

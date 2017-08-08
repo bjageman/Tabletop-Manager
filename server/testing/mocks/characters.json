@@ -1,0 +1,52 @@
+[{
+    "id": 1,
+    "name": "DudeBro The Master",
+    "subheader": "Fighter Ranger Human",
+    "campaign": "Tomb of the Dragon Queen",
+    "image": "http://img06.deviantart.net/90b5/i/2016/076/5/6/pathfinder__wannases_trex_by_willobrien-d9vig1w.jpg",
+    "descriptors":[
+        {
+        "title": "Stats",
+        "content": "+1 STR, +2 INT, +5 DEX"
+        },
+        {
+        "title": "Background",
+        "content": "Grew up in a pineapple under the sea."
+        }
+    ],
+    "author": {
+        "id": 2,
+        "username": "msure",
+        "first_name": "Mary",
+        "last_name": "Sue",
+        "email": "msue@gmail.com",
+        "avatar": "https://placekitten.com/g/200/200"
+    }
+},
+{
+    "id": 1,
+    "name": "Lady Ortelia",
+    "subheader": "4th level Elven Priestess",
+    "campaign": "Tomb of the Dragon Queen",
+    "image": "http://40.media.tumblr.com/277b7aa713b0bda586ada136711884fb/tumblr_nhi2hbC0xu1sazby5o1_500.jpg",
+    "descriptors":[
+        {
+        "title": "Stats",
+        "content": "+1 STR, +2 INT, +5 DEX"
+        },
+        {
+        "title": "Background",
+        "content": "Raised by a large number of wolves in the forest. Doesn't like apples."
+        }
+    ],
+    "author": {
+        "id": 1,
+        "username": "bjage",
+        "first_name": "Brodin",
+        "last_name": "Jag",
+        "email": "bjag@gmail.com",
+        "avatar": "https://placekitten.com/g/200/200"
+    }
+}
+
+]

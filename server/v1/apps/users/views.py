@@ -44,7 +44,7 @@ def login_user():
         abort(400)
     user = authenticate(username, password)
     if user is None:
-        abort(400)
+        abort(404)
     return jsonify(parse_user(user))
 
 

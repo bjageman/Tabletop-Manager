@@ -17,7 +17,6 @@ const styleSheet = createStyleSheet('Jumbotron', theme => ({
   headline: {
     paddingBottom: 20,
     textAlign: 'center',
-    backgroundColor: "green",
     backgroundImage: 'url(' + dmScreen + ')',
             backgroundSize: 'cover',
             overflow: 'hidden',

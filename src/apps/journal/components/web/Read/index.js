@@ -11,20 +11,6 @@ import Dialog from './Dialog'
 import Delete from '../Delete/'
 import Update from '../Update/'
 
-const styleSheet = createStyleSheet("JournalEntry", () => ({
-  card: {
-      marginTop: 20,
-      marginBottom: 20,
-      marginLeft:20,
-      marginRight: 40
-  },
-  link: {
-    textDecoration: 'none',
-    cursor: 'pointer'
-  },
-}));
-
-
 class JournalEntry extends React.Component {
     constructor(props){
         super(props)
@@ -78,5 +64,18 @@ class JournalEntry extends React.Component {
         )
     }
 }
+
+const styleSheet = createStyleSheet("JournalEntry", () => ({
+  card: {
+      marginTop: 20,
+      marginBottom: 20,
+      marginLeft:20,
+      marginRight: 40
+  },
+  link: {
+    textDecoration: 'none',
+    cursor: 'pointer'
+  },
+}));
 
 export default withStyles(styleSheet)(JournalEntry)

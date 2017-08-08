@@ -18,15 +18,10 @@ class CampaignWiki extends Component {
 
   render() {
     const classes = this.props.classes
-    const campaign = data[0]
-    const wiki = campaign.wiki
-    const entry = wiki.entries[0]
+    const wiki = this.props.wiki
     return (
         <div className={classes.container}>
             <Create />
-            <Content entry={entry}>
-                <SideBar entries={wiki.entries} />
-            </Content>
         </div>
 
     );

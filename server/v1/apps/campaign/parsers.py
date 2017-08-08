@@ -9,7 +9,7 @@ def parse_campaign(campaign):
             "name": campaign.name,
             "slug": campaign.slug,
             "owner": parse_user(campaign.owner),
-            "entries": parse_entries(campaign.entries)
+            "journal": parse_entries(campaign.entries)
         })
     except AttributeError:
         return None

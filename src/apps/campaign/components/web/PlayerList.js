@@ -6,8 +6,8 @@ import Avatar from 'material-ui/Avatar';
 class PlayerList extends React.Component {
     renderPlayerItem(player, i){
         return(
-            <Link style={{ textDecoration: 'none' }} to={"/profile/" + player.id}>
-            <ListItem key={i} button>
+            <Link key={i} style={{ textDecoration: 'none' }} to={"/profile/" + player.id}>
+            <ListItem  button>
                 <ListItemAvatar>
                   <Avatar
                     alt={player.username}

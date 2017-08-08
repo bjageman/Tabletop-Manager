@@ -16,7 +16,7 @@ class CampaignWikiContent extends Component {
         <Grid container gutter={40}>
             <Grid item xs={12}>
               <Typography type="headline">
-                {entry.title}
+                {entry.name}
               </Typography>
               <Divider />
               <Typography type="body1">

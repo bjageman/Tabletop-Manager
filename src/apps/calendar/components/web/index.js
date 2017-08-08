@@ -16,8 +16,7 @@ import data from 'mocks/campaign.json'
 class CampaignCalendar extends Component {
   render() {
     const classes = this.props.classes
-    const campaign = data[0]
-    const calendar = campaign.calendar
+    const calendar = this.props.calendar
     return (
       <div className={classes.container} >
       <Grid container>
