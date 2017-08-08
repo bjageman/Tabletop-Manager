@@ -154,13 +154,13 @@
             "name":"First Post",
             "slug": "first-post",
             "author": {
-                "id": 1,
-                "username": "bjage",
-                "first_name": "Brodin",
-                "last_name": "Jag",
-                "email": "bjag@gmail.com",
-                "avatar": "https://placekitten.com/g/200/200"
-            },
+        "id": 1,
+        "username": "bjage",
+        "first_name": "Brodin",
+        "last_name": "Jag",
+        "email": "bjag@gmail.com",
+        "avatar": "https://placekitten.com/g/200/200"
+    },
             "content": "<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare suscipit urna, efficitur ornare orci aliquam vitae. Etiam leo arcu, bibendum eget urna vitae, convallis condimentum tortor. Proin tempor ultricies tellus. Praesent in magna pulvinar, maximus lorem laoreet, sodales risus. Nullam porttitor ac mauris sed imperdiet. In a tortor id diam interdum posuere ac a urna. Phasellus hendrerit aliquam est, eu dignissim neque elementum sed. Duis felis felis, posuere et finibus molestie, interdum non velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam mollis magna facilisis dui fermentum, elementum tristique ligula sagittis. Phasellus vitae consectetur urna. Aliquam ornare quis nibh ac suscipit. </p> <p> Phasellus id elit mattis, scelerisque nisi et, consectetur tellus. Nam sodales augue sed diam bibendum, venenatis dapibus eros sollicitudin. In hac habitasse platea dictumst. Nam quis hendrerit turpis. Curabitur a facilisis risus, vitae luctus tortor. Curabitur ut lorem faucibus, pharetra leo ut, ullamcorper orci. Duis elementum non dui nec maximus. Integer ultricies tellus a dignissim semper. Vestibulum sit amet blandit augue, et malesuada est. Donec vitae aliquet nulla. Cras ac placerat ipsum. Sed fermentum nibh bibendum tellus posuere, vel interdum arcu euismod. Proin id aliquam nunc, id eleifend dolor. Donec rutrum interdum felis, nec commodo sem cursus sed. </p> <p> Sed diam nibh, ultricies nec varius quis, bibendum interdum sem. Pellentesque mattis nec enim volutpat egestas. Suspendisse justo nibh, lobortis eu metus ac, accumsan bibendum mauris. Proin at pellentesque odio. Ut vel efficitur odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec viverra iaculis justo, ut lacinia dolor vulputate non. Vestibulum nec purus tortor. Etiam auctor dui malesuada enim auctor aliquam. Integer tortor lacus, lobortis et quam nec, blandit tincidunt lacus. Sed nec nisl magna. Sed at viverra enim. Cras ut condimentum velit, id imperdiet nulla. Mauris ut fermentum orci. Nunc bibendum dignissim volutpat. </p> <p> Nulla pellentesque diam magna, a pretium urna placerat eu. Nunc molestie urna libero, eu blandit arcu congue vitae. Sed elementum felis tristique arcu maximus, eu lobortis erat mattis. Nam at dui eget nisi rutrum viverra quis at lorem. Quisque rutrum tortor sed sollicitudin varius. Cras nec tellus vel enim placerat dictum vel sed tortor. Etiam vitae convallis leo. Morbi convallis ultrices dui. Pellentesque a eleifend magna. In vestibulum neque non tincidunt ullamcorper. Sed sed ante id purus mollis efficitur rhoncus vel lacus. </p> <p> Cras tempus, tortor eu fermentum facilisis, nunc velit hendrerit massa, vitae volutpat odio lorem vitae metus. Quisque imperdiet vehicula rhoncus. Maecenas blandit fringilla felis vitae egestas. Nam tortor nibh, iaculis sit amet consequat vel, pharetra vel nisi. Quisque ut orci dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse dignissim, dolor vel mattis sagittis, sapien enim molestie nisi, nec auctor purus neque nec ipsum. Nunc et lobortis elit. </p> <p> Curabitur imperdiet, lectus quis dictum vestibulum, nibh nulla cursus velit, id semper enim metus at arcu. Nam tincidunt sapien diam, in mattis leo pretium vel. Quisque rutrum nisl a massa porttitor, eu fringilla felis aliquam. Nullam efficitur quam non ultricies euismod. Integer id consequat odio. Donec a eleifend purus, nec euismod leo. Mauris augue nisi, egestas ac est ac, tincidunt vulputate odio. Nunc semper metus id viverra facilisis. Fusce molestie tincidunt elit, quis pretium neque sagittis eget. Vivamus eu felis sed odio fermentum posuere ac ac quam. Maecenas laoreet, nulla eu congue varius, quam diam pellentesque enim, sed bibendum enim nulla maximus est. Suspendisse pellentesque eleifend cursus. Nunc et elit vel felis finibus vulputate. </p> <p> Fusce eros erat, varius ut quam quis, ornare pretium lectus. Nullam venenatis, tortor feugiat elementum vestibulum, quam elit condimentum felis, vitae fringilla elit metus a nulla. Integer porta maximus nulla. Maecenas sodales tristique ex, ut iaculis erat vestibulum a. Nullam malesuada purus nec pharetra fringilla. Fusce commodo erat et ex blandit, vel lobortis sem sodales. Morbi sed elementum mauris. </p> <p> Curabitur volutpat lacinia dapibus. Ut et lorem viverra, egestas augue et, efficitur tellus. Nam sed massa eget dolor elementum blandit. Cras urna erat, ullamcorper a porttitor id, scelerisque eget diam. Pellentesque a lectus quis ex egestas elementum. Mauris et metus nec massa vestibulum imperdiet. Quisque at turpis vitae tellus consectetur sollicitudin. Donec cursus placerat condimentum. Curabitur non ipsum aliquam elit rhoncus vulputate. </p> <p> Maecenas nec arcu volutpat sem vestibulum porttitor ut sed quam. Nullam a lorem at nulla tempor fermentum. Aenean posuere, purus et facilisis faucibus, turpis enim maximus leo, quis malesuada sapien magna sit amet massa. Aliquam tincidunt magna eu velit dictum maximus. Suspendisse eu pharetra mi. Ut molestie euismod suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut lacinia, dolor malesuada iaculis malesuada, lacus sapien malesuada purus, aliquet mattis ligula justo sit amet tellus. Morbi tincidunt vel ligula at cursus. Duis aliquam ante vel mollis dictum. Fusce at ante fermentum ligula gravida fringilla sed vitae risus. </p> <p> Nam ornare, eros ut vulputate posuere, metus felis rutrum odio, vitae pharetra neque magna et ante. Suspendisse sit amet molestie tortor. Duis nec faucibus dui. In sed semper erat, id sollicitudin tellus. Nullam augue nisl, consectetur condimentum metus quis, lacinia auctor erat. Nunc sapien sapien, efficitur ut justo vitae, viverra ultrices lacus. Aenean a arcu eget libero luctus vulputate ac vel mauris. In mattis ipsum tristique mauris lacinia, id feugiat est finibus. Pellentesque pellentesque metus orci. </p>"
 
         },
@@ -168,26 +168,26 @@
             "name":"Second Post",
             "slug": "second-post",
             "author": {
-                "id": 1,
-                "username": "bjage",
-                "first_name": "Brodin",
-                "last_name": "Jag",
-                "email": "bjag@gmail.com",
-                "avatar": "https://placekitten.com/g/200/200"
-            },
+        "id": 1,
+        "username": "bjage",
+        "first_name": "Brodin",
+        "last_name": "Jag",
+        "email": "bjag@gmail.com",
+        "avatar": "https://placekitten.com/g/200/200"
+    },
             "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa"
         },
         {
             "name":"Third Post",
             "slug": "third-post",
             "author": {
-                "id": 1,
-                "username": "bjage",
-                "first_name": "Brodin",
-                "last_name": "Jag",
-                "email": "bjag@gmail.com",
-                "avatar": "https://placekitten.com/g/200/200"
-            },
+        "id": 1,
+        "username": "bjage",
+        "first_name": "Brodin",
+        "last_name": "Jag",
+        "email": "bjag@gmail.com",
+        "avatar": "https://placekitten.com/g/200/200"
+    },
             "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa"
         }
     ]},
@@ -198,13 +198,13 @@
             {
                 "name": "Entry #5: Wights on the Wall",
                 "author": {
-                    "id": 1,
-                    "username": "bjage",
-                    "first_name": "Brodin",
-                    "last_name": "Jag",
-                    "email": "bjag@gmail.com",
-                    "avatar": "https://placekitten.com/g/200/200"
-                },
+        "id": 1,
+        "username": "bjage",
+        "first_name": "Brodin",
+        "last_name": "Jag",
+        "email": "bjag@gmail.com",
+        "avatar": "https://placekitten.com/g/200/200"
+    },
                 "date": "Feb 13th, 2020",
                 "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? We were all skeptical that Donald Trump Jr. would actually go on Sean Hannity’s show tonight. But he did. And I watched it. It’s sort of amazing to me that you can hold an interview like this and make no news. But they managed to do it. The questions were silly. Since Hannity didn’t really ask any questions, Trump really didn’t answer any. On the core issue of why he took the meeting after being told that he would be receiving information that was part of an effort by the Russian government to elect his father, Trump’s answer was something to the effect that it was the middle of a campaign, everything was ‘going a million miles an hour.’ And basically that’s just how it was. The whole thing was a bit jarring for me since I haven’t watched Hannity in some time. But you didn’t miss anything."
             },
@@ -260,8 +260,9 @@
         "email": "bjag@gmail.com",
         "avatar": "https://placekitten.com/g/200/200"
     },
-            "start_time": "Jun 1 2005  1:33PM",
-            "end_time": "Jun 4 2005  8:33PM"
+            "date": "Sep 1st, 2017",
+            "start_time": "7:00pm",
+            "end_time": "8:00pm"
         },
         {
             "name": "Second session",
@@ -273,8 +274,9 @@
         "email": "bjag@gmail.com",
         "avatar": "https://placekitten.com/g/200/200"
     },
-            "start_time": "Jan 12 2015  1:33PM",
-            "end_time": "Jan 13 2015  1:33PM"
+            "date": "Sep 22nd, 2017",
+            "start_time": "4:00pm",
+            "end_time": "8:00pm"
         },
         {
             "name": "Third session",
@@ -286,8 +288,9 @@
         "email": "bjag@gmail.com",
         "avatar": "https://placekitten.com/g/200/200"
     },
-            "start_time": "Jan 12 2015  1:33PM",
-            "end_time": "Jan 13 2015  1:33PM"
+            "date": "Oct 12th, 2017",
+            "start_time": "7:00pm",
+            "end_time": "8:00pm"
         },
         {
             "name": "Fourth session",
@@ -299,8 +302,9 @@
         "email": "bjag@gmail.com",
         "avatar": "https://placekitten.com/g/200/200"
     },
-            "start_time": "Jan 12 2015  1:33PM",
-            "end_time": "Jan 13 2015  1:33PM"
+            "date": "Jan 4th, 2018",
+            "start_time": "4:00pm",
+            "end_time": "8:00pm"
         }
     ],
     "characters": [{

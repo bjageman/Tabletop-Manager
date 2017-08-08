@@ -12,13 +12,8 @@ import Read from './Read/'
 import Create from './Create/'
 
 class CampaignCharacters extends React.Component {
-    componentWillMount(){
-        this.props.getCharacters({
-            "campaign_id": 1
-        })
-    }
     render(){
-        const characters = data
+        const characters = this.props.characters
 
         return(
             <div id="campaign-characters">

@@ -6,15 +6,13 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import PlayerList from './PlayerList'
 
-import data from 'mocks/campaign.json'
-
 class CampaignDescription extends React.Component {
     createMarkup(data){
         return {__html: data};
     }
 
     render(){
-        const campaign = data[0]
+        const campaign = this.props.campaign
         const classes = this.props.classes
         return(
             <div id="campaign-description">
@@ -28,12 +26,15 @@ class CampaignDescription extends React.Component {
                     <Typography type="headline" component="h2">
                         {campaign.name}
                     </Typography>
+                    {campaign.wiki && campaign.wiki.entries.length > 0 ?
                     <Typography component="body1">
                         <div dangerouslySetInnerHTML={this.createMarkup(campaign.wiki.entries[0].content)} />
-                    </Typography>
+                    </Typography> : null }
                 </Grid>
                 <Grid item sm={4}>
+                    {campaign.players ?
                     <PlayerList players={campaign.players}/>
+                    : null }
                 </Grid>
             </Grid>
             </div>
@@ -57,11 +58,14 @@ const styleSheet = createStyleSheet('CampaignDescription', {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor:"grey",
+    height: 200,
+    width:"100%",
   },
   image: {
-      width:"100%",
-      maxHeight: 200,
-      objectFit: "cover",
+    width:"100%",
+    height: 200,
+    objectFit: "cover",
   }
 });
 

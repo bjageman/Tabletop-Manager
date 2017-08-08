@@ -13,12 +13,12 @@ export const user = createReducer({
     return { username: payload.username, password: payload.password };
   },
   [actions.login]: (state, payload) => {
-    return { username: payload.username };
+    return { username: payload.username, password: payload.password };
   },
   [actions.logout]: (state) => {
-    return { username: null };
+    return null;
   },
   [actions.loginSuccess]: (state, payload) => {
-    return { data: payload.data };
+    return payload.data;
   }
 }, initial.user);
