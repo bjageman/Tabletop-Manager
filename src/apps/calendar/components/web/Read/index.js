@@ -41,17 +41,17 @@ class CampaignEvent extends React.Component {
         const classes = this.props.classes
         return(
             <Grid className={classes.card} container gutter={24}>
-                    <Grid item md={2} >
+                    <Grid item md={4} >
                         <Typography type="subheading" color="secondary">
-                          {event.date}
+                          {event.start_time} -
+                        </Typography>
+                        <Typography type="subheading" color="secondary">
+                          {event.end_time}
                         </Typography>
                         <Delete />
                     </Grid>
-                    <Grid item md={10} >
+                    <Grid item md={6} >
                         <Typography type="headline">{event.name}</Typography>
-                        <Typography type="subheading" color="secondary">
-                          {event.date}
-                        </Typography>
                     </Grid>
             </Grid>
         )

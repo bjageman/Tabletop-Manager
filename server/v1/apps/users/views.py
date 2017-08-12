@@ -8,7 +8,7 @@ from . import users
 from .models import User, authenticate
 
 from v1.apps import socketio, db
-from .parsers import parse_user
+from .parsers import *
 
 #Error handling
 from v1.apps.errors import *
@@ -45,7 +45,7 @@ def login_user():
     user = authenticate(username, password)
     if user is None:
         abort(404)
-    return jsonify(parse_user(user))
+    return jsonify(parse_user_detailed(user))
 
 
 @users.route('', methods=['POST'])

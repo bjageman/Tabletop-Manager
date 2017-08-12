@@ -44,7 +44,7 @@ def create_campaign():
 def get_campaign_by_id(campaign_id):
     campaign = Campaign.query.get(campaign_id)
     if campaign is not None:
-        return jsonify(parse_campaign(campaign))
+        return jsonify(parse_campaign_detailed(campaign))
     else:
         abort(404)
 
@@ -52,7 +52,7 @@ def get_campaign_by_id(campaign_id):
 def get_campaign_by_slug(campaign_slug):
     campaign = Campaign.query.filter_by(slug=campaign_slug).first()
     if campaign is not None:
-        return jsonify(parse_campaign(campaign))
+        return jsonify(parse_campaign_detailed(campaign))
     else:
         abort(404)
 

@@ -7,6 +7,13 @@ const initial = {
 
 export const campaign = createReducer({
   [actions.updateCampaign]: (state, payload) => {
-    return { characters: payload.characters };
+    return {
+        id: payload.id,
+        name: payload.name,
+        characters: payload.characters,
+        journal: payload.journal,
+        calendar: payload.calendar,
+        characters: payload.characters,
+        maps: payload.maps };
   },
 }, initial.campaign);

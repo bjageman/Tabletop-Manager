@@ -3,7 +3,7 @@ from slugify import slugify
 
 from v1.apps.models import *
 
-class Campaign(Base):
+class Campaign(Base, TimestampMixin):
     owner_id = db.Column(db.ForeignKey('user.id'), index=True)
     owner = db.relationship('User', backref='campaigns')
     header_image = db.Column(db.String(256))

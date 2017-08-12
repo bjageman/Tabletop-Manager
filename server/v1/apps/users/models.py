@@ -3,7 +3,7 @@ from passlib.apps import custom_app_context as pwd_context
 
 from v1.apps.models import *
 
-class User(Base):
+class User(Base, TimestampMixin):
     username = db.Column(db.String(32), index = True)
     password_hash = db.Column(db.String(128))
     first_name = db.Column(db.String(32))
@@ -11,6 +11,7 @@ class User(Base):
     email = db.Column(db.String(64))
     gender = db.Column(db.String(32))
     admin = db.Column(db.Boolean,default=False)
+    image = db.Column(db.String(256))
     def hash_password(self, password):
         self.password_hash = pwd_context.hash(password)
 

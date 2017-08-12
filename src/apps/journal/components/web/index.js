@@ -8,12 +8,12 @@ import Create from './Create/'
 
 class CampaignJournal extends React.Component {
     render(){
-        const entries = this.props.journal.entries
+        const journal = this.props.journal
         return(
             <div id="campaign-journal">
                 <Create />
-                {entries.map((entry, i) => (
-                    <Read key={i} entry={entry} />
+                {journal.map((entry, i) => (
+                    <Read key={entry.id} entry={entry} />
                 ))}
             </div>
         )

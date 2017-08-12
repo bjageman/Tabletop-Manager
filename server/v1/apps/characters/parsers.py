@@ -8,12 +8,12 @@ def parse_characters(characters):
 
 def parse_character(character):
     try:
-        return ({
-            "id": character.id,
-            "name": character.name,
-            "slug": character.slug,
+        result = parse_base(character)
+        result.update({
+            "image": character.image,
             "author": parse_user(character.author),
             "campaign_id": character.campaign.id
         })
+        return result
     except AttributeError:
         return None

@@ -14,7 +14,7 @@ import Wiki from 'apps/wiki/components/web/'
 import Maps from 'apps/maps/components/web/'
 import Calendar from 'apps/calendar/components/web/'
 
-import Error404 from 'apps/toolkit/errors/404'
+import Loading from 'apps/toolkit/Loading'
 
 import data from 'mocks/campaign.json'
 
@@ -23,11 +23,19 @@ class Campaign extends React.Component {
         super(props)
         this.state = {
             index: 0,
-            campaign_id: this.props.match.params.index || 0,
         };
     }
 
     componentWillMount(props){
+        if (this.props.match.params.id){
+            this.props.getCampaign({
+                id: this.props.match.params.id
+            })
+        }else if (this.props.user && this.props.user.campaigns){
+            this.props.getCampaign({
+                id: this.props.user.campaigns[0].id
+            })
+        }
 
     }
 
@@ -36,10 +44,10 @@ class Campaign extends React.Component {
     };
 
     render(){
-        const classes = this.props.classes;
-        const index = parseInt(this.state.index, 10) || 0
+        const classes = this.props.classes
+        const index = this.state.index
         const user = this.props.user
-        const campaign = data[parseInt(this.state.campaign_id, 10)]
+        const campaign = this.props.campaign
         if (campaign){
             return(
                 <Grid>
@@ -60,7 +68,7 @@ class Campaign extends React.Component {
             )
         }else{
             return(
-                <Error404 />
+                <Loading />
             )
         }
     }

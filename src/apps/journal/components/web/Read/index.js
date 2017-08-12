@@ -33,12 +33,12 @@ class JournalEntry extends React.Component {
                     <CardHeader
                         avatar={
                           <Avatar
-                            alt={entry.author.username}
-                            src={entry.author.avatar}
+                            alt={entry.author.email}
+                            src={entry.author.image}
                           />
                         }
                         title={entry.name}
-                        subheader={entry.date}
+                        subheader={entry.created}
                       />
                     <CardContent>
                         <Typography component="p">

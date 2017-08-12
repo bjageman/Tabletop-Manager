@@ -8,12 +8,11 @@ def parse_wiki(wikis):
 
 def parse_wiki_post(wiki):
     try:
-        return ({
-            "id": wiki.id,
-            "name": wiki.name,
-            "slug": wiki.slug,
+        result = parse_base(wiki)
+        result.update({
+            "content": wiki.content,
             "author": parse_user(wiki.author),
-            "campaign_id": wiki.campaign.id
         })
+        return result
     except AttributeError:
         return None

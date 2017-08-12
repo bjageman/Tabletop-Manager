@@ -34,10 +34,10 @@ def create_calendar(campaign_id):
     campaign    = Campaign.query.get(campaign_id)
     author      = User.query.get(author_id)
     if campaign is not None and author is not None:
-        calendar = Calendar(name=name, author=author, campaign=campaign)
-        db.session.add(calendar)
+        event = Calendar(name=name, author=author, campaign=campaign)
+        db.session.add(event)
         db.session.commit()
-        return jsonify(parse_calendar(calendar))
+        return jsonify(parse_event(event))
     else:
         abort(400)
 
@@ -47,23 +47,23 @@ def create_calendar(campaign_id):
 def get_calendar(campaign_id):
     campaign = Campaign.query.get(campaign_id)
     if campaign is not None:
-        return jsonify(parse_calendars(campaign.calendar))
+        return jsonify(parse_calendar(campaign.calendar))
     else:
         abort(404)
 
 @campaign.route(calendar_base_url + '/<int:calendar_id>', methods=['GET'])
 def get_calendar_by_id(campaign_id, calendar_id):
-    calendar = Calendar.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Calendar.id == calendar_id).first()
-    if calendar is not None:
-        return jsonify(parse_calendar(calendar))
+    event = Calendar.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Calendar.id == calendar_id).first()
+    if event is not None:
+        return jsonify(parse_event(event))
     else:
         abort(404)
 
 @campaign.route(calendar_base_url + '/<string:calendar_slug>', methods=['GET'])
 def get_calendar_by_slug(campaign_id, calendar_slug):
-    calendar = Calendar.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Calendar.slug == calendar_slug).first()
-    if calendar is not None:
-        return jsonify(parse_calendar(calendar))
+    event = Calendar.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Calendar.slug == calendar_slug).first()
+    if event is not None:
+        return jsonify(parse_event(event))
     else:
         abort(404)
 

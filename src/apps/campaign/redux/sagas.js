@@ -3,14 +3,14 @@ import { put, call } from 'redux-saga/effects';
 import { postDataApi, getDataApi, verifyData } from 'redux/api'
 
 
-export function* getCharacters(action) {
+export function* getCampaign(action) {
     try{
       let payload = action.payload
-      let url = 'campaign/' + payload.campaign_id + "/characters"
+      let url = 'campaign/' + payload.id
       const response = yield call(getDataApi, url);
       if (verifyData(response)) {
           console.log("Success! " + response.data)
-        //   yield put(actions.registerSuccess(response.data))
+          yield put(actions.updateCampaign(response.data))
         }else{
           var error = response.data.error
           console.log(error)
