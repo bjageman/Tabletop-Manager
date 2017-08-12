@@ -11,7 +11,7 @@ def parse_campaign(campaign):
         result = parse_base(campaign)
         result.update({
             "owner": parse_user(campaign.owner),
-            "journal": parse_entries(campaign.entries)
+            "header_image": campaign.header_image,
         })
         return result
     except AttributeError:
@@ -19,9 +19,8 @@ def parse_campaign(campaign):
 
 def parse_campaign_detailed(campaign):
     try:
-        result = parse_base(campaign)
+        result = parse_campaign(campaign)
         result.update({
-            "owner": parse_user(campaign.owner),
             "journal": parse_entries(campaign.entries),
             "characters": parse_characters(campaign.characters),
             "calendar": parse_calendar(campaign.calendar),
