@@ -1,6 +1,6 @@
 import sys, json
 from datetime import datetime
-
+from v1.apps.constants import DATETIMEFORMAT
 from v1.apps import app, db, socketio
 from v1.apps.users.models import User
 from v1.apps.campaign.models import Campaign
@@ -42,15 +42,15 @@ def create_journal_entry(name, content, author, campaign):
     db.session.commit()
     return entry
 
-def create_character(name, author, campaign):
-    character = Character(name=name, author=author, campaign=campaign)
+def create_character(name, image, author, campaign):
+    character = Character(name=name, image=image, author=author, campaign=campaign)
     db.session.add(character)
     db.session.commit()
     return character
 
 def create_calendar_event(name, start_time, end_time, author, campaign):
-    start_time_object = datetime.strptime(start_time, '%b %d %Y %I:%M%p')
-    end_time_object = datetime.strptime(end_time, '%b %d %Y %I:%M%p')
+    start_time_object = datetime.strptime(start_time, DATETIMEFORMAT)
+    end_time_object = datetime.strptime(end_time, DATETIMEFORMAT)
     event = Calendar(name=name, end_time=end_time_object, start_time=start_time_object, author=author, campaign=campaign)
     db.session.add(event)
     db.session.commit()
@@ -83,7 +83,7 @@ if __name__ == '__main__':
         #Characters
         for character in campaign['characters']:
             author = User.query.get(character['author']['id'])
-            create_character(character['name'], author, campaign_object)
+            create_character(character['name'], character['image'], author, campaign_object)
         #Wiki Entries
         for entry in campaign['wiki']['entries']:
             author = User.query.get(entry['author']['id'])
@@ -92,3 +92,5 @@ if __name__ == '__main__':
         for event in campaign['calendar']:
             author = User.query.get(event['author']['id'])
             create_calendar_event(event['name'], event['start_time'], event['end_time'], author, campaign_object)
+        print("Imported", campaign_object.name)
+    print("Successfully imported", input_file )

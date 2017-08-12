@@ -8,13 +8,12 @@ def parse_entries(entries):
 
 def parse_entry(entry):
     try:
-        return ({
-            "id": entry.id,
-            "name": entry.name,
-            "slug": entry.slug,
+        result = parse_base(entry)
+        result.update({
             "content": entry.content,
             "author": parse_user(entry.author),
             "campaign_id": entry.campaign.id
         })
+        return result
     except AttributeError:
         return None

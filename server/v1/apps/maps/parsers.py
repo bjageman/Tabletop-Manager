@@ -1,3 +1,4 @@
+from v1.apps.parsers import parse_base
 from v1.apps.users.parsers import *
 
 def parse_maps(maps):
@@ -8,12 +9,29 @@ def parse_maps(maps):
 
 def parse_map(map):
     try:
-        return ({
-            "id": map.id,
-            "name": map.name,
-            "slug": map.slug,
+        result = parse_base(map)
+        result.update({
             "author": parse_user(map.author),
-            "campaign_id": map.campaign.id
+            "image": map.image,
+            "markers": parse_markers(map.markers),
         })
+        return result
+    except AttributeError:
+        return None
+
+def parse_markers(markers):
+    marker_set = []
+    for marker in markers:
+        marker_set.append(parse_marker(marker))
+    return(marker_set)
+
+def parse_marker(marker):
+    try:
+        result = parse_base(marker)
+        result.update({
+            "x": marker.x_coord,
+            "y": marker.y_coord,
+        })
+        return result
     except AttributeError:
         return None

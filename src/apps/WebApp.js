@@ -32,7 +32,7 @@ class WebApp extends Component {
               <Route exact path="/profile" component={UserProfile}/>
               <Route exact path="/profile/:userId" component={UserProfile}/>
               <Route exact path="/campaign" component={Campaign}/>
-              <Route path="/campaign/:index" component={Campaign}/>
+              <Route path="/campaign/:id" component={Campaign}/>
               <Route path="/maps" component={Maps}/>
               <Route component={NotFound} />
           </Switch>

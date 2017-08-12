@@ -33,9 +33,6 @@ class CharacterEntry extends React.Component {
                         <Grid className={classes.iconContainer} item xs={2}>
                             <Delete /> <Update character={character} />
                         </Grid>
-                        <Typography component="p">
-                            {character.descriptors[0].content}
-                        </Typography>
                     </Grid>
             </Grid>
         )
