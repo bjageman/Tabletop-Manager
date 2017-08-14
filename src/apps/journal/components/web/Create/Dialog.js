@@ -38,7 +38,6 @@ class EntryCreateDialog extends React.Component {
     };
 
     handleInputChange = (event) => {
-        console.log(event.target.value)
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -48,9 +47,9 @@ class EntryCreateDialog extends React.Component {
         this.props.saveJournalEntry({
             name:this.state.name,
             content:this.state.content,
-            //Use REDUX to set the following
-            campaign_id: 1,
-            author_id: 1,
+            campaign_id: this.props.campaign.id,
+            author_id: this.props.user.id,
+            entry_id: this.props.entry ? this.props.entry.id: null,
         })
         this.props.onRequestClose()
     }

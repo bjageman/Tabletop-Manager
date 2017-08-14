@@ -1,5 +1,3 @@
-
-
 from v1.apps.models import *
 
 class Entry(Base, TimestampMixin):

@@ -24,15 +24,12 @@ class CampaignCalendar extends Component {
             <Search />
         </Grid>
         <Grid item md={2}>
-          <Create />
+          { this.props.is_owner ? <Create /> : null }
         </Grid>
         <Grid item md={8}>
           {calendar.map((event, i) => (
-            <div class = "campaign-event">
-                <Read
-                    key = {i}
-                    event = {event}
-                    />
+            <div key = {event.id} className = "campaign-event">
+                <Read event = {event} />
                 <Divider />
             </div>
           ))}

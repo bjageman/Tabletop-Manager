@@ -21,7 +21,7 @@ class CampaignWiki extends Component {
     const wiki = this.props.wiki
     return (
         <div className={classes.container}>
-            <Create />
+            { this.props.is_owner ? <Create /> : null }
         </div>
 
     );

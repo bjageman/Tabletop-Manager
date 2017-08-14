@@ -9,11 +9,12 @@ import Create from './Create/'
 class CampaignJournal extends React.Component {
     render(){
         const journal = this.props.journal
+        const is_owner = this.props.is_owner
         return(
             <div id="campaign-journal">
-                <Create />
+                {is_owner ? <Create /> : null }
                 {journal.map((entry, i) => (
-                    <Read key={entry.id} entry={entry} />
+                    <Read key={entry.id} entry={entry} is_owner={is_owner}/>
                 ))}
             </div>
         )

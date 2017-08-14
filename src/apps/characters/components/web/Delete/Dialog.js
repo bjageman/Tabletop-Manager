@@ -1,10 +1,12 @@
 import React from 'react'
+//Redux
+import { connect } from 'react-redux'
+import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
 import Dialog, {DialogContent, DialogActions} from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import { withStyles, createStyleSheet } from 'material-ui/styles'
-
 
 
 class CharacterDeleteDialog extends React.Component {
@@ -13,19 +15,11 @@ class CharacterDeleteDialog extends React.Component {
         this.handleDelete = this.handleDelete.bind(this)
     }
 
-    onChange = (editorState) => {
-        console.log("Text Change")
-    };
-
-    handleInputChange = (event) => {
-        console.log(event.target.value)
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
-
     handleDelete() {
-        console.log("Delete Item")
+        this.props.deleteCharacter({
+            campaign_id: this.props.campaign.id,
+            character_id: this.props.character.id,
+        })
         this.props.onRequestClose()
     }
 
@@ -58,4 +52,4 @@ const styleSheet = createStyleSheet('CharacterDeleteDialog', {
 
 });
 
-export default withStyles(styleSheet)(CharacterDeleteDialog)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(CharacterDeleteDialog))

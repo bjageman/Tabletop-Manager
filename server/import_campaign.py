@@ -92,5 +92,5 @@ if __name__ == '__main__':
         for event in campaign['calendar']:
             author = User.query.get(event['author']['id'])
             create_calendar_event(event['name'], event['start_time'], event['end_time'], author, campaign_object)
-        print("Imported", campaign_object.name)
+        print("Imported", campaign_object.slug, campaign_object.id)
     print("Successfully imported", input_file )

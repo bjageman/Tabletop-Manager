@@ -10,7 +10,6 @@ class CampaignEventSearch extends React.Component {
                 <TextField
                   id="search"
                   label="Search"
-                  margin="normal"
                 />
             </div>
         )

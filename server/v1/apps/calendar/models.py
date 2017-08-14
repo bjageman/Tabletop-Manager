@@ -9,3 +9,5 @@ class Calendar(Base, TimestampMixin):
     campaign_id = db.Column(db.ForeignKey('campaign.id'), index=True)
     start_time = db.Column(db.DateTime, default=datetime.utcnow)
     end_time = db.Column(db.DateTime, default=datetime.utcnow)
+
+    __mapper_args__ = {'order_by': 'start_time'}

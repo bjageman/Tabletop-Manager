@@ -1,8 +1,10 @@
-import { createStore, applyMiddleware } from 'redux';
+import _ from 'lodash';
+import { compose, createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { createLogger } from 'redux-logger';
 import reducer from './reducers';
 import saga from './sagas';
+import {persistStore, autoRehydrate} from 'redux-persist'
 
 function configureStore(initialState){
   const sagaMiddleware = createSagaMiddleware();
@@ -10,14 +12,18 @@ function configureStore(initialState){
   const store = createStore(
     reducer,
     initialState,
-    applyMiddleware(
-          sagaMiddleware,
-          loggerMiddleware
-    )
+    compose(
+        applyMiddleware(
+              sagaMiddleware,
+              loggerMiddleware,
+        ),
+        autoRehydrate()
+    ),
   );
   sagaMiddleware.run(saga)
   return store;
 }
 
 const store = configureStore()
+persistStore(store, {whitelist: ['user']})
 export default store

@@ -17,7 +17,7 @@ class CampaignCharacters extends React.Component {
 
         return(
             <div id="campaign-characters">
-                <Create />
+                { this.props.is_owner ? <Create /> : null }
                 {characters.map((character, i) => (
                     <div className="character-card" key={i}>
                         <Read character={character} />
