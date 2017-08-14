@@ -53,7 +53,7 @@ def get_characters(campaign_id):
 
 @campaign.route(character_base_url + '/<int:character_id>', methods=['GET'])
 def get_character_by_id(campaign_id, character_id):
-    character = Character.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Character.id == character_id).first()
+    character = Character.query.get(character_id)
     if character is not None:
         return jsonify(parse_character(character))
     else:
@@ -61,7 +61,7 @@ def get_character_by_id(campaign_id, character_id):
 
 @campaign.route(character_base_url + '/<string:character_slug>', methods=['GET'])
 def get_character_by_slug(campaign_id, character_slug):
-    character = Character.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Character.slug == character_slug).first()
+    character = Character.query.filter_by(slug = character_slug).first()
     if character is not None:
         return jsonify(parse_character(character))
     else:
@@ -70,28 +70,36 @@ def get_character_by_slug(campaign_id, character_slug):
 #
 # #Update
 #
-# @campaign.route('/<int:campaign_id>', methods=['POST'])
-# def update_journal_by_id(campaign_id):
-#     data = request.get_json()
-#     name       =   get_required_data(data, "name")
-#     description =   get_optional_data(data, "description")
-#     journal = Journal.query.filter_by(id=campaign_id)
-#     journal.update({"name":name, "description":description})
-#     journal = journal.first()
-#     journal.slug = slugify(journal.name, '')
-#     db.session.commit()
-#     return jsonify(parse_journal(journal))
+@campaign.route(character_base_url + '/<int:character_id>', methods=['POST', 'PUT'])
+def update_character_by_id(campaign_id, character_id):
+    character = Character.query.get(character_id)
+    if character is not None and character.campaign.id == campaign_id:
+        data        = request.get_json()
+        name        = get_optional_data(data, "name")
+        if name is not None:
+            character.set_name(name)
+        db.session.commit()
+        return jsonify(parse_character(character))
+    else:
+        abort(404)
+
+
 #
-# #Delete
-# @campaign.route('/<int:campaign_id>', methods=['DELETE'])
-# def delete_journal_by_id(campaign_id):
-#     journal = Journal.query.get(campaign_id)
-#     db.session.delete(journal)
-#     db.session.commit()
-#     journal = Journal.query.get(campaign_id)
-#     if journal is None:
-#         return jsonify({"deleted": campaign_id})
-#     else:
-#         message = "Journal was not deleted"
-#         code = 400
-#         return make_response(jsonify({'error': message}), code)
+#  Delete
+#
+
+@campaign.route(character_base_url + '/<int:character_id>', methods=['DELETE'])
+def delete_character_by_id(campaign_id, character_id):
+    print("Deleting", character_id)
+    character = Character.query.get(character_id)
+    name = character.name
+    if character is not None and character.campaign.id == campaign_id:
+        db.session.delete(character)
+        db.session.commit()
+    character = Character.query.get(character_id)
+    if character is None:
+        return jsonify({"deleted": character_id})
+    else:
+        message = "Character" + name + " was not deleted"
+        code = 400
+        return make_response(jsonify({'error': message}), code)

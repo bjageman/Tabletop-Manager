@@ -16,7 +16,7 @@ import Calendar from 'apps/calendar/components/web/'
 
 import Loading from 'apps/toolkit/Loading'
 
-import data from 'mocks/campaign.json'
+import { checkOwner } from 'apps/toolkit/utils'
 
 class Campaign extends React.Component {
     constructor(props){
@@ -24,19 +24,26 @@ class Campaign extends React.Component {
         this.state = {
             index: 0,
         };
-    }
-
-    componentWillMount(props){
         if (this.props.match.params.id){
             this.props.getCampaign({
                 id: this.props.match.params.id
             })
-        }else if (this.props.user && this.props.user.campaigns){
+        }else if (this.props.user && this.props.user.campaigns.length > 0){
+            this.props.getCampaign({
+                id: this.props.user.campaigns[0].id
+            })
+        }else{
+            console.log("Show Error Message")
+        }
+
+    }
+
+    componentDidUpdate(props){
+        if (this.props.campaign == null && this.props.user.campaigns.length > 0){
             this.props.getCampaign({
                 id: this.props.user.campaigns[0].id
             })
         }
-
     }
 
     handleTabChange = (event, index) => {
@@ -48,22 +55,35 @@ class Campaign extends React.Component {
         const index = this.state.index
         const user = this.props.user
         const campaign = this.props.campaign
+        const is_owner = checkOwner(user, campaign)
         if (campaign){
             return(
                 <Grid>
                     <CampaignTabBar handleTabChange={this.handleTabChange} index={index}/>
                     {index === 0 &&
-                        <Description campaign={campaign} />}
+                        <Description
+                            campaign={campaign}
+                            is_owner={is_owner} />}
                     {index === 1 &&
-                        <Journal journal={campaign.journal} />}
+                        <Journal
+                            journal={campaign.journal}
+                            is_owner={is_owner} />}
                     {index === 2 &&
-                        <Characters characters={campaign.characters} />}
+                        <Characters
+                            characters={campaign.characters}
+                            is_owner={is_owner} />}
                     {index === 3 &&
-                        <Wiki wiki={campaign.wiki} />}
+                        <Wiki
+                            wiki={campaign.wiki}
+                            is_owner={is_owner} />}
                     {index === 4 &&
-                        <Maps maps={campaign.maps} />}
+                        <Maps
+                            maps={campaign.maps}
+                            is_owner={is_owner} />}
                     {index === 5 &&
-                        <Calendar calendar={campaign.calendar} />}
+                        <Calendar
+                            calendar={campaign.calendar}
+                            is_owner={is_owner} />}
                 </Grid>
             )
         }else{

@@ -22,7 +22,6 @@ class CreateEvent extends React.Component {
 
     render(){
         const classes = this.props.classes
-        console.log(this.state.open)
         return(
             <div>
             <Button
@@ -31,6 +30,7 @@ class CreateEvent extends React.Component {
                 onClick = {() => this.setState({open: true})}>
                 Create Event
             </Button>
+
             <Dialog
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}

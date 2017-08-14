@@ -27,7 +27,6 @@ class DeleteCharacter extends React.Component {
             <div>
             <IconButton
                 className={classes.button}
-                color="red"
                 onClick = {() => this.setState({open: true})}>
                 <Icon>delete</Icon>
             </IconButton>

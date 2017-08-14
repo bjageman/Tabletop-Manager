@@ -3,13 +3,18 @@ from slugify import slugify
 
 from sqlalchemy.ext.declarative import declared_attr
 
+from v1.apps.constants import DATETIMEFORMAT
 from v1.apps import db
 
 class TimestampMixin(object):
     created = db.Column(db.DateTime, default=datetime.utcnow)
     updated = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def readable_date(self, date, format='%H:%M on %-d %B'):
+    @declared_attr
+    def __mapper_args__(cls):
+        return {'order_by': 'created desc'}
+
+    def readable_date(self, date, format=DATETIMEFORMAT):
         """Format the given date using the given format."""
         return date.strftime(format)
 
@@ -26,12 +31,16 @@ class Base(db.Model):
     def __tablename__(cls):
         return cls.__name__.lower()
 
+    def set_name(self, name):
+        slug = slugify(name)
+        counter = 2
+        while self.query.filter_by(slug=slug).first() is not None:
+            slug = slugify(name) + "-" + str(counter)
+            counter = counter + 1
+        self.name = name
+        self.slug = slug
+
     def __init__(self, *args, **kwargs):
         if not 'slug' in kwargs:
-            slug = slugify(kwargs.get('name', ''))
-            counter = 2
-            while self.query.filter_by(slug=slug).first() is not None:
-                slug = slugify(kwargs.get('name', '') + "-" + str(counter))
-                counter = counter + 1
-            kwargs['slug'] = slug
+            self.set_name(kwargs.get('name', ''))
         super().__init__(*args, **kwargs)

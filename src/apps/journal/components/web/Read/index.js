@@ -53,7 +53,8 @@ class JournalEntry extends React.Component {
                     <IconButton aria-label="Share">
                       <Icon>share</Icon>
                     </IconButton>
-                    <Update entry={entry} />
+                    {this.props.is_owner ? <Update entry={entry} /> : null }
+                    {this.props.is_owner ? <Delete entry={entry} /> : null }
                 </CardActions>
             </Card>
             <Dialog

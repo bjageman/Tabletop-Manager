@@ -15,16 +15,11 @@ class CharacterEditor extends React.Component {
                 <TextField
                   className={classes.textField}
                   id="name"
+                  name="name"
                   label="Name"
                   margin="normal"
                   defaultValue={character.name || ""}
-                />
-                <TextField
-                  className={classes.textField}
-                  id="subtitle"
-                  label="Title"
-                  margin="normal"
-                  defaultValue={character.subheader || ""}
+                  onChange={this.props.onChange}
                 />
             </div>
         )

@@ -40,7 +40,7 @@ class CampaignEvent extends React.Component {
         const event = this.props.event
         const classes = this.props.classes
         return(
-            <Grid className={classes.card} container gutter={24}>
+            <Grid key={event.id} className={classes.card} container gutter={24}>
                     <Grid item md={4} >
                         <Typography type="subheading" color="secondary">
                           {event.start_time} -

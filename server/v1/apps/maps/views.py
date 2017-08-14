@@ -53,7 +53,7 @@ def get_maps(campaign_id):
 
 @campaign.route(map_base_url + '/<int:map_id>', methods=['GET'])
 def get_map_by_id(campaign_id, map_id):
-    map = CampaignMap.query.join(Campaign).filter(Campaign.id == campaign_id).filter(CampaignMap.id == map_id).first()
+    map = CampaignMap.query.get(map_id)
     if map is not None:
         return jsonify(parse_map(map))
     else:
@@ -61,7 +61,7 @@ def get_map_by_id(campaign_id, map_id):
 
 @campaign.route(map_base_url + '/<string:map_slug>', methods=['GET'])
 def get_map_by_slug(campaign_id, map_slug):
-    map = CampaignMap.query.join(Campaign).filter(Campaign.id == campaign_id).filter(CampaignMap.slug == map_slug).first()
+    map = CampaignMap.query.filter(CampaignMap.slug == map_slug).first()
     if map is not None:
         return jsonify(parse_map(map))
     else:
@@ -70,28 +70,35 @@ def get_map_by_slug(campaign_id, map_slug):
 #
 # #Update
 #
-# @campaign.route('/<int:campaign_id>', methods=['POST'])
-# def update_journal_by_id(campaign_id):
-#     data = request.get_json()
-#     name       =   get_required_data(data, "name")
-#     description =   get_optional_data(data, "description")
-#     journal = Journal.query.filter_by(id=campaign_id)
-#     journal.update({"name":name, "description":description})
-#     journal = journal.first()
-#     journal.slug = slugify(journal.name, '')
-#     db.session.commit()
-#     return jsonify(parse_journal(journal))
+@campaign.route(map_base_url + '/<int:map_id>', methods=['POST', 'PUT'])
+def update_map_by_id(campaign_id, map_id):
+    map = CampaignMap.query.get(map_id)
+    if map is not None and map.campaign.id == campaign_id:
+        data        = request.get_json()
+        name        = get_optional_data(data, "name")
+        print(name)
+        if name is not None:
+            map.set_name(name)
+        db.session.commit()
+        return jsonify(parse_map(map))
+    else:
+        abort(404)
+
 #
-# #Delete
-# @campaign.route('/<int:campaign_id>', methods=['DELETE'])
-# def delete_journal_by_id(campaign_id):
-#     journal = Journal.query.get(campaign_id)
-#     db.session.delete(journal)
-#     db.session.commit()
-#     journal = Journal.query.get(campaign_id)
-#     if journal is None:
-#         return jsonify({"deleted": campaign_id})
-#     else:
-#         message = "Journal was not deleted"
-#         code = 400
-#         return make_response(jsonify({'error': message}), code)
+#  Delete
+#
+
+@campaign.route(map_base_url + '/<int:map_id>', methods=['DELETE'])
+def delete_map_by_id(campaign_id, map_id):
+    map = CampaignMap.query.get(map_id)
+    name = map.name
+    if map is not None and map.campaign.id == campaign_id:
+        db.session.delete(map)
+        db.session.commit()
+    map = CampaignMap.query.get(map_id)
+    if map is None:
+        return jsonify({"deleted": map_id})
+    else:
+        message = "CampaignMap" + name + " was not deleted"
+        code = 400
+        return make_response(jsonify({'error': message}), code)

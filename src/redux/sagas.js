@@ -6,8 +6,8 @@ import { postDataApi, verifyData } from './api'
 import myConfig from 'config.js';
 
 import { registerUser, loginUser } from 'apps/user/redux/sagas'
-import { saveJournalEntry } from 'apps/journal/redux/sagas'
-import { getCharacters } from 'apps/characters/redux/sagas'
+import { saveJournalEntry, deleteJournalEntry } from 'apps/journal/redux/sagas'
+import { createCharacter, deleteCharacter } from 'apps/characters/redux/sagas'
 import { getCampaign } from 'apps/campaign/redux/sagas'
 
 console.log(myConfig)
@@ -80,10 +80,15 @@ function* loginWebSocket(socket) {
 }
 
 export default function* rootSaga() {
-  //yield fork(flow);
+  //yield fork(flow); //Web Sockets
   yield takeEvery(actions.register, registerUser);
   yield takeEvery(actions.login, loginUser);
+  //Journal
   yield takeEvery(actions.saveJournalEntry, saveJournalEntry)
-  yield takeEvery(actions.getCharacters, getCharacters)
+  yield takeEvery(actions.deleteJournalEntry, deleteJournalEntry)
+  //Characters
+  yield takeEvery(actions.createCharacter, createCharacter)
+  yield takeEvery(actions.deleteCharacter, deleteCharacter)
+  //Campaign
   yield takeEvery(actions.getCampaign, getCampaign)
 }

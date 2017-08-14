@@ -34,6 +34,7 @@ class DeleteCharacter extends React.Component {
             <Dialog
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}
+                entry={this.props.entry}
                 />
             </div>
         )

@@ -31,7 +31,7 @@ class CharacterEntry extends React.Component {
                         Played By: <a href={`/users/profile/${character.author.id}`}>{character.author.username}</a>
                         </Typography>
                         <Grid className={classes.iconContainer} item xs={2}>
-                            <Delete /> <Update character={character} />
+                            <Delete character={character} /> <Update character={character} />
                         </Grid>
                     </Grid>
             </Grid>

@@ -1,4 +1,7 @@
 import React from 'react'
+//Redux
+import { connect } from 'react-redux'
+import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
 import Dialog, {DialogContent, DialogActions} from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
@@ -9,25 +12,25 @@ import { withStyles, createStyleSheet } from 'material-ui/styles'
 
 import Editor from './Editor'
 
-class CreateDialogCharacter extends React.Component {
+class CreateCharacterDialog extends React.Component {
     constructor(props){
         super(props)
         this.handleSave = this.handleSave.bind(this)
     }
-
-    onChange = (editorState) => {
-        console.log("Text Change")
-    };
-
+    
     handleInputChange = (event) => {
-        console.log(event.target.value)
         this.setState({
             [event.target.name]: event.target.value
         })
     }
 
     handleSave() {
-        console.log("Saved Item")
+        this.props.createCharacter({
+            name:           this.state.name,
+            campaign_id:    this.props.campaign.id,
+            author_id:      this.props.user.id,
+            character_id:   this.props.character ? this.props.character.id: null,
+        })
         this.props.onRequestClose()
     }
 
@@ -44,7 +47,9 @@ class CreateDialogCharacter extends React.Component {
                     { character.id ? "Edit " + character.name : "Create Character" }
                 </Typography>
                 <DialogContent>
-                    <Editor character = {character}/>
+                    <Editor
+                        character = {character}
+                        onChange = {this.handleInputChange} />
                 </DialogContent>
                 <DialogActions>
                 <Button
@@ -62,8 +67,7 @@ class CreateDialogCharacter extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('CreateDialogCharacter', {
+const styleSheet = createStyleSheet('CreateCharacterDialog', {
 
 });
-
-export default withStyles(styleSheet)(CreateDialogCharacter)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(CreateCharacterDialog))
