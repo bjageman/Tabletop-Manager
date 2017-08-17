@@ -3,7 +3,6 @@ from collections import Counter
 
 from v1.apps.users.models import User
 from v1.apps.campaign.models import *
-from v1.apps.forum.models import *
 
 from v1.apps import app, db
 import random
@@ -21,29 +20,29 @@ class DatabaseTests(TestingBase):
 
 
 class CampaignTests(DatabaseTests):
-    campaign_title = "Test Campaign"
-    entry_title = "Test Entry"
+    campaign_name = "Test Campaign"
+    entry_name = "Test Entry"
     entry_content = "This is the beginning of a campaign entry. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     author_id = 1
     commenter_id = 2
 
     def setUp(self):
         super().setUp()
-        campaign = Campaign(title=self.campaign_title, description="This is a test campaign")
+        campaign = Campaign(name=self.campaign_name, description="This is a test campaign")
         author = User.query.get(self.author_id)
-        entry = Entry(title=self.entry_title, author=author, content=self.entry_content)
+        entry = Entry(name=self.entry_name, author=author, content=self.entry_content)
         campaign.entries.append(entry)
         db.session.add(campaign)
         db.session.commit()
 
     def test_create_campaign_entry(self):
         author = User.query.get(self.commenter_id)
-        entry = Entry.query.filter_by(title=self.entry_title).first()
+        entry = Entry.query.filter_by(name=self.entry_name).first()
         db.session.add(entry)
         db.session.commit()
         for entry in campaign.entries:
             assert entry.author.id == self.author_id
-            assert self.entry_title in entry.title
+            assert self.entry_name in entry.name
 
 # class ForumTests(DatabaseTests):
 #     board_name = "Test Board"

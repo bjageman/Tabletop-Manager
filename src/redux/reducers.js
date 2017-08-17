@@ -3,24 +3,30 @@ import { combineReducers } from 'redux';
 import { createReducer } from 'redux-act';
 import * as actions from './actions'
 
+import { user } from 'apps/user/redux/reducers'
+import { campaign } from 'apps/campaign/redux/reducers'
 import { journal } from 'apps/journal/redux/reducers'
+import { character } from 'apps/characters/redux/reducers'
+import { calendar } from 'apps/calendar/redux/reducers'
 
 const initial = {
-  user: {
-    username: null,
+  response: {
+    success: null,
+    error: null,
+    campaign: null,
   },
 };
 
-export const user = createReducer({
-  [actions.register]: (state, payload) => {
-    return { username: payload.username, password:payload.password, fetching:true }
+export const response = createReducer({
+  [actions.success]: (state, payload) => {
+    return { success: payload.message };
   },
-  [actions.registerSuccess]: (state, payload) => {
-    return { username: payload.username, message:payload.password, fetching:true }
-  }
-}, initial.user);
+  [actions.error]: (state, payload) => {
+    return { error: payload.message };
+}
+}, initial.response);
 
 
 export default combineReducers(
-  { user, journal }
+  { response, user, campaign, character, journal, calendar }
 );

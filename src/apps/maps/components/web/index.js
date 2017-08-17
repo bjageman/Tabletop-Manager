@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
-import Card, { CardContent, CardMedia } from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
 
-import CampaignMapCard from './Card'
+import Read from './Read/.'
+import Create from './Create/'
 
-import data from 'mocks/campaign.json'
 
 class CampaignMaps extends Component {
   render() {
     const classes = this.props.classes
-    const campaign = data[0]
-    const maps = campaign.maps
+    const maps = this.props.maps
     return (
       <Grid container className={classes.container} >
+          { this.props.is_owner ? <Create /> : null }
           {maps.map((map, i) => (
-            <CampaignMapCard
+            <Read
                 key = {i}
                 map = {map}
                 />

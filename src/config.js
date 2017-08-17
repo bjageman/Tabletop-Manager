@@ -9,6 +9,7 @@ function getConfig() {
       API_VERSION: 1,
       VERSION: 'debug',
       DEBUG: true,
+      DATETIMEFORMAT: "MM/DD/YYYY hh:mm A",
     };
   case "debug-web":
     return {
@@ -16,6 +17,7 @@ function getConfig() {
       API_VERSION: 1,
       VERSION: 'debug',
       DEBUG: true,
+      DATETIMEFORMAT: "MM/DD/YYYY hh:mm A",
     };
   case "demo":
     return {
@@ -23,6 +25,7 @@ function getConfig() {
       API_VERSION: 1,
       VERSION: 'demo',
       DEBUG: false,
+      DATETIMEFORMAT: "MM/DD/YYYY hh:mm A",
     };
   case "production":
     return {
@@ -30,6 +33,7 @@ function getConfig() {
       API_VERSION: 1,
       VERSION: 'production',
       DEBUG: false,
+      DATETIMEFORMAT: "MM/DD/YYYY hh:mm A",
     };
   case "production-debug":
     return {
@@ -37,6 +41,7 @@ function getConfig() {
       API_VERSION: 1,
       VERSION: 'production-debug',
       DEBUG: true,
+      DATETIMEFORMAT: "MM/DD/YYYY hh:mm A",
     };
   default:
     return {
@@ -44,6 +49,7 @@ function getConfig() {
       API_VERSION: 1,
       VERSION: 'debug',
       DEBUG: true,
+      DATETIMEFORMAT: "MM/DD/YYYY hh:mm A",
     };
   }
 }
