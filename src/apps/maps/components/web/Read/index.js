@@ -53,7 +53,6 @@ const styleSheet = createStyleSheet('CampaignCardMaps', {
   },
   map: {
     width: "100%",
-    maxHeight: 200,
     cursor: "pointer"
   },
 });
