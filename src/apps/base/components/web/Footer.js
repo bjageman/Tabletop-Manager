@@ -20,7 +20,7 @@ class Footer extends React.Component {
     render(){
         const classes = this.props.classes
         return(
-            <Grid container className={classes.footer}>
+            <Grid className={classes.footer}>
                 <Grid item xs>
                     <Typography type="body2">
                         <Icon>copyright</Icon>RPG Manager 2017
