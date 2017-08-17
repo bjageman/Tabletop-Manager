@@ -3,8 +3,13 @@ import { bindActionCreators } from 'redux';
 
 export function mapStateToProps(state) {
   const props = {
-    user: state.user,
+    campaign: state.campaign,
+    user: state.user && state.user.id ? state.user : null,
     journal: state.journal,
+  }
+  if (state.response.error != null){
+      alert(state.response.error)
+      state.response.error = null
   }
   return props
 }

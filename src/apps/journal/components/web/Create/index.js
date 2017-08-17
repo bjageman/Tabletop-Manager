@@ -1,10 +1,9 @@
 import React from 'react'
-import Icon from 'material-ui/Icon'
 import Button from 'material-ui/Button';
 
 import { withStyles, createStyleSheet } from 'material-ui/styles'
 
-import EntryCreateDialog from './Dialog'
+import Dialog from './Dialog'
 
 const styleSheet = createStyleSheet('CreateEntry', theme => ({
   button: {
@@ -32,18 +31,19 @@ class CreateEntry extends React.Component {
         return(
             <div>
             <Button
-                fab color="primary"
+                raised
+                color="primary"
                 className={classes.button}
                 onClick = {() => this.setState({open: true})}
                 >
-                <Icon>create</Icon>
+                New Entry
             </Button>
-            <EntryCreateDialog
+            <Dialog
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}
-                onRequestSave={this.handleSave}
                 title={this.state.title}
                 content={this.state.content}
+                campaign={this.props.campaign}
             />
             </div>
         )

@@ -1,4 +1,7 @@
 import React from 'react'
+//Redux
+import { connect } from 'react-redux'
+import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 import Dialog, { DialogTitle, DialogContent, DialogContentText, DialogActions } from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField'
@@ -20,6 +23,10 @@ class LoginDialog extends React.Component {
 
     handleLogin = value => {
         console.log("Login " + this.state.username + " with " + this.state.password)
+        this.props.login({
+            "username": this.state.username,
+            "password": this.state.password,
+        })
         this.props.onRequestClose();
     };
 
@@ -95,4 +102,4 @@ const styleSheet = createStyleSheet('LoginDialog', (theme) => ({
 }));
 
 
-export default withStyles(styleSheet)(LoginDialog);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(LoginDialog));

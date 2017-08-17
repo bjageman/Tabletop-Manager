@@ -19,7 +19,7 @@ class CampaignWikiSideBar extends Component {
                 {entries.map((entry, i) => (
                     <ListItem button>
                         <ListItemText
-                        primary={entry.title}
+                        primary={entry.name}
                         />
                     </ListItem>
                 ))}

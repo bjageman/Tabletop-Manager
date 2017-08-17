@@ -8,7 +8,7 @@ from . import users
 from .models import User, authenticate
 
 from v1.apps import socketio, db
-from v1.apps.parsers import parse_user
+from .parsers import *
 
 #Error handling
 from v1.apps.errors import *
@@ -20,7 +20,7 @@ def get_users_player(user, game):
             return player
 
 @socketio.on('login')
-def login(data):
+def login_websockets(data):
     try:
         username = data['username']
         password = data['password']
@@ -33,6 +33,20 @@ def login(data):
         })
     else:
         emit_error("Incorrect Username/Password")
+
+@users.route('/login', methods=['POST'])
+def login_user():
+    try:
+        data = request.get_json()
+        username = data['username']
+        password = data['password']
+    except (AttributeError, KeyError):
+        abort(400)
+    user = authenticate(username, password)
+    if user is None:
+        abort(404)
+    return jsonify(parse_user_detailed(user))
+
 
 @users.route('', methods=['POST'])
 def register_user():
@@ -48,4 +62,4 @@ def register_user():
     user.hash_password(password)
     db.session.add(user)
     db.session.commit()
-    return jsonify({ 'username': user.username })
+    return jsonify(parse_user(user))

@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import Grid from 'material-ui/Grid';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import Divider from 'material-ui/Divider';
 
-import CampaignWikiContent from './Content'
-import CampaignWikiSideBar from './SideBar'
-
-import data from 'mocks/campaign.json'
+import Create from './Create/'
 
 class CampaignWiki extends Component {
   createMarkup(html_data) {
@@ -16,14 +10,10 @@ class CampaignWiki extends Component {
 
   render() {
     const classes = this.props.classes
-    const campaign = data[0]
-    const wiki = campaign.wiki
-    const entry = wiki.entries[0]
+    // const wiki = this.props.wiki
     return (
         <div className={classes.container}>
-            <CampaignWikiContent entry={entry}>
-                <CampaignWikiSideBar entries={wiki.entries} />
-            </CampaignWikiContent>
+            { this.props.is_owner ? <Create /> : null }
         </div>
 
     );

@@ -1,10 +1,6 @@
 import React from 'react'
 import { withStyles, createStyleSheet } from 'material-ui/styles'
 
-import Grid from 'material-ui/Grid'
-import Input from 'material-ui/Input/Input';
-import InputLabel from 'material-ui/Input/InputLabel';
-import FormControl from 'material-ui/Form/FormControl';
 import Typography from 'material-ui/Typography'
 
 import Editor from 'draft-js-plugins-editor';
@@ -19,7 +15,7 @@ const plugins = [
   linkifyPlugin,
 ];
 
-const styleSheet = createStyleSheet('EntryCreateDialog', {
+const styleSheet = createStyleSheet('EntryCreateEditor', {
   appBar: {
     position: 'relative',
   },
@@ -41,10 +37,6 @@ const styleSheet = createStyleSheet('EntryCreateDialog', {
 });
 
 class EntryCreateEditor extends React.Component {
-    constructor(props){
-        super(props)
-    }
-
     focus(){
         this.refs.editor.focus()
     }
@@ -53,10 +45,6 @@ class EntryCreateEditor extends React.Component {
         const classes = this.props.classes
         return(
         <div>
-            <FormControl className={classes.input}>
-                <InputLabel htmlFor="name">Name</InputLabel>
-                <Input id="title" name="title" value={this.props.title} onChange={this.props.handleInputChange} />
-            </FormControl>
             <Typography type="caption" > Content </Typography>
             <div className={classes.editor} onClick={this.focus.bind(this)}>
                 <Editor

@@ -11,7 +11,7 @@ class UserCard extends React.Component {
         <Card>
           <CardHeader
             avatar={
-              <Avatar src={user.avatar} />
+              <Avatar src={user.image} />
             }
             title={user.username}
             subheader={user.email}
