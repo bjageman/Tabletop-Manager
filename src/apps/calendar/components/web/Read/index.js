@@ -48,7 +48,7 @@ class CampaignEvent extends React.Component {
                         <Typography type="subheading" color="secondary">
                           {event.end_time}
                         </Typography>
-                        <Delete />
+                        <Delete event={event}/>
                     </Grid>
                     <Grid item md={6} >
                         <Typography type="headline">{event.name}</Typography>

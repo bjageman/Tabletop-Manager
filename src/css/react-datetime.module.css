@@ -1,0 +1,234 @@
+var styles = StyleSheet.create({
+{
+  "rdt": {
+    "position": "relative"
+  },
+  "rdtPicker": {
+    "display": "none",
+    "position": "absolute",
+    "width": "250px",
+    "padding": "4px",
+    "margin-top": "1px",
+    "z-index": "99999 !important",
+    "background": "#fff",
+    "box-shadow": "0 1px 3px rgba(0,0,0,.1)",
+    "border": "1px solid #f9f9f9"
+  },
+  "rdtOpen__rdtPicker": {
+    "display": "block"
+  },
+  "rdtStatic__rdtPicker": {
+    "box-shadow": "none",
+    "position": "static"
+  },
+  "rdtPicker__rdtTimeToggle": {
+    "text-align": "center"
+  },
+  "rdtPicker_table": {
+    "width": "100%",
+    "margin": "0"
+  },
+  "rdtPicker_td": {
+    "cursor": "pointer"
+  },
+  "rdtPicker_th": {
+    "border-bottom": "1px solid #f9f9f9"
+  },
+  "rdtPicker_td_rdtDay_hover": {
+    "background": "#eeeeee",
+    "cursor": "pointer"
+  },
+  "rdtPicker_td_rdtHour_hover": {
+    "background": "#eeeeee",
+    "cursor": "pointer"
+  },
+  "rdtPicker_td_rdtMinute_hover": {
+    "background": "#eeeeee",
+    "cursor": "pointer"
+  },
+  "rdtPicker_td_rdtSecond_hover": {
+    "background": "#eeeeee",
+    "cursor": "pointer"
+  },
+  "rdtPicker__rdtTimeToggle_hover": {
+    "background": "#eeeeee",
+    "cursor": "pointer"
+  },
+  "rdtPicker_td_rdtOld": {
+    "color": "#999999"
+  },
+  "rdtPicker_td_rdtNew": {
+    "color": "#999999"
+  },
+  "rdtPicker_td_rdtToday": {
+    "position": "relative"
+  },
+  "rdtPicker_td_rdtToday_before": {
+    "content": "''",
+    "display": "inline-block",
+    "border-left": "7px solid transparent",
+    "border-bottom": "7px solid #428bca",
+    "border-top-color": "rgba(0, 0, 0, 0.2)",
+    "position": "absolute",
+    "bottom": "4px",
+    "right": "4px"
+  },
+  "rdtPicker_td_rdtActive": {
+    "background-color": "#428bca",
+    "color": "#fff",
+    "text-shadow": "0 -1px 0 rgba(0, 0, 0, 0.25)"
+  },
+  "rdtPicker_td_rdtActive_hover": {
+    "background-color": "#428bca",
+    "color": "#fff",
+    "text-shadow": "0 -1px 0 rgba(0, 0, 0, 0.25)"
+  },
+  "rdtPicker_td_rdtActive_rdtToday_before": {
+    "border-bottom-color": "#fff"
+  },
+  "rdtPicker_td_rdtDisabled": {
+    "background": "none",
+    "color": "#999999",
+    "cursor": "not-allowed"
+  },
+  "rdtPicker_td_rdtDisabled_hover": {
+    "background": "none",
+    "color": "#999999",
+    "cursor": "not-allowed"
+  },
+  "rdtPicker_td_span_rdtOld": {
+    "color": "#999999"
+  },
+  "rdtPicker_td_span_rdtDisabled": {
+    "background": "none",
+    "color": "#999999",
+    "cursor": "not-allowed"
+  },
+  "rdtPicker_td_span_rdtDisabled_hover": {
+    "background": "none",
+    "color": "#999999",
+    "cursor": "not-allowed"
+  },
+  "rdtPicker__dow": {
+    "width": "14.2857%",
+    "border-bottom": "none"
+  },
+  "rdtPicker_th_rdtSwitch": {
+    "width": "100px"
+  },
+  "rdtPicker_th_rdtNext": {
+    "font-size": "21px",
+    "vertical-align": "top"
+  },
+  "rdtPicker_th_rdtPrev": {
+    "font-size": "21px",
+    "vertical-align": "top"
+  },
+  "rdtPrev_span": {
+    "display": "block",
+    "-webkit-touch-callout": "none",
+    "-webkit-user-select": "none",
+    "-khtml-user-select": "none",
+    "-moz-user-select": "none",
+    "-ms-user-select": "none",
+    "user-select": "none"
+  },
+  "rdtNext_span": {
+    "display": "block",
+    "-webkit-touch-callout": "none",
+    "-webkit-user-select": "none",
+    "-khtml-user-select": "none",
+    "-moz-user-select": "none",
+    "-ms-user-select": "none",
+    "user-select": "none"
+  },
+  "rdtPicker_th_rdtDisabled": {
+    "background": "none",
+    "color": "#999999",
+    "cursor": "not-allowed"
+  },
+  "rdtPicker_th_rdtDisabled_hover": {
+    "background": "none",
+    "color": "#999999",
+    "cursor": "not-allowed"
+  },
+  "rdtPicker_thead_tr_first_child_th": {
+    "cursor": "pointer"
+  },
+  "rdtPicker_thead_tr_first_child_th_hover": {
+    "background": "#eeeeee"
+  },
+  "rdtPicker_tfoot": {
+    "border-top": "1px solid #f9f9f9"
+  },
+  "rdtPicker_button": {
+    "border": "none",
+    "background": "none",
+    "cursor": "pointer"
+  },
+  "rdtPicker_button_hover": {
+    "background-color": "#eee"
+  },
+  "rdtPicker_thead_button": {
+    "width": "100%",
+    "height": "100%"
+  },
+  "td_rdtMonth": {
+    "height": "50px",
+    "width": "25%",
+    "cursor": "pointer"
+  },
+  "td_rdtYear": {
+    "height": "50px",
+    "width": "25%",
+    "cursor": "pointer"
+  },
+  "td_rdtMonth_hover": {
+    "background": "#eee"
+  },
+  "td_rdtYear_hover": {
+    "background": "#eee"
+  },
+  "rdtCounters": {
+    "display": "inline-block"
+  },
+  "rdtCounters___div": {
+    "float": "left"
+  },
+  "rdtCounter": {
+    "width": "40px"
+  },
+  "rdtCounterSeparator": {
+    "line-height": "100px"
+  },
+  "rdtCounter__rdtBtn": {
+    "height": "40%",
+    "line-height": "40px",
+    "cursor": "pointer",
+    "display": "block",
+    "-webkit-touch-callout": "none",
+    "-webkit-user-select": "none",
+    "-khtml-user-select": "none",
+    "-moz-user-select": "none",
+    "-ms-user-select": "none",
+    "user-select": "none"
+  },
+  "rdtCounter__rdtBtn_hover": {
+    "background": "#eee"
+  },
+  "rdtCounter__rdtCount": {
+    "height": "20%",
+    "font-size": "1.2em"
+  },
+  "rdtMilli": {
+    "vertical-align": "middle",
+    "padding-left": "8px",
+    "width": "48px"
+  },
+  "rdtMilli_input": {
+    "width": "100%",
+    "font-size": "1.2em",
+    "margin-top": "37px"
+  }
+}
+});

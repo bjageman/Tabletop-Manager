@@ -1,5 +1,5 @@
 from v1.apps.users.parsers import *
-from v1.apps.constants import DATETIMEFORMAT
+from v1.apps.config import DATETIMEFORMAT
 def parse_calendar(calendar):
     calendar_set = []
     for event in calendar:

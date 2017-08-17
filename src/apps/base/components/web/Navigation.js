@@ -19,7 +19,7 @@ class Navigation extends React.Component {
     }
 
     render(){
-        const { classes, ...other } = this.props
+        const { classes } = this.props
         return(
             <div className={classes.root}>
             <TopBar toggleSideBar={this.toggleSideBar} />

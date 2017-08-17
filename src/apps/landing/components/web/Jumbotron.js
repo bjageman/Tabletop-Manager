@@ -5,10 +5,6 @@ import { withStyles, createStyleSheet } from 'material-ui/styles';
 
 import dmScreen from './img/dmscreen.jpg'
 
-const backgroundImage = () => (
-    <img src={dmScreen} />
-)
-
 const styleSheet = createStyleSheet('Jumbotron', theme => ({
   root: {
     flexGrow: 1,
@@ -36,7 +32,7 @@ const styleSheet = createStyleSheet('Jumbotron', theme => ({
 
 class Jumbotron extends Component {
     render(){
-        const { title, subtitle, classes, ...other } = this.props
+        const { title, subtitle, classes } = this.props
         return(
         <Grid>
             <Grid item xs={12} className={classes.headline}>

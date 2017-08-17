@@ -6,7 +6,6 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 import Menu, { MenuItem } from 'material-ui/Menu';
 import Button from 'material-ui/Button';
 import Icon from 'material-ui/Icon';
-import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 
 import InvisibleLink from 'apps/toolkit/InvisibleLink'

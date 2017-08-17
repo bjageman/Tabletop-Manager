@@ -6,8 +6,6 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 import Divider from 'material-ui/Divider'
 
-import data from 'mocks/characters.json'
-
 import Read from './Read/'
 import Create from './Create/'
 

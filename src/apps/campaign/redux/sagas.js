@@ -1,6 +1,6 @@
 import * as actions from 'redux/actions';
 import { put, call } from 'redux-saga/effects';
-import { postDataApi, getDataApi, verifyData } from 'redux/api'
+import { getDataApi, verifyData } from 'redux/api'
 
 
 export function* getCampaign(action) {

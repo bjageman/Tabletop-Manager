@@ -6,7 +6,6 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 import Dialog, {DialogContent, DialogActions} from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
-import TextField from 'material-ui/TextField';
 
 import { withStyles, createStyleSheet } from 'material-ui/styles'
 
@@ -17,7 +16,7 @@ class CreateCharacterDialog extends React.Component {
         super(props)
         this.handleSave = this.handleSave.bind(this)
     }
-    
+
     handleInputChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -35,7 +34,6 @@ class CreateCharacterDialog extends React.Component {
     }
 
     render(){
-        const { classes, ...other } = this.props;
         const character = this.props.character || {name: "", subheader: "", descriptors: []}
         return(
             <Dialog

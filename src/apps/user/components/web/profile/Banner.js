@@ -1,16 +1,15 @@
 import React from 'react'
 import Grid from 'material-ui/Grid';
-import Avatar from 'material-ui/Avatar';
 import Typography from 'material-ui/Typography'
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 
 class UserProfileBanner extends React.Component {
     render() {
-        const { user, classes, ...other } = this.props
+        const { user, classes } = this.props
         return (
         <Grid className={classes.container} container gutter={24}>
           <Grid item sm={2} className={classes.avatarContainer}>
-              <img className={classes.avatar} src={user.avatar} />
+              <img className={classes.avatar} src={user.avatar} alt={user.username}/>
           </Grid>
           <Grid sm={8}>
               <Typography type="headline">

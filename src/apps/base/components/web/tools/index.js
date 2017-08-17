@@ -6,8 +6,6 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 //Material-UI
 import { withStyles, createStyleSheet } from 'material-ui/styles';
-import Icon from 'material-ui/Icon'
-
 
 import AccountMenu from './AccountMenu'
 
@@ -15,7 +13,6 @@ import AccountMenu from './AccountMenu'
 class ToolBarTools extends React.Component {
 
     render() {
-        const classes = this.props.classes
         return(
             <div>
                 <AccountMenu username={this.props.user.username}/>

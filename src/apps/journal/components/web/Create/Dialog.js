@@ -10,7 +10,6 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
-import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import Input from 'material-ui/Input/Input';
 
