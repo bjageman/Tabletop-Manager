@@ -5,15 +5,15 @@ from flask_socketio import SocketIO
 from datetime import timedelta
 from flask import Blueprint
 
-
 from . import config
 
 app = Flask(__name__)
 app.debug = True
 app.config['SECRET_KEY'] = 'AO0bqSHRFMyMUgzaw0Vx2FkLkkAr3Gpe'
-app.config['SQLALCHEMY_DATABASE_URI'] = config.DATABASE
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['UPLOAD_FOLDER'] = config.UPLOAD_FOLDER
+app.config['SQLALCHEMY_DATABASE_URI'] = config.DATABASE
 
 app.config['JWT_EXPIRATION_DELTA'] = timedelta(hours=24)
 

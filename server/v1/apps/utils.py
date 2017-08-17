@@ -1,7 +1,7 @@
 from flask import make_response, jsonify, abort
 from datetime import datetime
 
-from v1.apps.constants import DATETIMEFORMAT
+from v1.apps.config import DATETIMEFORMAT
 
 def check_for_invalid_data(data, value):
     try:

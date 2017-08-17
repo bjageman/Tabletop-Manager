@@ -1,3 +1,4 @@
+import os
 from flask_socketio import SocketIO, emit, disconnect
 from flask import Flask, request, jsonify, abort
 from slugify import slugify
@@ -26,6 +27,16 @@ from v1.apps.utils import *
 
 map_base_url = '/<int:campaign_id>/maps'
 #Create
+
+def file_upload(file):
+    try:
+        extension = os.path.splitext(file.filename)[1]
+        f_name = str(uuid.uuid4()) + extension
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], f_name))
+        return True
+    except:
+        return False
+
 @campaign.route(map_base_url, methods=['POST'])
 def create_map(campaign_id):
     data        = request.get_json()

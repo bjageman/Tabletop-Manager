@@ -1,5 +1,4 @@
 import React from 'react'
-import Avatar from 'material-ui/Avatar';
 import Grid from 'material-ui/Grid'
 import data from 'mocks/campaign.json'
 

@@ -1,4 +1,7 @@
 import React from 'react'
+//Redux
+import { connect } from 'react-redux'
+import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
 import Dialog, {DialogContent} from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
@@ -25,12 +28,14 @@ class CharacterDeleteDialog extends React.Component {
     }
 
     handleDelete() {
-        console.log("Delete Item")
+        this.props.deleteCalendarEvent({
+            campaign_id: this.props.campaign.id,
+            event_id: this.props.event.id,
+        })
         this.props.onRequestClose()
     }
 
     render(){
-        const classes = this.props.classes;
         return(
             <Dialog
                 open={this.props.open}
@@ -61,4 +66,4 @@ const styleSheet = createStyleSheet('CharacterDeleteDialog', {
 
 });
 
-export default withStyles(styleSheet)(CharacterDeleteDialog)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(CharacterDeleteDialog))

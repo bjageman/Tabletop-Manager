@@ -21,7 +21,7 @@ class UpdateJournal extends React.Component {
     }
 
     render(){
-        const { classes, entry, ...other } = this.props
+        const { classes } = this.props
         return(
             <div>
             <IconButton

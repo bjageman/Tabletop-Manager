@@ -21,7 +21,7 @@ class UpdateCharacter extends React.Component {
     }
 
     render(){
-        const { classes, character, ...other } = this.props
+        const { classes, character } = this.props
         return(
             <div>
             <IconButton
@@ -32,7 +32,7 @@ class UpdateCharacter extends React.Component {
             <Dialog
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}
-                character={this.props.character}
+                character={character}
                 />
             </div>
         )

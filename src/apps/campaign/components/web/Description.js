@@ -3,7 +3,7 @@ import React from 'react'
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Grid from 'material-ui/Grid'
 import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
+
 import PlayerList from './PlayerList'
 
 class CampaignDescription extends React.Component {

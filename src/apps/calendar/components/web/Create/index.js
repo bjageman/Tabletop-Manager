@@ -1,9 +1,8 @@
 import React from 'react'
-import Icon from 'material-ui/Icon'
 import Button from 'material-ui/Button';
 import { withStyles, createStyleSheet } from 'material-ui/styles'
 
-import Dialog from './Dialog'
+import CreateEventDialog from './Dialog'
 
 class CreateEvent extends React.Component {
     constructor(props){
@@ -21,7 +20,6 @@ class CreateEvent extends React.Component {
     }
 
     render(){
-        const classes = this.props.classes
         return(
             <div>
             <Button
@@ -31,7 +29,7 @@ class CreateEvent extends React.Component {
                 Create Event
             </Button>
 
-            <Dialog
+            <CreateEventDialog
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}
                 />

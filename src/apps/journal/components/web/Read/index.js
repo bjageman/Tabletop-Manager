@@ -25,7 +25,7 @@ class JournalEntry extends React.Component {
     }
 
     render(){
-        const { entry, classes, ...other } = this.props
+        const { entry, classes } = this.props
         return(
             <div className = "journal-entry">
             <Card className={classes.card}>

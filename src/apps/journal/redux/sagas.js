@@ -33,9 +33,7 @@ export function* saveJournalEntry(action) {
       }
       const response = yield call(postDataApi, url, data);
       if (verifyData(response)) {
-          console.log(" successfully saved entry!")
           yield put(actions.getCampaign({id: payload.campaign_id}))
-        //   yield put(actions.registerSuccess(response.data))
         }else{
           var error = response.data.error
           console.log(error)

@@ -1,5 +1,4 @@
 import React from 'react'
-import Icon from 'material-ui/Icon'
 import Button from 'material-ui/Button';
 
 import { withStyles, createStyleSheet } from 'material-ui/styles'

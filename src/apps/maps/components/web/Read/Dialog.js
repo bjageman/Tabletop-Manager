@@ -1,11 +1,6 @@
 import React from 'react'
 
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import IconButton from 'material-ui/IconButton';
-import Icon from 'material-ui/Icon';
-import Typography from 'material-ui/Typography'
-import Dialog, {DialogTitle, DialogContent} from 'material-ui/Dialog'
+import Dialog, {DialogContent} from 'material-ui/Dialog'
 import { createStyleSheet, withStyles } from 'material-ui/styles';
 
 class CampaignMapDialog extends React.Component {

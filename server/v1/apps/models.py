@@ -3,7 +3,7 @@ from slugify import slugify
 
 from sqlalchemy.ext.declarative import declared_attr
 
-from v1.apps.constants import DATETIMEFORMAT
+from v1.apps.config import DATETIMEFORMAT
 from v1.apps import db
 
 class TimestampMixin(object):

@@ -24,7 +24,7 @@ class CharacterDeleteDialog extends React.Component {
     }
 
     render(){
-        const classes = this.props.classes;
+        // const classes = this.props.classes;
         return(
             <Dialog
                 open={this.props.open}

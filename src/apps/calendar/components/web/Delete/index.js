@@ -31,6 +31,7 @@ class DeleteCharacter extends React.Component {
                 <Icon>delete</Icon>
             </IconButton>
             <Dialog
+                event={this.props.event}
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}
                 />

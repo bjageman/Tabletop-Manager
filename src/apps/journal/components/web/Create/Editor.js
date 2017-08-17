@@ -1,10 +1,6 @@
 import React from 'react'
 import { withStyles, createStyleSheet } from 'material-ui/styles'
 
-import Grid from 'material-ui/Grid'
-import Input from 'material-ui/Input/Input';
-import InputLabel from 'material-ui/Input/InputLabel';
-import FormControl from 'material-ui/Form/FormControl';
 import Typography from 'material-ui/Typography'
 
 import Editor from 'draft-js-plugins-editor';
@@ -41,10 +37,6 @@ const styleSheet = createStyleSheet('EntryCreateEditor', {
 });
 
 class EntryCreateEditor extends React.Component {
-    constructor(props){
-        super(props)
-    }
-
     focus(){
         this.refs.editor.focus()
     }

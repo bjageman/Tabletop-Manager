@@ -51,7 +51,6 @@ class Campaign extends React.Component {
     };
 
     render(){
-        const classes = this.props.classes
         const index = this.state.index
         const user = this.props.user
         const campaign = this.props.campaign

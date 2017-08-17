@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import Card, { CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 
 import Dialog from './Dialog'
@@ -18,7 +18,7 @@ class CampaignMapCard extends Component {
   }
 
   render() {
-    const {classes, map, key, ...other} = this.props
+    const {classes, map } = this.props
     return (
         <div>
         <Card onClick={() => this.setState({ open: true })} key={this.props.key} className={classes.mapContainer}>

@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
-import Card, { CardContent, CardMedia } from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
-import Button from 'material-ui/Button';
 
 import Read from './Read/'
 import Search from './Read/Search'
 import Create from './Create/'
-
-
-import data from 'mocks/campaign.json'
 
 class CampaignCalendar extends Component {
   render() {
