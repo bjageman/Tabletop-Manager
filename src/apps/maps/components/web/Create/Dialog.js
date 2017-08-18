@@ -1,4 +1,7 @@
 import React from 'react'
+//Redux
+import { connect } from 'react-redux'
+import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
 import Dialog, {DialogContent, DialogActions} from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
@@ -11,6 +14,10 @@ class CreateDialogEvent extends React.Component {
     constructor(props){
         super(props)
         this.handleUpload = this.handleUpload.bind(this)
+        this.state ={
+            name:"Placeholder Map",
+            file:""
+        }
     }
 
     onChange = (editorState) => {
@@ -18,19 +25,25 @@ class CreateDialogEvent extends React.Component {
     };
 
     handleInputChange = (event) => {
-        console.log(event.target.value)
+        const data = new FormData();
+        data.append('file', event.target.files[0]);
+        data.append('name', this.state.name);
         this.setState({
-            [event.target.name]: event.target.value
+            file: data,
         })
     }
 
     handleUpload() {
-        console.log("Upload File")
+        this.props.saveMap({
+            name: this.state.name,
+            author_id: this.props.user.id,
+            campaign_id: this.props.campaign.id,
+            file: this.state.file,
+        })
         this.props.onRequestClose()
     }
 
     render(){
-        // const classes = this.props.classes;
         return(
             <Dialog
                 open={this.props.open}
@@ -40,6 +53,7 @@ class CreateDialogEvent extends React.Component {
                 <Typography type="headline">
                     Create Content Here:
                 </Typography>
+                <input name="file" type="file" id="fileinput"  onChange={this.handleInputChange}/>
             </DialogContent>
             <DialogActions>
                 <Button
@@ -58,4 +72,4 @@ const styleSheet = createStyleSheet('CreateDialogEvent', {
 
 });
 
-export default withStyles(styleSheet)(CreateDialogEvent)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(CreateDialogEvent))

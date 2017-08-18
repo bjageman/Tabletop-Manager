@@ -13,7 +13,7 @@ class CampaignCalendar extends Component {
     const calendar = this.props.calendar
     return (
       <div className={classes.container} >
-      <Grid container>
+      <Grid>
         <Grid item xs={12} >
             <Search />
         </Grid>

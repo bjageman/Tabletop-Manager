@@ -4,6 +4,9 @@ import Card, { CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 
 import Dialog from './Dialog'
+import myConfig from 'config';
+
+const UPLOAD_FOLDER = myConfig.UPLOAD_FOLDER
 
 class CampaignMapCard extends Component {
   constructor(props){
@@ -52,7 +55,7 @@ const styleSheet = createStyleSheet('CampaignCardMaps', {
     fontSize: 14,
   },
   map: {
-    width: "100%",
+    maxWidth: "100%",
     cursor: "pointer"
   },
 });
