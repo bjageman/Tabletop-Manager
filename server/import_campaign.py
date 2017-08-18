@@ -1,6 +1,6 @@
 import sys, json
 from datetime import datetime
-from v1.apps.constants import DATETIMEFORMAT
+from v1.apps.config import DATETIMEFORMAT
 from v1.apps import app, db, socketio
 from v1.apps.users.models import User
 from v1.apps.campaign.models import Campaign

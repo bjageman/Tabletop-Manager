@@ -27,7 +27,7 @@ export function* saveCalendarEvent(action) {
     try{
       let payload = action.payload
       let url = 'campaign/' + payload.campaign_id + "/calendar"
-      let data = {"name": payload.name, "start_time": payload.start_time, "end_time": payload.end_time, "author_id": 1 }
+      let data = {"name": payload.name, "start_time": payload.start_time, "end_time": payload.end_time, "author_id": payload.author_id }
       if ( payload.event_id != null ){
           url = url + "/" + payload.event_id
       }

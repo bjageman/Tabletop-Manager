@@ -11,7 +11,7 @@ class CampaignMaps extends Component {
     const classes = this.props.classes
     const maps = this.props.maps
     return (
-      <Grid container className={classes.container} >
+      <Grid className={classes.container} >
           { this.props.is_owner ? <Create /> : null }
           {maps.map((map, i) => (
             <Read

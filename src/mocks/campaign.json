@@ -29,7 +29,7 @@
     "maps":[
         {
         "name":"Moonshae Isles",
-        "image": "http://www.andysowards.com/blog/assets/fantasy-cartography-moonshae-map-design.jpeg",
+        "image": "maps/moonshae.png",
         "width": 500,
         "height": 500,
         "markers":[
@@ -49,7 +49,7 @@
     },
     {
         "name":"Waterdeep",
-        "image": "http://s3images.coroflot.com/user_files/individual_files/original_328353_716xm30Yu9jZsTHSqrUxFIPkU.jpg",
+        "image": "maps/waterdeep.jpg",
         "width": 500,
         "height": 500,
         "markers":[
@@ -69,7 +69,7 @@
     },
     {
         "name":"Faerun World Map",
-        "image": "https://2.bp.blogspot.com/_SniTwfm5BwE/SwGdTAQGDbI/AAAAAAAABzE/F7a-RztCRrw/s1600/Faerun+Map+2nd+Edition.jpg",
+        "image": "maps/forgotten.jpg",
         "width": 500,
         "height": 500,
         "markers":[
@@ -89,7 +89,7 @@
     },
     {
     "name":"Dagger Falls",
-    "image": "http://cdn.obsidianportal.com/map_images/106919/Dagger_Falls.jpg",
+    "image": "maps/fantasy.jpg",
     "width": 500,
     "height": 500,
     "markers":[
@@ -109,7 +109,7 @@
 },
 {
     "name":"The Abyss",
-    "image": "http://paizo.com/image/content/PathfinderCampaignSetting/PZO9266_AbyssMap2.jpg",
+    "image": "maps/waterdeep.jpg",
     "width": 500,
     "height": 500,
     "markers":[
@@ -129,7 +129,7 @@
 },
 {
     "name":"Third Map",
-    "image": "http://www.andysowards.com/blog/assets/fantasy-cartography-moonshae-map-design.jpeg",
+    "image": "maps/moonshae.png",
     "width": 500,
     "height": 500,
     "markers":[
@@ -411,7 +411,7 @@
     "maps":[
     {
         "name":"Cool Map Brah",
-        "image": "https://2.bp.blogspot.com/_SniTwfm5BwE/SwGdTAQGDbI/AAAAAAAABzE/F7a-RztCRrw/s1600/Faerun+Map+2nd+Edition.jpg",
+        "image": "maps/forgotten.jpg",
         "width": 500,
         "height": 500,
         "markers":[
@@ -431,7 +431,7 @@
     },
     {
     "name":"Dagger Falls",
-    "image": "http://cdn.obsidianportal.com/map_images/106919/Dagger_Falls.jpg",
+    "image": "maps/fantasy.jpg",
     "width": 500,
     "height": 500,
     "markers":[
@@ -451,7 +451,7 @@
 },
 {
     "name":"The Abyss",
-    "image": "http://paizo.com/image/content/PathfinderCampaignSetting/PZO9266_AbyssMap2.jpg",
+    "image": "maps/waterdeep.jpg",
     "width": 500,
     "height": 500,
     "markers":[
@@ -471,7 +471,7 @@
 },
 {
     "name":"Third Map",
-    "image": "http://www.andysowards.com/blog/assets/fantasy-cartography-moonshae-map-design.jpeg",
+    "image": "maps/moonshae.png",
     "width": 500,
     "height": 500,
     "markers":[

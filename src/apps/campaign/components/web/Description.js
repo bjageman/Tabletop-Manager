@@ -16,9 +16,8 @@ class CampaignDescription extends React.Component {
         const classes = this.props.classes
         return(
             <div id="campaign-description">
-            <Grid container gutter={24}>
                 <Grid item sm={12}>
-                  <div className={classes.imageContainer}>
+                  <div>
                       <img className={classes.image} src={campaign.image} alt={campaign.name} />
                   </div>
                 </Grid>
@@ -36,7 +35,6 @@ class CampaignDescription extends React.Component {
                     <PlayerList players={campaign.players}/>
                     : null }
                 </Grid>
-            </Grid>
             </div>
         )
     }
@@ -44,14 +42,9 @@ class CampaignDescription extends React.Component {
 
 const styleSheet = createStyleSheet('CampaignDescription', {
   container: {
-    paddingTop: 20,
-    paddingLeft: 20,
+
   },
   card: {
-    marginTop: "1%",
-    marginLeft: "3%",
-    marginRight: "3%",
-    marginBottom: "1%"
   },
   imageContainer: {
     flex: 1,
@@ -60,7 +53,6 @@ const styleSheet = createStyleSheet('CampaignDescription', {
     alignItems: 'center',
     backgroundColor:"grey",
     height: 200,
-    width:"100%",
   },
   image: {
     width:"100%",
