@@ -11,6 +11,7 @@ import Typography from 'material-ui/Typography';
 import { blue } from 'material-ui/colors';
 
 import Login from 'apps/user/components/web/login/index'
+import InvisibleLink from 'apps/toolkit/InvisibleLink'
 import Tools from './tools/'
 
 class TopBar extends React.Component {
@@ -23,7 +24,7 @@ class TopBar extends React.Component {
             <AppBar className={classes.topbar} position="static">
                 <Toolbar>
                   <Typography type="title" color="inherit" className={classes.flex}>
-                    {brandName}
+                    <InvisibleLink to="/">{brandName}</InvisibleLink>
                   </Typography>
                   { user ? <Tools /> : <Login color="contrast"/> }
                 </Toolbar>

@@ -8,6 +8,7 @@ import { campaign } from 'apps/campaign/redux/reducers'
 import { journal } from 'apps/journal/redux/reducers'
 import { character } from 'apps/characters/redux/reducers'
 import { calendar } from 'apps/calendar/redux/reducers'
+import { maps } from 'apps/maps/redux/reducers'
 
 const initial = {
   response: {
@@ -28,5 +29,5 @@ export const response = createReducer({
 
 
 export default combineReducers(
-  { response, user, campaign, character, journal, calendar }
+  { response, user, campaign, character, journal, calendar, maps }
 );
