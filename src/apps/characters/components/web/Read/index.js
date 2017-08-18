@@ -18,23 +18,23 @@ class CharacterEntry extends React.Component {
         const character = this.props.character
         const classes = this.props.classes
         return(
-            <Grid className={classes.card} container gutter={24}>
-                    <Grid item md={2} >
-                        <img className={classes.image} src={character.image} alt={character.name}/>
-                    </Grid>
-                    <Grid item md={10} >
-                        <Typography type="headline">{character.name}</Typography>
-                        <Typography type="subheading" color="secondary">
-                          {character.subheader}
-                        </Typography>
-                        <Typography type="body1">
-                        Played By: <a href={`/users/profile/${character.author.id}`}>{character.author.username}</a>
-                        </Typography>
-                        <Grid className={classes.iconContainer} item xs={2}>
-                            <Delete character={character} /> <Update character={character} />
-                        </Grid>
-                    </Grid>
+            <div>
+            <Grid item md={2} >
+                <img className={classes.image} src={character.image} alt={character.name}/>
             </Grid>
+            <Grid item md={10} >
+                <Typography type="headline">{character.name}</Typography>
+                <Typography type="subheading" color="secondary">
+                  {character.subheader}
+                </Typography>
+                <Typography type="body1">
+                Played By: <a href={`/users/profile/${character.author.id}`}>{character.author.username}</a>
+                </Typography>
+                <Grid className={classes.iconContainer} item xs={2}>
+                    <Delete character={character} /> <Update character={character} />
+                </Grid>
+            </Grid>
+            </div>
         )
     }
 }

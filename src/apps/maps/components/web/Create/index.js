@@ -22,7 +22,6 @@ class CreateMap extends React.Component {
 
     render(){
         const classes = this.props.classes
-        console.log(this.state.open)
         return(
             <div>
             <Button

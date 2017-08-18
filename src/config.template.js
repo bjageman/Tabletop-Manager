@@ -1,9 +1,8 @@
-
-var ENVIRONMENT="debug-web"
+var ENVIRONMENT="local"
 
 function getConfig() {
   switch (ENVIRONMENT) {
-  case "debug-native":
+  case "native":
     return {
       API_URL: 'http://10.0.2.2:5000',
       API_VERSION: 1,
@@ -11,7 +10,7 @@ function getConfig() {
       DEBUG: true,
       DATETIMEFORMAT: "MM/DD/YYYY hh:mm A",
     };
-  case "debug-web":
+  case "local":
     return {
       API_URL: 'http://localhost:5000',
       API_VERSION: 1,
@@ -19,9 +18,9 @@ function getConfig() {
       DEBUG: true,
       DATETIMEFORMAT: "MM/DD/YYYY hh:mm A",
     };
-  case "demo":
+  case "staging":
     return {
-      API_URL: 'http://192.168.1.111:5000',
+      API_URL: 'http://192.168.1.10:5000',
       API_VERSION: 1,
       VERSION: 'demo',
       DEBUG: false,
@@ -29,23 +28,15 @@ function getConfig() {
     };
   case "production":
     return {
-      API_URL: 'http://neuro.ddnsking.com:5000',
+      API_URL: 'http://www.example.com:5000',
       API_VERSION: 1,
       VERSION: 'production',
       DEBUG: false,
       DATETIMEFORMAT: "MM/DD/YYYY hh:mm A",
     };
-  case "production-debug":
-    return {
-      API_URL: 'http://neuro.ddnsking.com:5000',
-      API_VERSION: 1,
-      VERSION: 'production-debug',
-      DEBUG: true,
-      DATETIMEFORMAT: "MM/DD/YYYY hh:mm A",
-    };
   default:
     return {
-      API_URL: 'http://10.0.2.2:5000',
+      API_URL: 'http://localhost:5000',
       API_VERSION: 1,
       VERSION: 'debug',
       DEBUG: true,
