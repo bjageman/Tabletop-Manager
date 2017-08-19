@@ -5,7 +5,7 @@ var baseURL = myConfig.API_URL + "/api/v" + myConfig.API_VERSION
 
 var axiosRequest = axios.create({
   baseURL: baseURL,
-  timeout: 2000,
+  timeout: myConfig.TIMEOUT,
   headers: {
       'Content-Type': 'application/json',
   }

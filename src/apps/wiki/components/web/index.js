@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
+import Typography from 'material-ui/Typography';
 
 import Create from './Create/'
 
@@ -10,9 +11,13 @@ class CampaignWiki extends Component {
 
   render() {
     const classes = this.props.classes
-    // const wiki = this.props.wiki
+    const campaign = this.props.campaign
+    // const wiki = this.props.campaign.wiki
     return (
         <div className={classes.container}>
+            <Typography type="headline" component="h2">
+                {campaign.name}
+            </Typography>
             { this.props.is_owner ? <Create /> : null }
         </div>
 

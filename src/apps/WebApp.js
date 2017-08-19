@@ -16,6 +16,8 @@ import LandingPage from './landing/components/web/'
 import Campaign from './campaign/components/web/'
 import Maps from './maps/components/web/'
 
+import Notifications from './toolkit/notifications/'
+
 const NotFound = () => (
     <p>Sorry, not Found!</p>
 )
@@ -23,9 +25,11 @@ const NotFound = () => (
 
 class WebApp extends Component {
   render() {
+
     return (
       <Router>
         <div className="app">
+          <Notifications />
           <Navigation />
           <Switch>
               <Route exact path="/" component={LandingPage}/>
