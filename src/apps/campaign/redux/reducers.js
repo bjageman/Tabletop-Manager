@@ -17,4 +17,7 @@ export const campaign = createReducer({
         characters: payload.characters,
         maps: payload.maps };
   },
+  [actions.logOutCampaign]: (state) => {
+      return null
+  }
 }, initial.campaign);

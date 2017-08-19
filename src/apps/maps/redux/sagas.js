@@ -1,6 +1,6 @@
 import * as actions from 'redux/actions';
 import { put, call } from 'redux-saga/effects';
-import { postDataApi, verifyData, deleteDataApi } from 'redux/api'
+import { postDataApi, verifyData } from 'redux/api'
 
 
 export function* saveMap(action) {

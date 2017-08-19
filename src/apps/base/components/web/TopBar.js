@@ -14,6 +14,8 @@ import Login from 'apps/user/components/web/login/index'
 import InvisibleLink from 'apps/toolkit/InvisibleLink'
 import Tools from './tools/'
 
+import myConfig from 'config.js';
+
 class TopBar extends React.Component {
     render(){
         const brandName = "RPG Manager"
@@ -24,7 +26,7 @@ class TopBar extends React.Component {
             <AppBar className={classes.topbar} position="static">
                 <Toolbar>
                   <Typography type="title" color="inherit" className={classes.flex}>
-                    <InvisibleLink to="/">{brandName}</InvisibleLink>
+                    <InvisibleLink to="/">{brandName} - {myConfig.VERSION}</InvisibleLink>
                   </Typography>
                   { user ? <Tools /> : <Login color="contrast"/> }
                 </Toolbar>

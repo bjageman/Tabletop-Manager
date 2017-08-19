@@ -19,7 +19,6 @@ class CampaignTabBar extends React.Component {
                 <Tab label="Home" />
                 <Tab label="Journal" />
                 <Tab label="Characters" />
-                <Tab label="Wiki" />
                 <Tab label="Maps" />
                 <Tab label="Calendar" />
               </Tabs>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect } from 'react-router'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
@@ -7,11 +8,10 @@ import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 
 import CampaignTabBar from './TabBar'
-import Description from './Description'
 import Journal from 'apps/journal/components/web'
 import Characters from 'apps/characters/components/web/'
-import Wiki from 'apps/wiki/components/web/'
 import Maps from 'apps/maps/components/web/'
+import Wiki from 'apps/wiki/components/web/'
 import Calendar from 'apps/calendar/components/web/'
 
 import Loading from 'apps/toolkit/Loading'
@@ -39,7 +39,7 @@ class Campaign extends React.Component {
     }
 
     componentDidUpdate(props){
-        if (this.props.campaign == null && this.props.user.campaigns.length > 0){
+        if (this.props.campaign == null && this.props.user !=null && this.props.user.campaigns.length > 0){
             this.props.getCampaign({
                 id: this.props.user.campaigns[0].id
             })
@@ -55,12 +55,13 @@ class Campaign extends React.Component {
         const user = this.props.user
         const campaign = this.props.campaign
         const is_owner = checkOwner(user, campaign)
+        const loading = false
         if (campaign){
             return(
                 <Grid>
                     <CampaignTabBar handleTabChange={this.handleTabChange} index={index}/>
                     {index === 0 &&
-                        <Description
+                        <Wiki
                             campaign={campaign}
                             is_owner={is_owner} />}
                     {index === 1 &&
@@ -72,22 +73,26 @@ class Campaign extends React.Component {
                             characters={campaign.characters}
                             is_owner={is_owner} />}
                     {index === 3 &&
-                        <Wiki
-                            wiki={campaign.wiki}
-                            is_owner={is_owner} />}
-                    {index === 4 &&
                         <Maps
                             maps={campaign.maps}
                             is_owner={is_owner} />}
-                    {index === 5 &&
+                    {index === 4 &&
                         <Calendar
                             calendar={campaign.calendar}
                             is_owner={is_owner} />}
                 </Grid>
             )
-        }else{
+        }else if (loading || this.props.match.params.id){
             return(
                 <Loading />
+            )
+        }else if (user){
+            return (
+                <h1>Create</h1>
+            )
+        }else{
+            return(
+                <Redirect to="/" />
             )
         }
     }

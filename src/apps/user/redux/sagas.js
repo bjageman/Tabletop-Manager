@@ -10,8 +10,7 @@ export function* registerUser(action) {
       let url = 'users'
       const response = yield call(postDataApi, url, data);
       if (verifyData(response)) {
-          console.log("Successful Registration!")
-          yield put(actions.success(response.data))
+          yield put(actions.success({"message" : payload.username + " was registered! Please Login"}))
         }else{
           var error = response.data.error
           console.log(error)
@@ -30,16 +29,11 @@ export function* loginUser(action) {
       let url = 'users/login'
       const response = yield call(postDataApi, url, data);
       if (verifyData(response)) {
-          console.log("Successful Login!")
           yield put(actions.loginSuccess({ "data": response.data }))
         }else{
-          console.log(response)
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ "message": error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error)
-        yield put(actions.error({ "message": "Network connectivity error" }))
+        yield put(actions.error({ message: "Network Connectivity Error" }))
       }
 }

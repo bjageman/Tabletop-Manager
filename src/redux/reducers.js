@@ -14,7 +14,6 @@ const initial = {
   response: {
     success: null,
     error: null,
-    campaign: null,
   },
 };
 
@@ -23,8 +22,11 @@ export const response = createReducer({
     return { success: payload.message };
   },
   [actions.error]: (state, payload) => {
-    return { error: payload.message };
-}
+    return { error: payload.message || "Unknown Error" };
+  },
+  [actions.clear]: (state, payload) => {
+    return { error: null, success: null };
+  }
 }, initial.response);
 
 

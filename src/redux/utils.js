@@ -1,4 +1,4 @@
-import * as actionCreators from './actions';
+import * as actions from 'redux/actions';
 import { bindActionCreators } from 'redux';
 
 export function mapStateToProps(state) {
@@ -6,14 +6,11 @@ export function mapStateToProps(state) {
     campaign: state.campaign,
     user: state.user && state.user.id ? state.user : null,
     journal: state.journal,
-  }
-  if (state.response.error != null){
-      alert(state.response.error)
-      state.response.error = null
+    response: state.response,
   }
   return props
 }
 
 export function mapDispatchToProps (dispatch) {
-  return bindActionCreators(actionCreators, dispatch);
+  return bindActionCreators(actions, dispatch);
 }

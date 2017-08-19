@@ -26,6 +26,7 @@ class AccountMenu extends React.Component {
 
     handleLogOut = () => {
         this.props.logout()
+        this.props.logOutCampaign()
         this.setState({ open: false });
     };
 

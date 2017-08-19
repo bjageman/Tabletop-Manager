@@ -9,3 +9,4 @@ export * from 'apps/user/redux/actions';
 
 export const success = createAction('received a success message from the server')
 export const error = createAction('received an error message from the server')
+export const clear = createAction('Clear the error/success message')
