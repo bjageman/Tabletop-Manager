@@ -34,7 +34,9 @@ class CreateDialogEvent extends React.Component {
     }
 
     handleUpload() {
+        console.log(this.props.user.access_token)
         this.props.saveMap({
+            access_token: this.props.user.access_token,
             name: this.state.name,
             author_id: this.props.user.id,
             campaign_id: this.props.campaign.id,

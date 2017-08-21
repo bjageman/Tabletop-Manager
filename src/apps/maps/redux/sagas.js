@@ -6,7 +6,6 @@ export function* getMaps(action) {
     try{
       let payload = action.payload
       let url = 'campaign/' + payload.id + "/maps"
-      console.log(url)
       const response = yield call(getDataApi, url);
       if (verifyData(response)) {
           yield put(actions.mapSuccess({ entries: response.data }))
@@ -29,8 +28,8 @@ export function* saveMap(action) {
       let data = payload.file
       data.append('author_id', payload.author_id)
       data.append('name', payload.name)
-      console.log(data)
-      const response = yield call(postDataApi, url, data);
+      console.log("ACCESS TOKEN: " + payload.access_token)
+      const response = yield call(postDataApi, url, data, payload.access_token);
       if (verifyData(response)) {
           yield put(actions.getMaps({id: payload.campaign_id}))
         }else{

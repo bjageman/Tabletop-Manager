@@ -7,6 +7,7 @@ import Grid from 'material-ui/Grid';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Divider from 'material-ui/Divider';
 
+import Loading from 'apps/toolkit/Loading'
 import Read from './Read/'
 import Search from './Read/Search'
 import Create from './Create/'
@@ -22,6 +23,8 @@ class CampaignCalendar extends Component {
         const classes = this.props.classes
         const calendar = this.props.calendar
         return (
+        <div>
+          { calendar && calendar.fetching ? <Loading /> : null }
           <div className={classes.container} >
           <Grid>
             <Grid item xs={12} >
@@ -40,6 +43,7 @@ class CampaignCalendar extends Component {
               </Grid>
             </Grid>
           </div>
+      </div>
         );
     }
 }

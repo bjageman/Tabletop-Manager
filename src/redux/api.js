@@ -19,6 +19,17 @@ export function verifyData(response){
   }
 }
 
+export function postAuthData(loginData) {
+    return axios.post(myConfig.API_URL + "/auth", loginData, {'Content-Type': 'application/json'})
+    .then(function (response) {
+    ***REMOVED***;
+    })
+    .catch(function (error) {
+        console.log(error);
+        return error.response
+    });
+}
+
 export function postDataApi(url, postData, token = null) {
     if (token){
         axiosRequest.defaults.headers.common['Authorization'] = 'JWT ' + token;

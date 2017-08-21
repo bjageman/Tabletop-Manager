@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 export function mapStateToProps(state) {
   const props = {
     campaign: state.campaign,
-    user: state.user && state.user.id ? state.user : null,
+    user: state.user,
     journal: state.journal,
     characters: state.characters,
     maps: state.maps,
