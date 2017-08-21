@@ -6,6 +6,9 @@ export function mapStateToProps(state) {
     campaign: state.campaign,
     user: state.user && state.user.id ? state.user : null,
     journal: state.journal,
+    characters: state.characters,
+    maps: state.maps,
+    calendar: state.calendar,
     response: state.response,
   }
   return props

@@ -38,7 +38,7 @@ def create_entry(campaign_id):
         entry = Entry(name=name, author=author, content=content, campaign=campaign)
         db.session.add(entry)
         db.session.commit()
-        return jsonify(parse_entry(entry))
+        return jsonify(parse_entries(campaign.entries))
     else:
         abort(400)
 
@@ -83,7 +83,8 @@ def update_journal_by_id(campaign_id, entry_id):
         if content is not None:
             entry.content = content
         db.session.commit()
-        return jsonify(parse_entry(entry))
+        campaign = Campaign.query.get(campaign_id)
+        return jsonify(parse_entries(campaign.entries))
     else:
         abort(404)
 
@@ -102,7 +103,8 @@ def delete_journal_by_id(campaign_id, entry_id):
         db.session.commit()
     entry = Entry.query.get(entry_id)
     if entry is None:
-        return jsonify({"deleted": entry_id})
+        campaign = Campaign.query.get(campaign_id)
+        return jsonify(parse_entries(campaign.entries))
     else:
         message = "Entry" + name + " was not deleted"
         code = 400
