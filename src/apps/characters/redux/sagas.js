@@ -1,7 +1,25 @@
 import * as actions from 'redux/actions';
 import { put, call } from 'redux-saga/effects';
-import { postDataApi, deleteDataApi, verifyData } from 'redux/api'
+import { getDataApi, postDataApi, deleteDataApi, verifyData } from 'redux/api'
 
+export function* getCharacters(action) {
+    try{
+      let payload = action.payload
+      let url = 'campaign/' + payload.id + "/characters"
+      console.log(url)
+      const response = yield call(getDataApi, url);
+      if (verifyData(response)) {
+          yield put(actions.charactersSuccess({ entries: response.data }))
+        }else{
+          var error = response.data.error
+          console.log(error)
+          yield put(actions.error({ error }))
+        }
+      }catch(error){
+        console.log(error.message)
+        yield put(actions.error({ "error": error.message }))
+      }
+}
 
 export function* createCharacter(action) {
     try{
@@ -13,7 +31,7 @@ export function* createCharacter(action) {
       }
       const response = yield call(postDataApi, url, data);
       if (verifyData(response)) {
-          yield put(actions.getCampaign({id: payload.campaign_id}))
+          yield put(actions.getCharacters({id: payload.campaign_id}))
         }else{
           var error = response.data.error
           console.log(error)
@@ -33,7 +51,7 @@ export function* deleteCharacter(action){
       const response = yield call(deleteDataApi, url);
       if (verifyData(response)) {
           console.log("Deleted entry!")
-          yield put(actions.getCampaign({id: payload.campaign_id}))
+          yield put(actions.getCharacters({id: payload.campaign_id}))
         }else{
           var error = response.data.error
           console.log(error)

@@ -1,8 +1,6 @@
 import { createReducer } from 'redux-act';
 import * as actions from './actions';
 
-import data from '../mock-data/blog.json'
-
 const initial = {
   journal: {
     owner: null,
@@ -13,7 +11,10 @@ const initial = {
 
 export const journal = createReducer({
   [actions.getJournal]: (state, payload) => {
-    return { journal: data[payload.journal_id], fetching:true, error: null };
+    return { id: payload.id, fetching:true, error: null };
+  },
+  [actions.journalSuccess]: (state, payload) => {
+    return { entries: payload.entries, fetching:false, error: null };
   },
   [actions.saveJournalEntry]: (state, payload) => {
     return {

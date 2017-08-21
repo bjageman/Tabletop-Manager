@@ -4,6 +4,7 @@ import Card, { CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 
 import Dialog from './Dialog'
+import Delete from '../Delete/'
 
 class CampaignMapCard extends Component {
   constructor(props){
@@ -21,12 +22,12 @@ class CampaignMapCard extends Component {
     const {classes, map } = this.props
     return (
         <div>
-        <Card onClick={() => this.setState({ open: true })} key={this.props.key} className={classes.mapContainer}>
+        <Card key={this.props.key} className={classes.mapContainer}>
             <Typography type="body1" className={classes.title}>
-            {map.name}
+            {map.name} <Delete map={map} />
           </Typography>
             <CardMedia >
-              <img className={classes.map} src={map.image} alt={map.name} />
+              <img onClick={() => this.setState({ open: true })} className={classes.map} src={map.image} alt={map.name} />
             </CardMedia>
         </Card>
         <Dialog

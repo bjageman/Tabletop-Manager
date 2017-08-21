@@ -66,19 +66,19 @@ class Campaign extends React.Component {
                             is_owner={is_owner} />}
                     {index === 1 &&
                         <Journal
-                            journal={campaign.journal}
+                            campaign={campaign}
                             is_owner={is_owner} />}
                     {index === 2 &&
                         <Characters
-                            characters={campaign.characters}
+                            campaign={campaign}
                             is_owner={is_owner} />}
                     {index === 3 &&
                         <Maps
-                            maps={campaign.maps}
+                            campaign={campaign}
                             is_owner={is_owner} />}
                     {index === 4 &&
                         <Calendar
-                            calendar={campaign.calendar}
+                            campaign={campaign}
                             is_owner={is_owner} />}
                 </Grid>
             )
