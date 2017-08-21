@@ -1,6 +1,7 @@
 import os, sys
 from flask_socketio import SocketIO, emit, disconnect
 from flask import Flask, request, jsonify, abort
+from flask_jwt import jwt
 
 from v1.apps.campaign import campaign
 #Models
@@ -20,17 +21,48 @@ from v1.apps.utils import *
 
 map_base_url = '/<int:campaign_id>/maps'
 
+### Move Elsewhere
+def decode_auth_token(auth_token):
+    """
+    Decodes the auth token
+    :param auth_token:
+    :return: integer|string
+    """
+    try:
+        payload = jwt.decode(auth_token, app.config.get('SECRET_KEY'))
+        return payload
+    except jwt.ExpiredSignatureError:
+        return 'Signature expired. Please log in again.'
+    except jwt.InvalidTokenError:
+        return 'Invalid token. Please log in again.'
+
+def verify_auth(request):
+    auth_header = request.headers.get('Authorization')
+    if auth_header:
+        auth_token = auth_header.split(" ")[1]
+    else:
+        auth_token = ''
+    if auth_token:
+        result = decode_auth_token(auth_token)
+        user = User.query.get(result['identity'])
+        if user is not None:
+            return user
+    return None
+
 #Create
 
-@campaign.route(map_base_url, methods=['POST'])
+@campaign.route('/<int:campaign_id>/maps', methods=['POST'])
 def create_map(campaign_id):
+    user        = verify_auth(request)
+    campaign    = Campaign.query.get(campaign_id)
+    if user is not campaign.owner:
+        return jsonify({'error': "Invalid User"})
     if 'file' not in request.files:
         print("NO FILE")
         return jsonify({'error': "No File Given"})
     data     = request.form.to_dict()
     name       = get_required_data(data, "name")
     author_id   = get_required_data(data, "author_id")
-    campaign    = Campaign.query.get(campaign_id)
     author      = User.query.get(author_id)
     file     = request.files['file']
     file_upload_location = "campaigns/" + campaign.slug + "/maps/"
@@ -95,7 +127,8 @@ def delete_map_by_id(campaign_id, map_id):
     map = CampaignMap.query.get(map_id)
     name = map.name
     if map is not None and map.campaign.id == campaign_id:
-        delete_google_cloud_storage(map.blob_name)
+        if map.blob_name is not None:
+            delete_google_cloud_storage(map.blob_name)
         db.session.delete(map)
         db.session.commit()
     map = CampaignMap.query.get(map_id)

@@ -5,3 +5,5 @@ export const login = createAction('Login the user');
 export const loginSuccess = createAction('Login Succeeded');
 
 export const logout = createAction('Logout the user');
+
+export const getUser = createAction('Get User info')

@@ -26,6 +26,10 @@ socketio = SocketIO(app, async_mode=async_mode)
 from .users import users
 from .campaign import campaign
 
+from v1.apps.users.utils import authenticate, identity
+
+jwt = JWT(app, authenticate, identity)
+
 app.register_blueprint(users, url_prefix='/api/v1/users')
 app.register_blueprint(campaign, url_prefix='/api/v1/campaign')
 
