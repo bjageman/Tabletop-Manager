@@ -14,6 +14,8 @@ from .parsers import *
 #Error handling
 from v1.apps.errors import *
 from .errors import *
+#Auth
+from v1.apps.auth import verify_auth
 
 def get_users_player(user, game):
     for player in game.players:
@@ -48,6 +50,11 @@ def login_user():
         abort(404)
     return jsonify(parse_user_detailed(user))
 
+
+@users.route('', methods=['GET'])
+def get_user():
+    user = verify_auth(request)
+    return jsonify(parse_user_detailed(user))
 
 @users.route('', methods=['POST'])
 def register_user():
