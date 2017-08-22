@@ -8,7 +8,7 @@ from v1.apps.campaign import campaign
 
 #Models
 from .models import Character
-from v1.apps.campaign.models import Campaign
+from v1.apps.campaign.models import Campaign, request_campaign_auth
 from v1.apps.users.models import User
 
 #DB/Sockets
@@ -24,22 +24,18 @@ from v1.apps.campaign.errors import *
 #Utils
 from v1.apps.utils import *
 
+
 character_base_url = '/<int:campaign_id>/characters'
 #Create
 @campaign.route(character_base_url, methods=['POST'])
 def create_character(campaign_id):
+    user, campaign = request_campaign_auth(request, campaign_id)
     data        = request.get_json()
     name       = get_required_data(data, "name")
-    author_id   = get_required_data(data, "author_id")
-    campaign    = Campaign.query.get(campaign_id)
-    author      = User.query.get(author_id)
-    if campaign is not None and author is not None:
-        character = Character(name=name, author=author, campaign=campaign)
-        db.session.add(character)
-        db.session.commit()
-        return jsonify(parse_character(character))
-    else:
-        abort(400)
+    character = Character(name=name, author=user, campaign=campaign)
+    db.session.add(character)
+    db.session.commit()
+    return jsonify(parse_character(character))
 
 #Read
 
@@ -72,6 +68,7 @@ def get_character_by_slug(campaign_id, character_slug):
 #
 @campaign.route(character_base_url + '/<int:character_id>', methods=['POST', 'PUT'])
 def update_character_by_id(campaign_id, character_id):
+    user, campaign = request_campaign_auth(request, campaign_id)
     character = Character.query.get(character_id)
     if character is not None and character.campaign.id == campaign_id:
         data        = request.get_json()
@@ -90,7 +87,7 @@ def update_character_by_id(campaign_id, character_id):
 
 @campaign.route(character_base_url + '/<int:character_id>', methods=['DELETE'])
 def delete_character_by_id(campaign_id, character_id):
-    print("Deleting", character_id)
+    user, campaign = request_campaign_auth(request, campaign_id)
     character = Character.query.get(character_id)
     name = character.name
     if character is not None and character.campaign.id == campaign_id:

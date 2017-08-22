@@ -10,13 +10,10 @@ export function* getMaps(action) {
       if (verifyData(response)) {
           yield put(actions.mapSuccess({ entries: response.data }))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
       }
 }
 
@@ -28,20 +25,16 @@ export function* saveMap(action) {
       let data = payload.file
       data.append('author_id', payload.author_id)
       data.append('name', payload.name)
-      console.log("ACCESS TOKEN: " + payload.access_token)
       const response = yield call(postDataApi, url, data, payload.access_token);
       if (verifyData(response)) {
           yield put(actions.getMaps({id: payload.campaign_id}))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
       }
-}
+  }
 
 
 export function * deleteMap(action){
@@ -52,12 +45,9 @@ export function * deleteMap(action){
       if (verifyData(response)) {
           yield put(actions.getMaps({id: payload.campaign_id}))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
       }
 }

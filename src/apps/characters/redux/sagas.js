@@ -11,13 +11,10 @@ export function* getCharacters(action) {
       if (verifyData(response)) {
           yield put(actions.charactersSuccess({ entries: response.data }))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
       }
 }
 
@@ -29,17 +26,14 @@ export function* createCharacter(action) {
       if ( payload.character_id != null ){
           url = url + "/" + payload.character_id
       }
-      const response = yield call(postDataApi, url, data);
+      const response = yield call(postDataApi, url, data, payload.access_token);
       if (verifyData(response)) {
           yield put(actions.getCharacters({id: payload.campaign_id}))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
       }
 }
 
@@ -53,12 +47,9 @@ export function* deleteCharacter(action){
           console.log("Deleted entry!")
           yield put(actions.getCharacters({id: payload.campaign_id}))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
       }
 }

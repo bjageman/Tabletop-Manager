@@ -11,13 +11,10 @@ export function* getCalendar(action) {
       if (verifyData(response)) {
           yield put(actions.calendarSuccess({ entries: response.data }))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
       }
 }
 
@@ -31,13 +28,10 @@ export function * deleteCalendarEvent(action){
           console.log("Deleted entry!")
           yield put(actions.getCalendar({ id: payload.campaign_id }))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
       }
 }
 
@@ -54,12 +48,9 @@ export function* saveCalendarEvent(action) {
       if (verifyData(response)) {
           yield put(actions.getCalendar({ id: payload.campaign_id }))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
       }
 }

@@ -11,13 +11,10 @@ export function* getJournal(action) {
       if (verifyData(response)) {
           yield put(actions.journalSuccess({ entries: response.data }))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
       }
 }
 
@@ -30,21 +27,18 @@ export function* saveJournalEntry(action) {
       if ( payload.entry_id != null ){
           url = url + "/" + payload.entry_id
       }
-      const response = yield call(postDataApi, url, data);
+      const response = yield call(postDataApi, url, data, payload.access_token);
       if (verifyData(response)) {
           yield put(actions.getJournal({ id: payload.campaign_id }))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
       }
 }
 
-export function * deleteJournalEntry(action){
+export function* deleteJournalEntry(action){
     try{
       let payload = action.payload
       let url = 'campaign/' + payload.campaign_id + "/entry/" + payload.entry_id
@@ -53,12 +47,9 @@ export function * deleteJournalEntry(action){
       if (verifyData(response)) {
           yield put(actions.getJournal({ id: payload.campaign_id }))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
       }
 }
