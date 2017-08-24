@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'material-ui/Button';
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 
 import CreateEventDialog from './Dialog'
 
@@ -38,10 +38,10 @@ class CreateEvent extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('CreateEvent', theme => ({
+export const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
   },
-}));
+});
 
-export default withStyles(styleSheet)(CreateEvent)
+export default withStyles(styles)(CreateEvent)

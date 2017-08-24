@@ -7,7 +7,7 @@ import Dialog, {DialogContent, DialogActions} from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 
 import Editor from './Editor'
 
@@ -65,7 +65,6 @@ class CreateCharacterDialog extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('CreateCharacterDialog', {
-
+export const styles = theme => ({
 });
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(CreateCharacterDialog))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CreateCharacterDialog))

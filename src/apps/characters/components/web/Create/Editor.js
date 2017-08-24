@@ -2,7 +2,7 @@ import React from 'react'
 //Material-UI Imports
 import TextField from 'material-ui/TextField';
 
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 
 class CharacterEditor extends React.Component {
     render(){
@@ -23,8 +23,8 @@ class CharacterEditor extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('CharacterEditor', {
-    container: {
+export const styles = theme => ({
+container: {
     display: 'flex',
     flexWrap: 'wrap',
   },
@@ -33,4 +33,4 @@ const styleSheet = createStyleSheet('CharacterEditor', {
   },
 });
 
-export default withStyles(styleSheet)(CharacterEditor)
+export default withStyles(styles)(CharacterEditor)

@@ -3,7 +3,7 @@ import React from 'react'
 import Dialog, {DialogContent, DialogActions} from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 
 
 
@@ -54,8 +54,7 @@ class CharacterDeleteDialog extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('CharacterDeleteDialog', {
-
+export const styles = theme => ({
 });
 
-export default withStyles(styleSheet)(CharacterDeleteDialog)
+export default withStyles(styles)(CharacterDeleteDialog)

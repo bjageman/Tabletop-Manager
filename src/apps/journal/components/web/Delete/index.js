@@ -1,7 +1,7 @@
 import React from 'react'
 import Icon from 'material-ui/Icon'
 import IconButton from 'material-ui/IconButton';
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 
 import Dialog from './Dialog'
 
@@ -41,10 +41,10 @@ class DeleteCharacter extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('DeleteCharacter', theme => ({
+export const styles = theme => ({
   button: {
       color: "red",
   },
-}));
+});
 
-export default withStyles(styleSheet)(DeleteCharacter)
+export default withStyles(styles)(DeleteCharacter)

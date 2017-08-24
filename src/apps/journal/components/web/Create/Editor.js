@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 
 import Typography from 'material-ui/Typography'
 
@@ -15,8 +15,7 @@ const plugins = [
   linkifyPlugin,
 ];
 
-const styleSheet = createStyleSheet('EntryCreateEditor', {
-  appBar: {
+export const styles = theme => ({  appBar: {
     position: 'relative',
   },
   flex: {
@@ -60,4 +59,4 @@ class EntryCreateEditor extends React.Component {
     }
 }
 
-export default withStyles(styleSheet)(EntryCreateEditor)
+export default withStyles(styles)(EntryCreateEditor)

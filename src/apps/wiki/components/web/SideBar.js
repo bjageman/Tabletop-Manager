@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 import List, { ListItem, ListItemText, ListSubheader } from 'material-ui/List';
@@ -29,8 +29,7 @@ class CampaignWikiSideBar extends Component {
   }
 }
 
-const styleSheet = createStyleSheet('CampaignWikiSideBar', {
-  pages:{
+export const styles = theme => ({  pages:{
       paddingLeft:30,
   },
   body:{
@@ -38,4 +37,4 @@ const styleSheet = createStyleSheet('CampaignWikiSideBar', {
   }
 });
 
-export default withStyles(styleSheet)(CampaignWikiSideBar);
+export default withStyles(styles)(CampaignWikiSideBar);

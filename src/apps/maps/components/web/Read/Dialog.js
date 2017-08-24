@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Dialog, {DialogContent} from 'material-ui/Dialog'
-import { createStyleSheet, withStyles } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 class CampaignMapDialog extends React.Component {
     handleRequestClose = () => {
@@ -24,7 +24,7 @@ class CampaignMapDialog extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('CampaignMapDialog', () => ({
+export const styles = theme => ({
   dialog: {
       width: "100%"
   },
@@ -36,6 +36,6 @@ const styleSheet = createStyleSheet('CampaignMapDialog', () => ({
     paddingLeft: 50,
     marginBottom: 20,
   },
-}));
+});
 
-export default withStyles(styleSheet)(CampaignMapDialog)
+export default withStyles(styles)(CampaignMapDialog)

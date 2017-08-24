@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'material-ui/Button';
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 
 import Dialog from './Dialog'
 
@@ -40,10 +40,10 @@ class CreateCharacter extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('CreateCharacter', theme => ({
+export const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
   },
-}));
+});
 
-export default withStyles(styleSheet)(CreateCharacter)
+export default withStyles(styles)(CreateCharacter)

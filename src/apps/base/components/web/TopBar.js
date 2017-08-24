@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 //Material-UI
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
@@ -36,7 +36,7 @@ class TopBar extends React.Component {
 }
 
 
-const styleSheet = createStyleSheet('TopBar', {
+export const styles = theme => ({
   topbar: {
       backgroundColor:blue[500],
   },
@@ -46,4 +46,4 @@ const styleSheet = createStyleSheet('TopBar', {
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(TopBar));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(TopBar));

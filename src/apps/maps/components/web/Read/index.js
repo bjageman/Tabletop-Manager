@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import Card, { CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 
@@ -39,8 +39,7 @@ class CampaignMapCard extends Component {
   }
 }
 
-const styleSheet = createStyleSheet('CampaignCardMaps', {
-  mapContainer:{
+export const styles = theme => ({  mapContainer:{
       marginTop: 20,
       marginBottom: 20,
       marginLeft:20,
@@ -58,4 +57,4 @@ const styleSheet = createStyleSheet('CampaignCardMaps', {
   },
 });
 
-export default withStyles(styleSheet)(CampaignMapCard);
+export default withStyles(styles)(CampaignMapCard);

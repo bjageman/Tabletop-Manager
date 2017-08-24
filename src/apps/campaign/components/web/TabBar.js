@@ -2,7 +2,7 @@ import React from 'react'
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import { blue } from 'material-ui/colors';
 
 class CampaignTabBar extends React.Component {
@@ -27,11 +27,10 @@ class CampaignTabBar extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('CampaignTabBar', {
-  tabbar: {
+export const styles = theme => ({  tabbar: {
     color: "black",
     backgroundColor:blue[200]
   },
 });
 
-export default withStyles(styleSheet)(CampaignTabBar)
+export default withStyles(styles)(CampaignTabBar)
