@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 import Grid from 'material-ui/Grid';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import Divider from 'material-ui/Divider';
 
 import Loading from 'apps/toolkit/Loading'
@@ -48,7 +48,7 @@ class CampaignCalendar extends Component {
     }
 }
 
-const styleSheet = createStyleSheet('CampaignCalendar', {
+export const styles = theme => ({
   container:{
       marginTop: "1%",
       marginBottom: "1%",
@@ -57,4 +57,4 @@ const styleSheet = createStyleSheet('CampaignCalendar', {
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(CampaignCalendar));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CampaignCalendar));

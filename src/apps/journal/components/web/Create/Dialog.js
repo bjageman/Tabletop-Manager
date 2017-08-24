@@ -13,7 +13,7 @@ import Icon from 'material-ui/Icon';
 import Button from 'material-ui/Button';
 import Input from 'material-ui/Input/Input';
 
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 
 import { EditorState } from 'draft-js';
 import Editor from './Editor'
@@ -96,8 +96,7 @@ class EntryCreateDialog extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('EntryCreateDialog', {
-  appBar: {
+export const styles = theme => ({  appBar: {
     position: 'relative',
   },
   flex: {
@@ -110,4 +109,4 @@ const styleSheet = createStyleSheet('EntryCreateDialog', {
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(EntryCreateDialog))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(EntryCreateDialog))

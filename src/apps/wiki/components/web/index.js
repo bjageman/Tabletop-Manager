@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 
 import Create from './Create/'
@@ -25,8 +25,7 @@ class CampaignWiki extends Component {
   }
 }
 
-const styleSheet = createStyleSheet('CampaignWiki', {
-  container:{
+export const styles = theme => ({  container:{
       marginTop: "2%",
       marginBottom: "1%",
       marginLeft:"5%",
@@ -37,4 +36,4 @@ const styleSheet = createStyleSheet('CampaignWiki', {
   }
 });
 
-export default withStyles(styleSheet)(CampaignWiki);
+export default withStyles(styles)(CampaignWiki);

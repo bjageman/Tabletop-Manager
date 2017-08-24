@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //material-ui
 import Grid from 'material-ui/Grid';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 import Loading from 'apps/toolkit/Loading'
 import Read from './Read/.'
@@ -38,7 +38,7 @@ class CampaignMaps extends Component {
   }
 }
 
-const styleSheet = createStyleSheet('CampaignMaps', {
+export const styles = theme => ({
   container:{
       marginTop: "1%",
       marginBottom: "1%",
@@ -47,4 +47,4 @@ const styleSheet = createStyleSheet('CampaignMaps', {
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(CampaignMaps));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CampaignMaps));

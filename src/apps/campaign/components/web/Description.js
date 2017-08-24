@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid'
 import Typography from 'material-ui/Typography';
 
@@ -40,8 +40,7 @@ class CampaignDescription extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('CampaignDescription', {
-  container: {
+export const styles = theme => ({  container: {
 
   },
   card: {
@@ -61,4 +60,4 @@ const styleSheet = createStyleSheet('CampaignDescription', {
   }
 });
 
-export default withStyles(styleSheet)(CampaignDescription)
+export default withStyles(styles)(CampaignDescription)

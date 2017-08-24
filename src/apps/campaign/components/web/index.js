@@ -4,7 +4,7 @@ import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //material-ui
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 
 import CampaignTabBar from './TabBar'
@@ -98,7 +98,7 @@ class Campaign extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('Campaign', {
+export const styles = theme => ({
   container: {
     paddingTop: 20,
     paddingLeft: 20,
@@ -111,4 +111,4 @@ const styleSheet = createStyleSheet('Campaign', {
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(Campaign));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Campaign));

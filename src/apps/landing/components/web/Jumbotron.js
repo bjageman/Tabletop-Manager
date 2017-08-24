@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Grid from 'material-ui/Grid'
+import { GridList, GridListTile, GridListTileBar } from 'material-ui/GridList';
 import Typography from 'material-ui/Typography'
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 import dmScreen from './img/dmscreen.jpg'
 
-const styleSheet = createStyleSheet('Jumbotron', theme => ({
+export const styles = theme => ({
   root: {
     flexGrow: 1,
     marginTop: 30,
@@ -28,24 +28,19 @@ const styleSheet = createStyleSheet('Jumbotron', theme => ({
       color: "white",
 
   }
-}));
+});
 
 class Jumbotron extends Component {
     render(){
         const { title, subtitle, classes } = this.props
         return(
-        <Grid>
-            <Grid item xs={12} className={classes.headline}>
-                <Typography type="headline" className={classes.headlineText}>
-                    {title}
-                </Typography>
-                <Typography type="subheading" className={classes.subHeadlineText}>
-                    {subtitle}
-                </Typography>
-            </Grid>
-        </Grid>
+        <GridList cellHeight={160} cols={3}>
+              <GridListTile key={1} cols={1}>
+                <img src="http://s3images.coroflot.com/user_files/individual_files/original_328353_716xm30Yu9jZsTHSqrUxFIPkU.jpg" alt="waterdeep" />
+              </GridListTile>
+          </GridList>
         )
     }
 }
 
-export default withStyles(styleSheet)(Jumbotron)
+export default withStyles(styles)(Jumbotron)

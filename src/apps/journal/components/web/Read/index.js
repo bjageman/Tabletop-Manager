@@ -5,7 +5,7 @@ import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
 import Avatar from 'material-ui/Avatar';
 import Icon from 'material-ui/Icon';
-import { createStyleSheet, withStyles } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 import Dialog from './Dialog'
 import Delete from '../Delete/'
@@ -66,7 +66,7 @@ class JournalEntry extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet("JournalEntry", () => ({
+export const styles = theme => ({
   card: {
       marginTop: 20,
       marginBottom: 20,
@@ -77,6 +77,6 @@ const styleSheet = createStyleSheet("JournalEntry", () => ({
     textDecoration: 'none',
     cursor: 'pointer'
   },
-}));
+});
 
-export default withStyles(styleSheet)(JournalEntry)
+export default withStyles(styles)(JournalEntry)

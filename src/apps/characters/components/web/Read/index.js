@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 
@@ -40,7 +40,7 @@ class CharacterEntry extends React.Component {
 }
 
 
-const styleSheet = createStyleSheet('CharacterEntry', {
+export const styles = theme => ({
   card: {
     marginTop: 20,
     marginBottom: 20,
@@ -65,4 +65,4 @@ const styleSheet = createStyleSheet('CharacterEntry', {
 },
 });
 
-export default withStyles(styleSheet)(CharacterEntry)
+export default withStyles(styles)(CharacterEntry)

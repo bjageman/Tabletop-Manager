@@ -1,7 +1,7 @@
 import React from 'react'
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 class UserProfileTabs extends React.Component {
     state = {
@@ -28,8 +28,7 @@ class UserProfileTabs extends React.Component {
         )
     }
 }
-const styleSheet = createStyleSheet('UserProfileTabs', {
-
+export const styles = theme => ({
 });
 
-export default withStyles(styleSheet)(UserProfileTabs)
+export default withStyles(styles)(UserProfileTabs)

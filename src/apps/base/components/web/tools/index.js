@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 //Material-UI
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 import AccountMenu from './AccountMenu'
 
@@ -21,11 +21,11 @@ class ToolBarTools extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('ToolBarTools', {
+export const styles = theme => ({
   flex: {
     flex: 1,
   },
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(ToolBarTools));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ToolBarTools));

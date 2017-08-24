@@ -2,9 +2,9 @@ import React from 'react'
 import Grid from 'material-ui/Grid'
 import Typography from 'material-ui/Typography'
 import Icon from 'material-ui/Icon';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
-const styleSheet = createStyleSheet('Footer', theme => ({
+export const styles = theme => ({
   footer: {
     textAlign: 'center',
     height: 100,
@@ -14,7 +14,7 @@ const styleSheet = createStyleSheet('Footer', theme => ({
   footerText: {
       paddingTop: "5%",
   }
-}));
+});
 
 class Footer extends React.Component {
     render(){
@@ -31,4 +31,4 @@ class Footer extends React.Component {
     }
 }
 
-export default withStyles(styleSheet)(Footer);
+export default withStyles(styles)(Footer);

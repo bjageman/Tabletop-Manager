@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 import TopBar from './TopBar'
 import SideBar from './SideBar'
@@ -29,7 +29,7 @@ class Navigation extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('Navigation', {
+export const styles = theme => ({
   root: {
     width: '100%',
     },
@@ -45,4 +45,4 @@ const styleSheet = createStyleSheet('Navigation', {
   }
 });
 
-export default withStyles(styleSheet)(Navigation)
+export default withStyles(styles)(Navigation)
