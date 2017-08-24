@@ -14,6 +14,7 @@ import UserProfile from './user/components/web/profile/'
 
 import LandingPage from './landing/components/web/'
 import Campaign from './campaign/components/web/'
+import CampaignListing from './campaign/components/web/listing/'
 import Maps from './maps/components/web/'
 
 import Notifications from './toolkit/notifications/'
@@ -35,7 +36,7 @@ class WebApp extends Component {
               <Route exact path="/" component={LandingPage}/>
               <Route exact path="/profile" component={UserProfile}/>
               <Route exact path="/profile/:userId" component={UserProfile}/>
-              <Route exact path="/campaign" component={Campaign}/>
+              <Route exact path="/campaign" component={CampaignListing}/>
               <Route path="/campaign/:id" component={Campaign}/>
               <Route path="/maps" component={Maps}/>
               <Route component={NotFound} />

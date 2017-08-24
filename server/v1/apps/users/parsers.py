@@ -21,6 +21,7 @@ def parse_user_detailed(user):
         result.update({
             "campaigns": parse_user_campaigns(user.campaigns)
         })
+        print(result)
         return result
     except AttributeError:
         return None
@@ -31,6 +32,8 @@ def parse_user_campaign(campaign):
             "id": campaign.id,
             "name": campaign.name,
             "slug": campaign.slug,
+            "image": campaign.header_image,
+            "owner": campaign.owner.username,
         })
     except AttributeError:
         return None
