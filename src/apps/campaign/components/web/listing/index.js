@@ -11,15 +11,38 @@ import Loading from 'apps/toolkit/Loading'
 
 import InvisibleLink from 'apps/toolkit/InvisibleLink'
 
+const defaultImage = "https://bravenewdungeon.files.wordpress.com/2013/08/ph-barroom-brawl.jpeg"
+
 class CampaignListing extends React.Component {
     render(){
         const user = this.props.user
         const loading = false
         if (user){
             return(
-                <div>
-                    <GridList></GridList>
-                </div>
+                <GridList>
+                    <GridListTile>
+                        <h1>Create Template</h1>
+                    </GridListTile>
+                    {user.campaigns ? user.campaigns.map((campaign, i) => (
+
+                        <GridListTile key={campaign.id}>
+                            <img src={campaign.image || defaultImage} alt={campaign.name} />
+                            <InvisibleLink to={"/campaign/" + campaign.slug}>
+
+                            <GridListTileBar
+                                title={campaign.name}
+                                subtitle={
+                                    <span>
+                                        by: {campaign.owner}
+                                    </span>
+                                }
+                            />
+                            </InvisibleLink>
+                        </GridListTile>
+
+                    )): null }
+
+                </GridList>
             )
         }else if (loading || this.props.match.params.id){
             return(
