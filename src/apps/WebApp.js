@@ -7,7 +7,6 @@ import {
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from '../redux/utils'
 
-import Navigation from './base/components/web/Navigation'
 import Footer from './base/components/web/Footer'
 
 import UserProfile from './user/components/web/profile/'
@@ -31,7 +30,6 @@ class WebApp extends Component {
       <Router>
         <div className="app">
           <Notifications />
-          <Navigation />
           <Switch>
               <Route exact path="/" component={LandingPage}/>
               <Route exact path="/profile" component={UserProfile}/>

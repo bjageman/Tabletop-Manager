@@ -2,12 +2,7 @@ import { createReducer } from 'redux-act';
 import * as actions from './actions';
 
 const initial = {
-  user: {
-    access_token: null,
-    username: null,
-    campaigns: [],
-    error: null,
-  },
+  user: null
 };
 
 export const user = createReducer({

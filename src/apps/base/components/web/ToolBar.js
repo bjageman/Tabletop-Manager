@@ -7,27 +7,27 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button'
 import { blue } from 'material-ui/colors';
 
 import Login from 'apps/user/components/web/login/index'
-import InvisibleLink from 'apps/toolkit/InvisibleLink'
-import Tools from './tools/'
+import Tools from 'apps/user/components/web/tools/'
+import HomeButton from './buttons/Home'
+
+import CampaignTabs from 'apps/campaign/components/web/toolbar/Tabs'
 
 import myConfig from 'config.js';
 
-class TopBar extends React.Component {
+class ToolBar extends React.Component {
     render(){
         const brandName = "RPG Manager"
         const classes = this.props.classes
         const user = this.props.user
-        //const user = data[0].owner
         return(
             <AppBar className={classes.topbar} position="static">
                 <Toolbar>
-                  <Typography type="title" color="inherit" className={classes.flex}>
-                    <InvisibleLink to="/">{brandName} - {myConfig.VERSION}</InvisibleLink>
-                  </Typography>
+                  <HomeButton tabs={this.props.tabs} name={brandName}  />
+                  { this.props.tabs ? <CampaignTabs /> : null }
                   { user ? <Tools /> : <Login color="contrast"/> }
                 </Toolbar>
             </AppBar>
@@ -46,4 +46,4 @@ export const styles = theme => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(TopBar));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ToolBar));

@@ -6,6 +6,9 @@ const initial = {
 };
 
 export const campaign = createReducer({
+  [actions.changeCampaignTab]: (state, payload) => {
+     return { ...state, index: payload.index }
+  },
   [actions.updateCampaign]: (state, payload) => {
     return {
         id: payload.id,

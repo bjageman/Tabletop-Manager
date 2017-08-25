@@ -16,10 +16,6 @@ class CharacterDeleteDialog extends React.Component {
         this.handleDelete = this.handleDelete.bind(this)
     }
 
-    onChange = (editorState) => {
-        console.log("Text Change")
-    };
-
     handleInputChange = (event) => {
         console.log(event.target.value)
         this.setState({
