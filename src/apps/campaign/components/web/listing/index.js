@@ -6,9 +6,11 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //material-ui
 import { withStyles } from 'material-ui/styles';
 import { GridList, GridListTile, GridListTileBar } from 'material-ui/GridList';
+import Subheader from 'material-ui/List/ListSubheader';
 
+import ToolBar from 'apps/base/components/web/ToolBar'
+import CampaignListingToolBar from './ToolBar'
 import Loading from 'apps/toolkit/Loading'
-
 import InvisibleLink from 'apps/toolkit/InvisibleLink'
 
 const defaultImage = "https://bravenewdungeon.files.wordpress.com/2013/08/ph-barroom-brawl.jpeg"
@@ -17,15 +19,17 @@ class CampaignListing extends React.Component {
     render(){
         const user = this.props.user
         const loading = false
+        const classes = this.props.classes
         if (user){
             return(
-                <GridList>
-                    <GridListTile>
-                        <h1>Create Template</h1>
+                <div>
+                <ToolBar />
+                <GridList cellHeight={180} >
+                    <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+                        <CampaignListingToolBar />
                     </GridListTile>
                     {user.campaigns ? user.campaigns.map((campaign, i) => (
-
-                        <GridListTile key={campaign.id}>
+                        <GridListTile key={campaign.id} className={classes.gridListTile}>
                             <img src={campaign.image || defaultImage} alt={campaign.name} />
                             <InvisibleLink to={"/campaign/" + campaign.slug}>
 
@@ -43,14 +47,11 @@ class CampaignListing extends React.Component {
                     )): null }
 
                 </GridList>
+            </div>
             )
-        }else if (loading || this.props.match.params.id){
+        }else if (loading){
             return(
                 <Loading />
-            )
-        }else if (user){
-            return (
-                <h1>Create</h1>
             )
         }else{
             return(
@@ -60,10 +61,19 @@ class CampaignListing extends React.Component {
     }
 }
 
-export const styles = theme => ({  container: {
-    paddingTop: 20,
-    paddingLeft: 20,
-  },
+export const styles = theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    background: theme.palette.background.paper,
+},
+  gridListTile: {
+    minWidth: 320,
+    display: 'flex',
+    flexWrap: 'wrap',
+},
   imageContainer: {
     flex: 1,
     flexDirection: 'column',

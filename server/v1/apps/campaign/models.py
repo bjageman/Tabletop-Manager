@@ -6,7 +6,7 @@ from v1.apps.models import *
 class Campaign(Base, TimestampMixin):
     owner_id = db.Column(db.ForeignKey('user.id'), index=True)
     owner = db.relationship('User', backref='campaigns')
-    header_image = db.Column(db.String(256))
+    header_image = db.Column(db.String(256), default="https://storage.googleapis.com/tabletop-storage/campaigns/default/header.jpeg")
     journal_entries = db.relationship('Entry', cascade='all,delete', backref='journal_entries')
     characters = db.relationship('Character', cascade='all,delete', backref='characters')
     calendar = db.relationship('Calendar', cascade='all,delete', backref='calendar')
