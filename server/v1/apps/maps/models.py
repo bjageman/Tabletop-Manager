@@ -6,8 +6,8 @@ class CampaignMap(Base, TimestampMixin):
     campaign = db.relationship('Campaign', backref='campaign_maps')
     campaign_id = db.Column(db.ForeignKey('campaign.id'), index=True)
     markers = db.relationship('MapMarker', cascade='all,delete', backref='markers')
-    image = db.Column(db.String(256))
-    blob_name = db.Column(db.String(256))
+    image_id = db.Column(db.Integer, db.ForeignKey('image.id'))
+    image = db.relationship("Image")
 
 class MapMarker(Base, TimestampMixin):
     campaign_map = db.relationship('CampaignMap', backref='map')

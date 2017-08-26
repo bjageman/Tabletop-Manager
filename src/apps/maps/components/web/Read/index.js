@@ -22,8 +22,8 @@ class CampaignMapCard extends Component {
     const {classes, map } = this.props
     return (
         <div>
-        <GridListTile key={this.props.key} className={classes.mapContainer}>
-            <img onClick={() => this.setState({ open: true })} className={classes.map} src={map.image} alt={map.name} />
+        <GridListTile key={this.props.key} className={classes.container}>
+            <img onClick={() => this.setState({ open: true })} className={classes.map} src={map.image.url} alt={map.name} />
             <GridListTileBar
                 className={classes.tilebar}
                 title={map.name}
@@ -42,9 +42,13 @@ class CampaignMapCard extends Component {
 }
 
 export const styles = theme => ({
-    mapContainer:{
-      margin: "2%",
-      maxWidth: 300,
+    container:{
+    maxWidth:500,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    background: theme.palette.background.paper,
   },
   tilebar: {
     textAlign: "center",

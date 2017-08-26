@@ -4,7 +4,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import Divider from 'material-ui/Divider'
+import { GridList } from 'material-ui/GridList';
 import Loading from 'apps/toolkit/Loading'
 
 import Read from './Read/'
@@ -23,12 +23,11 @@ class CampaignCharacters extends React.Component {
             <div id="campaign-characters">
                 { characters && characters.fetching ? <Loading /> : null }
                 { this.props.is_owner ? <Create /> : null }
-                { characters.entries && characters.entries.map((character, i) => (
-                    <div className="character-card" key={i}>
+                <GridList cellHeight={180}>
+                    { characters.entries && characters.entries.map((character, i) => (
                         <Read character={character} />
-                        <Divider />
-                    </div>
-                ))}
+                    ))}
+                </GridList>
             </div>
         )
 

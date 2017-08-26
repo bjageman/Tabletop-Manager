@@ -17,7 +17,7 @@ class CampaignMapDialog extends React.Component {
                 open={this.props.open}
                 onRequestClose={this.handleRequestClose} >
                 <DialogContent className={classes.content}>
-                    <img className={classes.map} src={map.image} alt={map.name} />
+                    <img className={classes.map} src={map.image.url} alt={map.name} />
                 </DialogContent>
             </Dialog>
         )
