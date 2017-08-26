@@ -12,7 +12,9 @@ import Button from 'material-ui/Button';
 
 import { withStyles } from 'material-ui/styles';
 
+import { stateToHTML } from 'draft-js-export-html';
 import { EditorState } from 'draft-js';
+
 import Editor from 'apps/toolkit/editor/'
 
 class EntryCreateDialog extends React.Component {
@@ -29,7 +31,7 @@ class EntryCreateDialog extends React.Component {
     onChange = (editorState) => {
         this.setState({
             editorState,
-            content: editorState.getCurrentContent().getPlainText(" "),
+            content: stateToHTML(editorState.getCurrentContent()),
         });
     };
 

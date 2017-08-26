@@ -6,6 +6,7 @@
     "axios": "^0.16.2",
     "babel-plugin-transform-react-jsx-img-import": "^0.1.4",
     "draft-js": "^0.10.1",
+    "draft-js-export-html": "^0.6.0",
     "draft-js-hashtag-plugin": "beta",
     "draft-js-inline-toolbar-plugin": "beta",
     "draft-js-linkify-plugin": "^2.0.0-beta1",
@@ -29,6 +30,7 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^4.8.3",
     "redux-saga": "^0.15.4",
+    "sanitize-html": "^1.14.1",
     "socket.io-client": "^2.0.3",
     "typeface-roboto": "^0.0.35"
   },

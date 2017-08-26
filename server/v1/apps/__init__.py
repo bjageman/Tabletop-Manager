@@ -28,6 +28,7 @@ from .campaign import campaign
 
 from v1.apps.users.utils import authenticate, identity
 
+app.config['JWT_EXPIRATION_DELTA'] = timedelta(30000)
 jwt = JWT(app, authenticate, identity)
 
 app.register_blueprint(users, url_prefix='/api/v1/users')
