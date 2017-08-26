@@ -4,6 +4,7 @@ from flask import request, jsonify, abort
 from v1.apps import db
 from v1.apps.campaign import campaign
 #Models
+from v1.apps.models import Image
 from .models import CampaignMap
 from v1.apps.campaign.models import Campaign, request_campaign_auth
 from v1.apps.users.models import User
@@ -33,7 +34,8 @@ def create_map(campaign_id):
     file_upload_location = "campaigns/" + campaign.slug + "/maps/"
     file_results = upload_google_cloud_storage(file, file_upload_location)
     if campaign is not None and author is not None:
-        map = CampaignMap(name=name, author=author, campaign=campaign, image=file_results['url'], blob_name=file_results['blob_name'])
+        image = Image(url=file_results['url'], blob=file_results['blob_name'])
+        map = CampaignMap(name=name, author=author, campaign=campaign, image=image)
         db.session.add(map)
         db.session.commit()
         return jsonify(parse_map(map))

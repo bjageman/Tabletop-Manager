@@ -43,7 +43,7 @@ def create_journal_entry(name, content, author, campaign):
     return entry
 
 def create_character(name, image, author, campaign):
-    character = Character(name=name, image=image, author=author, campaign=campaign)
+    character = Character(name=name, author=author, campaign=campaign)
     db.session.add(character)
     db.session.commit()
     return character
@@ -74,8 +74,8 @@ if __name__ == '__main__':
         #Campaign
         campaign_object = create_campaign(campaign['name'], campaign['header_image'], owner)
         #Maps
-        for campaignMap in campaign['maps']:
-            create_map(campaignMap['name'], campaignMap['image'], campaign_object, campaignMap['markers'])
+        # for campaignMap in campaign['maps']:
+        #     create_map(campaignMap['name'], campaignMap['image'], campaign_object, campaignMap['markers'])
         #Journal entries
         for entry in campaign['journal']['entries']:
             author = User.query.get(entry['author']['id'])

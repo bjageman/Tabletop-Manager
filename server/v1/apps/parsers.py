@@ -9,3 +9,14 @@ def parse_base(model):
         })
     except AttributeError:
         return None
+
+def parse_image(image):
+    try:
+        result = parse_base(image)
+        result.update({
+            "url": image.url,
+            "blob": image.blob,
+        })
+        return result
+    except AttributeError:
+        return None

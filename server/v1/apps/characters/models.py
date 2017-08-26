@@ -8,4 +8,5 @@ class Character(Base, TimestampMixin):
     author = db.relationship('User', backref='user_characters')
     campaign = db.relationship('Campaign', backref='campaign_characters')
     campaign_id = db.Column(db.ForeignKey('campaign.id'), index=True)
-    image = db.Column(db.String(256))
+    image_id = db.Column(db.Integer, db.ForeignKey('image.id'))
+    image = db.relationship("Image")
