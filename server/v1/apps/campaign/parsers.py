@@ -6,6 +6,12 @@ from v1.apps.wiki.parsers import *
 from v1.apps.calendar.parsers import *
 from v1.apps.parsers import parse_base
 
+def parse_campaigns(campaigns):
+    campaign_set = []
+    for campaign in campaigns:
+        campaign_set.append(parse_campaign(campaign))
+    return(campaign_set)
+
 def parse_campaign(campaign):
     try:
         result = parse_base(campaign)

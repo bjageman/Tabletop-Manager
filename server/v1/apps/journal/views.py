@@ -19,7 +19,7 @@ from v1.apps.campaign.errors import *
 #Utils
 from v1.apps.utils import check_for_invalid_data, get_optional_data, get_required_data
 
-entry_base_url = '/<int:campaign_id>/entry'
+entry_base_url = '/<int:campaign_id>/journal'
 #Create
 @campaign.route(entry_base_url, methods=['POST'])
 def create_entry(campaign_id):
@@ -42,17 +42,14 @@ def get_entries(campaign_id):
     else:
         abort(404)
 
-@campaign.route(entry_base_url + '/<int:entry_id>', methods=['GET'])
-def get_entry_by_id(campaign_id, entry_id):
-    entry = Entry.query.filter(Entry.id == entry_id).first()
-    if entry is not None:
-        return jsonify(parse_entry(entry))
-    else:
-        abort(404)
-
-@campaign.route(entry_base_url + '/<string:entry_slug>', methods=['GET'])
-def get_entry_by_slug(campaign_id, entry_slug):
-    entry = Entry.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Entry.slug == entry_slug).first()
+@campaign.route(entry_base_url + '/<entry_id>', methods=['GET'])
+def get_entry(campaign_id, entry_id):
+    print(entry_id)
+    try:
+        entry_id = int(entry_id)
+        entry = Entry.query.filter(Entry.id == entry_id).first()
+    except ValueError:
+        entry = Entry.query.filter(Entry.slug == entry_id).first()
     if entry is not None:
         return jsonify(parse_entry(entry))
     else:
