@@ -1,5 +1,4 @@
 import React from 'react'
-import AppBar from 'material-ui/AppBar';
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
@@ -8,7 +7,6 @@ import  store  from 'redux/store'
 //material-ui
 import Tabs, { Tab } from 'material-ui/Tabs';
 import { withStyles } from 'material-ui/styles';
-import { blue } from 'material-ui/colors';
 
 const tabs = ['journal', 'characters', 'maps', 'calendar']
 
@@ -28,7 +26,6 @@ class CampaignTabs extends React.Component {
     };
 
     render(){
-        const classes = this.props.classes
         return(
           <Tabs
               value={this.state.value}

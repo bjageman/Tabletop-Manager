@@ -13,11 +13,15 @@ import Journal from './Journal'
 import Calendar from './Calendar'
 
 class CampaignDashboard extends React.Component {
+    constructor(props){
+        super(props)
+        this.props.getCampaign({
+            id: this.props.campaign.id
+        })
+    }
     render(){
         const campaign = this.props.campaign
         const classes = this.props.classes
-        const backgroundImage =  campaign.image || "https://bravenewdungeon.files.wordpress.com/2013/08/ph-barroom-brawl.jpeg"
-        const backgroundImageCSS = "url('" + backgroundImage + "')"
         return(
             <div id="campaign-dashboard">
                 <Header name={campaign.name} image={campaign.image} />
