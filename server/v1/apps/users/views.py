@@ -10,6 +10,7 @@ from .utils import  authenticate
 
 from v1.apps import socketio, db
 from .parsers import *
+from v1.apps.campaign.parsers import parse_campaigns
 
 #Error handling
 from v1.apps.errors import *

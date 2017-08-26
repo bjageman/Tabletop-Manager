@@ -11,6 +11,8 @@ import Dialog from './Dialog'
 import Delete from '../Delete/'
 import Update from '../Update/'
 
+import ReduxLink from 'apps/toolkit/links/'
+
 class JournalListItem extends React.Component {
     constructor(props){
         super(props)
@@ -26,10 +28,11 @@ class JournalListItem extends React.Component {
 
     render(){
         const { entry, classes } = this.props
+        const link = "/journal/" + entry.slug
         return(
             <div className = "journal-entry">
             <Card className={classes.card}>
-                <a onClick={() => this.setState({ open: true })} className={classes.link}>
+                <ReduxLink campaignLink link={link} >
                     <CardHeader
                         avatar={
                           <Avatar
@@ -45,7 +48,7 @@ class JournalListItem extends React.Component {
                           {entry.content.length > 350 ? entry.content.slice(0,350) + "..." : entry.content}
                         </Typography>
                     </CardContent>
-                </a>
+                </ReduxLink>
                 <CardActions disableActionSpacing>
                     <IconButton aria-label="Add to favorites">
                       <Icon>favorite</Icon>

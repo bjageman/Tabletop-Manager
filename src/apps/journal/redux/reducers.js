@@ -16,6 +16,9 @@ export const journal = createReducer({
   [actions.journalSuccess]: (state, payload) => {
     return { entries: payload.entries, fetching:false, error: null };
   },
+  [actions.journalEntrySuccess]: (state, payload) => {
+    return { entry: payload.entry, fetching:false, error: null };
+  },
   [actions.saveJournalEntry]: (state, payload) => {
     return {
         name: payload.name,
