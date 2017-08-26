@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
-import Card, { CardMedia } from 'material-ui/Card';
+import { GridList, GridListTile, GridListTileBar } from 'material-ui/GridList';
 import Typography from 'material-ui/Typography';
 
 import Dialog from './Dialog'
@@ -22,14 +22,16 @@ class CampaignMapCard extends Component {
     const {classes, map } = this.props
     return (
         <div>
-        <Card key={this.props.key} className={classes.mapContainer}>
-            <Typography type="body1" className={classes.title}>
-            {map.name} <Delete map={map} />
-          </Typography>
-            <CardMedia >
-              <img onClick={() => this.setState({ open: true })} className={classes.map} src={map.image} alt={map.name} />
-            </CardMedia>
-        </Card>
+        <GridListTile key={this.props.key} className={classes.mapContainer}>
+            <img onClick={() => this.setState({ open: true })} className={classes.map} src={map.image} alt={map.name} />
+            <GridListTileBar
+                className={classes.tilebar}
+                title={map.name}
+                actionIcon={
+                <Delete map={map} />
+              }
+                />
+        </GridListTile>
         <Dialog
             map={map}
             open={this.state.open}
@@ -39,13 +41,12 @@ class CampaignMapCard extends Component {
   }
 }
 
-export const styles = theme => ({  mapContainer:{
-      marginTop: 20,
-      marginBottom: 20,
-      marginLeft:20,
-      marginRight: 40
+export const styles = theme => ({
+    mapContainer:{
+      margin: "2%",
+      maxWidth: 300,
   },
-  title: {
+  tilebar: {
     textAlign: "center",
     marginTop: 5,
     marginBottom: 5,

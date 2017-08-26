@@ -19,6 +19,7 @@ class MapDeleteDialog extends React.Component {
         this.props.deleteMap({
             campaign_id: this.props.campaign.id,
             map_id: this.props.map.id,
+            access_token: this.props.user.access_token,
         })
         this.props.onRequestClose()
     }

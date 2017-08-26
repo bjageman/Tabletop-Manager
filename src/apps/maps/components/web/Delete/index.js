@@ -35,7 +35,6 @@ class DeleteCharacter extends React.Component {
                 map={this.props.map}
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}
-                entry={this.props.entry}
                 />
             </div>
         )

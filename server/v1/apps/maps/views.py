@@ -1,6 +1,7 @@
 import os, sys
 from flask import request, jsonify, abort
 
+from v1.apps import db
 from v1.apps.campaign import campaign
 #Models
 from .models import CampaignMap

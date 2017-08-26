@@ -70,8 +70,11 @@ def upload_google_cloud_storage(file, location=""):
 
 
 def delete_google_cloud_storage(blob_name):
-    client = google_cloud_setup_storage_client(gcloud_config)
-    bucket = client.get_bucket(GCS_BUCKET)
-    blob = bucket.get_blob(blob_name)
-    delete_blob = blob.delete()
-    print(delete_blob)
+    try:
+        client = google_cloud_setup_storage_client(gcloud_config)
+        bucket = client.get_bucket(GCS_BUCKET)
+        blob = bucket.get_blob(blob_name)
+        delete_blob = blob.delete()
+        return True
+    except AttributeError:
+        return False

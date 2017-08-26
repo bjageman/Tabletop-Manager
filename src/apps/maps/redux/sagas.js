@@ -41,7 +41,7 @@ export function * deleteMap(action){
     try{
       let payload = action.payload
       let url = 'campaign/' + payload.campaign_id + "/maps/" + payload.map_id
-      const response = yield call(deleteDataApi, url);
+      const response = yield call(deleteDataApi, url, payload.access_token);
       if (verifyData(response)) {
           yield put(actions.getMaps({id: payload.campaign_id}))
         }else{

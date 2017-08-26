@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //material-ui
-import Grid from 'material-ui/Grid';
+import { GridList } from 'material-ui/GridList';
 import { withStyles } from 'material-ui/styles';
 
 import Loading from 'apps/toolkit/Loading'
@@ -23,8 +23,9 @@ class CampaignMaps extends Component {
         return (
           <div>
               { campaignMaps.fetching ? <Loading /> : null }
-              <Grid className={classes.container} >
-                  { this.props.is_owner ? <Create /> : null }
+              { this.props.is_owner ? <Create /> : null }
+              <GridList cellHeight={180} className={classes.container} >
+
                   { campaignMaps.entries && campaignMaps.entries.map((map, i) => (
                     <Read
                         key = {i}
@@ -32,7 +33,7 @@ class CampaignMaps extends Component {
                         />
                   ))}
 
-              </Grid>
+              </GridList>
           </div>
         );
   }
