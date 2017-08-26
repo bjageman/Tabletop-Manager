@@ -17,11 +17,13 @@ class CampaignDashboardJournal extends React.Component {
         const entry = this.props.entry
         return(
             <Grid item xs={12} sm={4} className={classes.container} >
+                { entry ?
+                <div>
                 <CardContent>
                     <Typography type="headline" component="h2">
                         Latest Entry
                     </Typography>
-                    { entry ?
+
                         <div>
                             <Typography component="p">
                                 {entry.name}
@@ -30,15 +32,19 @@ class CampaignDashboardJournal extends React.Component {
                                 {entry.content.substring(0,140)}
                             </Typography>
                         </div>
-                    :
-                        <Typography component="p">No Journal Entries</Typography>
-                    }
+
                 </CardContent>
                 <CardActions>
                     <Button onClick={ () => store.dispatch(push( '/campaign/' + this.props.campaign.slug + "/journal/" + entry.slug )) } dense color="primary">
                         Read More
                     </Button>
                 </CardActions>
+                </div>
+                :
+                <CardContent>
+                    <Typography component="p">No Journal Entries</Typography>
+                </CardContent>
+                }
             </Grid>
         )
     }

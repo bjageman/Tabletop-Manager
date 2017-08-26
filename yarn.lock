@@ -2227,11 +2227,28 @@ dotenv@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
 
-draft-js-hashtag-plugin@^2.0.0-beta1:
+draft-js-buttons@^2.0.0-rc5:
+  version "2.0.0-rc5"
+  resolved "https://registry.yarnpkg.com/draft-js-buttons/-/draft-js-buttons-2.0.0-rc5.tgz#5c7d621dcdd37fb3f72d4603922980f31f930ae8"
+  dependencies:
+    union-class-names "^1.0.0"
+
+draft-js-hashtag-plugin@beta:
   version "2.0.0-rc5"
   resolved "https://registry.yarnpkg.com/draft-js-hashtag-plugin/-/draft-js-hashtag-plugin-2.0.0-rc5.tgz#099787b6f7cf12601b17bcc10da9f6f533b8e077"
   dependencies:
     decorate-component-with-props "^1.0.2"
+    find-with-regex "^1.0.2"
+    immutable "~3.7.4"
+    prop-types "^15.5.8"
+    union-class-names "^1.0.0"
+
+draft-js-inline-toolbar-plugin@beta:
+  version "2.0.0-rc5"
+  resolved "https://registry.yarnpkg.com/draft-js-inline-toolbar-plugin/-/draft-js-inline-toolbar-plugin-2.0.0-rc5.tgz#25b81d23837aa5d35bf744be4037430317555069"
+  dependencies:
+    decorate-component-with-props "^1.0.2"
+    draft-js-buttons "^2.0.0-rc5"
     find-with-regex "^1.0.2"
     immutable "~3.7.4"
     prop-types "^15.5.8"
@@ -2248,13 +2265,13 @@ draft-js-linkify-plugin@^2.0.0-beta1:
     tlds "^1.189.0"
     union-class-names "^1.0.0"
 
-draft-js-plugins-editor@2.0.0-rc2:
-  version "2.0.0-rc2"
-  resolved "https://registry.yarnpkg.com/draft-js-plugins-editor/-/draft-js-plugins-editor-2.0.0-rc2.tgz#521eb415882a1f670c03a00581247e752291218c"
+draft-js-plugins-editor@beta:
+  version "2.0.0-rc5"
+  resolved "https://registry.yarnpkg.com/draft-js-plugins-editor/-/draft-js-plugins-editor-2.0.0-rc5.tgz#fec39ae480f94fb7f01247a1236eb3c67175a3e4"
   dependencies:
     decorate-component-with-props "^1.0.2"
     find-with-regex "^1.0.2"
-    immutable "~3.7.4"
+    immutable "^3.7.4"
     prop-types "^15.5.8"
     union-class-names "^1.0.0"
 
@@ -3491,6 +3508,10 @@ ieee754@^1.1.4:
 ignore@^3.2.0:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.3.tgz#432352e57accd87ab3110e82d3fea0e47812156d"
+
+immutable@^3.7.4:
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.1.tgz#200807f11ab0f72710ea485542de088075f68cd2"
 
 immutable@~3.7.4:
   version "3.7.6"

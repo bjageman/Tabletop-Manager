@@ -11,18 +11,20 @@ class CampaignDashboardHeader extends React.Component {
     render(){
         const classes = this.props.classes
         const name = this.props.name
-        const backgroundImage =  this.props.image || "https://bravenewdungeon.files.wordpress.com/2013/08/ph-barroom-brawl.jpeg"
-        const backgroundImageCSS = "url('" + backgroundImage + "')"
+        const headerImage =  this.props.image
         return(
-            <Grid item xs={12} className={classes.header} style={{
-                backgroundImage: "url('" + backgroundImage + "')",
-                backgroundSize: 'cover',
-                height: 200,
-            }}>
+            <div>
+            { headerImage ?
+            <Grid item xs={12} className={classes.header}>
+                <img src={headerImage} alt={name} className= {classes.image}/>
+            </Grid>
+            : null }
+            <Grid item xs={12}>
                 <Typography type="display3" align="center" className={classes.title}>
                     {name}
                 </Typography>
             </Grid>
+            </div>
         )
     }
 }
@@ -35,8 +37,11 @@ export const styles = theme => ({
         alignItems: 'center',
 
     },
+    image :{
+        width: "100%",
+        maxHeight:200,
+    },
     title: {
-        color: "white",
     }
 });
 
