@@ -11,7 +11,7 @@ import Dialog from './Dialog'
 import Delete from '../Delete/'
 import Update from '../Update/'
 
-class JournalEntry extends React.Component {
+class JournalListItem extends React.Component {
     constructor(props){
         super(props)
         this.handleRequestClose = this.handleRequestClose.bind(this)
@@ -79,4 +79,4 @@ export const styles = theme => ({
   },
 });
 
-export default withStyles(styles)(JournalEntry)
+export default withStyles(styles)(JournalListItem)

@@ -1,20 +1,27 @@
 import { compose, createStore, applyMiddleware } from 'redux';
+
+import createHistory from 'history/createBrowserHistory'
+//Middleware
 import createSagaMiddleware from 'redux-saga';
 import { createLogger } from 'redux-logger';
-import reducer from './reducers';
+import { persistStore, autoRehydrate } from 'redux-persist'
+import { routerMiddleware } from 'react-router-redux'
+//Custom Data
+import reducers from './reducers';
 import saga from './sagas';
-import {persistStore, autoRehydrate} from 'redux-persist'
+
+export const history = createHistory()
 
 function configureStore(initialState){
   const sagaMiddleware = createSagaMiddleware();
   const loggerMiddleware = createLogger()
   const store = createStore(
-    reducer,
-    initialState,
+    reducers,
     compose(
         applyMiddleware(
-              sagaMiddleware,
-              loggerMiddleware,
+            routerMiddleware(history),
+            sagaMiddleware,
+            loggerMiddleware,
         ),
         autoRehydrate()
     ),

@@ -10,6 +10,8 @@ import { characters } from 'apps/characters/redux/reducers'
 import { calendar } from 'apps/calendar/redux/reducers'
 import { maps } from 'apps/maps/redux/reducers'
 
+import { routerReducer as router } from 'react-router-redux'
+
 const initial = {
   response: {
     success: null,
@@ -31,5 +33,5 @@ export const response = createReducer({
 
 
 export default combineReducers(
-  { response, user, campaign, characters, journal, calendar, maps }
+  { response, user, campaign, characters, journal, calendar, maps, router }
 );

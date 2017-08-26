@@ -10,6 +10,7 @@ export function mapStateToProps(state) {
     maps: state.maps,
     calendar: state.calendar,
     response: state.response,
+    router: state.router,
   }
   return props
 }

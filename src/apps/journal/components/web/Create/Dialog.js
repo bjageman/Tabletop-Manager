@@ -44,6 +44,7 @@ class EntryCreateDialog extends React.Component {
 
     handleSave() {
         this.props.saveJournalEntry({
+            access_token: this.props.user.access_token,
             name:this.state.name,
             content:this.state.content,
             campaign_id: this.props.campaign.id,

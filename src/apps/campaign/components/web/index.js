@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect } from 'react-router'
+import { Redirect, Route, Switch } from 'react-router'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
@@ -10,7 +10,7 @@ import Grid from 'material-ui/Grid';
 import ToolBar from 'apps/base/components/web/ToolBar'
 
 import Dashboard from './dashboard/'
-import Journal from 'apps/journal/components/web'
+import { JournalRouter } from 'apps/journal/components/web/router'
 import Characters from 'apps/characters/components/web/'
 import Maps from 'apps/maps/components/web/'
 import Wiki from 'apps/wiki/components/web/'
@@ -20,6 +20,9 @@ import Calendar from 'apps/calendar/components/web/'
 import Loading from 'apps/toolkit/Loading'
 
 import { checkOwner } from 'apps/toolkit/utils'
+
+
+
 
 class Campaign extends React.Component {
     constructor(props){
@@ -33,13 +36,8 @@ class Campaign extends React.Component {
         }
 
     }
-
-    handleTabChange = (event, index) => {
-        this.setState({ index });
-    };
-
     render(){
-        const index = this.props.campaign && this.props.campaign.index != null ? this.props.campaign.index : -1
+        const match = this.props.match
         const user = this.props.user
         const campaign = this.props.campaign
         const is_owner = checkOwner(user, campaign)
@@ -48,30 +46,32 @@ class Campaign extends React.Component {
             return(
             <div>
                 <ToolBar tabs />
-                {index === -1 &&
+                <Route exact path={match.url} render={() =>
                     <Dashboard
                         campaign={campaign}
-                        is_owner={is_owner} />}
-                {index === 0 &&
-                    <Journal
-                        campaign={campaign}
-                        is_owner={is_owner} />}
-                {index === 1 &&
+                        is_owner={is_owner}
+                    /> }/>
+                <Route path={match.url + '/journal'} component={JournalRouter} />
+                <Route path={match.url + '/characters'} render={() =>
                     <Characters
                         campaign={campaign}
-                        is_owner={is_owner} />}
-                {index === 2 &&
+                        is_owner={is_owner}
+                    /> }/>
+                <Route path={match.url + '/maps'} render={() =>
                     <Maps
                         campaign={campaign}
-                        is_owner={is_owner} />}
-                {index === 3 &&
+                        is_owner={is_owner}
+                    /> }/>
+                <Route path={match.url + '/calendar'} render={() =>
                     <Calendar
                         campaign={campaign}
-                        is_owner={is_owner} />}
-                {index === 4 &&
+                        is_owner={is_owner}
+                    /> }/>
+                <Route path={match.url + '/wiki'} render={() =>
                     <Wiki
                         campaign={campaign}
-                        is_owner={is_owner} />}
+                        is_owner={is_owner}
+                    /> }/>
             </div>
             )
 
