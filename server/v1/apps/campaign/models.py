@@ -24,6 +24,5 @@ def request_campaign_auth(request, campaign_id):
     campaign = Campaign.query.get(campaign_id)
     print(verify_campaign_access(user, campaign))
     if user is None or not verify_campaign_access(user, campaign):
-        print("ABORT!!!!")
         abort(401)
     return user, campaign
