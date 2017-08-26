@@ -18,6 +18,10 @@ class JournalEntry extends React.Component {
         })
     }
 
+    createMarkup(data) {
+        return {__html: data};
+    }
+
     render(){
         const entry = this.props.journal.entry
         if (entry){
@@ -25,7 +29,7 @@ class JournalEntry extends React.Component {
                 <div className = "journal-entry">
                     <h1>{entry.name}</h1>
                     <h4>{entry.created}</h4>
-                    <p>{entry.content}</p>
+                    <div dangerouslySetInnerHTML={this.createMarkup(entry.content)} />
                 </div>
             )
         }else{
