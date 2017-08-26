@@ -2,6 +2,8 @@ import React from 'react'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
+import { push } from 'react-router-redux'
+import  store  from 'redux/store'
 //material-ui
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
@@ -33,7 +35,7 @@ class CampaignDashboardJournal extends React.Component {
                     }
                 </CardContent>
                 <CardActions>
-                    <Button onClick={() => this.props.changeCampaignTab({ index: 0 })} dense color="primary">
+                    <Button onClick={ () => store.dispatch(push( '/campaign/' + this.props.campaign.slug + "/journal/" + entry.slug )) } dense color="primary">
                         Read More
                     </Button>
                 </CardActions>

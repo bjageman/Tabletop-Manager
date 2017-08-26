@@ -13,6 +13,7 @@ export const campaign = createReducer({
     return {
         id: payload.id,
         name: payload.name,
+        slug: payload.slug,
         image: payload.header_image,
         owner: payload.owner,
         journal: payload.journal,
