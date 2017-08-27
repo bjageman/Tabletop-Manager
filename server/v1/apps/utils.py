@@ -28,7 +28,6 @@ def get_required_data(data, value):
     try:
         return data[value]
     except (AttributeError, KeyError, TypeError):
-        print("failed to get", value)
         abort(400)
 
 def convert_string_to_datetime(date_string):
