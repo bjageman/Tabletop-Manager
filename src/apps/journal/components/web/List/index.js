@@ -11,6 +11,7 @@ import Dialog from './Dialog'
 import Delete from '../Delete/'
 import Update from '../Update/'
 
+import CleanHTML from 'apps/toolkit/CleanHTML'
 import ReduxLink from 'apps/toolkit/links/'
 
 class JournalListItem extends React.Component {
@@ -45,7 +46,7 @@ class JournalListItem extends React.Component {
                       />
                     <CardContent>
                         <Typography component="p">
-                          {entry.content.length > 350 ? entry.content.slice(0,350) + "..." : entry.content}
+                          <CleanHTML html={entry.content.length > 350 ? entry.content.slice(0,350) + "..." : entry.content} />
                         </Typography>
                     </CardContent>
                 </ReduxLink>

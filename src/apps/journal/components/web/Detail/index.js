@@ -8,6 +8,7 @@ import { withStyles } from 'material-ui/styles';
 import Delete from '../Delete/'
 import Update from '../Update/'
 import Loading from 'apps/toolkit/Loading'
+import CleanHTML from 'apps/toolkit/CleanHTML'
 
 class JournalEntry extends React.Component {
     constructor(props){
@@ -29,7 +30,7 @@ class JournalEntry extends React.Component {
                 <div className = "journal-entry">
                     <h1>{entry.name}</h1>
                     <h4>{entry.created}</h4>
-                    <div dangerouslySetInnerHTML={this.createMarkup(entry.content)} />
+                    <CleanHTML html={entry.content} />
                 </div>
             )
         }else{

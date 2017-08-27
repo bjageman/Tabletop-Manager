@@ -44,7 +44,6 @@ def get_entries(campaign_id):
 
 @campaign.route(entry_base_url + '/<entry_id>', methods=['GET'])
 def get_entry(campaign_id, entry_id):
-    print(entry_id)
     try:
         entry_id = int(entry_id)
         entry = Entry.query.filter(Entry.id == entry_id).first()

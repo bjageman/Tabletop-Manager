@@ -11,6 +11,9 @@ import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 
+import CleanHTML from 'apps/toolkit/CleanHTML'
+
+
 class CampaignDashboardJournal extends React.Component {
     render(){
         const classes = this.props.classes
@@ -29,7 +32,7 @@ class CampaignDashboardJournal extends React.Component {
                                 {entry.name}
                             </Typography>
                             <Typography component="p">
-                                {entry.content.substring(0,140)}
+                                <CleanHTML html={entry.content.substring(0,140)} />
                             </Typography>
                         </div>
 
