@@ -3,8 +3,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import { Route, Switch } from 'react-router'
-
 import Loading from 'apps/toolkit/Loading'
 import ListItem from './List/'
 import Create from './Create/'

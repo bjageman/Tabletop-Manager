@@ -6,7 +6,6 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //material-ui
 import { withStyles } from 'material-ui/styles';
 import { GridList, GridListTile, GridListTileBar } from 'material-ui/GridList';
-import Subheader from 'material-ui/List/ListSubheader';
 
 import ToolBar from 'apps/base/components/web/ToolBar'
 import CampaignListingToolBar from './ToolBar'

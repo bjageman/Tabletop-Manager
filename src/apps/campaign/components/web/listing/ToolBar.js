@@ -1,5 +1,4 @@
 import React from 'react'
-import { Redirect } from 'react-router'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
@@ -7,10 +6,6 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 import Button from 'material-ui/Button'
 import Input from 'material-ui/Input/Input'
 import { withStyles } from 'material-ui/styles';
-
-
-
-const defaultImage = "https://bravenewdungeon.files.wordpress.com/2013/08/ph-barroom-brawl.jpeg"
 
 class CampaignListingToolBar extends React.Component {
     render(){

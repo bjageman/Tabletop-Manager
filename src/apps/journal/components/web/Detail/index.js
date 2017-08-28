@@ -5,8 +5,6 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //material-ui
 import { withStyles } from 'material-ui/styles';
 
-import Delete from '../Delete/'
-import Update from '../Update/'
 import Loading from 'apps/toolkit/Loading'
 import CleanHTML from 'apps/toolkit/CleanHTML'
 

@@ -7,7 +7,6 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import Button from 'material-ui/Button'
 import { blue } from 'material-ui/colors';
 
 import Login from 'apps/user/components/web/login/index'
@@ -15,8 +14,6 @@ import Tools from 'apps/user/components/web/tools/'
 import HomeButton from './buttons/Home'
 
 import CampaignTabs from 'apps/campaign/components/web/toolbar/Tabs'
-
-import myConfig from 'config.js';
 
 class ToolBar extends React.Component {
     render(){

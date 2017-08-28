@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { GridList, GridListTile, GridListTileBar } from 'material-ui/GridList';
-import Typography from 'material-ui/Typography'
+import { GridList, GridListTile } from 'material-ui/GridList';
 import { withStyles } from 'material-ui/styles';
 
 import dmScreen from './img/dmscreen.jpg'
@@ -32,7 +31,6 @@ export const styles = theme => ({
 
 class Jumbotron extends Component {
     render(){
-        const { title, subtitle, classes } = this.props
         return(
         <GridList cellHeight={160} cols={3}>
               <GridListTile key={1} cols={1}>

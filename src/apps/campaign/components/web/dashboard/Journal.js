@@ -7,7 +7,7 @@ import  store  from 'redux/store'
 //material-ui
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
+import { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 

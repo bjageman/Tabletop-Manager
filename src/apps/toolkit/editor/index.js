@@ -1,7 +1,5 @@
 import React from 'react'
 
-import Typography from 'material-ui/Typography'
-
 import Editor from 'draft-js-plugins-editor';
 import createHashtagPlugin from 'draft-js-hashtag-plugin';
 import createLinkifyPlugin from 'draft-js-linkify-plugin';
