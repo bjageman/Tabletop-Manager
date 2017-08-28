@@ -13,7 +13,7 @@ import Button from 'material-ui/Button';
 import { withStyles } from 'material-ui/styles';
 
 import { stateToHTML } from 'draft-js-export-html';
-import { EditorState } from 'draft-js';
+import { EditorState, convertFromHTML, ContentState } from 'draft-js';
 
 import Editor from 'apps/toolkit/editor/'
 
@@ -21,11 +21,24 @@ class EntryCreateDialog extends React.Component {
     constructor(props){
         super(props)
         this.handleSave = this.handleSave.bind(this)
-        this.state = {
-            editorState: EditorState.createEmpty(),
-            name: this.props.entry ? this.props.entry.name : "",
-            content: this.props.entry ? this.props.entry.content : ""
-        };
+        if (this.props.entry) {
+            const blocksFromHTML = convertFromHTML(this.props.entry.content);
+            const state = ContentState.createFromBlockArray(
+                blocksFromHTML.contentBlocks,
+                blocksFromHTML.entityMap
+            );
+            this.state = {
+                editorState: EditorState.createWithContent(state),
+                name: this.props.entry.name,
+                content: this.props.entry.content,
+            };
+        }else{
+            this.state = {
+                editorState: EditorState.createEmpty(),
+                name: "",
+                content: "",
+            };
+        }
     }
 
     onChange = (editorState) => {
@@ -68,6 +81,7 @@ class EntryCreateDialog extends React.Component {
                   label="Title"
                   name="name"
                   fullWidth
+                  value={this.state.name}
                   onChange={this.handleInputChange}
                 />
                 <Editor
