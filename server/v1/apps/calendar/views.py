@@ -2,7 +2,7 @@
 ***REMOVED***, request, jsonify, abort
 from slugify import slugify
 
-import string
+import string, datetime
 
 from v1.apps.campaign import campaign
 
@@ -24,7 +24,7 @@ from v1.apps.campaign.errors import *
 #Utils
 from v1.apps.utils import *
 
-calendar_base_url = '/<int:campaign_id>/calendar'
+calendar_base_url = '/<campaign_id>/calendar'
 #Create
 @campaign.route(calendar_base_url, methods=['POST'])
 def create_calendar_event(campaign_id):
@@ -45,36 +45,38 @@ def create_calendar_event(campaign_id):
 
 #Read
 
-@campaign.route(calendar_base_url, methods=['GET'])
-def get_calendar(campaign_id):
-    campaign = Campaign.query.get(campaign_id)
+@campaign.route(calendar_base_url + '/<string:filter_type>', methods=['GET'])
+def get_calendar(campaign_id, filter_type):
+    calendar = Calendar.query.join(Campaign).filter(Campaign.id == campaign_id)
+    if filter_type == "upcoming":
+        calendar = calendar.filter(Calendar.start_time > datetime.utcnow())
+    if filter_type == "previous":
+        calendar = calendar.filter(Calendar.start_time < datetime.utcnow())
     if campaign is not None:
-        return jsonify(parse_calendar(campaign.calendar))
+        return jsonify(parse_calendar(calendar))
     else:
         abort(404)
 
-@campaign.route(calendar_base_url + '/<int:calendar_id>', methods=['GET'])
-def get_calendar_by_id(campaign_id, calendar_id):
-    event = Calendar.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Calendar.id == calendar_id).first()
+def get_event(event_id):
+    try:
+        event_id = int(event_id)
+        return Calendar.query.filter(Calendar.id == event_id).first()
+    except ValueError:
+        return Calendar.query.filter(Calendar.slug == event_id).first()
+
+@campaign.route(calendar_base_url + '/event/<event_id>', methods=['GET'])
+def get_calendar_event(campaign_id, event_id):
+    event = get_event(event_id)
     if event is not None:
         return jsonify(parse_event(event))
     else:
         abort(404)
-
-@campaign.route(calendar_base_url + '/<string:calendar_slug>', methods=['GET'])
-def get_calendar_by_slug(campaign_id, calendar_slug):
-    event = Calendar.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Calendar.slug == calendar_slug).first()
-    if event is not None:
-        return jsonify(parse_event(event))
-    else:
-        abort(404)
-
 #
 # #Update
 #
 @campaign.route(calendar_base_url + '/<int:event_id>', methods=['POST', 'PUT'])
 def update_event_by_id(campaign_id, event_id):
-    event = Calendar.query.get(event_id)
+    event = get_event(event_id)
     if event is not None and event.campaign.id == campaign_id:
         data        = request.get_json()
         name        = get_optional_data(data, "name")
@@ -96,18 +98,17 @@ def update_event_by_id(campaign_id, event_id):
 #  Delete
 #
 
-@campaign.route(calendar_base_url + '/<int:calendar_id>', methods=['DELETE'])
-def delete_calendar_by_id(campaign_id, calendar_id):
-    print("Deleting", calendar_id)
-    calendar = Calendar.query.get(calendar_id)
-    name = calendar.name
-    if calendar is not None and calendar.campaign.id == campaign_id:
-        db.session.delete(calendar)
+@campaign.route(calendar_base_url + '/<event_id>', methods=['DELETE'])
+def delete_event(campaign_id, event_id):
+    event = get_event(event_id)
+    name = event.name
+    if event is not None and event.campaign.id == campaign_id:
+        db.session.delete(event)
         db.session.commit()
-    calendar = Calendar.query.get(calendar_id)
-    if calendar is None:
-        return jsonify({"deleted": calendar_id})
+    event = get_event(event_id)
+    if event is None:
+        return jsonify({"deleted": event_id})
     else:
-        message = "Calendar" + name + " was not deleted"
+        message = "Event " + name + " was not deleted"
         code = 400
         return make_response(jsonify({'error': message}), code)

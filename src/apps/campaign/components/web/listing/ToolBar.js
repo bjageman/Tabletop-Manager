@@ -3,18 +3,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //material-ui
-import Button from 'material-ui/Button'
 import Input from 'material-ui/Input/Input'
 import { withStyles } from 'material-ui/styles';
+
+import Save from '../save/'
 
 class CampaignListingToolBar extends React.Component {
     render(){
         const classes = this.props.classes
         return(
             <div>
-            <Button raised color="primary" className={classes.button}>
-                Create Campaign
-            </Button>
+            <Save />
             <Input
                 className={classes.search}
                 placeholder="Search Campaigns"

@@ -44,8 +44,8 @@ export function* deleteCharacter(action){
       console.log(url)
       const response = yield call(deleteDataApi, url);
       if (verifyData(response)) {
-          console.log("Deleted entry!")
           yield put(actions.getCharacters({id: payload.campaign_id}))
+          yield put(actions.success({ "message": response.data.message }))
         }else{
           yield put(actions.error({ "message": response.data.error }))
         }

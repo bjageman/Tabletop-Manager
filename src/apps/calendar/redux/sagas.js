@@ -5,7 +5,7 @@ import { getDataApi, postDataApi, verifyData, deleteDataApi } from 'redux/api'
 export function* getCalendar(action) {
     try{
       let payload = action.payload
-      let url = 'campaign/' + payload.id + "/calendar"
+      let url = 'campaign/' + payload.id + "/calendar/upcoming"
       console.log(url)
       const response = yield call(getDataApi, url);
       if (verifyData(response)) {

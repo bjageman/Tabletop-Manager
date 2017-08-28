@@ -2,6 +2,7 @@ import sys, json
 from datetime import datetime
 from v1.apps.config import DATETIMEFORMAT
 from v1.apps import app, db, socketio
+from v1.apps.models import Image
 from v1.apps.users.models import User
 from v1.apps.campaign.models import Campaign
 from v1.apps.journal.models import Entry
@@ -19,10 +20,11 @@ def get_or_create_user(username, email, password="pass"):
         db.session.commit()
     return user
 
-def create_campaign(name, image=None, owner=None):
+def create_campaign(name, image_url=None, owner=None):
+    image = Image(url=image_url)
     campaign = Campaign(name=name,
                         owner=owner,
-                        header_image=image)
+                        image=image)
     db.session.add(campaign)
     db.session.commit()
     return campaign

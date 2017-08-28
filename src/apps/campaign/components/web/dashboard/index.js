@@ -12,12 +12,6 @@ import Journal from './Journal'
 import Calendar from './Calendar'
 
 class CampaignDashboard extends React.Component {
-    constructor(props){
-        super(props)
-        this.props.getCampaign({
-            id: this.props.campaign.id
-        })
-    }
     render(){
         const campaign = this.props.campaign
         return(

@@ -6,7 +6,7 @@ import { getJournal, getJournalEntry, saveJournalEntry, deleteJournalEntry } fro
 import { getCalendar, saveCalendarEvent, deleteCalendarEvent } from 'apps/calendar/redux/sagas'
 import { getCharacters, createCharacter, deleteCharacter } from 'apps/characters/redux/sagas'
 import { getMaps, saveMap, deleteMap } from 'apps/maps/redux/sagas'
-import { getCampaign } from 'apps/campaign/redux/sagas'
+import { getCampaign, saveCampaign } from 'apps/campaign/redux/sagas'
 
 
 
@@ -33,4 +33,5 @@ export default function* rootSaga() {
   yield takeEvery(actions.deleteMap, deleteMap)
   //Campaign
   yield takeEvery(actions.getCampaign, getCampaign)
+  yield takeEvery(actions.saveCampaign, saveCampaign)
 }

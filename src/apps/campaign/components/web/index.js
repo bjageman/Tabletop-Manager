@@ -30,10 +30,7 @@ class Campaign extends React.Component {
             this.props.getCampaign({
                 id: this.props.match.params.id
             })
-        }else{
-            console.log("Show Error Message")
         }
-
     }
     render(){
         const match = this.props.match

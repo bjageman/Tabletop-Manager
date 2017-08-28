@@ -1,4 +1,10 @@
-from v1.apps.parsers import parse_base
+from v1.apps.parsers import parse_base, parse_image
+
+def parse_users(users):
+    user_set = []
+    for user in users:
+        user_set.append(parse_user(user))
+    return(user_set)
 
 def parse_user(user):
     try:
@@ -31,7 +37,7 @@ def parse_user_campaign(campaign):
             "id": campaign.id,
             "name": campaign.name,
             "slug": campaign.slug,
-            "image": campaign.header_image,
+            "image": parse_image(campaign.image),
             "owner": campaign.owner.username,
         })
     except AttributeError:

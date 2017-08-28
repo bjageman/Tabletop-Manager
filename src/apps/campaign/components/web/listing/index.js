@@ -17,6 +17,13 @@ import InvisibleLink from 'apps/toolkit/InvisibleLink'
 const defaultImage = "https://bravenewdungeon.files.wordpress.com/2013/08/ph-barroom-brawl.jpeg"
 
 class CampaignListing extends React.Component {
+    constructor(props){
+        super(props)
+        if (this.props.user){
+            this.props.getUser({"access_token": this.props.user.access_token})
+        }
+    }
+
     render(){
         const user = this.props.user
         const loading = false
@@ -31,7 +38,7 @@ class CampaignListing extends React.Component {
                     </GridListTile>
                     {user.campaigns ? user.campaigns.map((campaign, i) => (
                         <GridListTile key={campaign.id} className={classes.gridListTile}>
-                            <img src={campaign.image || defaultImage} alt={campaign.name} />
+                            <img src={campaign.image.url || defaultImage} alt={campaign.name} />
                             <InvisibleLink to={"/campaign/" + campaign.slug}>
 
                             <GridListTileBar

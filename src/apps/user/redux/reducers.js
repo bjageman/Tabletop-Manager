@@ -6,20 +6,14 @@ const initial = {
 };
 
 export const user = createReducer({
-  [actions.register]: (state, payload) => {
-    return { username: payload.username };
-  },
-  [actions.login]: (state, payload) => {
-    return { username: payload.username };
-  },
   [actions.logout]: (state) => {
     return null;
   },
   [actions.loginSuccess]: (state, payload) => {
     return {
         "access_token" : payload.access_token,
-        "username": payload.username,
         ...state,
+        "username": payload.username,
         "id": payload.id,
         "campaigns": payload.campaigns,
          } ;

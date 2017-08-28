@@ -10,16 +10,7 @@ export const campaign = createReducer({
      return { ...state, index: payload.index }
   },
   [actions.updateCampaign]: (state, payload) => {
-    return {
-        id: payload.id,
-        name: payload.name,
-        slug: payload.slug,
-        image: payload.header_image,
-        owner: payload.owner,
-        journal: payload.journal,
-        calendar: payload.calendar,
-        characters: payload.characters,
-        maps: payload.maps };
+    return payload;
   },
   [actions.logOutCampaign]: (state) => {
       return null

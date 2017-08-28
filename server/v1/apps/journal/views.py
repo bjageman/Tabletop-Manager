@@ -19,7 +19,7 @@ from v1.apps.campaign.errors import *
 #Utils
 from v1.apps.utils import check_for_invalid_data, get_optional_data, get_required_data
 
-entry_base_url = '/<int:campaign_id>/journal'
+entry_base_url = '/<campaign_id>/journal'
 #Create
 @campaign.route(entry_base_url, methods=['POST'])
 def create_entry(campaign_id):
@@ -57,8 +57,8 @@ def get_entry(campaign_id, entry_id):
 #
 # #Update
 #
-@campaign.route(entry_base_url + '/<int:entry_id>', methods=['POST', 'PUT'])
-def update_journal_by_id(campaign_id, entry_id):
+@campaign.route(entry_base_url + '/<entry_id>', methods=['POST', 'PUT'])
+def update_journal(campaign_id, entry_id):
     user, campaign = request_campaign_auth(request, campaign_id)
     entry = Entry.query.get(entry_id)
     if entry is not None and entry.campaign.id == campaign_id:
@@ -79,8 +79,8 @@ def update_journal_by_id(campaign_id, entry_id):
 #  Delete
 #
 
-@campaign.route(entry_base_url + '/<int:entry_id>', methods=['DELETE'])
-def delete_journal_by_id(campaign_id, entry_id):
+@campaign.route(entry_base_url + '/<entry_id>', methods=['DELETE'])
+def delete_journal(campaign_id, entry_id):
     user, campaign = request_campaign_auth(request, campaign_id)
     entry = Entry.query.get(entry_id)
     name = entry.name

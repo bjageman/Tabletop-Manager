@@ -9,7 +9,7 @@ export function* getAuthToken(action) {
       const response = yield call(postAuthData, data);
       if (verifyData(response)) {
           yield put(actions.loginSuccess({ "access_token": response.data.access_token }))
-          yield put(actions.getUser({"username": payload.username, "password": payload.password, "access_token": response.data.access_token }))
+          yield put(actions.getUser({"access_token": response.data.access_token }))
         }else{
           yield put(actions.error({ "message": response.data.error }))
         }
