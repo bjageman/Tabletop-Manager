@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import { GridList, GridListTile, GridListTileBar } from 'material-ui/GridList';
+import { GridListTile, GridListTileBar } from 'material-ui/GridList';
 
 import Delete from '../Delete/'
 import Update from '../Update/'
@@ -18,7 +17,6 @@ class CharacterEntry extends React.Component {
 
     render(){
         const character = this.props.character
-        const classes = this.props.classes
         return(
             <GridListTile>
                 <img src={character.image || defaultImage} alt={character.name}/>

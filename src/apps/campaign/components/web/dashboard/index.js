@@ -5,7 +5,6 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //material-ui
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
-import Typography from 'material-ui/Typography'
 
 import Header from './Header'
 import Members from './Members'
@@ -21,7 +20,6 @@ class CampaignDashboard extends React.Component {
     }
     render(){
         const campaign = this.props.campaign
-        const classes = this.props.classes
         return(
             <div id="campaign-dashboard">
                 <Header name={campaign.name} image={campaign.image} />

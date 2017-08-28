@@ -20,9 +20,9 @@ class HomeButton extends React.Component {
         if (this.props.tabs){
             var HomeButton = <Button color="contrast" onClick={ () => store.dispatch(push('/campaign/' + this.props.campaign.slug)) }>{name}</Button>
         } else if (this.props.user){
-            var HomeButton = <InvisibleLink to= "/campaign" >{name}</InvisibleLink>
+            HomeButton = <InvisibleLink to= "/campaign" >{name}</InvisibleLink>
         } else {
-            var HomeButton = <InvisibleLink to= "/" >{name}</InvisibleLink>
+            HomeButton = <InvisibleLink to= "/" >{name}</InvisibleLink>
         }
         return(
           <Typography type="title" color="inherit" className={classes.flex}>

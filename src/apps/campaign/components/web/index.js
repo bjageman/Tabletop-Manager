@@ -1,11 +1,10 @@
 import React from 'react'
-import { Redirect, Route, Switch } from 'react-router'
+import { Redirect, Route } from 'react-router'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //material-ui
 import { withStyles } from 'material-ui/styles';
-import Grid from 'material-ui/Grid';
 
 import ToolBar from 'apps/base/components/web/ToolBar'
 
