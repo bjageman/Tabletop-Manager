@@ -23,7 +23,7 @@ class CampaignCharacters extends React.Component {
             <div id="campaign-characters">
                 { characters && characters.fetching ? <Loading /> : null }
                 { this.props.is_owner ? <Create /> : null }
-                <GridList cellHeight={180}>
+                <GridList>
                     { characters.entries && characters.entries.map((character, i) => (
                         <Read character={character} />
                     ))}

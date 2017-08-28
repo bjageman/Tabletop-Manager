@@ -23,7 +23,7 @@ class CampaignDashboard extends React.Component {
         return(
             <div id="campaign-dashboard">
                 <Header name={campaign.name} image={campaign.image} />
-                <Grid container>
+                <Grid>
                     <Members />
                     <Calendar event = { campaign.calendar ? campaign.calendar[0]: null } />
                     <Journal entry = { campaign.journal ? campaign.journal[0] : null } />

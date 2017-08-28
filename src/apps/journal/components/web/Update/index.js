@@ -30,9 +30,9 @@ class UpdateJournal extends React.Component {
                 <Icon>create</Icon>
             </IconButton>
             <Dialog
+                entry={this.props.entry}
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}
-                entry={this.props.entry}
                 />
             </div>
         )
