@@ -45,7 +45,7 @@ class AccountMenu extends React.Component {
                 <MenuItem onClick={this.handleRequestClose}>Profile</MenuItem>
                 </InvisibleLink>
                 <InvisibleLink to="/campaign">
-                    <MenuItem onClick={this.handleRequestClose}>My Campaign</MenuItem>
+                    <MenuItem onClick={this.handleRequestClose}>My Campaigns</MenuItem>
                 </InvisibleLink>
                 <InvisibleLink to="/settings">
                 <MenuItem onClick={this.handleRequestClose}>Settings</MenuItem>

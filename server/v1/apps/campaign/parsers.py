@@ -17,7 +17,7 @@ def parse_campaign(campaign):
         result = parse_base(campaign)
         result.update({
             "owner": parse_user(campaign.owner),
-            "header_image": campaign.header_image,
+            "image": parse_image(campaign.image),
         })
         return result
     except AttributeError:
@@ -32,7 +32,7 @@ def parse_campaign_detailed(campaign):
             "calendar": parse_calendar(campaign.calendar),
             "maps": parse_maps(campaign.maps),
             "wiki": parse_wiki(campaign.wiki),
-
+            "players": parse_users(campaign.players)
         })
         return result
     except AttributeError:
