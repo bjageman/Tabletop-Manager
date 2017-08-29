@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
@@ -11,13 +12,13 @@ import { withStyles } from 'material-ui/styles';
 class ReduxLink extends React.Component {
     render(){
         const classes = this.props.classes
-        var link = this.props.link
+        var to = this.props.to
         if (this.props.campaignLink){
-            link = "/campaign/" + this.props.campaign.slug + link
+            to = "/campaign/" + this.props.campaign.slug + "/" + to
         }
 
         return(
-        <a className={classes.link} onClick={ () => store.dispatch(push(link)) }>{this.props.children}</a>
+        <a className={classes.link} onClick={ () => store.dispatch(push(to)) }>{this.props.children}</a>
         )
     }
 }

@@ -12,18 +12,35 @@ import Journal from './Journal'
 import Calendar from './Calendar'
 
 class CampaignDashboard extends React.Component {
+    constructor(props){
+        super(props)
+        this.props.getCampaign({
+            id: this.props.campaign.id
+        })
+    }
+
+    componentWillUnMount(){
+        if (this.props.campaign){
+            this.props.logOutCampaign()
+        }
+    }
+
     render(){
         const campaign = this.props.campaign
-        return(
-            <div id="campaign-dashboard">
-                <Header name={campaign.name} image={campaign.image} />
-                <Grid>
-                    <Members />
-                    <Calendar event = { campaign.calendar ? campaign.calendar[0]: null } />
-                    <Journal entry = { campaign.journal ? campaign.journal[0] : null } />
-                </Grid>
-            </div>
-        )
+        if (campaign){
+            return(
+                <div id="campaign-dashboard">
+                    <Header name={campaign.name} image={campaign.image} />
+                    <Grid>
+                        <Members />
+                        <Calendar event = { campaign.calendar ? campaign.calendar[0]: null } />
+                        <Journal entry = { campaign.journal ? campaign.journal[0] : null } />
+                    </Grid>
+                </div>
+            )
+        }else{
+            return(<p>loading</p>)
+        }
     }
 }
 

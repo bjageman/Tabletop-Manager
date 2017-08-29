@@ -9,7 +9,7 @@ import  store  from 'redux/store'
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button'
-import InvisibleLink from 'apps/toolkit/InvisibleLink'
+import InvisibleLink from 'apps/toolkit/links/InvisibleLink'
 
 import myConfig from 'config.js';
 
@@ -17,9 +17,7 @@ class HomeButton extends React.Component {
     render(){
         const name = this.props.name + "-" + myConfig.VERSION
         const classes = this.props.classes
-        if (this.props.tabs){
-            var HomeButton = <Button color="contrast" onClick={ () => store.dispatch(push('/campaign/' + this.props.campaign.slug)) }>{name}</Button>
-        } else if (this.props.user){
+        if (this.props.user){
             HomeButton = <InvisibleLink to= "/campaign" >{name}</InvisibleLink>
         } else {
             HomeButton = <InvisibleLink to= "/" >{name}</InvisibleLink>

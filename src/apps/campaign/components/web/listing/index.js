@@ -12,7 +12,7 @@ import CampaignListingToolBar from './ToolBar'
 
 //toolkit
 import Loading from 'apps/toolkit/Loading'
-import InvisibleLink from 'apps/toolkit/InvisibleLink'
+import InvisibleLink from 'apps/toolkit/links/InvisibleLink'
 
 const defaultImage = "https://bravenewdungeon.files.wordpress.com/2013/08/ph-barroom-brawl.jpeg"
 
@@ -21,6 +21,9 @@ class CampaignListing extends React.Component {
         super(props)
         if (this.props.user){
             this.props.getUser({"access_token": this.props.user.access_token})
+        }
+        if (this.props.campaign){
+            this.props.logOutCampaign()
         }
     }
 

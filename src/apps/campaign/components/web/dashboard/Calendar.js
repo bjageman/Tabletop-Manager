@@ -9,6 +9,8 @@ import { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 
+import ReduxLink from 'apps/toolkit/links/Redux'
+
 class CampaignDashboardCalendar extends React.Component {
     render(){
         const classes = this.props.classes
@@ -30,9 +32,11 @@ class CampaignDashboardCalendar extends React.Component {
                     }
                 </CardContent>
                 <CardActions>
-                    <Button onClick={() => this.props.changeCampaignTab({ index: 3 })} dense color="primary">
-                        See Events
-                    </Button>
+                    <ReduxLink campaignLink to="calendar">
+                        <Button dense color="primary">
+                            See Events
+                        </Button>
+                    </ReduxLink>
                 </CardActions>
             </Grid>
         )
