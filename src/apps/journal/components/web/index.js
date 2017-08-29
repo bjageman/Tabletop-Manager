@@ -16,7 +16,7 @@ class Journal extends React.Component {
     }
 
     render(){
-        const is_owner = checkOwner(this.props.user, this.props.campaign)
+        const is_owner = true //checkOwner(this.props.user, this.props.campaign)
         const journal = this.props.journal
         if (journal){
             return(

@@ -12,7 +12,7 @@ import Delete from '../Delete/'
 import Update from '../Update/'
 
 import CleanHTML from 'apps/toolkit/CleanHTML'
-import ReduxLink from 'apps/toolkit/links/'
+import ReduxLink from 'apps/toolkit/links/Redux'
 
 class JournalListItem extends React.Component {
     constructor(props){

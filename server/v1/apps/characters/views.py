@@ -25,6 +25,7 @@ from v1.apps.campaign.errors import *
 #Utils
 from v1.apps.utils import *
 
+from v1.apps.campaign.views import get_campaign
 
 character_base_url = '/<campaign_id>/characters'
 
@@ -50,7 +51,7 @@ def create_character(campaign_id):
 
 @campaign.route(character_base_url, methods=['GET'])
 def get_campaign_characters(campaign_id):
-    campaign = Campaign.query.get(campaign_id)
+    campaign = get_campaign(campaign_id)
     if campaign is not None:
         return jsonify(parse_characters(campaign.characters))
     else:

@@ -19,10 +19,11 @@ class CampaignCharacters extends React.Component {
 
     render(){
         const characters = this.props.characters
+        const is_owner = this.props.is_owner
         return(
             <div id="campaign-characters">
                 { characters && characters.fetching ? <Loading /> : null }
-                { this.props.is_owner ? <Create /> : null }
+                { is_owner ? <Create /> : null }
                 <GridList>
                     { characters.entries && characters.entries.map((character, i) => (
                         <Read character={character} />

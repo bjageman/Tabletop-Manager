@@ -8,7 +8,7 @@ import Button from 'material-ui/Button';
 import Icon from 'material-ui/Icon';
 import Divider from 'material-ui/Divider';
 
-import InvisibleLink from 'apps/toolkit/InvisibleLink'
+import InvisibleLink from 'apps/toolkit/links/InvisibleLink'
 
 class AccountMenu extends React.Component {
     state = {
