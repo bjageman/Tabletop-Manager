@@ -29,11 +29,11 @@ class JournalListItem extends React.Component {
 
     render(){
         const { entry, classes } = this.props
-        const link = "/journal/" + entry.slug
+        const link = "journal/" + entry.slug
         return(
             <div className = "journal-entry">
             <Card className={classes.card}>
-                <ReduxLink campaignLink link={link} >
+                <ReduxLink campaignLink to={link} >
                     <CardHeader
                         avatar={
                           <Avatar
