@@ -8,7 +8,7 @@ import Button from 'material-ui/Button';
 import Icon from 'material-ui/Icon';
 import Divider from 'material-ui/Divider';
 
-import InvisibleLink from 'apps/toolkit/InvisibleLink'
+import InvisibleLink from 'apps/toolkit/links/InvisibleLink'
 
 class AccountMenu extends React.Component {
     state = {
@@ -26,6 +26,7 @@ class AccountMenu extends React.Component {
 
     handleLogOut = () => {
         this.props.logout()
+        this.props.logOutCampaign()
         this.setState({ open: false });
     };
 
@@ -44,7 +45,7 @@ class AccountMenu extends React.Component {
                 <MenuItem onClick={this.handleRequestClose}>Profile</MenuItem>
                 </InvisibleLink>
                 <InvisibleLink to="/campaign">
-                    <MenuItem onClick={this.handleRequestClose}>My Campaign</MenuItem>
+                    <MenuItem onClick={this.handleRequestClose}>My Campaigns</MenuItem>
                 </InvisibleLink>
                 <InvisibleLink to="/settings">
                 <MenuItem onClick={this.handleRequestClose}>Settings</MenuItem>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Icon from 'material-ui/Icon'
 import Button from 'material-ui/Button';
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 
 import Dialog from './Dialog'
 
@@ -40,10 +40,10 @@ class CreateMap extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('CreateMap', theme => ({
+export const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
   },
-}));
+});
 
-export default withStyles(styleSheet)(CreateMap)
+export default withStyles(styles)(CreateMap)

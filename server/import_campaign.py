@@ -2,6 +2,7 @@ import sys, json
 from datetime import datetime
 from v1.apps.config import DATETIMEFORMAT
 from v1.apps import app, db, socketio
+from v1.apps.models import Image
 from v1.apps.users.models import User
 from v1.apps.campaign.models import Campaign
 from v1.apps.journal.models import Entry
@@ -19,10 +20,11 @@ def get_or_create_user(username, email, password="pass"):
         db.session.commit()
     return user
 
-def create_campaign(name, image=None, owner=None):
+def create_campaign(name, image_url=None, owner=None):
+    image = Image(url=image_url)
     campaign = Campaign(name=name,
                         owner=owner,
-                        header_image=image)
+                        image=image)
     db.session.add(campaign)
     db.session.commit()
     return campaign
@@ -43,7 +45,7 @@ def create_journal_entry(name, content, author, campaign):
     return entry
 
 def create_character(name, image, author, campaign):
-    character = Character(name=name, image=image, author=author, campaign=campaign)
+    character = Character(name=name, author=author, campaign=campaign)
     db.session.add(character)
     db.session.commit()
     return character
@@ -74,8 +76,8 @@ if __name__ == '__main__':
         #Campaign
         campaign_object = create_campaign(campaign['name'], campaign['header_image'], owner)
         #Maps
-        for campaignMap in campaign['maps']:
-            create_map(campaignMap['name'], campaignMap['image'], campaign_object, campaignMap['markers'])
+        # for campaignMap in campaign['maps']:
+        #     create_map(campaignMap['name'], campaignMap['image'], campaign_object, campaignMap['markers'])
         #Journal entries
         for entry in campaign['journal']['entries']:
             author = User.query.get(entry['author']['id'])

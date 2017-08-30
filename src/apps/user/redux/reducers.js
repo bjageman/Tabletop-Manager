@@ -2,23 +2,20 @@ import { createReducer } from 'redux-act';
 import * as actions from './actions';
 
 const initial = {
-  user: {
-    username: null,
-    error: null,
-  },
+  user: null
 };
 
 export const user = createReducer({
-  [actions.register]: (state, payload) => {
-    return { username: payload.username, password: payload.password };
-  },
-  [actions.login]: (state, payload) => {
-    return { username: payload.username, password: payload.password };
-  },
   [actions.logout]: (state) => {
     return null;
   },
   [actions.loginSuccess]: (state, payload) => {
-    return payload.data;
+    return {
+        "access_token" : payload.access_token,
+        ...state,
+        "username": payload.username,
+        "id": payload.id,
+        "campaigns": payload.campaigns,
+         } ;
   }
 }, initial.user);

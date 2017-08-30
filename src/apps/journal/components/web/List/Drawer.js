@@ -2,7 +2,7 @@ import React from 'react'
 
 import Typography from 'material-ui/Typography'
 import Drawer from 'material-ui/Drawer';
-import { createStyleSheet, withStyles } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 class EntryDrawer extends React.Component {
     handleRequestClose = () => {
@@ -24,7 +24,7 @@ class EntryDrawer extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('EntryDrawer', () => ({
+export const styles = theme => ({
   drawer: {
       width:"200",
   },
@@ -33,6 +33,6 @@ const styleSheet = createStyleSheet('EntryDrawer', () => ({
     paddingLeft: 50,
     marginBottom: 20,
   },
-}));
+});
 
-export default withStyles(styleSheet)(EntryDrawer)
+export default withStyles(styles)(EntryDrawer)

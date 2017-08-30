@@ -5,7 +5,7 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
 import Dialog, {DialogContent, DialogActions} from 'material-ui/Dialog'
 import Button from 'material-ui/Button'
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
 //DatePicker
 import Datetime from 'react-datetime';
@@ -99,7 +99,7 @@ class CreateEventDialog extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('CreateEventDialog', {
+export const styles = theme => ({
     dialog:{
         width:600,
         height:400,
@@ -109,4 +109,4 @@ const styleSheet = createStyleSheet('CreateEventDialog', {
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(CreateEventDialog))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CreateEventDialog))

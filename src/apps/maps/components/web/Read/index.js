@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
-import Card, { CardMedia } from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
+import { withStyles } from 'material-ui/styles';
+import { GridListTile, GridListTileBar } from 'material-ui/GridList';
 
 import Dialog from './Dialog'
-import myConfig from 'config';
-
-const UPLOAD_FOLDER = myConfig.UPLOAD_FOLDER
+import Delete from '../Delete/'
 
 class CampaignMapCard extends Component {
   constructor(props){
@@ -24,14 +21,16 @@ class CampaignMapCard extends Component {
     const {classes, map } = this.props
     return (
         <div>
-        <Card onClick={() => this.setState({ open: true })} key={this.props.key} className={classes.mapContainer}>
-            <Typography type="body1" className={classes.title}>
-            {map.name}
-          </Typography>
-            <CardMedia >
-              <img className={classes.map} src={map.image} alt={map.name} />
-            </CardMedia>
-        </Card>
+        <GridListTile key={this.props.key} className={classes.container}>
+            <img onClick={() => this.setState({ open: true })} className={classes.map} src={map.image.url} alt={map.name} />
+            <GridListTileBar
+                className={classes.tilebar}
+                title={map.name}
+                actionIcon={
+                <Delete map={map} />
+              }
+                />
+        </GridListTile>
         <Dialog
             map={map}
             open={this.state.open}
@@ -41,14 +40,16 @@ class CampaignMapCard extends Component {
   }
 }
 
-const styleSheet = createStyleSheet('CampaignCardMaps', {
-  mapContainer:{
-      marginTop: 20,
-      marginBottom: 20,
-      marginLeft:20,
-      marginRight: 40
+export const styles = theme => ({
+    container:{
+    maxWidth:500,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    background: theme.palette.background.paper,
   },
-  title: {
+  tilebar: {
     textAlign: "center",
     marginTop: 5,
     marginBottom: 5,
@@ -60,4 +61,4 @@ const styleSheet = createStyleSheet('CampaignCardMaps', {
   },
 });
 
-export default withStyles(styleSheet)(CampaignMapCard);
+export default withStyles(styles)(CampaignMapCard);

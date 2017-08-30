@@ -7,7 +7,7 @@ import Dialog, { DialogTitle, DialogContent, DialogContentText, DialogActions } 
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 class LoginDialog extends React.Component {
     constructor(props){
@@ -78,7 +78,7 @@ class LoginDialog extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('LoginDialog', (theme) => ({
+export const styles = theme => ({
   root: {
     color: 'inherit',
     textDecoration: 'inherit',
@@ -99,7 +99,7 @@ const styleSheet = createStyleSheet('LoginDialog', (theme) => ({
   input: {
       marginRight: 10
   }
-}));
+});
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(LoginDialog));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(LoginDialog));

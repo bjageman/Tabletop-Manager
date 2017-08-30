@@ -1,46 +1,69 @@
 import * as actions from 'redux/actions';
 import { put, call } from 'redux-saga/effects';
-import { postDataApi, verifyData, deleteDataApi } from 'redux/api'
+import { getDataApi, postDataApi, verifyData, deleteDataApi } from 'redux/api'
 
-
-export function * deleteJournalEntry(action){
+export function* getJournal(action) {
     try{
       let payload = action.payload
-      let url = 'campaign/' + payload.campaign_id + "/entry/" + payload.entry_id
-      console.log(url)
-      const response = yield call(deleteDataApi, url);
+      let url = 'campaign/' + payload.id + "/journal"
+      const response = yield call(getDataApi, url);
       if (verifyData(response)) {
-          console.log("Deleted entry!")
-          yield put(actions.getCampaign({id: payload.campaign_id}))
+          yield put(actions.journalSuccess({ entries: response.data }))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
       }
 }
+
+export function* getJournalEntry(action) {
+    try{
+      let payload = action.payload
+      let url = 'campaign/' + payload.campaign_id + "/journal/" + payload.entry_id
+      const response = yield call(getDataApi, url);
+      if (verifyData(response)) {
+          yield put(actions.journalEntrySuccess({ entry: response.data }))
+        }else{
+          yield put(actions.error({ "message": response.data.error }))
+        }
+      }catch(error){
+        yield put(actions.error({ "message": error.message }))
+      }
+}
+
 
 export function* saveJournalEntry(action) {
     try{
       let payload = action.payload
       let data = {"name": payload.name, "content": payload.content, "author_id": 1 }
-      let url = 'campaign/' + payload.campaign_id + "/entry"
+      let url = 'campaign/' + payload.campaign_id + "/journal"
       if ( payload.entry_id != null ){
           url = url + "/" + payload.entry_id
       }
-      const response = yield call(postDataApi, url, data);
+      const response = yield call(postDataApi, url, data, payload.access_token);
       if (verifyData(response)) {
-          yield put(actions.getCampaign({id: payload.campaign_id}))
+          yield put(actions.getJournal({ id: payload.campaign_id }))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
+      }
+}
+
+export function* deleteJournalEntry(action){
+    try{
+      let payload = action.payload
+      let url = 'campaign/' + payload.campaign_id + "/journal/" + payload.entry_id
+      console.log(url)
+      const response = yield call(deleteDataApi, url);
+      if (verifyData(response)) {
+          yield put(actions.getJournal({ id: payload.campaign_id }))
+        }else{
+          yield put(actions.error({ "message": response.data.error }))
+        }
+      }catch(error){
+        yield put(actions.error({ "message": error.message }))
       }
 }

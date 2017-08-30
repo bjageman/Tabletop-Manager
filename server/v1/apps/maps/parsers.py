@@ -1,4 +1,4 @@
-from v1.apps.parsers import parse_base
+from v1.apps.parsers import parse_base, parse_image
 from v1.apps.users.parsers import *
 
 def parse_maps(maps):
@@ -12,7 +12,7 @@ def parse_map(map):
         result = parse_base(map)
         result.update({
             "author": parse_user(map.author),
-            "image": map.image,
+            "image": parse_image(map.image),
             "markers": parse_markers(map.markers),
         })
         return result
