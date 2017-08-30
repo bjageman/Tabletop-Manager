@@ -5,7 +5,7 @@ var baseURL = myConfig.API_URL + "/api/v" + myConfig.API_VERSION
 
 var axiosRequest = axios.create({
   baseURL: baseURL,
-  timeout: 2000,
+  timeout: myConfig.TIMEOUT,
   headers: {
       'Content-Type': 'application/json',
   }
@@ -17,6 +17,17 @@ export function verifyData(response){
   }else{
       return false
   }
+}
+
+export function postAuthData(loginData) {
+    return axios.post(myConfig.API_URL + "/auth", loginData, {'Content-Type': 'application/json'})
+    .then(function (response) {
+    ***REMOVED***;
+    })
+    .catch(function (error) {
+        console.log(error);
+        return error.response
+    });
 }
 
 export function postDataApi(url, postData, token = null) {

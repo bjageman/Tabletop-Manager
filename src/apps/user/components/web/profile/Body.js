@@ -1,6 +1,6 @@
 import React from 'react'
 import Typography from 'material-ui/Typography';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 class UserProfileBody extends React.Component {
     render() {
@@ -11,8 +11,7 @@ class UserProfileBody extends React.Component {
         )
     }
 }
-const styleSheet = createStyleSheet('UserProfileBody', {
-
+export const styles = theme => ({
 });
 
-export default withStyles(styleSheet)(UserProfileBody)
+export default withStyles(styles)(UserProfileBody)

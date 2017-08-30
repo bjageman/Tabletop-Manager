@@ -2,11 +2,19 @@ import { createReducer } from 'redux-act';
 import * as actions from './actions';
 
 const initial = {
-  character: null,
+  characters: {
+      entries: [],
+    },
 };
 
-export const character = createReducer({
+export const characters = createReducer({
   [actions.getCharacters]: (state, payload) => {
-    return { campaign_id: payload.campaign_id };
+    return { id: payload.id, fetching:true, error: null  };
   },
-}, initial.character);
+  [actions.createCharacter]: (state, payload) => {
+    return { fetching:true, error: null  };
+  },
+  [actions.charactersSuccess]: (state, payload) => {
+    return { entries: payload.entries, fetching:false, error: null };
+  },
+}, initial.characters);

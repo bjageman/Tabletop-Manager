@@ -1,18 +1,13 @@
-***REMOVED***, emit, disconnect
-***REMOVED***, request, jsonify, abort
+from flask import request, jsonify, abort
 from slugify import slugify
 
-import string
-
 from v1.apps.campaign import campaign
-
+#DB
+from v1.apps import db
 #Models
 from .models import Entry
-from v1.apps.campaign.models import Campaign
+from v1.apps.campaign.models import Campaign, request_campaign_auth
 from v1.apps.users.models import User
-
-#DB/Sockets
-from v1.apps import socketio, db
 #Parsers
 from v1.apps.users.parsers import *
 from .parsers import *
@@ -24,23 +19,18 @@ from v1.apps.campaign.errors import *
 #Utils
 from v1.apps.utils import check_for_invalid_data, get_optional_data, get_required_data
 
-entry_base_url = '/<int:campaign_id>/entry'
+entry_base_url = '/<campaign_id>/journal'
 #Create
 @campaign.route(entry_base_url, methods=['POST'])
 def create_entry(campaign_id):
+    user, campaign = request_campaign_auth(request, campaign_id)
     data        = request.get_json()
     name        = get_required_data(data, "name")
-    author_id   = get_required_data(data, "author_id")
     content     = get_required_data(data, "content")
-    campaign    = Campaign.query.get(campaign_id)
-    author      = User.query.get(author_id)
-    if campaign is not None and author is not None:
-        entry = Entry(name=name, author=author, content=content, campaign=campaign)
-        db.session.add(entry)
-        db.session.commit()
-        return jsonify(parse_entry(entry))
-    else:
-        abort(400)
+    entry = Entry(name=name, author=user, content=content, campaign=campaign)
+    db.session.add(entry)
+    db.session.commit()
+    return jsonify(parse_entries(campaign.entries))
 
 #Read
 
@@ -52,17 +42,13 @@ def get_entries(campaign_id):
     else:
         abort(404)
 
-@campaign.route(entry_base_url + '/<int:entry_id>', methods=['GET'])
-def get_entry_by_id(campaign_id, entry_id):
-    entry = Entry.query.filter(Entry.id == entry_id).first()
-    if entry is not None:
-        return jsonify(parse_entry(entry))
-    else:
-        abort(404)
-
-@campaign.route(entry_base_url + '/<string:entry_slug>', methods=['GET'])
-def get_entry_by_slug(campaign_id, entry_slug):
-    entry = Entry.query.join(Campaign).filter(Campaign.id == campaign_id).filter(Entry.slug == entry_slug).first()
+@campaign.route(entry_base_url + '/<entry_id>', methods=['GET'])
+def get_entry(campaign_id, entry_id):
+    try:
+        entry_id = int(entry_id)
+        entry = Entry.query.filter(Entry.id == entry_id).first()
+    except ValueError:
+        entry = Entry.query.filter(Entry.slug == entry_id).first()
     if entry is not None:
         return jsonify(parse_entry(entry))
     else:
@@ -71,8 +57,9 @@ def get_entry_by_slug(campaign_id, entry_slug):
 #
 # #Update
 #
-@campaign.route(entry_base_url + '/<int:entry_id>', methods=['POST', 'PUT'])
-def update_journal_by_id(campaign_id, entry_id):
+@campaign.route(entry_base_url + '/<entry_id>', methods=['POST', 'PUT'])
+def update_journal(campaign_id, entry_id):
+    user, campaign = request_campaign_auth(request, campaign_id)
     entry = Entry.query.get(entry_id)
     if entry is not None and entry.campaign.id == campaign_id:
         data        = request.get_json()
@@ -83,7 +70,7 @@ def update_journal_by_id(campaign_id, entry_id):
         if content is not None:
             entry.content = content
         db.session.commit()
-        return jsonify(parse_entry(entry))
+        return jsonify(parse_entries(campaign.entries))
     else:
         abort(404)
 
@@ -92,9 +79,9 @@ def update_journal_by_id(campaign_id, entry_id):
 #  Delete
 #
 
-@campaign.route(entry_base_url + '/<int:entry_id>', methods=['DELETE'])
-def delete_journal_by_id(campaign_id, entry_id):
-    print("Deleting", entry_id)
+@campaign.route(entry_base_url + '/<entry_id>', methods=['DELETE'])
+def delete_journal(campaign_id, entry_id):
+    user, campaign = request_campaign_auth(request, campaign_id)
     entry = Entry.query.get(entry_id)
     name = entry.name
     if entry is not None and entry.campaign.id == campaign_id:
@@ -102,7 +89,7 @@ def delete_journal_by_id(campaign_id, entry_id):
         db.session.commit()
     entry = Entry.query.get(entry_id)
     if entry is None:
-        return jsonify({"deleted": entry_id})
+        return jsonify(parse_entries(campaign.entries))
     else:
         message = "Entry" + name + " was not deleted"
         code = 400

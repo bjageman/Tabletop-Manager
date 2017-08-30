@@ -5,13 +5,16 @@ import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
 import Avatar from 'material-ui/Avatar';
 import Icon from 'material-ui/Icon';
-import { createStyleSheet, withStyles } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 import Dialog from './Dialog'
 import Delete from '../Delete/'
 import Update from '../Update/'
 
-class JournalEntry extends React.Component {
+import CleanHTML from 'apps/toolkit/CleanHTML'
+import ReduxLink from 'apps/toolkit/links/Redux'
+
+class JournalListItem extends React.Component {
     constructor(props){
         super(props)
         this.handleRequestClose = this.handleRequestClose.bind(this)
@@ -26,10 +29,11 @@ class JournalEntry extends React.Component {
 
     render(){
         const { entry, classes } = this.props
+        const link = "journal/" + entry.slug
         return(
             <div className = "journal-entry">
             <Card className={classes.card}>
-                <a onClick={() => this.setState({ open: true })} className={classes.link}>
+                <ReduxLink campaignLink to={link} >
                     <CardHeader
                         avatar={
                           <Avatar
@@ -42,10 +46,10 @@ class JournalEntry extends React.Component {
                       />
                     <CardContent>
                         <Typography component="p">
-                          {entry.content.length > 350 ? entry.content.slice(0,350) + "..." : entry.content}
+                          <CleanHTML html={entry.content.length > 350 ? entry.content.slice(0,350) + "..." : entry.content} />
                         </Typography>
                     </CardContent>
-                </a>
+                </ReduxLink>
                 <CardActions disableActionSpacing>
                     <IconButton aria-label="Add to favorites">
                       <Icon>favorite</Icon>
@@ -66,7 +70,7 @@ class JournalEntry extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet("JournalEntry", () => ({
+export const styles = theme => ({
   card: {
       marginTop: 20,
       marginBottom: 20,
@@ -77,6 +81,6 @@ const styleSheet = createStyleSheet("JournalEntry", () => ({
     textDecoration: 'none',
     cursor: 'pointer'
   },
-}));
+});
 
-export default withStyles(styleSheet)(JournalEntry)
+export default withStyles(styles)(JournalListItem)

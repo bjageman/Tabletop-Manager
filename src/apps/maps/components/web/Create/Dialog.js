@@ -6,7 +6,7 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 import Dialog, {DialogContent, DialogActions} from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 
 
 
@@ -34,7 +34,9 @@ class CreateDialogEvent extends React.Component {
     }
 
     handleUpload() {
+        console.log(this.props.user.access_token)
         this.props.saveMap({
+            access_token: this.props.user.access_token,
             name: this.state.name,
             author_id: this.props.user.id,
             campaign_id: this.props.campaign.id,
@@ -68,8 +70,7 @@ class CreateDialogEvent extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('CreateDialogEvent', {
-
+export const styles = theme => ({
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(CreateDialogEvent))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CreateDialogEvent))

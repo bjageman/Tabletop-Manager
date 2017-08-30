@@ -1,7 +1,7 @@
 import React from 'react'
 
 import TextField from 'material-ui/TextField';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 class CampaignEventSearch extends React.Component {
     render(){
@@ -16,9 +16,8 @@ class CampaignEventSearch extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('CampaignEventSearch', {
-  container:{
+export const styles = theme => ({  container:{
   },
 });
 
-export default withStyles(styleSheet)(CampaignEventSearch)
+export default withStyles(styles)(CampaignEventSearch)

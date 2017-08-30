@@ -3,36 +3,48 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
-import Dialog, {DialogContent} from 'material-ui/Dialog'
+import Dialog, { DialogContent, DialogActions } from 'material-ui/Dialog'
 import Slide from 'material-ui/transitions/Slide'
 
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import IconButton from 'material-ui/IconButton';
-import Icon from 'material-ui/Icon';
+import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
-import Input from 'material-ui/Input/Input';
 
-import { withStyles, createStyleSheet } from 'material-ui/styles'
 
-import { EditorState } from 'draft-js';
-import Editor from './Editor'
+import { withStyles } from 'material-ui/styles';
+
+import { stateToHTML } from 'draft-js-export-html';
+import { EditorState, convertFromHTML, ContentState } from 'draft-js';
+
+import Editor from 'apps/toolkit/editor/'
 
 class EntryCreateDialog extends React.Component {
     constructor(props){
         super(props)
         this.handleSave = this.handleSave.bind(this)
-        this.state = {
-            editorState: EditorState.createEmpty(),
-            name: this.props.entry ? this.props.entry.name : "",
-            content: this.props.entry ? this.props.entry.content : ""
-        };
+        if (this.props.entry) {
+            const blocksFromHTML = convertFromHTML(this.props.entry.content);
+            const state = ContentState.createFromBlockArray(
+                blocksFromHTML.contentBlocks,
+                blocksFromHTML.entityMap
+            );
+            this.state = {
+                editorState: EditorState.createWithContent(state),
+                name: this.props.entry.name,
+                content: this.props.entry.content,
+            };
+        }else{
+            this.state = {
+                editorState: EditorState.createEmpty(),
+                name: "",
+                content: "",
+            };
+        }
     }
 
     onChange = (editorState) => {
         this.setState({
             editorState,
-            content: editorState.getCurrentContent().getPlainText(" "),
+            content: stateToHTML(editorState.getCurrentContent()),
         });
     };
 
@@ -44,6 +56,7 @@ class EntryCreateDialog extends React.Component {
 
     handleSave() {
         this.props.saveJournalEntry({
+            access_token: this.props.user.access_token,
             name:this.state.name,
             content:this.state.content,
             campaign_id: this.props.campaign.id,
@@ -58,32 +71,19 @@ class EntryCreateDialog extends React.Component {
         const entry = this.props.entry || {name: "", content: ""}
         return(
             <Dialog
-                fullScreen
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose}
                 transition={<Slide direction="up" />}
             >
-            <AppBar className={classes.appBar}>
-                <Toolbar>
-                  <IconButton color="contrast" onClick={this.props.onRequestClose} aria-label="Close">
-                    <Icon>close</Icon>
-                  </IconButton>
-                  <Input
-                      fullWidth
-                      color="contrast"
-                      id="name"
-                      name="name"
-                      label="Name"
-                      placeholder="Entry Title"
-                      defaultValue={entry.name || ""}
-                      onChange={this.handleInputChange}
-                    />
-                  <Button color="contrast" onClick={this.handleSave}>
-                    save
-                  </Button>
-                </Toolbar>
-            </AppBar>
             <DialogContent className={classes.editor}>
+                <TextField
+                  id="title"
+                  label="Title"
+                  name="name"
+                  fullWidth
+                  value={this.state.name}
+                  onChange={this.handleInputChange}
+                />
                 <Editor
                     entry = {entry}
                     editorState={this.state.editorState}
@@ -91,14 +91,22 @@ class EntryCreateDialog extends React.Component {
                     handleInputChange={this.handleInputChange}
                     />
             </DialogContent>
+            <DialogActions>
+                <Button onClick={this.handleSave}>
+                  Save As Draft
+                </Button>
+                <Button onClick={this.handleSave}>
+                  POST
+                </Button>
+            </DialogActions>
             </Dialog>
         )
     }
 }
 
-const styleSheet = createStyleSheet('EntryCreateDialog', {
-  appBar: {
-    position: 'relative',
+export const styles = theme => ({
+  dialog: {
+    width: 600,
   },
   flex: {
     flex: 1,
@@ -107,7 +115,8 @@ const styleSheet = createStyleSheet('EntryCreateDialog', {
     color: "white"
 },
   editor: {
+      width: 600
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(EntryCreateDialog))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(EntryCreateDialog))

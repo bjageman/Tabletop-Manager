@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 
@@ -34,10 +34,9 @@ class CampaignWikiContent extends Component {
   }
 }
 
-const styleSheet = createStyleSheet('CampaignWikiContent', {
-
+export const styles = theme => ({
   body:{
   }
 });
 
-export default withStyles(styleSheet)(CampaignWikiContent);
+export default withStyles(styles)(CampaignWikiContent);

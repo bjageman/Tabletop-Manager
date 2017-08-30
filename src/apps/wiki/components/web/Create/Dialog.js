@@ -3,7 +3,7 @@ import React from 'react'
 import Dialog, {DialogContent} from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 
 
 
@@ -51,8 +51,7 @@ class CreateDialog extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('CreateDialog', {
-
+export const styles = theme => ({
 });
 
-export default withStyles(styleSheet)(CreateDialog)
+export default withStyles(styles)(CreateDialog)

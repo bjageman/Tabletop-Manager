@@ -3,13 +3,13 @@ from flask import make_response, jsonify, abort
 
 @users.errorhandler(404)
 def not_found(error):
-    message = 'Not found'
+    message = 'User Not Found'
     code = 404
     return make_response(jsonify({'error': message}), code)
 
 @users.errorhandler(401)
 def unauthorized(error):
-    message = 'Unauthorized access'
+    message = 'Unauthorized Access'
     code = 401
     return make_response(jsonify({'error': message}), code)
 
