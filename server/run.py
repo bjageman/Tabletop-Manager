@@ -1,3 +1,4 @@
+import os
 from flask_script import Manager, Server
 
 from v1.apps import app, socketio
@@ -15,4 +16,5 @@ from v1.apps import app, socketio
 #     manager.run()
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, host='0.0.0.0')
+    port = int(os.environ.get('PORT', 5000))
+    socketio.run(app, debug=True, port=port, host='0.0.0.0')
