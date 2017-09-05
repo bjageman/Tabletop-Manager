@@ -17,7 +17,7 @@ from v1.apps.errors import *
 from v1.apps.campaign.errors import *
 
 #Utils
-from v1.apps.utils import check_for_invalid_data, get_optional_data, get_required_data
+from v1.apps.utils import check_for_invalid_data, get_optional_data, get_required_data, search_by_name
 
 entry_base_url = '/<campaign_id>/journal'
 #Create
@@ -38,7 +38,11 @@ def create_entry(campaign_id):
 def get_entries(campaign_id):
     campaign = Campaign.query.get(campaign_id)
     if campaign is not None:
-        return jsonify(parse_entries(campaign.entries))
+        entries = Entry.query.filter_by(campaign=campaign)
+        data = request.args
+        name = get_optional_data(data, "name")
+        entries = search_by_name(entries, Entry, name)
+        return jsonify(parse_entries(entries))
     else:
         abort(404)
 

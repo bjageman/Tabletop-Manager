@@ -14,7 +14,7 @@ class CampaignDashboardHeader extends React.Component {
         const headerImage =  this.props.image
         return(
             <div>
-            { headerImage.url ?
+            { headerImage && headerImage.url ?
             <Grid item xs={12} className={classes.header}>
                 <img src={headerImage.url} alt={name} className= {classes.image}/>
             </Grid>

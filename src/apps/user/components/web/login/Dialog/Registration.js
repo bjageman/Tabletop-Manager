@@ -22,7 +22,7 @@ class RegistrationDialog extends React.Component {
     };
 
     handleRegistration = value => {
-        console.log("Registration " + this.state.username + " with " + this.state.password)
+        
         this.props.register({
             "username": this.state.username,
             "password": this.state.password,

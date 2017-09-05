@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Dialog, {DialogContent} from 'material-ui/Dialog'
-import { withStyles } from 'material-ui/styles';
+// import Dialog, {DialogContent} from 'material-ui/Dialog'
+import Dialog from 'apps/toolkit/components/web/Dialog'
 
 class CampaignMapDialog extends React.Component {
     handleRequestClose = () => {
@@ -10,32 +10,20 @@ class CampaignMapDialog extends React.Component {
 
     render() {
         const map = this.props.map
-        const classes = this.props.classes
         return (
             <Dialog
-                className={classes.dialog}
                 open={this.props.open}
                 onRequestClose={this.handleRequestClose} >
-                <DialogContent className={classes.content}>
-                    <img className={classes.map} src={map.image.url} alt={map.name} />
-                </DialogContent>
+                <img style={styles.map} src={map.image.url} alt={map.name} />
             </Dialog>
         )
     }
 }
 
-export const styles = theme => ({
-  dialog: {
-      width: "100%"
-  },
+const styles = {
   map: {
       width: "100%"
   },
-  content: {
-    paddingTop: 20,
-    paddingLeft: 50,
-    marginBottom: 20,
-  },
-});
+};
 
-export default withStyles(styles)(CampaignMapDialog)
+export default CampaignMapDialog

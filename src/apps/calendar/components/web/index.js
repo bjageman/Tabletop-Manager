@@ -15,7 +15,7 @@ import Create from './Create/'
 class CampaignCalendar extends Component {
     constructor(props){
         super(props)
-        console.log("LOAD ONCE ASSHOLE")
+        
         this.props.getCalendar({ id: this.props.campaign.id })
     }
 

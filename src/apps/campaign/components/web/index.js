@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect, Route } from 'react-router'
+import { Route } from 'react-router'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
@@ -23,9 +23,12 @@ import { checkOwner } from 'apps/toolkit/utils'
 class Campaign extends React.Component {
     constructor(props){
         super(props)
-        this.props.getCampaign({
-            id: this.props.match.params.id
-        })
+
+        if (this.props.match.params.id){
+            this.props.getCampaign({
+                id: this.props.match.params.id
+            })
+        }
     }
 
     render(){
@@ -33,30 +36,26 @@ class Campaign extends React.Component {
         const user = this.props.user
         const campaign = this.props.campaign
         const is_owner = checkOwner(user, campaign)
-        const loading = false
         if (campaign) {
         return(
-        <div>
-            <ToolBar />
-            <Route exact path={match.url} render={() => <Dashboard campaign={campaign} /> } />
-            <Route path={match.url + '/journal'} component={JournalRouter} />
-            <Route path={match.url + '/characters'} render={() =>
-                <Characters
-                    is_owner={is_owner}
-                /> }/>
-            <Route path={match.url + '/maps'} render={() =>
-                <Maps
-                    is_owner={is_owner}
-                /> }/>
-            <Route path={match.url + '/calendar'} render={() =>
-                <Calendar
-                    is_owner={is_owner}
-                /> }/>
-            <Route path={match.url + '/wiki'} render={() =>
-                <Wiki
-                    is_owner={is_owner}
-                /> }/>
-        </div>
+            <div>
+                <ToolBar />
+                <Route exact path={match.url} render={() => <Dashboard campaign={campaign} /> } />
+                <Route path={match.url + '/journal'} component={JournalRouter} />
+                <Route path={match.url + '/characters'} component={Characters} />
+                <Route path={match.url + '/maps'} render={() =>
+                    <Maps
+                        is_owner={is_owner}
+                    /> }/>
+                <Route path={match.url + '/calendar'} render={() =>
+                    <Calendar
+                        is_owner={is_owner}
+                    /> }/>
+                <Route path={match.url + '/wiki'} render={() =>
+                    <Wiki
+                        is_owner={is_owner}
+                    /> }/>
+            </div>
         )
     }else{
         return <Loading />

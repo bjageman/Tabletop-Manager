@@ -6,6 +6,9 @@ import Icon from 'material-ui/Icon'
 import LoginDialog from './Dialog/Login'
 import RegistrationDialog from './Dialog/Registration'
 
+import { AppBarItem } from 'apps/toolkit/components/web/navigation/AppBar'
+
+
 class Login extends React.Component {
     constructor(props){
         super(props)
@@ -26,7 +29,9 @@ class Login extends React.Component {
     render(){
         return(
             <div id="login">
-            <Button color={this.props.color} onClick={() => this.setState({ openLogin: true })}><Icon>person</Icon> Login / Sign Up</Button>
+            <AppBarItem right onClick={() => this.setState({ openLogin: true })}>
+                <Icon>person</Icon> Login / Sign Up
+            </AppBarItem>
             <LoginDialog
                 open={this.state.openLogin}
                 openRegistration ={() => this.setState({ openRegistration: true, openLogin: false })}

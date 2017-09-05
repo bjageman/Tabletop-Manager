@@ -12,7 +12,7 @@ class CharacterEntry extends React.Component {
 
     handleClick(event){
         event.preventDefault()
-        console.log("Clicked!")
+        
     }
 
     render(){

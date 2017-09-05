@@ -22,7 +22,7 @@ class LoginDialog extends React.Component {
     };
 
     handleLogin = value => {
-        console.log("Login " + this.state.username + " with " + this.state.password)
+        
         this.props.login({
             "username": this.state.username,
             "password": this.state.password,

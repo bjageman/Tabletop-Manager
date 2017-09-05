@@ -3,9 +3,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
-import Dialog, { DialogContent, DialogActions } from 'material-ui/Dialog'
-import Slide from 'material-ui/transitions/Slide'
-
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 
@@ -15,6 +12,7 @@ import { withStyles } from 'material-ui/styles';
 import { stateToHTML } from 'draft-js-export-html';
 import { EditorState, convertFromHTML, ContentState } from 'draft-js';
 
+import Dialog from 'apps/toolkit/components/web/Dialog'
 import Editor from 'apps/toolkit/editor/'
 
 class EntryCreateDialog extends React.Component {
@@ -67,15 +65,12 @@ class EntryCreateDialog extends React.Component {
     }
 
     render(){
-        const classes = this.props.classes;
         const entry = this.props.entry || {name: "", content: ""}
         return(
             <Dialog
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose}
-                transition={<Slide direction="up" />}
             >
-            <DialogContent className={classes.editor}>
                 <TextField
                   id="title"
                   label="Title"
@@ -90,15 +85,12 @@ class EntryCreateDialog extends React.Component {
                     onChange={this.onChange}
                     handleInputChange={this.handleInputChange}
                     />
-            </DialogContent>
-            <DialogActions>
                 <Button onClick={this.handleSave}>
                   Save As Draft
                 </Button>
                 <Button onClick={this.handleSave}>
                   POST
                 </Button>
-            </DialogActions>
             </Dialog>
         )
     }

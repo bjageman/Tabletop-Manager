@@ -14,18 +14,18 @@ class CharacterDeleteDialog extends React.Component {
     }
 
     onChange = (editorState) => {
-        console.log("Text Change")
+        
     };
 
     handleInputChange = (event) => {
-        console.log(event.target.value)
+        
         this.setState({
             [event.target.name]: event.target.value
         })
     }
 
     handleDelete() {
-        console.log("Delete Item")
+        
         this.props.onRequestClose()
     }
 
