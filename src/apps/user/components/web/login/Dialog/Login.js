@@ -5,7 +5,7 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 import Dialog, { DialogTitle, DialogContent, DialogContentText, DialogActions } from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField'
-import Button from 'material-ui/Button';
+import Button from 'apps/toolkit/components/web/Button';
 import Divider from 'material-ui/Divider';
 import { withStyles } from 'material-ui/styles';
 

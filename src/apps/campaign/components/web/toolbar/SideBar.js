@@ -6,7 +6,7 @@ import { push } from 'react-router-redux'
 import  store  from 'redux/store'
 //material-ui
 import Typography from 'material-ui/Typography'
-import { MenuItem } from 'material-ui/Menu';
+import { MenuItem } from 'apps/toolkit/components/web/Menu'
 import { withStyles } from 'material-ui/styles';
 
 import InvisibleLink from 'apps/toolkit/links/InvisibleLink'

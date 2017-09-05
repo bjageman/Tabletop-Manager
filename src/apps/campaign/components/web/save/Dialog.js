@@ -3,11 +3,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
-import Dialog, { DialogContent, DialogActions } from 'material-ui/Dialog'
-import Slide from 'material-ui/transitions/Slide'
+import Dialog from 'apps/toolkit/components/web/Dialog'
 
 import TextField from 'material-ui/TextField';
-import Button from 'material-ui/Button';
+import Button from 'apps/toolkit/components/web/Button';
 
 import { withStyles } from 'material-ui/styles';
 
@@ -37,14 +36,11 @@ class EntryCreateDialog extends React.Component {
     }
 
     render(){
-        const classes = this.props.classes;
         return(
             <Dialog
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose}
-                transition={<Slide direction="up" />}
             >
-            <DialogContent className={classes.editor}>
                 <TextField
                   id="title"
                   label="Title"
@@ -53,12 +49,9 @@ class EntryCreateDialog extends React.Component {
                   value={this.state.name}
                   onChange={this.handleInputChange}
                 />
-            </DialogContent>
-            <DialogActions>
                 <Button onClick={this.handleSave}>
                   Save Campaign
                 </Button>
-            </DialogActions>
             </Dialog>
         )
     }

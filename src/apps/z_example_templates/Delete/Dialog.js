@@ -2,7 +2,7 @@ import React from 'react'
 //Material-UI Imports
 import Dialog, {DialogContent, DialogActions} from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
-import Button from 'material-ui/Button'
+import Button from 'apps/toolkit/components/web/Button'
 import { withStyles } from 'material-ui/styles';
 
 

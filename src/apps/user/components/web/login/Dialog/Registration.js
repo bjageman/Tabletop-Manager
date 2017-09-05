@@ -6,7 +6,7 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI
 import Dialog, { DialogTitle, DialogContent, DialogContentText, DialogActions } from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField'
-import Button from 'material-ui/Button';
+import Button from 'apps/toolkit/components/web/Button';
 import { withStyles } from 'material-ui/styles';
 
 class RegistrationDialog extends React.Component {
