@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from 'material-ui/Button';
+import Button from 'apps/toolkit/components/web/Button';
 import { withStyles } from 'material-ui/styles';
 
 import CreateEventDialog from './Dialog'

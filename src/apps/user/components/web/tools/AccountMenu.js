@@ -4,9 +4,6 @@ import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 import Menu, { MenuItem } from 'apps/toolkit/components/web/Menu';
-import Button from 'material-ui/Button';
-import Icon from 'material-ui/Icon';
-import Divider from 'material-ui/Divider';
 
 import InvisibleLink from 'apps/toolkit/links/InvisibleLink'
 
@@ -42,7 +39,7 @@ class AccountMenu extends React.Component {
                 <InvisibleLink to="/settings">
                     <MenuItem onClick={this.handleRequestClose}>Settings</MenuItem>
                 </InvisibleLink>
-                <Divider />
+                <hr />
                 <MenuItem onClick={this.handleLogOut}>Log Out</MenuItem>
             </Menu>
         )

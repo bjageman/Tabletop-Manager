@@ -6,7 +6,7 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import { CardActions, CardContent } from 'material-ui/Card';
-import Button from 'material-ui/Button'
+import Button from 'apps/toolkit/components/web/Button'
 import Typography from 'material-ui/Typography'
 
 import ReduxLink from 'apps/toolkit/links/Redux'

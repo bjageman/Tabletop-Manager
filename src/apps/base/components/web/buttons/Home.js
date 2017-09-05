@@ -8,7 +8,7 @@ import  store  from 'redux/store'
 //Material-UI
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button'
+import Button from 'apps/toolkit/components/web/Button'
 import InvisibleLink from 'apps/toolkit/links/InvisibleLink'
 
 import myConfig from 'config.js';

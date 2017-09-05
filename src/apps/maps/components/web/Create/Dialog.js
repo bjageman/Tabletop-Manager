@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
 import Typography from 'material-ui/Typography'
-import Button from 'material-ui/Button'
+import Button from 'apps/toolkit/components/web/Button'
 import { withStyles } from 'material-ui/styles';
 
 import Dialog from 'apps/toolkit/components/web/Dialog'

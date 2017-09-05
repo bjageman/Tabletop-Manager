@@ -1,8 +1,5 @@
 import React from 'react'
 
-import Button from 'material-ui/Button'
-import Icon from 'material-ui/Icon'
-
 import LoginDialog from './Dialog/Login'
 import RegistrationDialog from './Dialog/Registration'
 
@@ -30,7 +27,7 @@ class Login extends React.Component {
         return(
             <div id="login">
             <AppBarItem right onClick={() => this.setState({ openLogin: true })}>
-                <Icon>person</Icon> Login / Sign Up
+                Login/SignUp
             </AppBarItem>
             <LoginDialog
                 open={this.state.openLogin}
