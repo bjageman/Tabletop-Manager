@@ -49,11 +49,17 @@ def create_character(campaign_id):
 
 #Read
 
+
+
 @campaign.route(character_base_url, methods=['GET'])
 def get_campaign_characters(campaign_id):
-    campaign = get_campaign(campaign_id)
+    campaign    = get_campaign(campaign_id)
+    characters = Character.query.filter_by(campaign=campaign)
+    data = request.args
+    name = get_optional_data(data, "name")
+    characters = search_by_name(characters, Character, name)
     if campaign is not None:
-        return jsonify(parse_characters(campaign.characters))
+        return jsonify(parse_characters(characters))
     else:
         abort(404)
 

@@ -19,6 +19,7 @@ def check_for_invalid_data(data, value):
         return True
 
 def get_optional_data(data, value):
+    print("getting", value, "from", data)
     try:
         return data[value]
     except (AttributeError, KeyError, TypeError):
@@ -35,6 +36,13 @@ def convert_string_to_datetime(date_string):
         return datetime.strptime(date_string, DATETIMEFORMAT)
     else:
         return None
+
+#Search Functions
+
+def search_by_name(object, object_type, name):
+    if name is not None:
+        return object.filter(object_type.name.contains(name))
+    return object
 
 #File Upload
 

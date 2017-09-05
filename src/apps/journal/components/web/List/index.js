@@ -23,7 +23,7 @@ class JournalListItem extends React.Component {
         }
     }
     handleRequestClose(){
-        console.log("CLOSE")
+        
         this.setState({open: false})
     }
 

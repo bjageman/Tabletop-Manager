@@ -12,10 +12,6 @@ import { withStyles } from 'material-ui/styles';
 import InvisibleLink from 'apps/toolkit/links/InvisibleLink'
 
 class CampaignTabs extends React.Component {
-    constructor(props){
-        super(props)
-    }
-
     onClick = (location) => {
         store.dispatch(push('/campaign/' + this.props.campaign.slug + '/' + location))
     };

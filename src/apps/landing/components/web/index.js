@@ -5,7 +5,7 @@ import ToolBar from 'apps/base/components/web/ToolBar'
 
 class LandingPage extends Component {
     render(){
-        console.log("WTF")
+        
         return(
             <div>
                 <ToolBar />

@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_mail import Mail
 from flask_jwt import JWT
 from flask_sqlalchemy import SQLAlchemy
 from flask_socketio import SocketIO
@@ -14,9 +15,17 @@ app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = config.UPLOAD_FOLDER
 app.config['SQLALCHEMY_DATABASE_URI'] = config.DATABASE
-
 app.config['JWT_EXPIRATION_DELTA'] = timedelta(hours=24)
 
+#Mail Setup
+app.config['MAIL_SERVER'] = 'smtp.gmail.com' #config.MAIL_SERVER
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = "neurobomber@gmail.com" #config.MAIL_USERNAME
+app.config['MAIL_PASSWORD'] = "FuckThis2017" #config.MAIL_PASSWORD
+
+mail = Mail(app)
 db = SQLAlchemy(app)
 db.init_app(app)
 #Web Socket

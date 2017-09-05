@@ -41,7 +41,7 @@ class CampaignListing extends React.Component {
                     </GridListTile>
                     {user.campaigns ? user.campaigns.map((campaign, i) => (
                         <GridListTile key={campaign.id} className={classes.gridListTile}>
-                            <img src={campaign.image.url || defaultImage} alt={campaign.name} />
+                            <img src={campaign.image ? campaign.image.url : defaultImage} alt={campaign.name} />
                             <InvisibleLink to={"/campaign/" + campaign.slug}>
 
                             <GridListTileBar

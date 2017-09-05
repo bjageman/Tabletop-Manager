@@ -8,18 +8,8 @@ import Dialog from './Dialog'
 class CreateMap extends React.Component {
     constructor(props){
         super(props)
-        this.handleRequestClose = this.handleRequestClose.bind(this)
-        this.state = {
-            open: false,
-        }
+        this.state = { open: false }
     }
-
-    handleRequestClose() {
-        this.setState({
-            open: false
-        })
-    }
-
     render(){
         const classes = this.props.classes
         return(
@@ -33,7 +23,7 @@ class CreateMap extends React.Component {
             </Button>
             <Dialog
                 open={this.state.open}
-                onRequestClose={this.handleRequestClose}
+                onRequestClose={() => this.setState({ open: false })}
                 />
             </div>
         )
