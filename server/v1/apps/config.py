@@ -1,12 +1,15 @@
 import os
 
-DB_USER = os.environ.get('DB_USER')
-DB_PASS = os.environ.get('DB_PASS')
-DB_HOST = os.environ.get('DB_HOST')
-DB_DATABASE = os.environ.get('DB_DATABASE')
-DB_TEST = os.environ.get('DB_TEST')
-DATABASE = 'mysql://' + DB_USER + ':' + DB_PASS + '@' + DB_HOST + '/' + DB_DATABASE
-DATABASE_TEST = 'mysql://' + DB_USER + ':' + DB_PASS + '@' + DB_HOST + '/' + DB_TEST
+DB_USER = (os.environ.get('DB_USER','root'))
+DB_PASS = (os.environ.get('DB_PASS','password'))
+DB_HOST = (os.environ.get('DB_HOST','host'))
+DB_DATABASE = (os.environ.get('DB_DATABASE','database'))
+DB_TEST = (os.environ.get('DB_TEST','test'))
+DB_TYPE = (os.environ.get('DB_TYPE','mysql'))
+DB_PORT = (os.environ.get('DB_PORT','3306'))
+
+DATABASE = DB_TYPE + '://' + DB_USER + ':' + DB_PASS + '@' + DB_HOST + ":" + DB_PORT + '/' + DB_DATABASE
+DATABASE_TEST = DB_TYPE + 'mysql://' + DB_USER + ':' + DB_PASS + '@' + DB_HOST + ":" + DB_PORT + '/' + DB_TEST
 
 DATETIMEFORMAT = "%m/%d/%Y %I:%M %p"
 #08/01/2017 12:00 AM
