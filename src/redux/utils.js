@@ -1,19 +1,20 @@
-import * as actionCreators from './actions';
+import * as actions from 'redux/actions';
 import { bindActionCreators } from 'redux';
 
 export function mapStateToProps(state) {
   const props = {
     campaign: state.campaign,
-    user: state.user && state.user.id ? state.user : null,
+    user: state.user,
     journal: state.journal,
-  }
-  if (state.response.error != null){
-      alert(state.response.error)
-      state.response.error = null
+    characters: state.characters,
+    maps: state.maps,
+    calendar: state.calendar,
+    response: state.response,
+    router: state.router,
   }
   return props
 }
 
 export function mapDispatchToProps (dispatch) {
-  return bindActionCreators(actionCreators, dispatch);
+  return bindActionCreators(actions, dispatch);
 }

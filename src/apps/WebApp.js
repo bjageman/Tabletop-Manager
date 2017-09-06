@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from 'react-router-dom'
-import { connect } from 'react-redux'
-import { mapStateToProps, mapDispatchToProps } from '../redux/utils'
+import { Route, Switch } from 'react-router'
 
-import Navigation from './base/components/web/Navigation'
+import { ConnectedRouter } from 'react-router-redux'
+
+import { connect } from 'react-redux'
+import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
+import { history } from 'redux/store'
+
 import Footer from './base/components/web/Footer'
 
 import UserProfile from './user/components/web/profile/'
 
 import LandingPage from './landing/components/web/'
 import Campaign from './campaign/components/web/'
+import CampaignListing from './campaign/components/web/listing/'
 import Maps from './maps/components/web/'
+
+import Notifications from './toolkit/notifications/'
 
 const NotFound = () => (
     <p>Sorry, not Found!</p>
@@ -23,22 +25,23 @@ const NotFound = () => (
 
 class WebApp extends Component {
   render() {
+
     return (
-      <Router>
+      <ConnectedRouter history={history}>
         <div className="app">
-          <Navigation />
+          <Notifications />
           <Switch>
-              <Route exact path="/" component={LandingPage}/>
-              <Route exact path="/profile" component={UserProfile}/>
-              <Route exact path="/profile/:userId" component={UserProfile}/>
-              <Route exact path="/campaign" component={Campaign}/>
-              <Route path="/campaign/:id" component={Campaign}/>
-              <Route path="/maps" component={Maps}/>
-              <Route component={NotFound} />
+          <Route exact path="/" component={LandingPage}/>
+          <Route exact path="/profile" component={UserProfile}/>
+          <Route exact path="/profile/:userId" component={UserProfile}/>
+          <Route exact path="/campaign" component={CampaignListing}/>
+          <Route path="/campaign/:id" component={Campaign}/>
+          <Route path="/maps" component={Maps}/>
+          <Route component={NotFound} />
           </Switch>
           <Footer />
         </div>
-      </Router>
+      </ConnectedRouter>
     );
   }
 }

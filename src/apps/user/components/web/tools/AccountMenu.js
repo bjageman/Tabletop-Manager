@@ -3,12 +3,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import Menu, { MenuItem } from 'material-ui/Menu';
-import Button from 'material-ui/Button';
-import Icon from 'material-ui/Icon';
-import Divider from 'material-ui/Divider';
+import Menu, { MenuItem } from 'apps/toolkit/components/web/Menu';
 
-import InvisibleLink from 'apps/toolkit/InvisibleLink'
+import InvisibleLink from 'apps/toolkit/links/InvisibleLink'
 
 class AccountMenu extends React.Component {
     state = {
@@ -26,33 +23,25 @@ class AccountMenu extends React.Component {
 
     handleLogOut = () => {
         this.props.logout()
+        // this.props.logOutCampaign()
         this.setState({ open: false });
     };
 
     render() {
         return(
-            <div>
-            <Button color="contrast"  onClick={this.handleClick}>
-                {this.props.username} <Icon>keyboard_arrow_down</Icon>
-            </Button>
-            <Menu
-                anchorEl={this.state.anchorEl}
-                open={this.state.open}
-                onRequestClose={this.handleRequestClose}
-                >
+            <Menu title={this.props.user.username}>
                 <InvisibleLink to="/profile">
-                <MenuItem onClick={this.handleRequestClose}>Profile</MenuItem>
+                    <MenuItem onClick={this.handleRequestClose}>Profile</MenuItem>
                 </InvisibleLink>
                 <InvisibleLink to="/campaign">
-                    <MenuItem onClick={this.handleRequestClose}>My Campaign</MenuItem>
+                    <MenuItem onClick={this.handleRequestClose}>My Campaigns</MenuItem>
                 </InvisibleLink>
                 <InvisibleLink to="/settings">
-                <MenuItem onClick={this.handleRequestClose}>Settings</MenuItem>
+                    <MenuItem onClick={this.handleRequestClose}>Settings</MenuItem>
                 </InvisibleLink>
-                <Divider />
+                <hr />
                 <MenuItem onClick={this.handleLogOut}>Log Out</MenuItem>
             </Menu>
-            </div>
         )
     }
 }

@@ -3,12 +3,19 @@ import * as actions from './actions';
 
 const initial = {
   calendar: {
+    entries: [],
     owner: null,
     error: null,
   },
 };
 
 export const calendar = createReducer({
+  [actions.getCalendar]: (state, payload) => {
+    return { fetching:true, error: null };
+  },
+  [actions.calendarSuccess]: (state, payload) => {
+    return { entries: payload.entries, fetching:false, error: null };
+  },
   [actions.saveCalendarEvent]: (state, payload) => {
     return {
         name: payload.name,

@@ -1,7 +1,15 @@
+from gcloud import storage
+from oauth2client.service_account import ServiceAccountCredentials
+import os, json, sys
+
 from flask import make_response, jsonify, abort
 from datetime import datetime
+from werkzeug.utils import secure_filename
 
-from v1.apps.config import DATETIMEFORMAT
+from v1.apps.config import DATETIMEFORMAT, GCS_BUCKET, ALLOWED_EXTENSIONS
+
+__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+gcloud_config = os.path.join(__location__, 'gcs_config.json')
 
 def check_for_invalid_data(data, value):
     try:
@@ -11,6 +19,7 @@ def check_for_invalid_data(data, value):
         return True
 
 def get_optional_data(data, value):
+    print("getting", value, "from", data)
     try:
         return data[value]
     except (AttributeError, KeyError, TypeError):
@@ -20,7 +29,6 @@ def get_required_data(data, value):
     try:
         return data[value]
     except (AttributeError, KeyError, TypeError):
-        print("failed to get", value)
         abort(400)
 
 def convert_string_to_datetime(date_string):
@@ -28,3 +36,52 @@ def convert_string_to_datetime(date_string):
         return datetime.strptime(date_string, DATETIMEFORMAT)
     else:
         return None
+
+#Search Functions
+
+def search_by_name(object, object_type, name):
+    if name is not None:
+        return object.filter(object_type.name.contains(name))
+    return object
+
+#File Upload
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+# def file_upload(file, location=""):
+#     if allowed_file(file.filename):
+#         filename = secure_filename(file.filename)
+#         filepath = os.path.join(app.config['UPLOAD_FOLDER'] + location, filename)
+#         file.save(filepath)
+#         return filepath
+#     return None
+
+def google_cloud_setup_storage_client(config_file):
+    json_data = open(config_file);
+    settings = json.load(json_data)
+    client = storage.Client(credentials=ServiceAccountCredentials.from_json_keyfile_dict(settings), project=settings['project_id'])
+    return client
+
+def upload_google_cloud_storage(file, location=""):
+    filename = secure_filename(file.filename)
+    client = google_cloud_setup_storage_client(gcloud_config)
+    bucket = client.get_bucket(GCS_BUCKET)
+    blob = bucket.blob(location + filename)
+    blob.upload_from_file(file, size=1)
+    return {
+        "url": "https://storage.cloud.google.com/" + GCS_BUCKET + "/" + location + filename,
+        "blob_name": blob.name
+        }
+
+
+def delete_google_cloud_storage(blob_name):
+    try:
+        client = google_cloud_setup_storage_client(gcloud_config)
+        bucket = client.get_bucket(GCS_BUCKET)
+        blob = bucket.get_blob(blob_name)
+        delete_blob = blob.delete()
+        return True
+    except AttributeError:
+        return False

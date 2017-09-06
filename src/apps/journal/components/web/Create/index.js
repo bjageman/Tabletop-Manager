@@ -1,15 +1,15 @@
 import React from 'react'
-import Button from 'material-ui/Button';
+import Button from 'apps/toolkit/components/web/Button';
 
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 
 import Dialog from './Dialog'
 
-const styleSheet = createStyleSheet('CreateEntry', theme => ({
+export const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
   },
-}));
+});
 
 class CreateEntry extends React.Component {
     constructor(props){
@@ -50,4 +50,4 @@ class CreateEntry extends React.Component {
     }
 }
 
-export default withStyles(styleSheet)(CreateEntry)
+export default withStyles(styles)(CreateEntry)

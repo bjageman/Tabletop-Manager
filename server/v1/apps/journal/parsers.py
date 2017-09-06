@@ -12,7 +12,6 @@ def parse_entry(entry):
         result.update({
             "content": entry.content,
             "author": parse_user(entry.author),
-            "campaign_id": entry.campaign.id
         })
         return result
     except AttributeError:

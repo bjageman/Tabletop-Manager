@@ -3,11 +3,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import Dialog, { DialogTitle, DialogContent, DialogContentText, DialogActions } from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField'
-import Button from 'material-ui/Button';
-import Divider from 'material-ui/Divider';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import Dialog from 'apps/toolkit/components/web/Dialog';
+import Button from 'apps/toolkit/components/web/Button';
+import { withStyles } from 'material-ui/styles';
 
 class LoginDialog extends React.Component {
     constructor(props){
@@ -22,7 +21,7 @@ class LoginDialog extends React.Component {
     };
 
     handleLogin = value => {
-        console.log("Login " + this.state.username + " with " + this.state.password)
+
         this.props.login({
             "username": this.state.username,
             "password": this.state.password,
@@ -33,52 +32,40 @@ class LoginDialog extends React.Component {
     render(){
         return(
             <Dialog open={this.props.open} onRequestClose={this.handleRequestClose}>
-                <DialogTitle>Login</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-                            <TextField
-                               required
-                               id="username"
-                               name="username"
-                               label="Username"
-                               value={this.state.username}
-                               onChange={event => this.setState({ [event.target.name]: event.target.value })}
-                               marginForm
-                             />
-                        </DialogContentText>
-                        <DialogContentText>
-                            <TextField
-                              required
-                              id="password"
-                              name="password"
-                              label="Password"
-                              type="password"
-                              value={this.state.password}
-                              onChange={event => this.setState({ [event.target.name]: event.target.value })}
-                              marginForm
-                            />
-                        </DialogContentText>
-                        <DialogActions>
-                          <Button onClick={this.handleRequestClose} color="primary">
-                            Cancel
-                          </Button>
-                          <Button onClick={this.handleLogin} color="primary">
-                            Login
-                          </Button>
-                        </DialogActions>
-                        <Divider light />
-                        <DialogContentText>
-                            <Button onClick={this.props.openRegistration} color="primary">
-                              Sign Up
-                            </Button>
-                        </DialogContentText>
-                </DialogContent>
+                <TextField
+                   required
+                   id="username"
+                   name="username"
+                   label="Username"
+                   value={this.state.username}
+                   onChange={event => this.setState({ [event.target.name]: event.target.value })}
+                   marginForm
+                 />
+                <TextField
+                  required
+                  id="password"
+                  name="password"
+                  label="Password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={event => this.setState({ [event.target.name]: event.target.value })}
+                  marginForm
+                />
+              <Button onClick={this.handleRequestClose} color="primary">
+                Cancel
+              </Button>
+              <Button onClick={this.handleLogin} color="primary">
+                Login
+              </Button>
+                <Button onClick={this.props.openRegistration} color="primary">
+                  Sign Up
+                </Button>
             </Dialog>
         )
     }
 }
 
-const styleSheet = createStyleSheet('LoginDialog', (theme) => ({
+export const styles = theme => ({
   root: {
     color: 'inherit',
     textDecoration: 'inherit',
@@ -99,7 +86,7 @@ const styleSheet = createStyleSheet('LoginDialog', (theme) => ({
   input: {
       marginRight: 10
   }
-}));
+});
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(LoginDialog));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(LoginDialog));

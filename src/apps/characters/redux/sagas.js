@@ -1,7 +1,22 @@
 import * as actions from 'redux/actions';
 import { put, call } from 'redux-saga/effects';
-import { postDataApi, deleteDataApi, verifyData } from 'redux/api'
+import { getDataApi, postDataApi, deleteDataApi, verifyData } from 'redux/api'
 
+export function* getCharacters(action) {
+    try{
+      let payload = action.payload
+      let url = 'campaign/' + payload.id + "/characters"
+      
+      const response = yield call(getDataApi, url);
+      if (verifyData(response)) {
+          yield put(actions.charactersSuccess({ entries: response.data }))
+        }else{
+          yield put(actions.error({ "message": response.data.error }))
+        }
+      }catch(error){
+        yield put(actions.error({ "message": error.message }))
+      }
+}
 
 export function* createCharacter(action) {
     try{
@@ -11,17 +26,14 @@ export function* createCharacter(action) {
       if ( payload.character_id != null ){
           url = url + "/" + payload.character_id
       }
-      const response = yield call(postDataApi, url, data);
+      const response = yield call(postDataApi, url, data, payload.access_token);
       if (verifyData(response)) {
-          yield put(actions.getCampaign({id: payload.campaign_id}))
+          yield put(actions.getCharacters({id: payload.campaign_id}))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
       }
 }
 
@@ -29,18 +41,15 @@ export function* deleteCharacter(action){
     try{
       let payload = action.payload
       let url = 'campaign/' + payload.campaign_id + "/characters/" + payload.character_id
-      console.log(url)
+      
       const response = yield call(deleteDataApi, url);
       if (verifyData(response)) {
-          console.log("Deleted entry!")
-          yield put(actions.getCampaign({id: payload.campaign_id}))
+          yield put(actions.getCharacters({id: payload.campaign_id}))
+          yield put(actions.success({ "message": response.data.message }))
         }else{
-          var error = response.data.error
-          console.log(error)
-          yield put(actions.error({ error }))
+          yield put(actions.error({ "message": response.data.error }))
         }
       }catch(error){
-        console.log(error.message)
-        yield put(actions.error({ "error": error.message }))
+        yield put(actions.error({ "message": error.message }))
       }
 }
