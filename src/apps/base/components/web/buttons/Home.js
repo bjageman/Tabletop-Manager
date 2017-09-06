@@ -9,7 +9,7 @@ import  store  from 'redux/store'
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Button from 'apps/toolkit/components/web/Button'
-import InvisibleLink from 'apps/toolkit/links/InvisibleLink'
+import InvisibleLink from 'apps/toolkit/components/web/links/InvisibleLink'
 
 import myConfig from 'config.js';
 

@@ -9,7 +9,7 @@ import Typography from 'material-ui/Typography'
 import { MenuItem } from 'apps/toolkit/components/web/Menu'
 import { withStyles } from 'material-ui/styles';
 
-import InvisibleLink from 'apps/toolkit/links/InvisibleLink'
+import InvisibleLink from 'apps/toolkit/components/web/links/InvisibleLink'
 
 class CampaignTabs extends React.Component {
     onClick = (location) => {

@@ -8,11 +8,16 @@ class Button extends React.Component {
             hover: false,
          }
     }
+    setStyle(){
+        var style = styles.button
+        style = this.props.raised ? { ...style, ...styles.raised } : { ...style, ...styles.flat }
+        style =  this.state.active ? { ...style, ...style.active } : style
+        style = this.state.hover ? { ...style, ...style.hover } : style
+        return style
+    }
+
     render(){
-        var buttonStyle = styles.button
-        buttonStyle = this.props.raised ? { ...buttonStyle, ...styles.raised } : { ...buttonStyle, ...styles.flat }
-        buttonStyle =  this.state.active ? { ...buttonStyle, ...buttonStyle.active } : buttonStyle
-        buttonStyle = this.state.hover ? { ...buttonStyle, ...buttonStyle.hover } : buttonStyle
+        const style = this.setStyle()
         return(
         <button
             onClick = {this.props.onClick}
@@ -20,7 +25,7 @@ class Button extends React.Component {
             onMouseUp={() => this.setState({active: false})}
             onMouseOver={() => this.setState({hover: true})}
             onMouseLeave={() => this.setState({active: false, hover: false})}
-            style={ buttonStyle }
+            style={style}
              >
             { this.props.children }
         </button>

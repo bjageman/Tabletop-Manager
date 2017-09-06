@@ -11,7 +11,7 @@ import { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'apps/toolkit/components/web/Button'
 import Typography from 'material-ui/Typography'
 
-import CleanHTML from 'apps/toolkit/CleanHTML'
+import CleanHTML from 'apps/toolkit/components/web/CleanHTML'
 
 
 class CampaignDashboardJournal extends React.Component {

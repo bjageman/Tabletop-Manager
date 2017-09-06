@@ -7,7 +7,7 @@ import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
 import Divider from 'material-ui/Divider';
 
-import Loading from 'apps/toolkit/Loading'
+import Loading from 'apps/toolkit/components/web/loading/Linear'
 import Read from './Read/'
 import Search from './Read/Search'
 import Create from './Create/'

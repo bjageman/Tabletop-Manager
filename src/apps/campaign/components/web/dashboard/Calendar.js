@@ -9,7 +9,7 @@ import { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'apps/toolkit/components/web/Button'
 import Typography from 'material-ui/Typography'
 
-import ReduxLink from 'apps/toolkit/links/Redux'
+import ReduxLink from 'apps/toolkit/components/web/links/Redux'
 
 class CampaignDashboardCalendar extends React.Component {
     render(){

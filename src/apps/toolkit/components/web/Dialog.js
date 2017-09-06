@@ -1,29 +1,6 @@
 import React from 'react'
 
-class OutsideClickDetect extends React.Component {
-    componentDidMount() {
-        
-        document.addEventListener('mousedown', this.handleClick);
-    }
-
-    componentWillUnmount() {
-        document.removeEventListener('mousedown', this.handleClick);
-    }
-
-
-    handleClick = (e) => {
-        if (!this.node.contains(e.target)){
-            this.props.onRequestClose()
-        }
-    }
-    render() {
-        return (
-            <div ref={node => this.node = node}>
-                {this.props.children}
-            </div>
-        );
-    }
-}
+import OutsideClickDetect from './OutsideClickDetect'
 
 class Dialog extends React.Component {
 
@@ -33,9 +10,7 @@ class Dialog extends React.Component {
             <div
                 id="modalDialog"
                 style={styles.container}>
-                <OutsideClickDetect
-                    onRequestClose={() => this.props.onRequestClose()}
-                    >
+                <OutsideClickDetect onOutsideClick={() => this.props.onRequestClose()} >
                 <div style={styles.modal}>
                     <div style={styles.content} >
                         { this.props.children }

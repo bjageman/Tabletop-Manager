@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import ErrorNotification from './Error'
-import SuccessNotification from './Success'
+import Notification from './NotificationBar'
 
 
 class Notifications extends Component {
@@ -14,8 +13,8 @@ class Notifications extends Component {
       const success = this.props.response.success
       return (
           <div>
-            <ErrorNotification open={error ? true: false} message={error} />
-            <SuccessNotification open={success ? true: false} message={success} />
+            <Notification open={error ? true: false} message={error} />
+            <Notification open={success ? true: false} message={success} />
           </div>
         );
   }

@@ -6,8 +6,6 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //material-ui
 import { withStyles } from 'material-ui/styles';
 
-import ToolBar from 'apps/base/components/web/ToolBar'
-
 import Dashboard from './dashboard/'
 import { JournalRouter } from 'apps/journal/components/web/router'
 import Characters from 'apps/characters/components/web/'
@@ -16,7 +14,7 @@ import Wiki from 'apps/wiki/components/web/'
 import Calendar from 'apps/calendar/components/web/'
 
 
-import Loading from 'apps/toolkit/Loading'
+import Loading from 'apps/toolkit/components/web/loading/Linear'
 
 import { checkOwner } from 'apps/toolkit/utils'
 
@@ -39,7 +37,6 @@ class Campaign extends React.Component {
         if (campaign) {
         return(
             <div>
-                <ToolBar />
                 <Route exact path={match.url} render={() => <Dashboard campaign={campaign} /> } />
                 <Route path={match.url + '/journal'} component={JournalRouter} />
                 <Route path={match.url + '/characters'} component={Characters} />
