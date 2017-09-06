@@ -1,6 +1,5 @@
 import React from 'react'
 
-// import Dialog, {DialogContent} from 'material-ui/Dialog'
 import Dialog from 'apps/toolkit/components/web/Dialog'
 
 class CampaignMapDialog extends React.Component {

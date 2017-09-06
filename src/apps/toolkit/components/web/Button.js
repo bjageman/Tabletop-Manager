@@ -9,8 +9,10 @@ class Button extends React.Component {
          }
     }
     render(){
-        var buttonStyle =  this.state.active ? { ...styles.button, ...styles.button.active } : styles.button
-        buttonStyle = this.state.hover ? { ...buttonStyle, ...styles.button.hover } : buttonStyle
+        var buttonStyle = styles.button
+        buttonStyle = this.props.raised ? { ...buttonStyle, ...styles.raised } : { ...buttonStyle, ...styles.flat }
+        buttonStyle =  this.state.active ? { ...buttonStyle, ...buttonStyle.active } : buttonStyle
+        buttonStyle = this.state.hover ? { ...buttonStyle, ...buttonStyle.hover } : buttonStyle
         return(
         <button
             onClick = {this.props.onClick}
@@ -29,25 +31,43 @@ class Button extends React.Component {
 
 const styles = {
     button: {
-      fontSize: "15px",
-      fontFamily: ["roboto", "sansSerif"],
-      paddingTop: "15px",
-      paddingBottom: "15px",
-      paddingLeft: "50px",
-      paddingRight: "50px",
-      margin: "20px",
-      borderRadius: "5px",
-      transition: "all 300ms ease",
-      backgroundColor: "#1f1f1f",
-      boxShadow: "inset 0 0 0 3px #ADEEE3",
-      color: "#ADEEE3",
-      active: {
+        cursor: "pointer",
+        fontSize: "15px",
+        fontFamily: ["roboto", "sansSerif"],
+        paddingTop: "5px",
+        paddingBottom: "5px",
+        paddingLeft: "25px",
+        paddingRight: "25px",
+        margin: "5px",
+        border: "none",
+        transition: "all 300ms ease",
+    },
+    float: {
+
+    },
+    flat: {
+        padding: 0,
+        background: "none",
+        color: "#2196F3",
+        active: {
+            color: "gray",
+        },
+        hover: {
+            color: "gray",
+        }
+    },
+    raised: {
+        borderRadius: "5px",
+        transition: "all 300ms ease",
+        backgroundColor: "#2196F3",
+        color: "white",
+    active: {
         backgroundColor: "#ADEEE3",
         color: "#1f1f1f",
-        },
-      hover: {
-          color: "white",
-      }
+    },
+    hover: {
+        color: "white",
+    }
 
     },
 

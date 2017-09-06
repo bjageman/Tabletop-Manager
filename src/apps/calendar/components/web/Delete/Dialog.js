@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
-import Dialog, {DialogContent} from 'material-ui/Dialog'
+import Dialog from 'apps/toolkit/components/web/Dialog'
 import Typography from 'material-ui/Typography'
 import Button from 'apps/toolkit/components/web/Button'
 import { withStyles } from 'material-ui/styles';
@@ -36,7 +36,6 @@ class CharacterDeleteDialog extends React.Component {
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose}
             >
-            <DialogContent>
                 <Typography type="headline">
                     Are you sure you want to delete?
                 </Typography>
@@ -51,7 +50,6 @@ class CharacterDeleteDialog extends React.Component {
                     onClick = {this.props.onRequestClose}>
                     Cancel
                 </Button>
-            </DialogContent>
             </Dialog>
         )
     }

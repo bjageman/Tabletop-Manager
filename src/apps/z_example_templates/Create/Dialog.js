@@ -1,6 +1,6 @@
 import React from 'react'
 //Material-UI Imports
-import Dialog, {DialogContent} from 'material-ui/Dialog'
+import Dialog from 'apps/toolkit/components/web/Dialog'
 import Typography from 'material-ui/Typography'
 import Button from 'apps/toolkit/components/web/Button'
 import { withStyles } from 'material-ui/styles';
@@ -14,18 +14,18 @@ class CreateDialog extends React.Component {
     }
 
     onChange = (editorState) => {
-        
+
     };
 
     handleInputChange = (event) => {
-        
+
         this.setState({
             [event.target.name]: event.target.value
         })
     }
 
     handleSave() {
-        
+
         this.props.onRequestClose()
     }
 
@@ -34,9 +34,7 @@ class CreateDialog extends React.Component {
         return(
             <Dialog
                 open={this.props.open}
-                onRequestClose={this.props.onRequestClose}
-            >
-            <DialogContent>
+                onRequestClose={this.props.onRequestClose} >
                 <Typography type="headline">
                     Create Content Here:
                 </Typography>
@@ -46,7 +44,6 @@ class CreateDialog extends React.Component {
                     onClick = {this.handleSave}>
                     Save
                 </Button>
-            </DialogContent>
             </Dialog>
         )
     }
