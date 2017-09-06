@@ -1,7 +1,7 @@
 import React from 'react'
 import Icon from 'material-ui/Icon'
 import IconButton from 'material-ui/IconButton';
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 
 import Dialog from '../Create/Dialog'
 
@@ -39,9 +39,9 @@ class UpdateCharacter extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('UpdateCharacter', theme => ({
+export const styles = theme => ({
   button: {
   },
-}));
+});
 
-export default withStyles(styleSheet)(UpdateCharacter)
+export default withStyles(styles)(UpdateCharacter)

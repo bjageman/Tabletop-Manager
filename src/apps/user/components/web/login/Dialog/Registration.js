@@ -6,8 +6,8 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI
 import Dialog, { DialogTitle, DialogContent, DialogContentText, DialogActions } from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField'
-import Button from 'material-ui/Button';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import Button from 'apps/toolkit/components/web/Button';
+import { withStyles } from 'material-ui/styles';
 
 class RegistrationDialog extends React.Component {
     constructor(props){
@@ -22,7 +22,7 @@ class RegistrationDialog extends React.Component {
     };
 
     handleRegistration = value => {
-        console.log("Registration " + this.state.username + " with " + this.state.password)
+        
         this.props.register({
             "username": this.state.username,
             "password": this.state.password,
@@ -72,7 +72,7 @@ class RegistrationDialog extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('RegistrationDialog', (theme) => ({
+export const styles = theme => ({
   root: {
     color: 'inherit',
     textDecoration: 'inherit',
@@ -93,7 +93,7 @@ const styleSheet = createStyleSheet('RegistrationDialog', (theme) => ({
   input: {
       marginRight: 10
   }
-}));
+});
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(RegistrationDialog));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(RegistrationDialog));

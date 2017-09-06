@@ -5,9 +5,9 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
 import Dialog, {DialogContent, DialogActions} from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
-import Button from 'material-ui/Button'
+import Button from 'apps/toolkit/components/web/Button'
 
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 
 import Editor from './Editor'
 
@@ -25,9 +25,9 @@ class CreateCharacterDialog extends React.Component {
 
     handleSave() {
         this.props.createCharacter({
+            access_token:   this.props.user.access_token,
             name:           this.state.name,
             campaign_id:    this.props.campaign.id,
-            author_id:      this.props.user.id,
             character_id:   this.props.character ? this.props.character.id: null,
         })
         this.props.onRequestClose()
@@ -65,7 +65,6 @@ class CreateCharacterDialog extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('CreateCharacterDialog', {
-
+export const styles = theme => ({
 });
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(CreateCharacterDialog))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CreateCharacterDialog))

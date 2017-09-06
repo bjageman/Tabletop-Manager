@@ -6,7 +6,7 @@ import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
 import Typography from 'material-ui/Typography'
 import Dialog, {DialogTitle, DialogContent} from 'material-ui/Dialog'
-import { createStyleSheet, withStyles } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 class EntryDialog extends React.Component {
     handleRequestClose = () => {
@@ -41,7 +41,7 @@ class EntryDialog extends React.Component {
     }
 }
 
-const styleSheet = createStyleSheet('EntryDialog', () => ({
+export const styles = theme => ({
   dialog: {
 
   },
@@ -50,6 +50,6 @@ const styleSheet = createStyleSheet('EntryDialog', () => ({
     paddingLeft: 50,
     marginBottom: 20,
   },
-}));
+});
 
-export default withStyles(styleSheet)(EntryDialog)
+export default withStyles(styles)(EntryDialog)

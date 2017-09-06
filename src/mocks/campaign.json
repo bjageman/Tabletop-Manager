@@ -9,7 +9,7 @@
         "first_name": "Brodin",
         "last_name": "Jag",
         "email": "bjag@gmail.com",
-        "image": "https://placekitten.com/g/200/200"
+        "image": null
     },
     "players":[{
         "id": 0,

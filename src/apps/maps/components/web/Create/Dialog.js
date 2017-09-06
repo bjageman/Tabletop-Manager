@@ -3,10 +3,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
-import Dialog, {DialogContent, DialogActions} from 'material-ui/Dialog'
 import Typography from 'material-ui/Typography'
-import Button from 'material-ui/Button'
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import Button from 'apps/toolkit/components/web/Button'
+import { withStyles } from 'material-ui/styles';
+
+import Dialog from 'apps/toolkit/components/web/Dialog'
 
 
 
@@ -21,7 +22,7 @@ class CreateDialogEvent extends React.Component {
     }
 
     onChange = (editorState) => {
-        console.log("Text Change")
+        
     };
 
     handleInputChange = (event) => {
@@ -34,7 +35,9 @@ class CreateDialogEvent extends React.Component {
     }
 
     handleUpload() {
+        
         this.props.saveMap({
+            access_token: this.props.user.access_token,
             name: this.state.name,
             author_id: this.props.user.id,
             campaign_id: this.props.campaign.id,
@@ -47,29 +50,23 @@ class CreateDialogEvent extends React.Component {
         return(
             <Dialog
                 open={this.props.open}
-                onRequestClose={this.props.onRequestClose}
-            >
-            <DialogContent>
+                onRequestClose={this.props.onRequestClose} >
                 <Typography type="headline">
                     Create Content Here:
                 </Typography>
                 <input name="file" type="file" id="fileinput"  onChange={this.handleInputChange}/>
-            </DialogContent>
-            <DialogActions>
                 <Button
                     raised
                     color="primary"
                     onClick = {this.handleUpload}>
                     Upload
                 </Button>
-            </DialogActions>
             </Dialog>
         )
     }
 }
 
-const styleSheet = createStyleSheet('CreateDialogEvent', {
-
+export const styles = theme => ({
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(CreateDialogEvent))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CreateDialogEvent))

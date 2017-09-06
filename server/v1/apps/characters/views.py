@@ -9,6 +9,7 @@ from v1.apps.campaign import campaign
 #Models
 from .models import Character
 from v1.apps.campaign.models import Campaign
+from v1.apps.campaign.auth import request_campaign_auth
 from v1.apps.users.models import User
 
 #DB/Sockets
@@ -24,44 +25,47 @@ from v1.apps.campaign.errors import *
 #Utils
 from v1.apps.utils import *
 
-character_base_url = '/<int:campaign_id>/characters'
+from v1.apps.campaign.views import get_campaign
+
+character_base_url = '/<campaign_id>/characters'
+
+def get_character(character_id):
+    try:
+        character_id = int(character_id)
+        return Character.query.filter(Character.id == character_id).first()
+    except ValueError:
+        return Character.query.filter(Character.slug == character_id).first()
+
 #Create
 @campaign.route(character_base_url, methods=['POST'])
 def create_character(campaign_id):
+    user, campaign = request_campaign_auth(request, campaign_id)
     data        = request.get_json()
     name       = get_required_data(data, "name")
-    author_id   = get_required_data(data, "author_id")
-    campaign    = Campaign.query.get(campaign_id)
-    author      = User.query.get(author_id)
-    if campaign is not None and author is not None:
-        character = Character(name=name, author=author, campaign=campaign)
-        db.session.add(character)
-        db.session.commit()
-        return jsonify(parse_character(character))
-    else:
-        abort(400)
+    character = Character(name=name, author=user, campaign=campaign)
+    db.session.add(character)
+    db.session.commit()
+    return jsonify(parse_character(character))
 
 #Read
 
+
+
 @campaign.route(character_base_url, methods=['GET'])
-def get_characters(campaign_id):
-    campaign = Campaign.query.get(campaign_id)
+def get_campaign_characters(campaign_id):
+    campaign    = get_campaign(campaign_id)
+    characters = Character.query.filter_by(campaign=campaign)
+    data = request.args
+    name = get_optional_data(data, "name")
+    characters = search_by_name(characters, Character, name)
     if campaign is not None:
-        return jsonify(parse_characters(campaign.characters))
+        return jsonify(parse_characters(characters))
     else:
         abort(404)
 
-@campaign.route(character_base_url + '/<int:character_id>', methods=['GET'])
-def get_character_by_id(campaign_id, character_id):
-    character = Character.query.get(character_id)
-    if character is not None:
-        return jsonify(parse_character(character))
-    else:
-        abort(404)
-
-@campaign.route(character_base_url + '/<string:character_slug>', methods=['GET'])
-def get_character_by_slug(campaign_id, character_slug):
-    character = Character.query.filter_by(slug = character_slug).first()
+@campaign.route(character_base_url + '/<character_id>', methods=['GET'])
+def get_character_request(campaign_id, character_id):
+    character = get_character(character_id)
     if character is not None:
         return jsonify(parse_character(character))
     else:
@@ -70,10 +74,11 @@ def get_character_by_slug(campaign_id, character_slug):
 #
 # #Update
 #
-@campaign.route(character_base_url + '/<int:character_id>', methods=['POST', 'PUT'])
-def update_character_by_id(campaign_id, character_id):
-    character = Character.query.get(character_id)
-    if character is not None and character.campaign.id == campaign_id:
+@campaign.route(character_base_url + '/<character_id>', methods=['POST', 'PUT'])
+def update_character(campaign_id, character_id):
+    user, campaign = request_campaign_auth(request, campaign_id)
+    character = get_character(character_id)
+    if character is not None:
         data        = request.get_json()
         name        = get_optional_data(data, "name")
         if name is not None:
@@ -88,17 +93,18 @@ def update_character_by_id(campaign_id, character_id):
 #  Delete
 #
 
-@campaign.route(character_base_url + '/<int:character_id>', methods=['DELETE'])
-def delete_character_by_id(campaign_id, character_id):
-    print("Deleting", character_id)
-    character = Character.query.get(character_id)
+@campaign.route(character_base_url + '/<character_id>', methods=['DELETE'])
+def delete_character(campaign_id, character_id):
+    user, campaign = request_campaign_auth(request, campaign_id)
+    character = get_character(character_id)
     name = character.name
-    if character is not None and character.campaign.id == campaign_id:
+    if character is not None:
         db.session.delete(character)
         db.session.commit()
     character = Character.query.get(character_id)
     if character is None:
-        return jsonify({"deleted": character_id})
+        message = name + " was deleted"
+        return jsonify({"message": message})
     else:
         message = "Character" + name + " was not deleted"
         code = 400

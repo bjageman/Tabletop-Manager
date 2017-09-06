@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 
 import Delete from '../Delete/'
 
-const styleSheet = createStyleSheet('CampaignEvent', {
+export const styles = theme => ({
   card: {
     width:"100%",
     marginTop: 20,
@@ -33,7 +33,7 @@ class CampaignEvent extends React.Component {
 
     handleClick(event){
         event.preventDefault()
-        console.log("Clicked!")
+        
     }
 
     render(){
@@ -58,4 +58,4 @@ class CampaignEvent extends React.Component {
     }
 }
 
-export default withStyles(styleSheet)(CampaignEvent)
+export default withStyles(styles)(CampaignEvent)

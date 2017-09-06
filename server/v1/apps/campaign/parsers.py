@@ -6,12 +6,18 @@ from v1.apps.wiki.parsers import *
 from v1.apps.calendar.parsers import *
 from v1.apps.parsers import parse_base
 
+def parse_campaigns(campaigns):
+    campaign_set = []
+    for campaign in campaigns:
+        campaign_set.append(parse_campaign(campaign))
+    return(campaign_set)
+
 def parse_campaign(campaign):
     try:
         result = parse_base(campaign)
         result.update({
             "owner": parse_user(campaign.owner),
-            "header_image": campaign.header_image,
+            "image": parse_image(campaign.image),
         })
         return result
     except AttributeError:
@@ -26,7 +32,7 @@ def parse_campaign_detailed(campaign):
             "calendar": parse_calendar(campaign.calendar),
             "maps": parse_maps(campaign.maps),
             "wiki": parse_wiki(campaign.wiki),
-
+            "players": parse_users(campaign.players)
         })
         return result
     except AttributeError:

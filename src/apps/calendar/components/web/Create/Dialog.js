@@ -3,9 +3,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
-import Dialog, {DialogContent, DialogActions} from 'material-ui/Dialog'
-import Button from 'material-ui/Button'
-import { withStyles, createStyleSheet } from 'material-ui/styles'
+import Dialog from 'apps/toolkit/components/web/Dialog'
+import Button from 'apps/toolkit/components/web/Button'
+import { withStyles } from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
 //DatePicker
 import Datetime from 'react-datetime';
@@ -59,7 +59,6 @@ class CreateEventDialog extends React.Component {
                 onRequestClose={this.props.onRequestClose}
             >
             <div >
-            <DialogContent>
                 <TextField
                   id="name"
                   label="Event Name"
@@ -67,8 +66,6 @@ class CreateEventDialog extends React.Component {
                   value={this.state.name}
                   onChange={event => this.setState({ name: event.target.value })}
                 />
-            </DialogContent>
-            <DialogContent>
                 Start:
                 <Datetime
                     name="start_time"
@@ -81,8 +78,7 @@ class CreateEventDialog extends React.Component {
                     selected={this.state.end_time}
                     onChange={this.handleEndChange}
                 />
-            </DialogContent>
-            <DialogActions>
+
                 <Button
                     raised
                     color="primary"
@@ -92,14 +88,13 @@ class CreateEventDialog extends React.Component {
                 <Button onClick = {this.props.onRequestClose} color="primary">
                   Cancel
                 </Button>
-            </DialogActions>
             </div>
             </Dialog>
         )
     }
 }
 
-const styleSheet = createStyleSheet('CreateEventDialog', {
+export const styles = theme => ({
     dialog:{
         width:600,
         height:400,
@@ -109,4 +104,4 @@ const styleSheet = createStyleSheet('CreateEventDialog', {
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(CreateEventDialog))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CreateEventDialog))

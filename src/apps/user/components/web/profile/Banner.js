@@ -1,7 +1,7 @@
 import React from 'react'
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography'
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 class UserProfileBanner extends React.Component {
     render() {
@@ -23,8 +23,7 @@ class UserProfileBanner extends React.Component {
         )
     }
 }
-const styleSheet = createStyleSheet('UserProfileBanner', {
-  container: {
+export const styles = theme => ({  container: {
     paddingTop: "2%",
     paddingLeft: "5%",
     paddingBottom: 20,
@@ -38,4 +37,4 @@ const styleSheet = createStyleSheet('UserProfileBanner', {
   }
 });
 
-export default withStyles(styleSheet)(UserProfileBanner)
+export default withStyles(styles)(UserProfileBanner)

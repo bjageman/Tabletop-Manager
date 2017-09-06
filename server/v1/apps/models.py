@@ -44,3 +44,7 @@ class Base(db.Model):
         if not 'slug' in kwargs:
             self.set_name(kwargs.get('name', ''))
         super().__init__(*args, **kwargs)
+
+class Image(Base, TimestampMixin):
+    url = db.Column(db.String(256))
+    blob = db.Column(db.String(256))
