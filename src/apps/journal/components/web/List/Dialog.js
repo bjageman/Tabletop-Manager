@@ -5,7 +5,7 @@ import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
 import Typography from 'material-ui/Typography'
-import Dialog, {DialogTitle, DialogContent} from 'material-ui/Dialog'
+import Dialog from 'apps/toolkit/components/web/Dialog'
 import { withStyles } from 'material-ui/styles';
 
 class EntryDialog extends React.Component {
@@ -15,14 +15,12 @@ class EntryDialog extends React.Component {
 
     render() {
         const entry = this.props.entry
-        const classes = this.props.classes
         return (
             <Dialog
                 fullScreen
-                className={classes.dialog}
                 open={this.props.open}
                 onRequestClose={this.handleRequestClose} >
-                <AppBar className={classes.appBar}>
+                <AppBar>
                     <Toolbar>
                       <IconButton color="contrast" onClick={this.props.onRequestClose} aria-label="Close">
                         <Icon>close</Icon>
@@ -30,12 +28,9 @@ class EntryDialog extends React.Component {
                       {entry.name}
                     </Toolbar>
                 </AppBar>
-                <DialogTitle>{entry.name}</DialogTitle>
-                <DialogContent className={classes.content}>
-                    <Typography component="p">
-                    {entry.content}
-                    </Typography>
-                </DialogContent>
+                <Typography component="p">
+                {entry.content}
+                </Typography>
             </Dialog>
         )
     }

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 //Material-UI
-import Dialog, { DialogTitle, DialogContent, DialogContentText, DialogActions } from 'material-ui/Dialog';
+import Dialog from 'apps/toolkit/components/web/Dialog';
 import TextField from 'material-ui/TextField'
 import Button from 'apps/toolkit/components/web/Button';
 import { withStyles } from 'material-ui/styles';
@@ -22,7 +22,7 @@ class RegistrationDialog extends React.Component {
     };
 
     handleRegistration = value => {
-        
+
         this.props.register({
             "username": this.state.username,
             "password": this.state.password,
@@ -33,40 +33,31 @@ class RegistrationDialog extends React.Component {
     render(){
         return(
             <Dialog open={this.props.open} onRequestClose={this.handleRequestClose}>
-                <DialogTitle>Registration</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-                            <TextField
-                               required
-                               id="username"
-                               name="username"
-                               label="Username"
-                               value={this.state.username}
-                               onChange={event => this.setState({ [event.target.name]: event.target.value })}
-                               marginForm
-                             />
-                        </DialogContentText>
-                        <DialogContentText>
-                            <TextField
-                              required
-                              id="password"
-                              name="password"
-                              label="Password"
-                              type="password"
-                              value={this.state.password}
-                              onChange={event => this.setState({ [event.target.name]: event.target.value })}
-                              marginForm
-                            />
-                        </DialogContentText>
-                        <DialogActions>
-                          <Button onClick={this.handleRequestClose} color="primary">
-                            Cancel
-                          </Button>
-                          <Button onClick={this.handleRegistration} color="primary">
-                            Register
-                          </Button>
-                        </DialogActions>
-                </DialogContent>
+                <TextField
+                   required
+                   id="username"
+                   name="username"
+                   label="Username"
+                   value={this.state.username}
+                   onChange={event => this.setState({ [event.target.name]: event.target.value })}
+                   marginForm
+                 />
+                <TextField
+                  required
+                  id="password"
+                  name="password"
+                  label="Password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={event => this.setState({ [event.target.name]: event.target.value })}
+                  marginForm
+                />
+              <Button onClick={this.handleRequestClose} color="primary">
+                Cancel
+              </Button>
+              <Button onClick={this.handleRegistration} color="primary">
+                Register
+              </Button>
             </Dialog>
         )
     }
