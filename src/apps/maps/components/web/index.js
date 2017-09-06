@@ -6,7 +6,7 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 import { GridList } from 'material-ui/GridList';
 import { withStyles } from 'material-ui/styles';
 
-import Loading from 'apps/toolkit/Loading'
+import Loading from 'apps/toolkit/components/web/loading/Linear'
 import Read from './Read/.'
 import Create from './Create/'
 

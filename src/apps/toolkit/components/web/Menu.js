@@ -57,6 +57,7 @@ dropdown: {
     display: "inlineBlock",
 },
 button: {
+    fontFamily: "roboto",
     cursor: "pointer",
     display: "block",
     color: "white",
@@ -78,6 +79,7 @@ content: {
     right: 0,
 },
 link: {
+    fontFamily: "roboto",
     cursor: "pointer",
     color: "black",
     padding: "12px 16px",

@@ -5,27 +5,26 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 //Material-UI
 import { withStyles } from 'material-ui/styles';
-import Drawer from 'material-ui/Drawer';
-import { blue } from 'material-ui/colors';
-import Divider from 'material-ui/Divider';
 
 import CampaignSideBar from 'apps/campaign/components/web/toolbar/SideBar'
 import UserCard from 'apps/user/components/web/UserCard'
-import InvisibleLink from 'apps/toolkit/links/InvisibleLink'
+import InvisibleLink from 'apps/toolkit/components/web/links/InvisibleLink'
 import Login from 'apps/user/components/web/login/index'
 import AccountMenu from 'apps/user/components/web/tools/AccountMenu'
 
+import MdMenu from 'react-icons/lib/md/menu';
 import AppBar, {AppBarItem} from 'apps/toolkit/components/web/navigation/AppBar'
 import { MenuItem } from 'apps/toolkit/components/web/Menu'
+import SideNav from 'apps/toolkit/components/web/navigation/SideNav'
 
 class ToolBar extends React.Component {
     constructor(props){
         super(props)
-        this.state = { open: false };
+        this.state = { sidebar: false };
     }
 
     onRequestClose() {
-        this.setState({ open: false })
+        this.setState({ sidebar: false })
     }
 
     toggleDrawer = () => {
@@ -40,41 +39,29 @@ class ToolBar extends React.Component {
         return(
             <div>
             <AppBar>
-                <AppBarItem onClick={() => this.toggleDrawer()} >
-                    { campaign ? campaign.name : brandName }
+                <AppBarItem onClick={this.props.toggleSidebar} >
+                    <MdMenu /> { campaign ? campaign.name : brandName }
                 </AppBarItem>
                 { user ? <AccountMenu  /> : <Login color="contrast"/> }
             </AppBar>
-            <Drawer
-              open={this.state.open}
-              onClick={() => this.onRequestClose()}
-              onRequestClose={() => this.onRequestClose()}
-              >
-              <UserCard />
-              <InvisibleLink to="/"><MenuItem>Home</MenuItem></InvisibleLink>
-              <InvisibleLink to="/campaign"><MenuItem>My Campaigns</MenuItem></InvisibleLink>
-              { campaign ?
-                  <div>
-                      <Divider />
-                      <CampaignSideBar />
-                  </div>
-              : null
-              }
-            </Drawer>
+            <SideNav
+                open={this.props.sidebar}
+                onRequestClose={this.props.toggleSidebar} >
+                <UserCard />
+                <InvisibleLink to="/"><MenuItem>Home</MenuItem></InvisibleLink>
+                <InvisibleLink to="/campaign"><MenuItem>My Campaigns</MenuItem></InvisibleLink>
+                { campaign ?
+                    <div>
+                        <hr />
+                        <CampaignSideBar />
+                    </div>
+                : null
+                }
+            </SideNav>
             </div>
         )
     }
 }
 
 
-export const styles = theme => ({
-  topbar: {
-      backgroundColor:blue[500],
-  },
-  flex: {
-    flex: 1,
-  },
-});
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ToolBar));
+export default connect(mapStateToProps, mapDispatchToProps)(ToolBar);

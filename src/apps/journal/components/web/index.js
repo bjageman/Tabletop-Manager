@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import Loading from 'apps/toolkit/Loading'
+import Loading from 'apps/toolkit/components/web/loading/Linear'
 import ListItem from './List/'
 import Create from './Create/'
 

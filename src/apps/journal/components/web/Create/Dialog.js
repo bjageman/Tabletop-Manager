@@ -13,7 +13,7 @@ import { stateToHTML } from 'draft-js-export-html';
 import { EditorState, convertFromHTML, ContentState } from 'draft-js';
 
 import Dialog from 'apps/toolkit/components/web/Dialog'
-import Editor from 'apps/toolkit/editor/'
+import Editor from 'apps/toolkit/components/web/editor/'
 
 class EntryCreateDialog extends React.Component {
     constructor(props){

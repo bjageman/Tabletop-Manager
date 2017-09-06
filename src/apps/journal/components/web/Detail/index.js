@@ -5,8 +5,8 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //material-ui
 import { withStyles } from 'material-ui/styles';
 
-import Loading from 'apps/toolkit/Loading'
-import CleanHTML from 'apps/toolkit/CleanHTML'
+import Loading from 'apps/toolkit/components/web/loading/Linear'
+import CleanHTML from 'apps/toolkit/components/web/CleanHTML'
 
 class JournalEntry extends React.Component {
     constructor(props){

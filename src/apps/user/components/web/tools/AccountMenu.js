@@ -5,7 +5,7 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 import Menu, { MenuItem } from 'apps/toolkit/components/web/Menu';
 
-import InvisibleLink from 'apps/toolkit/links/InvisibleLink'
+import InvisibleLink from 'apps/toolkit/components/web/links/InvisibleLink'
 
 class AccountMenu extends React.Component {
     state = {

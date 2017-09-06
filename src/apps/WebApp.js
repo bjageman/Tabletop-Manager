@@ -16,7 +16,8 @@ import Campaign from './campaign/components/web/'
 import CampaignListing from './campaign/components/web/listing/'
 import Maps from './maps/components/web/'
 
-import Notifications from './toolkit/notifications/'
+import Notifications from 'apps/toolkit/components/web/notifications/'
+import ToolBar from 'apps/base/components/web/ToolBar'
 
 const NotFound = () => (
     <p>Sorry, not Found!</p>
@@ -24,25 +25,46 @@ const NotFound = () => (
 
 
 class WebApp extends Component {
-  render() {
+    constructor(props){
+        super(props)
+        this.state = { sidebar: false }
+    }
 
+    render() {
+    const sidebar = this.state.sidebar
     return (
       <ConnectedRouter history={history}>
-        <div className="app">
-          <Notifications />
-          <Switch>
-          <Route exact path="/" component={LandingPage}/>
-          <Route exact path="/profile" component={UserProfile}/>
-          <Route exact path="/profile/:userId" component={UserProfile}/>
-          <Route exact path="/campaign" component={CampaignListing}/>
-          <Route path="/campaign/:id" component={Campaign}/>
-          <Route path="/maps" component={Maps}/>
-          <Route component={NotFound} />
-          </Switch>
-          <Footer />
-        </div>
+          <div className="app" style={sidebar ? styles.sidebar: styles.full}>
+              <ToolBar sidebar={sidebar} toggleSidebar={() => this.setState({sidebar: !sidebar})} />
+              <Notifications />
+              <Switch>
+                  <Route exact path="/" component={LandingPage}/>
+                  <Route exact path="/profile" component={UserProfile}/>
+                  <Route exact path="/profile/:userId" component={UserProfile}/>
+                  <Route exact path="/campaign" component={CampaignListing}/>
+                  <Route path="/campaign/:id" component={Campaign}/>
+                  <Route path="/maps" component={Maps}/>
+                  <Route component={NotFound} />
+              </Switch>
+              <Footer />
+          </div>
       </ConnectedRouter>
-    );
+    )
   }
 }
+
+const styles = {
+    full: {
+        minHeight: "300px",
+        transition: "0.5s",
+        margin: 0
+    },
+    sidebar: {
+        minHeight: "300px",
+        transition: "margin-left .5s",
+        marginLeft: "250px"
+    }
+
+}
+
 export default connect(mapStateToProps, mapDispatchToProps)(WebApp);

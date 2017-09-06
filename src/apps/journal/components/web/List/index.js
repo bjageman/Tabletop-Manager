@@ -11,8 +11,8 @@ import Dialog from './Dialog'
 import Delete from '../Delete/'
 import Update from '../Update/'
 
-import CleanHTML from 'apps/toolkit/CleanHTML'
-import ReduxLink from 'apps/toolkit/links/Redux'
+import CleanHTML from 'apps/toolkit/components/web/CleanHTML'
+import ReduxLink from 'apps/toolkit/components/web/links/Redux'
 
 class JournalListItem extends React.Component {
     constructor(props){

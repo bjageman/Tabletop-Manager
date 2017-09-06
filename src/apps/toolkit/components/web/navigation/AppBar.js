@@ -54,6 +54,7 @@ const styles = {
         float: "right",
     },
     link: {
+        fontFamily: "roboto",
         cursor: "pointer",
         display: "block",
         color: "white",
