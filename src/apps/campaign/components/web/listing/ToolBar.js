@@ -2,20 +2,18 @@ import React from 'react'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
-//material-ui
-import Input from 'material-ui/Input/Input'
-import { withStyles } from 'material-ui/styles';
+
+import TextInput from 'apps/toolkit/components/web/forms/TextInput'
 
 import Save from '../save/'
 
 class CampaignListingToolBar extends React.Component {
     render(){
-        const classes = this.props.classes
+        
         return(
             <div>
             <Save />
-            <Input
-                className={classes.search}
+            <TextInput
                 placeholder="Search Campaigns"
                 inputProps={{
                     'aria-label': 'Description',
@@ -26,13 +24,4 @@ class CampaignListingToolBar extends React.Component {
     }
 }
 
-export const styles = theme => ({
-    button: {
-        margin:10,
-    },
-    search: {
-        marginLeft:10,
-    }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CampaignListingToolBar));
+export default connect(mapStateToProps, mapDispatchToProps)(CampaignListingToolBar);

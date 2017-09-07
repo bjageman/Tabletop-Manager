@@ -5,8 +5,8 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
 import Dialog from 'apps/toolkit/components/web/Dialog'
 import Button from 'apps/toolkit/components/web/Button'
-import { withStyles } from 'material-ui/styles';
-import TextField from 'material-ui/TextField';
+
+import TextInput from 'apps/toolkit/components/web/forms/TextInput'
 //DatePicker
 import Datetime from 'react-datetime';
 import moment from 'moment';
@@ -52,17 +52,17 @@ class CreateEventDialog extends React.Component {
     }
 
     render(){
-        const classes = this.props.classes;
+        
         return(
             <Dialog
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose}
             >
             <div >
-                <TextField
+                <TextInput
                   id="name"
                   label="Event Name"
-                  className={classes.textField}
+                  
                   value={this.state.name}
                   onChange={event => this.setState({ name: event.target.value })}
                 />
@@ -104,4 +104,4 @@ export const styles = theme => ({
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CreateEventDialog))
+export default connect(mapStateToProps, mapDispatchToProps)(CreateEventDialog)

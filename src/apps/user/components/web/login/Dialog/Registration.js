@@ -5,9 +5,9 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 //Material-UI
 import Dialog from 'apps/toolkit/components/web/Dialog';
-import TextField from 'material-ui/TextField'
+import TextInput from 'apps/toolkit/components/web/forms/TextInput'
 import Button from 'apps/toolkit/components/web/Button';
-import { withStyles } from 'material-ui/styles';
+
 
 class RegistrationDialog extends React.Component {
     constructor(props){
@@ -33,7 +33,7 @@ class RegistrationDialog extends React.Component {
     render(){
         return(
             <Dialog open={this.props.open} onRequestClose={this.handleRequestClose}>
-                <TextField
+                <TextInput
                    required
                    id="username"
                    name="username"
@@ -42,7 +42,7 @@ class RegistrationDialog extends React.Component {
                    onChange={event => this.setState({ [event.target.name]: event.target.value })}
                    marginForm
                  />
-                <TextField
+                <TextInput
                   required
                   id="password"
                   name="password"
@@ -52,11 +52,11 @@ class RegistrationDialog extends React.Component {
                   onChange={event => this.setState({ [event.target.name]: event.target.value })}
                   marginForm
                 />
+            <Button raised onClick={this.handleRegistration} color="primary">
+                Register
+              </Button>
               <Button onClick={this.handleRequestClose} color="primary">
                 Cancel
-              </Button>
-              <Button onClick={this.handleRegistration} color="primary">
-                Register
               </Button>
             </Dialog>
         )
@@ -87,4 +87,4 @@ export const styles = theme => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(RegistrationDialog));
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationDialog);

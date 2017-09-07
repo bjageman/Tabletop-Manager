@@ -1,16 +1,16 @@
 import React from 'react'
 //Material-UI Imports
-import TextField from 'material-ui/TextField';
+import TextInput from 'apps/toolkit/components/web/forms/TextInput'
 
-import { withStyles } from 'material-ui/styles';
+
 
 class CharacterEditor extends React.Component {
     render(){
-        const { classes, character } = this.props;
+        const character = this.props.character;
         return(
-            <div className={classes.container}>
-                <TextField
-                  className={classes.textField}
+            <div >
+                <TextInput
+
                   id="name"
                   name="name"
                   label="Name"
@@ -33,4 +33,4 @@ container: {
   },
 });
 
-export default withStyles(styles)(CharacterEditor)
+export default (CharacterEditor)

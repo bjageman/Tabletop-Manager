@@ -1,34 +1,22 @@
 import React from 'react'
-import Icon from 'material-ui/Icon'
-import IconButton from 'material-ui/IconButton';
-import { withStyles } from 'material-ui/styles';
-
 import Dialog from '../Create/Dialog'
+import MdCreate from 'react-icons/lib/md/create'
 
 class UpdateJournal extends React.Component {
     constructor(props){
         super(props)
         this.handleRequestClose = this.handleRequestClose.bind(this)
-        this.state = {
-            open: false,
-        }
+        this.state = { open: false }
     }
 
     handleRequestClose() {
-        this.setState({
-            open: false
-        })
+        this.setState({ open: false })
     }
 
     render(){
-        const { classes } = this.props
         return(
             <div>
-            <IconButton
-                className={classes.button}
-                onClick = {() => this.setState({open: true})}>
-                <Icon>create</Icon>
-            </IconButton>
+            <MdCreate onClick = {() => this.setState({open: true})} />
             <Dialog
                 entry={this.props.entry}
                 open={this.state.open}
@@ -44,4 +32,4 @@ export const styles = theme => ({
   },
 });
 
-export default withStyles(styles)(UpdateJournal)
+export default (UpdateJournal)

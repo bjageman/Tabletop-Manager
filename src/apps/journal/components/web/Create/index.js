@@ -1,15 +1,7 @@
 import React from 'react'
-import Button from 'apps/toolkit/components/web/Button';
+import Button from 'apps/toolkit/components/web/Button'
 
-import { withStyles } from 'material-ui/styles';
-
-import Dialog from './Dialog'
-
-export const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit,
-  },
-});
+import Editor from './Editor'
 
 class CreateEntry extends React.Component {
     constructor(props){
@@ -27,27 +19,22 @@ class CreateEntry extends React.Component {
     }
 
     render(){
-        const classes = this.props.classes
+        
         return(
             <div>
+
+            {this.state.open ? <Editor onRequestClose={this.handleRequestClose} /> :
             <Button
                 raised
                 color="primary"
-                className={classes.button}
                 onClick = {() => this.setState({open: true})}
                 >
                 New Entry
             </Button>
-            <Dialog
-                open={this.state.open}
-                onRequestClose={this.handleRequestClose}
-                title={this.state.title}
-                content={this.state.content}
-                campaign={this.props.campaign}
-            />
+            }
             </div>
         )
     }
 }
 
-export default withStyles(styles)(CreateEntry)
+export default CreateEntry

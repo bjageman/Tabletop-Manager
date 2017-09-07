@@ -12,16 +12,16 @@ class Menu extends React.Component {
             <div
                 onMouseOver={() => this.setState({ hover: true })}
                 onMouseLeave={() => this.setState({ hover: false })} >
-            <li style={styles.dropdown} >
-                <a style={ this.state.hover ? { ...styles.button, ...styles.button.hover} : styles.button }>
-                    {this.props.title}
-                </a>
-                { this.state.hover ?
-                <div style={styles.content}>
-                    {this.props.children}
-                </div>
-                : null }
-            </li>
+                <li style={styles.dropdown} >
+                    <a style={ this.state.hover ? { ...styles.button, ...styles.button.hover} : styles.button }>
+                        {this.props.title}
+                    </a>
+                    { this.state.hover ?
+                    <div style={styles.content}>
+                        {this.props.children}
+                    </div>
+                    : null }
+                </li>
             </div>
         )
     }
@@ -38,6 +38,7 @@ export class MenuItem extends React.Component {
         const style = this.state.hover ? { ...styles.link, ...styles.link.hover} : styles.link
         return(
             <div
+                style={this.props.style}
                 onClick={this.props.onClick}
                 onMouseOver={() => this.setState({ hover: true })}
                 onMouseLeave={() => this.setState({ hover: false })}>

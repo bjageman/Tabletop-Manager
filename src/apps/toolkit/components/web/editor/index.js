@@ -20,28 +20,25 @@ const plugins = [
   inlineToolbarPlugin
 ];
 
-const styles = {
-  editor: {
-      boxSizing: "border-box",
-      border: "1px solid #ddd",
-      cursor: "text",
-      borderRadius: "2px",
-      marginBottom: "2em",
-      boxShadow: "inset 0px 1px 8px -3px #ABABAB",
-      backgroundColor: "#fefefe",
-      minHeight:140
+class TextEditor extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = { focus: false }
     }
 
-};
-
-class EntryCreateEditor extends React.Component {
     focus(){
         this.refs.editor.focus()
     }
 
     render() {
+        const editorStyle = this.state.focus ? {...styles.editor, ...styles.editor.focus } : styles.editor
         return(
-        <div style={styles.editor} onClick={this.focus.bind(this)}>
+        <div
+            style={editorStyle}
+            onClick={this.focus.bind(this)}
+            onFocus={() => this.setState({focus: true})}
+            onBlur={() => this.setState({focus: false})}
+            >
             <Editor
                 editorState={this.props.editorState}
                 onChange={this.props.onChange}
@@ -55,4 +52,26 @@ class EntryCreateEditor extends React.Component {
     }
 }
 
-export default EntryCreateEditor
+const styles = {
+  editor: {
+      fontFamily: "roboto",
+      webkitTransition: "0.5s",
+      transition: "0.5s",
+      outline: "none",
+      boxSizing: "border-box",
+      border: "1px solid #ddd",
+      padding: "1%",
+      cursor: "text",
+      borderRadius: "2px",
+      marginBottom: "2em",
+      boxShadow: "inset 0px 1px 8px -3px #ABABAB",
+      backgroundColor: "#fefefe",
+      minHeight:140,
+      width: "100%",
+      focus: {
+          border: "3px solid #555",
+      }
+    }
+}
+
+export default TextEditor

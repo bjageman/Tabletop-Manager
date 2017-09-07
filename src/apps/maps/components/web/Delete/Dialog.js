@@ -5,9 +5,9 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 //Material-UI Imports
 import Dialog from 'apps/toolkit/components/web/Dialog'
-import Typography from 'material-ui/Typography'
+
 import Button from 'apps/toolkit/components/web/Button'
-import { withStyles } from 'material-ui/styles';
+
 
 class MapDeleteDialog extends React.Component {
     constructor(props){
@@ -25,14 +25,14 @@ class MapDeleteDialog extends React.Component {
     }
 
     render(){
-        // const classes = this.props.classes;
+        // 
         return(
             <Dialog
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose} >
-            <Typography type="headline">
+            
                 Are you sure you want to delete?
-            </Typography>
+            
             <Button onClick = {this.handleDelete} color="primary">
               Delete
             </Button>
@@ -47,4 +47,4 @@ class MapDeleteDialog extends React.Component {
 export const styles = theme => ({
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(MapDeleteDialog))
+export default connect(mapStateToProps, mapDispatchToProps)(MapDeleteDialog)

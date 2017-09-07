@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { withStyles } from 'material-ui/styles';
-import { GridListTile, GridListTileBar } from 'material-ui/GridList';
+import Card from 'apps/toolkit/components/web/Card'
 
 import Delete from '../Delete/'
 import Update from '../Update/'
@@ -12,36 +11,20 @@ class CharacterEntry extends React.Component {
 
     handleClick(event){
         event.preventDefault()
-        
+
     }
 
     render(){
         const character = this.props.character
         return(
-            <GridListTile>
-                <img src={character.image || defaultImage} alt={character.name}/>
-                <GridListTileBar
-                    title={character.name}
-                    subtitle={
-                        <span>
-                          by: <a href={`/users/profile/${character.author.id}`}>{character.author.username}</a>
-                        </span>
-                    }
-                    actionIcon={
-                        <div>
-                            <Delete character={character} />
-                            <Update character={character} />
-                        </div>
-                    }
-                />
-            </GridListTile>
+        <Card>
+            <h4>{character.name}</h4>
+            <p>by: <a href={`/users/profile/${character.author.id}`}>{character.author.username}</a></p>
+            <Delete character={character} /> <Update character={character} />
+            <img src={character.image || defaultImage} alt={character.name}/>
+        </Card>
         )
     }
 }
 
-
-export const styles = theme => ({
-
-});
-
-export default withStyles(styles)(CharacterEntry)
+export default CharacterEntry

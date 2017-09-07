@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'apps/toolkit/components/web/Button';
-import { withStyles } from 'material-ui/styles';
+
 
 import Dialog from './Dialog'
 
@@ -20,14 +20,14 @@ class CreateItem extends React.Component {
     }
 
     render(){
-        const classes = this.props.classes
+        
         
         return(
             <div>
             <Button
                 raised
                 color="primary"
-                className={classes.button}
+                
                 onClick = {() => this.setState({open: true})}
                 >
                 New Wiki Page
@@ -47,4 +47,4 @@ export const styles = theme => ({
   },
 });
 
-export default withStyles(styles)(CreateItem)
+export default (CreateItem)

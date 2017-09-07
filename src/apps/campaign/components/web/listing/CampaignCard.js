@@ -1,12 +1,13 @@
 import React from 'react'
 import InvisibleLink from 'apps/toolkit/components/web/links/InvisibleLink'
+import Card from 'apps/toolkit/components/web/Card'
 
 class CampaignCard extends React.Component {
     render(){
     const campaign = this.props.campaign
     const image = campaign.image ? campaign.image.url : 'https://bravenewdungeon.files.wordpress.com/2013/08/ph-barroom-brawl.jpeg'
     return(
-        <div key={campaign.id} style={styles.card}>
+        <Card key={campaign.id}>
             <InvisibleLink to={"/campaign/" + campaign.slug}>
                 <img src={image} alt={campaign.name} style={styles.image} />
                 <div class="container">
@@ -14,7 +15,7 @@ class CampaignCard extends React.Component {
                     <p>{campaign.owner}</p>
                 </div>
             </InvisibleLink>
-        </div>
+        </Card>
         )
     }
 }

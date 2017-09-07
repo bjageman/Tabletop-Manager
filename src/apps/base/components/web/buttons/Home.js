@@ -6,8 +6,8 @@ import { push } from 'react-router-redux'
 import  store  from 'redux/store'
 
 //Material-UI
-import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
+
+
 import Button from 'apps/toolkit/components/web/Button'
 import InvisibleLink from 'apps/toolkit/components/web/links/InvisibleLink'
 
@@ -16,16 +16,14 @@ import myConfig from 'config.js';
 class HomeButton extends React.Component {
     render(){
         const name = this.props.name + "-" + myConfig.VERSION
-        const classes = this.props.classes
+
         if (this.props.user){
             HomeButton = <InvisibleLink to= "/campaign" >{name}</InvisibleLink>
         } else {
             HomeButton = <InvisibleLink to= "/" >{name}</InvisibleLink>
         }
         return(
-          <Typography type="title" color="inherit" className={classes.flex}>
-                  {HomeButton}
-          </Typography>
+            <div>{HomeButton}</div>
         )
     }
 }
@@ -38,4 +36,4 @@ export const styles = theme => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(HomeButton));
+export default connect(mapStateToProps, mapDispatchToProps)(HomeButton);

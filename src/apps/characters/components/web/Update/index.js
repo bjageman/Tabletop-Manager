@@ -1,17 +1,12 @@
 import React from 'react'
-import Icon from 'material-ui/Icon'
-import IconButton from 'material-ui/IconButton';
-import { withStyles } from 'material-ui/styles';
-
+import MdCreate from 'react-icons/lib/md/create'
 import Dialog from '../Create/Dialog'
 
 class UpdateCharacter extends React.Component {
     constructor(props){
         super(props)
         this.handleRequestClose = this.handleRequestClose.bind(this)
-        this.state = {
-            open: false,
-        }
+        this.state = { open: false }
     }
 
     handleRequestClose() {
@@ -21,14 +16,10 @@ class UpdateCharacter extends React.Component {
     }
 
     render(){
-        const { classes, character } = this.props
+        const character = this.props.character
         return(
             <div>
-            <IconButton
-                className={classes.button}
-                onClick = {() => this.setState({open: true})}>
-                <Icon>create</Icon>
-            </IconButton>
+            <MdCreate onClick = {() => this.setState({open: true})} />
             <Dialog
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}
@@ -44,4 +35,4 @@ export const styles = theme => ({
   },
 });
 
-export default withStyles(styles)(UpdateCharacter)
+export default (UpdateCharacter)

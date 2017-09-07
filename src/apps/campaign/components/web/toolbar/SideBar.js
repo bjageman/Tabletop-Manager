@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 import { push } from 'react-router-redux'
 import  store  from 'redux/store'
-//material-ui
-import Typography from 'material-ui/Typography'
+
+
 import { MenuItem } from 'apps/toolkit/components/web/Menu'
-import { withStyles } from 'material-ui/styles';
+
 
 import InvisibleLink from 'apps/toolkit/components/web/links/InvisibleLink'
 
@@ -21,9 +21,7 @@ class CampaignTabs extends React.Component {
         const baseLink = '/campaign/' + campaign.slug + '/'
         return(
         <div>
-        <Typography type="body2">
             {campaign.name}
-        </Typography>
         <InvisibleLink to={baseLink}>
             <MenuItem>
                 Dashboard
@@ -59,4 +57,4 @@ export const styles = theme => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CampaignTabs));
+export default connect(mapStateToProps, mapDispatchToProps)(CampaignTabs);
