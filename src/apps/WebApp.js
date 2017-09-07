@@ -18,11 +18,7 @@ import Maps from './maps/components/web/'
 
 import Notifications from 'apps/toolkit/components/web/notifications/'
 import ToolBar from 'apps/base/components/web/ToolBar'
-
-const NotFound = () => (
-    <p>Sorry, not Found!</p>
-)
-
+import { NotFound }from 'apps/base/components/web/Error'
 
 class WebApp extends Component {
     constructor(props){
@@ -34,6 +30,7 @@ class WebApp extends Component {
     const sidebar = this.state.sidebar
     return (
       <ConnectedRouter history={history}>
+          <div>
           <div className="app" style={sidebar ? styles.sidebar: styles.full}>
               <ToolBar sidebar={sidebar} toggleSidebar={() => this.setState({sidebar: !sidebar})} />
               <Notifications />
@@ -46,7 +43,9 @@ class WebApp extends Component {
                   <Route path="/maps" component={Maps}/>
                   <Route component={NotFound} />
               </Switch>
-              <Footer />
+
+          </div>
+          <Footer />
           </div>
       </ConnectedRouter>
     )
@@ -55,12 +54,12 @@ class WebApp extends Component {
 
 const styles = {
     full: {
-        minHeight: "300px",
+        minHeight: "500px",
         transition: "0.5s",
         margin: 0
     },
     sidebar: {
-        minHeight: "300px",
+        minHeight: "500px",
         transition: "margin-left .5s",
         marginLeft: "250px"
     }

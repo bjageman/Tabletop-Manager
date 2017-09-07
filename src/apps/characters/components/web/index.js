@@ -4,7 +4,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import { GridList } from 'material-ui/GridList';
 import Loading from 'apps/toolkit/components/web/loading/Linear'
 
 import Read from './Read/'
@@ -26,11 +25,9 @@ class CampaignCharacters extends React.Component {
             <div id="campaign-characters">
                 { characters && characters.fetching ? <Loading /> : null }
                 { is_owner ? <Create /> : null }
-                <GridList>
-                    { characters.entries && characters.entries.map((character, i) => (
-                        <Read character={character} />
-                    ))}
-                </GridList>
+                { characters.entries && characters.entries.map((character, i) => (
+                    <Read character={character} />
+                ))}
             </div>
         )
 

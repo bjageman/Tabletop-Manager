@@ -1,7 +1,5 @@
 import React from 'react'
-import Icon from 'material-ui/Icon'
-import IconButton from 'material-ui/IconButton';
-import { withStyles } from 'material-ui/styles';
+import MdDelete from 'react-icons/lib/md/delete'
 
 import Dialog from './Dialog'
 
@@ -9,28 +7,15 @@ class DeleteCharacter extends React.Component {
     constructor(props){
         super(props)
         this.handleRequestClose = this.handleRequestClose.bind(this)
-        this.state = {
-            open: false,
-        }
+        this.state = { open: false }
     }
-
     handleRequestClose() {
-        this.setState({
-            open: false
-        })
+        this.setState({ open: false })
     }
-
     render(){
-        const classes = this.props.classes
-        
         return(
             <div>
-            <IconButton
-                className={classes.button}
-                color="red"
-                onClick = {() => this.setState({open: true})}>
-                <Icon>delete</Icon>
-            </IconButton>
+            <MdDelete onClick = {() => this.setState({open: true})} />
             <Dialog
                 map={this.props.map}
                 open={this.state.open}
@@ -41,10 +26,4 @@ class DeleteCharacter extends React.Component {
     }
 }
 
-export const styles = theme => ({
-  button: {
-      color: "red",
-  },
-});
-
-export default withStyles(styles)(DeleteCharacter)
+export default (DeleteCharacter)

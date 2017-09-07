@@ -1,6 +1,5 @@
 import React from 'react'
-import Card, { CardHeader } from 'material-ui/Card';
-import Avatar from 'material-ui/Avatar';
+import Card from 'apps/toolkit/components/web/Card';
 
 import data from 'mocks/campaign.json'
 
@@ -9,13 +8,9 @@ class UserCard extends React.Component {
         const user = data[0].owner
         return (
         <Card>
-          <CardHeader
-            avatar={
-              <Avatar src={user.image} />
-            }
-            title={user.username}
-            subheader={user.email}
-          />
+            <img src={user.image} />
+            {user.username}
+            {user.email}
         </Card>
         )
     }

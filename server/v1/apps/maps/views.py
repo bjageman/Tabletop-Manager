@@ -46,6 +46,7 @@ def create_map(campaign_id):
         map = CampaignMap(name=name, author=author, campaign=campaign, image=image)
         db.session.add(map)
         db.session.commit()
+        print(map.name, "uploaded!")
         return jsonify(parse_map(map))
     else:
         abort(400)

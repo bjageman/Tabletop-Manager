@@ -3,9 +3,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
-import Typography from 'material-ui/Typography'
+
 import Button from 'apps/toolkit/components/web/Button'
-import { withStyles } from 'material-ui/styles';
+
 
 import Dialog from 'apps/toolkit/components/web/Dialog'
 
@@ -22,7 +22,7 @@ class CreateDialogEvent extends React.Component {
     }
 
     onChange = (editorState) => {
-        
+
     };
 
     handleInputChange = (event) => {
@@ -35,7 +35,7 @@ class CreateDialogEvent extends React.Component {
     }
 
     handleUpload() {
-        
+
         this.props.saveMap({
             access_token: this.props.user.access_token,
             name: this.state.name,
@@ -51,9 +51,9 @@ class CreateDialogEvent extends React.Component {
             <Dialog
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose} >
-                <Typography type="headline">
+                
                     Create Content Here:
-                </Typography>
+                
                 <input name="file" type="file" id="fileinput"  onChange={this.handleInputChange}/>
                 <Button
                     raised
@@ -69,4 +69,4 @@ class CreateDialogEvent extends React.Component {
 export const styles = theme => ({
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CreateDialogEvent))
+export default connect(mapStateToProps, mapDispatchToProps)(CreateDialogEvent)

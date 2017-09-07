@@ -8,7 +8,7 @@ class Snackbar extends React.Component {
     if (this.props.open){
         return (
             <OutsideClickDetect onOutsideClick={() => this.props.onRequestClose()} >
-            <div style={this.styles.container}>{this.props.children}</div>
+            <div style={styles.container}>{this.props.children}</div>
             </OutsideClickDetect>
         );
     }else{

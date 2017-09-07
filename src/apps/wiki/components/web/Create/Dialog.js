@@ -1,9 +1,9 @@
 import React from 'react'
 //Material-UI Imports
 import Dialog from 'apps/toolkit/components/web/Dialog'
-import Typography from 'material-ui/Typography'
+
 import Button from 'apps/toolkit/components/web/Button'
-import { withStyles } from 'material-ui/styles';
+
 
 
 
@@ -34,9 +34,9 @@ class CreateDialog extends React.Component {
             <Dialog
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose} >
-                <Typography type="headline">
+                
                     Create Content Here:
-                </Typography>
+                
                 <Button
                     raised
                     color="primary"
@@ -51,4 +51,4 @@ class CreateDialog extends React.Component {
 export const styles = theme => ({
 });
 
-export default withStyles(styles)(CreateDialog)
+export default (CreateDialog)

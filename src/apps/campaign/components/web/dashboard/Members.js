@@ -2,26 +2,19 @@ import React from 'react'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
-//material-ui
-import { withStyles } from 'material-ui/styles';
-import Grid from 'material-ui/Grid';
-import Typography from 'material-ui/Typography'
+
+import Card from 'apps/toolkit/components/web/Card';
 
 class CampaignDashboardMember extends React.Component {
     render(){
-        const classes = this.props.classes
+        
         return(
-            <Grid item xs={12} sm={3}>
-                <Typography type="display3" align="center" className={classes.title}>
-                    Members
-                </Typography>
-            </Grid>
+            <Card>
+                <h1>Members</h1>
+                <p>To be filled in later</p>
+            </Card>
         )
     }
 }
 
-export const styles = theme => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CampaignDashboardMember));
+export default connect(mapStateToProps, mapDispatchToProps)(CampaignDashboardMember);

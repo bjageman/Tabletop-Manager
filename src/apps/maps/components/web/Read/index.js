@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { withStyles } from 'material-ui/styles';
-import { GridListTile, GridListTileBar } from 'material-ui/GridList';
 
 import Dialog from './Dialog'
 import Delete from '../Delete/'
+
+import Card from 'apps/toolkit/components/web/Card'
 
 class CampaignMapCard extends Component {
   constructor(props){
@@ -18,19 +18,13 @@ class CampaignMapCard extends Component {
   }
 
   render() {
-    const {classes, map } = this.props
+    const map = this.props.map
     return (
         <div>
-        <GridListTile key={this.props.key} className={classes.container}>
-            <img onClick={() => this.setState({ open: true })} className={classes.map} src={map.image.url} alt={map.name} />
-            <GridListTileBar
-                className={classes.tilebar}
-                title={map.name}
-                actionIcon={
-                <Delete map={map} />
-              }
-                />
-        </GridListTile>
+        <Card>
+            <Delete map={map} />
+            <img onClick={() => this.setState({ open: true })} style={styles.map} src={map.image.url} alt={map.name} />
+        </Card>
         <Dialog
             map={map}
             open={this.state.open}
@@ -40,14 +34,12 @@ class CampaignMapCard extends Component {
   }
 }
 
-export const styles = theme => ({
-    container:{
-    maxWidth:500,
+const styles = {
+  container:{
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    background: theme.palette.background.paper,
   },
   tilebar: {
     textAlign: "center",
@@ -56,9 +48,10 @@ export const styles = theme => ({
     fontSize: 14,
   },
   map: {
-    maxWidth: "100%",
+    width:"100%",
+    maxWidth: "400px",
     cursor: "pointer"
   },
-});
+}
 
-export default withStyles(styles)(CampaignMapCard);
+export default CampaignMapCard;

@@ -4,10 +4,7 @@ import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
 import Dialog from 'apps/toolkit/components/web/Dialog'
-import Typography from 'material-ui/Typography'
 import Button from 'apps/toolkit/components/web/Button'
-
-import { withStyles } from 'material-ui/styles';
 
 import Editor from './Editor'
 
@@ -40,9 +37,7 @@ class CreateCharacterDialog extends React.Component {
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose}
             >
-                <Typography type="headline">
                     { character.id ? "Edit " + character.name : "Create Character" }
-                </Typography>
                     <Editor
                         character = {character}
                         onChange = {this.handleInputChange} />
@@ -59,6 +54,4 @@ class CreateCharacterDialog extends React.Component {
     }
 }
 
-export const styles = theme => ({
-});
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CreateCharacterDialog))
+export default connect(mapStateToProps, mapDispatchToProps)(CreateCharacterDialog)

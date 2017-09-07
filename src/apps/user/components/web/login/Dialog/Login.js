@@ -3,10 +3,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import TextField from 'material-ui/TextField'
+import TextInput from 'apps/toolkit/components/web/forms/TextInput'
 import Dialog from 'apps/toolkit/components/web/Dialog';
 import Button from 'apps/toolkit/components/web/Button';
-import { withStyles } from 'material-ui/styles';
 
 class LoginDialog extends React.Component {
     constructor(props){
@@ -32,16 +31,15 @@ class LoginDialog extends React.Component {
     render(){
         return(
             <Dialog open={this.props.open} onRequestClose={this.handleRequestClose}>
-                <TextField
+                <TextInput
                    required
                    id="username"
                    name="username"
                    label="Username"
                    value={this.state.username}
                    onChange={event => this.setState({ [event.target.name]: event.target.value })}
-                   marginForm
                  />
-                <TextField
+                <TextInput
                   required
                   id="password"
                   name="password"
@@ -49,44 +47,17 @@ class LoginDialog extends React.Component {
                   type="password"
                   value={this.state.password}
                   onChange={event => this.setState({ [event.target.name]: event.target.value })}
-                  marginForm
                 />
-              <Button onClick={this.handleRequestClose} color="primary">
-                Cancel
-              </Button>
-              <Button onClick={this.handleLogin} color="primary">
-                Login
-              </Button>
+                <Button raised onClick={this.handleLogin} color="primary">
+                    Login
+                </Button>
                 <Button onClick={this.props.openRegistration} color="primary">
-                  Sign Up
+                    Sign Up
                 </Button>
             </Dialog>
         )
     }
 }
 
-export const styles = theme => ({
-  root: {
-    color: 'inherit',
-    textDecoration: 'inherit',
-    '&:hover': {
-      textDecoration: 'underline',
-    },
-  },
-  primary: {
-    paddingLeft: 40,
-    margingRight: 20,
-    color: "blue",
-  },
-  container: {
-    marginLeft: "5%",
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  input: {
-      marginRight: 10
-  }
-});
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(LoginDialog));
+export default connect(mapStateToProps, mapDispatchToProps)(LoginDialog);

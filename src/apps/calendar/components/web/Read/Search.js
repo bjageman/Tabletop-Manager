@@ -1,13 +1,13 @@
 import React from 'react'
 
-import TextField from 'material-ui/TextField';
-import { withStyles } from 'material-ui/styles';
+import TextInput from 'apps/toolkit/components/web/forms/TextInput'
+
 
 class CampaignEventSearch extends React.Component {
     render(){
         return(
             <div className="search-bar">
-                <TextField
+                <TextInput
                   id="search"
                   label="Search"
                 />
@@ -20,4 +20,4 @@ export const styles = theme => ({  container:{
   },
 });
 
-export default withStyles(styles)(CampaignEventSearch)
+export default (CampaignEventSearch)

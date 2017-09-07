@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
 import Dialog from 'apps/toolkit/components/web/Dialog'
-import Typography from 'material-ui/Typography'
+
 import Button from 'apps/toolkit/components/web/Button'
-import { withStyles } from 'material-ui/styles';
+
 
 
 
@@ -36,9 +36,7 @@ class CharacterDeleteDialog extends React.Component {
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose}
             >
-                <Typography type="headline">
                     Are you sure you want to delete?
-                </Typography>
                 <Button
                     raised
                     color="primary"
@@ -59,4 +57,4 @@ export const styles = theme => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CharacterDeleteDialog))
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterDeleteDialog)

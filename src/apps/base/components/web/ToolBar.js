@@ -3,16 +3,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-//Material-UI
-import { withStyles } from 'material-ui/styles';
-
 import CampaignSideBar from 'apps/campaign/components/web/toolbar/SideBar'
-import UserCard from 'apps/user/components/web/UserCard'
 import InvisibleLink from 'apps/toolkit/components/web/links/InvisibleLink'
 import Login from 'apps/user/components/web/login/index'
 import AccountMenu from 'apps/user/components/web/tools/AccountMenu'
 
 import MdMenu from 'react-icons/lib/md/menu';
+import MdClose from 'react-icons/lib/md/close';
 import AppBar, {AppBarItem} from 'apps/toolkit/components/web/navigation/AppBar'
 import { MenuItem } from 'apps/toolkit/components/web/Menu'
 import SideNav from 'apps/toolkit/components/web/navigation/SideNav'
@@ -47,9 +44,10 @@ class ToolBar extends React.Component {
             <SideNav
                 open={this.props.sidebar}
                 onRequestClose={this.props.toggleSidebar} >
-                <UserCard />
+                <MenuItem style={{float:"right", backgroundColor: "gray", color: "white"}} onClick={this.props.toggleSidebar}><MdClose /></MenuItem>
+                {/*<UserCard />*/}
                 <InvisibleLink to="/"><MenuItem>Home</MenuItem></InvisibleLink>
-                <InvisibleLink to="/campaign"><MenuItem>My Campaigns</MenuItem></InvisibleLink>
+                { user ? <InvisibleLink to="/campaign"><MenuItem>My Campaigns</MenuItem></InvisibleLink> : null }
                 { campaign ?
                     <div>
                         <hr />

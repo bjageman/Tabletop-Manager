@@ -13,6 +13,7 @@ class Button extends React.Component {
         style = this.props.raised ? { ...style, ...styles.raised } : { ...style, ...styles.flat }
         style =  this.state.active ? { ...style, ...style.active } : style
         style = this.state.hover ? { ...style, ...style.hover } : style
+        style = {...style, ...this.props.style}
         return style
     }
 

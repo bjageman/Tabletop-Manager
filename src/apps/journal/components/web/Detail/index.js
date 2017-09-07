@@ -2,8 +2,6 @@ import React from 'react'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
-//material-ui
-import { withStyles } from 'material-ui/styles';
 
 import Loading from 'apps/toolkit/components/web/loading/Linear'
 import CleanHTML from 'apps/toolkit/components/web/CleanHTML'
@@ -39,8 +37,4 @@ class JournalEntry extends React.Component {
     }
 }
 
-export const styles = theme => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(JournalEntry))
+export default connect(mapStateToProps, mapDispatchToProps)(JournalEntry)

@@ -3,8 +3,8 @@ import { Route } from 'react-router'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
-//material-ui
-import { withStyles } from 'material-ui/styles';
+
+
 
 import Dashboard from './dashboard/'
 import { JournalRouter } from 'apps/journal/components/web/router'
@@ -73,4 +73,4 @@ export const styles = theme => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Campaign));
+export default connect(mapStateToProps, mapDispatchToProps)(Campaign);

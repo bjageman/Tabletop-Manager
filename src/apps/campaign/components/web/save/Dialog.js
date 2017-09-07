@@ -5,10 +5,8 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 //Material-UI Imports
 import Dialog from 'apps/toolkit/components/web/Dialog'
 
-import TextField from 'material-ui/TextField';
+import TextInput from 'apps/toolkit/components/web/forms/TextInput'
 import Button from 'apps/toolkit/components/web/Button';
-
-import { withStyles } from 'material-ui/styles';
 
 class EntryCreateDialog extends React.Component {
     constructor(props){
@@ -41,7 +39,7 @@ class EntryCreateDialog extends React.Component {
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose}
             >
-                <TextField
+                <TextInput
                   id="title"
                   label="Title"
                   name="name"
@@ -57,19 +55,4 @@ class EntryCreateDialog extends React.Component {
     }
 }
 
-export const styles = theme => ({
-  dialog: {
-    width: 600,
-  },
-  flex: {
-    flex: 1,
-  },
-  title:{
-    color: "white"
-},
-  editor: {
-      width: 600
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(EntryCreateDialog))
+export default connect(mapStateToProps, mapDispatchToProps)(EntryCreateDialog)

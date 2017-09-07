@@ -28,6 +28,8 @@ export function* saveMap(action) {
       const response = yield call(postDataApi, url, data, payload.access_token);
       if (verifyData(response)) {
           yield put(actions.getMaps({id: payload.campaign_id}))
+          let message = response.data.name + " successfully uploaded!"
+          yield put(actions.success({ "message": message}))
         }else{
           yield put(actions.error({ "message": response.data.error }))
         }

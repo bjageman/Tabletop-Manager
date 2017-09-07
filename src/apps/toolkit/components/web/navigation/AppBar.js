@@ -26,14 +26,16 @@ export class AppBarItem extends React.Component {
         const position = this.props.right ? styles.right: styles.left
         const linkStyle = this.state.hover ? {...styles.link, ...styles.link.hover} : styles.link
         return(
-            <li
-                style={position}
-                onClick={this.props.onClick}
-                onMouseOver={() => this.setState({ hover: true })}
-                onMouseLeave={() => this.setState({ hover: false })}
-                >
-                <a style={linkStyle}>{this.props.children}</a>
-            </li>
+            <div style={this.props.style}>
+                <li
+                    style={position}
+                    onClick={this.props.onClick}
+                    onMouseOver={() => this.setState({ hover: true })}
+                    onMouseLeave={() => this.setState({ hover: false })}
+                    >
+                    <a style={linkStyle}>{this.props.children}</a>
+                </li>
+            </div>
 
         )
     }

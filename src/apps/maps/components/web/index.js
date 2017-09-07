@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
-//material-ui
-import { GridList } from 'material-ui/GridList';
-import { withStyles } from 'material-ui/styles';
 
+import Grid, { GridItem } from 'apps/toolkit/components/web/Grid'
 import Loading from 'apps/toolkit/components/web/loading/Linear'
 import Read from './Read/.'
 import Create from './Create/'
@@ -18,34 +16,24 @@ class CampaignMaps extends Component {
     }
 
     render() {
-        const classes = this.props.classes
         const campaignMaps = this.props.maps
         return (
           <div>
               { campaignMaps.fetching ? <Loading /> : null }
               { this.props.is_owner ? <Create /> : null }
-              <GridList cellHeight={180} className={classes.container} >
-
+              <Grid>
                   { campaignMaps.entries && campaignMaps.entries.map((map, i) => (
-                    <Read
-                        key = {i}
-                        map = {map}
-                        />
+                      <GridItem>
+                          <Read
+                              key = {i}
+                              map = {map}
+                              />
+                      </GridItem>
                   ))}
-
-              </GridList>
+              </Grid>
           </div>
         );
   }
 }
 
-export const styles = theme => ({
-  container:{
-      marginTop: "1%",
-      marginBottom: "1%",
-      marginLeft:"5%",
-      marginRight: "5%"
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CampaignMaps));
+export default connect(mapStateToProps, mapDispatchToProps)(CampaignMaps);

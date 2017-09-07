@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'apps/toolkit/components/web/Button';
-import { withStyles } from 'material-ui/styles';
+
 
 import Dialog from './Dialog'
 
@@ -20,13 +20,12 @@ class CreateCharacter extends React.Component {
     }
 
     render(){
-        const classes = this.props.classes
+        
         return(
             <div>
             <Button
                 raised
                 color="primary"
-                className={classes.button}
                 onClick = {() => this.setState({open: true})}
                 >
             Create Character
@@ -40,10 +39,4 @@ class CreateCharacter extends React.Component {
     }
 }
 
-export const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit,
-  },
-});
-
-export default withStyles(styles)(CreateCharacter)
+export default (CreateCharacter)

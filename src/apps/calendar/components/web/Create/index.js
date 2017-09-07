@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'apps/toolkit/components/web/Button';
-import { withStyles } from 'material-ui/styles';
+
 
 import CreateEventDialog from './Dialog'
 
@@ -44,4 +44,4 @@ export const styles = theme => ({
   },
 });
 
-export default withStyles(styles)(CreateEvent)
+export default (CreateEvent)
