@@ -38,16 +38,10 @@ class Campaign extends React.Component {
         return(
             <div>
                 <Route exact path={match.url} render={() => <Dashboard campaign={campaign} /> } />
-                <Route path={match.url + '/journal'} component={JournalRouter} />
-                <Route path={match.url + '/characters'} component={Characters} />
-                <Route path={match.url + '/maps'} render={() =>
-                    <Maps
-                        is_owner={is_owner}
-                    /> }/>
-                <Route path={match.url + '/calendar'} render={() =>
-                    <Calendar
-                        is_owner={is_owner}
-                    /> }/>
+                <Route path={match.url + '/journal'} component={JournalRouter}  />
+                <Route path={match.url + '/characters'} component={Characters}  />
+                <Route path={match.url + '/maps'} component={Maps}              />
+                <Route path={match.url + '/calendar'} component={Calendar}      />
                 <Route path={match.url + '/wiki'} render={() =>
                     <Wiki
                         is_owner={is_owner}

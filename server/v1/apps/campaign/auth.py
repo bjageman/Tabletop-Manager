@@ -1,7 +1,11 @@
 from .models import Campaign
-from v1.apps.auth import verify_auth, verify_campaign_access
+from v1.apps.auth import verify_auth
 from .errors import *
 from flask import abort
+
+#Will be fleshed out more to include non-owner users
+def verify_campaign_access(user, campaign):
+    return user == campaign.owner
 
 def request_campaign_auth(request, campaign_id):
     user = verify_auth(request)

@@ -6,7 +6,7 @@ export function* getCalendar(action) {
     try{
       let payload = action.payload
       let url = 'campaign/' + payload.id + "/calendar/upcoming"
-      
+
       const response = yield call(getDataApi, url);
       if (verifyData(response)) {
           yield put(actions.calendarSuccess({ entries: response.data }))
@@ -22,10 +22,10 @@ export function * deleteCalendarEvent(action){
     try{
       let payload = action.payload
       let url = 'campaign/' + payload.campaign_id + "/calendar/" + payload.event_id
-      
-      const response = yield call(deleteDataApi, url);
+
+      const response = yield call(deleteDataApi, url, payload.access_token);
       if (verifyData(response)) {
-          
+
           yield put(actions.getCalendar({ id: payload.campaign_id }))
         }else{
           yield put(actions.error({ "message": response.data.error }))
@@ -43,7 +43,7 @@ export function* saveCalendarEvent(action) {
       if ( payload.event_id != null ){
           url = url + "/" + payload.event_id
       }
-      
+
       const response = yield call(postDataApi, url, data);
       if (verifyData(response)) {
           yield put(actions.getCalendar({ id: payload.campaign_id }))

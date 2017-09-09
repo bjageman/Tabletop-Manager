@@ -47,12 +47,13 @@ class CreateEventDialog extends React.Component {
             campaign_id: this.props.campaign.id,
             start_time: this.state.start_time.format(myConfig.DATETIMEFORMAT),
             end_time: this.state.end_time.format(myConfig.DATETIMEFORMAT),
+            access_token: this.props.user.access_token
         })
         this.props.onRequestClose()
     }
 
     render(){
-        
+
         return(
             <Dialog
                 open={this.props.open}
@@ -62,7 +63,7 @@ class CreateEventDialog extends React.Component {
                 <TextInput
                   id="name"
                   label="Event Name"
-                  
+
                   value={this.state.name}
                   onChange={event => this.setState({ name: event.target.value })}
                 />

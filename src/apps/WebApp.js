@@ -32,9 +32,10 @@ class WebApp extends Component {
       <ConnectedRouter history={history}>
           <div>
           <div className="app" style={sidebar ? styles.sidebar: styles.full}>
-              <ToolBar sidebar={sidebar} toggleSidebar={() => this.setState({sidebar: !sidebar})} />
-              <Notifications />
-              <Switch>
+            <ToolBar sidebar={sidebar} toggleSidebar={() => this.setState({sidebar: !sidebar})} />
+            <Notifications />
+            <div style={styles.body}>
+                <Switch>
                   <Route exact path="/" component={LandingPage}/>
                   <Route exact path="/profile" component={UserProfile}/>
                   <Route exact path="/profile/:userId" component={UserProfile}/>
@@ -42,7 +43,8 @@ class WebApp extends Component {
                   <Route path="/campaign/:id" component={Campaign}/>
                   <Route path="/maps" component={Maps}/>
                   <Route component={NotFound} />
-              </Switch>
+                </Switch>
+            </div>
 
           </div>
           <Footer />
@@ -62,6 +64,9 @@ const styles = {
         minHeight: "500px",
         transition: "margin-left .5s",
         marginLeft: "250px"
+    },
+    body: {
+        padding: "1% 1% 1% 2%"
     }
 
 }

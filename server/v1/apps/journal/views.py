@@ -6,7 +6,8 @@ from v1.apps.campaign import campaign
 from v1.apps import db
 #Models
 from .models import Entry
-from v1.apps.campaign.models import Campaign, request_campaign_auth
+from v1.apps.campaign.models import Campaign
+from v1.apps.campaign.auth import request_campaign_auth
 from v1.apps.users.models import User
 #Parsers
 from v1.apps.users.parsers import *
@@ -65,7 +66,7 @@ def get_entry(campaign_id, entry_id):
 def update_journal(campaign_id, entry_id):
     user, campaign = request_campaign_auth(request, campaign_id)
     entry = Entry.query.get(entry_id)
-    if entry is not None and entry.campaign.id == campaign_id:
+    if entry is not None:
         data        = request.get_json()
         name        = get_optional_data(data, "name")
         content     = get_optional_data(data, "content")
@@ -88,7 +89,7 @@ def delete_journal(campaign_id, entry_id):
     user, campaign = request_campaign_auth(request, campaign_id)
     entry = Entry.query.get(entry_id)
     name = entry.name
-    if entry is not None and entry.campaign.id == campaign_id:
+    if entry is not None:
         db.session.delete(entry)
         db.session.commit()
     entry = Entry.query.get(entry_id)

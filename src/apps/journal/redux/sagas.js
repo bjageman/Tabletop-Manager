@@ -56,8 +56,8 @@ export function* deleteJournalEntry(action){
     try{
       let payload = action.payload
       let url = 'campaign/' + payload.campaign_id + "/journal/" + payload.entry_id
-      
-      const response = yield call(deleteDataApi, url);
+
+      const response = yield call(deleteDataApi, url, payload.access_token);
       if (verifyData(response)) {
           yield put(actions.getJournal({ id: payload.campaign_id }))
         }else{

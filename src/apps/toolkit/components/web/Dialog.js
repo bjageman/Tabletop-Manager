@@ -40,14 +40,15 @@ var styles = {
 },
   dialog: {
     minWidth: "300px",
-    backgroundColor: "#fefefe",
+    borderRadius: "3px",
+    backgroundColor: "rgba(245,245,245 ,1)",
     padding: "2% 2% 2% 5%",
-    border: "1px solid #888",
     position: "absolute",
     top: "50%",
     left: "50%",
     marginRight: "-50%",
-    transform: "translate(-50%, -50%)"
+    transform: "translate(-50%, -50%)",
+    boxShadow: "0px 24px 24px rgba(0, 0, 0, .38)",
   }
 }
 

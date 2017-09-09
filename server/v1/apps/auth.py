@@ -8,11 +8,13 @@ def decode_auth_token(auth_token):
         payload = jwt.decode(auth_token, app.config.get('SECRET_KEY'))
         return payload['identity']
     except jwt.ExpiredSignatureError:
-        return make_response(jsonify({'error': 'Signature expired. Please log in again.'}), 401)
+        error_message = 'Signature expired. Please log in again.'
     except jwt.InvalidTokenError:
-        return make_response(jsonify({'error': 'Invalid token. Please log in again.'}), 401)
-    except KeyError:
-        return make_response(jsonify({'error': 'Unknown JWT Authorization Error'}), 401)
+        error_message = 'Invalid token. Please log in again.'
+    except:
+        error_message = 'Unknown JWT Authorization Error'
+    make_response(jsonify({'error': error_message}), 401)
+    return error_message
 
 def verify_auth(request):
     auth_header = request.headers.get('Authorization')
@@ -27,7 +29,3 @@ def verify_auth(request):
             abort(404)
         return user
     return None
-
-#Will be fleshed out more to include non-owner users
-def verify_campaign_access(user, campaign):
-    return user == campaign.owner

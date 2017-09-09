@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Card from 'apps/toolkit/components/web/Card'
+import Card, { CardContent, CardMedia } from 'apps/toolkit/components/web/Card'
 
 import Delete from '../Delete/'
 import Update from '../Update/'
@@ -17,11 +17,15 @@ class CharacterEntry extends React.Component {
     render(){
         const character = this.props.character
         return(
-        <Card>
-            <h4>{character.name}</h4>
-            <p>by: <a href={`/users/profile/${character.author.id}`}>{character.author.username}</a></p>
-            <Delete character={character} /> <Update character={character} />
-            <img src={character.image || defaultImage} alt={character.name}/>
+        <Card hoverFloat>
+            <img style={{width:"100%"}} src={character.image || defaultImage} alt={character.name}/>
+            <CardContent>
+                <h4>{character.name}</h4>
+                <p>by: <a href={`/users/profile/${character.author.id}`}>{character.author.username}</a></p>
+            </CardContent>
+            <CardContent>
+                <Delete character={character} /> <Update character={character} />
+            </CardContent>
         </Card>
         )
     }

@@ -28,6 +28,7 @@ const styles = {
         overflowX: "hidden",
         transition: "0.5s",
         backgroundColor: "white",
+        boxShadow: "0px 0px 16px rgba(0, 0, 0, .38)",
     }
 }
 

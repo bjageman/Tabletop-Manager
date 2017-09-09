@@ -1,26 +1,11 @@
 import React from 'react'
 import Button from 'apps/toolkit/components/web/Button';
-
-
 import Dialog from './Dialog'
 
 class CreateCharacter extends React.Component {
-    constructor(props){
-        super(props)
-        this.handleRequestClose = this.handleRequestClose.bind(this)
-        this.state = {
-            open: false,
-        }
-    }
-
-    handleRequestClose() {
-        this.setState({
-            open: false
-        })
-    }
+    state = { open: false }
 
     render(){
-        
         return(
             <div>
             <Button
@@ -32,7 +17,7 @@ class CreateCharacter extends React.Component {
             </Button>
             <Dialog
                 open={this.state.open}
-                onRequestClose={this.handleRequestClose}
+                onRequestClose={() => this.setState({ open: false })}
                 />
             </div>
         )

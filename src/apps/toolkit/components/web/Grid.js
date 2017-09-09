@@ -27,7 +27,6 @@ const styles = {
         flexDirection: "row",
 	    alignItems: "center",
 	    justifyContent: "center",
-        marginTop: "5%",
     },
     item: {
         padding: "1%",

@@ -21,7 +21,8 @@ class CampaignMapDialog extends React.Component {
 
 const styles = {
   map: {
-      width: "100%"
+      width: "100%",
+      maxWidth: "900px",
   },
 };
 

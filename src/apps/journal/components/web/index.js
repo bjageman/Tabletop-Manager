@@ -9,7 +9,6 @@ import Create from './Create/'
 
 import { checkOwner } from 'apps/toolkit/utils'
 
-
 class Journal extends React.Component {
     constructor(props){
         super(props)

@@ -49,7 +49,10 @@ const styles = {
         transition: "all 300ms ease",
     },
     float: {
-
+        boxShadow: "0px 6px 6px rgba(0, 0, 0, .38)",
+        active: {
+            boxShadow: "0px 12px 12px rgba(0, 0, 0, .38)",
+        }
     },
     flat: {
         padding: 0,
@@ -63,15 +66,19 @@ const styles = {
         }
     },
     raised: {
+        minWidth: "88px",
+        height: "36px",
         borderRadius: "5px",
         transition: "all 300ms ease",
-        backgroundColor: "#2196F3",
+        backgroundColor: "rgba(3,169,244 ,1)",
         color: "white",
+        boxShadow: "0px 0px 0px rgba(0, 0, 0, .38)",
     active: {
-        backgroundColor: "#ADEEE3",
-        color: "#1f1f1f",
+        backgroundColor: "#0288D1",
+        boxShadow: "0px 2px 2px rgba(0, 0, 0, .38)",
     },
     hover: {
+        backgroundColor: "#0288D1",
         color: "white",
     }
 
