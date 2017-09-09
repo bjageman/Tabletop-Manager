@@ -19,19 +19,20 @@ class CharacterDeleteDialog extends React.Component {
         this.props.deleteJournalEntry({
             campaign_id: this.props.campaign.id,
             entry_id: this.props.entry.id,
+            access_token: this.props.user.access_token,
         })
         this.props.onRequestClose()
     }
 
     render(){
-        // 
+        //
         return(
             <Dialog
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose} >
-                
+
                     Are you sure you want to delete?
-                
+
                 <Button onClick = {this.handleDelete} color="primary">
                   Delete
                 </Button>

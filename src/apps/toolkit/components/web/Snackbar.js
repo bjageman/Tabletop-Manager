@@ -25,6 +25,7 @@ const styles = {
         color: "#fff", textAlign: "center", borderRadius: "2px",
         padding: "16px", position: "fixed", zIndex: 1,
         left: "75%", bottom: "30px", fontSize: "17px",
+        boxShadow: "0px 24px 24px rgba(0, 0, 0, .38)",
     }
 }
 

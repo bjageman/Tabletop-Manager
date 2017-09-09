@@ -101,7 +101,7 @@ def delete_character(campaign_id, character_id):
     if character is not None:
         db.session.delete(character)
         db.session.commit()
-    character = Character.query.get(character_id)
+    character = get_character(character_id)
     if character is None:
         message = name + " was deleted"
         return jsonify({"message": message})

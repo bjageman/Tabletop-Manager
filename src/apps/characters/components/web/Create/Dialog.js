@@ -2,25 +2,20 @@ import React from 'react'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
-//Material-UI Imports
+
 import Dialog from 'apps/toolkit/components/web/Dialog'
 import Button from 'apps/toolkit/components/web/Button'
 
 import Editor from './Editor'
 
 class CreateCharacterDialog extends React.Component {
-    constructor(props){
-        super(props)
-        this.handleSave = this.handleSave.bind(this)
-    }
-
     handleInputChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         })
     }
 
-    handleSave() {
+    handleSave = () =>  {
         this.props.createCharacter({
             access_token:   this.props.user.access_token,
             name:           this.state.name,
@@ -35,12 +30,11 @@ class CreateCharacterDialog extends React.Component {
         return(
             <Dialog
                 open={this.props.open}
-                onRequestClose={this.props.onRequestClose}
-            >
-                    { character.id ? "Edit " + character.name : "Create Character" }
-                    <Editor
-                        character = {character}
-                        onChange = {this.handleInputChange} />
+                onRequestClose={this.props.onRequestClose}>
+                { character.id ? "Edit " + character.name : "Create Character" }
+                <Editor
+                    character = {character}
+                    onChange = {this.handleInputChange} />
                 <Button
                     color="primary"
                     onClick = {this.handleSave}>

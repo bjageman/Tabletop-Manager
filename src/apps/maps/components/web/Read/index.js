@@ -21,7 +21,7 @@ class CampaignMapCard extends Component {
     const map = this.props.map
     return (
         <div>
-        <Card>
+        <Card hoverFloat>
             <Delete map={map} />
             <img onClick={() => this.setState({ open: true })} style={styles.map} src={map.image.url} alt={map.name} />
         </Card>

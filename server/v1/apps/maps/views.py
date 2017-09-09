@@ -6,7 +6,8 @@ from v1.apps.campaign import campaign
 #Models
 from v1.apps.models import Image
 from .models import CampaignMap
-from v1.apps.campaign.models import Campaign, request_campaign_auth
+from v1.apps.campaign.models import Campaign
+from v1.apps.campaign.auth import request_campaign_auth
 from v1.apps.users.models import User
 #Parsers
 from v1.apps.users.parsers import *

@@ -20,6 +20,7 @@ from .parsers import *
 #Error handling
 from v1.apps.errors import *
 from v1.apps.campaign.errors import *
+from v1.apps.campaign.auth import request_campaign_auth
 
 #Utils
 from v1.apps.utils import *
@@ -100,9 +101,10 @@ def update_event_by_id(campaign_id, event_id):
 
 @campaign.route(calendar_base_url + '/<event_id>', methods=['DELETE'])
 def delete_event(campaign_id, event_id):
+    user, campaign = request_campaign_auth(request, campaign_id)
     event = get_event(event_id)
     name = event.name
-    if event is not None and event.campaign.id == campaign_id:
+    if event is not None:
         db.session.delete(event)
         db.session.commit()
     event = get_event(event_id)

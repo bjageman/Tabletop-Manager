@@ -8,6 +8,7 @@ import Loading from 'apps/toolkit/components/web/loading/Linear'
 import Read from './Read/.'
 import Create from './Create/'
 
+import { checkOwner } from 'apps/toolkit/utils'
 
 class CampaignMaps extends Component {
     constructor(props){
@@ -16,11 +17,12 @@ class CampaignMaps extends Component {
     }
 
     render() {
+        const is_owner = checkOwner(this.props.user, this.props.campaign)
         const campaignMaps = this.props.maps
         return (
           <div>
               { campaignMaps.fetching ? <Loading /> : null }
-              { this.props.is_owner ? <Create /> : null }
+              { is_owner ? <Create /> : null }
               <Grid>
                   { campaignMaps.entries && campaignMaps.entries.map((map, i) => (
                       <GridItem>
