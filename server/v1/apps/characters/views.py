@@ -73,11 +73,8 @@ def get_character_request(campaign_id, character_id):
 #Update
 @campaign.route(character_base_url + '/<character_id>', methods=['POST', 'PUT'])
 def update_character(campaign_id, character_id):
-    print("UPDATE", character_id)
     user, campaign = request_campaign_auth(request, campaign_id)
-    print(user, campaign)
     character = get_character(character_id)
-    print("CHARACTER", character)
     if character is not None:
         data        = request.get_json()
         name        = get_optional_data(data, "name")

@@ -1,5 +1,4 @@
 import React from 'react'
-import MdCreate from 'react-icons/lib/md/create'
 import Dialog from '../Create/Dialog'
 
 import Button from 'apps/toolkit/components/web/Button';

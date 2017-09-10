@@ -13,9 +13,6 @@ import AppBar, {AppBarItem} from 'apps/toolkit/components/web/navigation/AppBar'
 import { MenuItem } from 'apps/toolkit/components/web/Menu'
 import Drawer from 'apps/toolkit/components/web/Drawer'
 
-import MdMenu from 'react-icons/lib/md/menu';
-import MdClose from 'react-icons/lib/md/close';
-
 class ToolBar extends React.Component {
     constructor(props){
         super(props)

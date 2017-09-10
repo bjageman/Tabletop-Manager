@@ -15,6 +15,7 @@ class CharacterDeleteDialog extends React.Component {
 
     handleDelete() {
         this.props.deleteCharacter({
+            access_token: this.props.user.access_token,
             campaign_id: this.props.campaign.id,
             character_id: this.props.character.id,
         })

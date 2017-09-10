@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from 'apps/toolkit/components/web/Button'
+import Icon from 'apps/toolkit/components/web/Icon'
 
 import Editor from './Editor'
 
@@ -19,17 +20,16 @@ class CreateEntry extends React.Component {
     }
 
     render(){
-        
+
         return(
             <div>
 
             {this.state.open ? <Editor onRequestClose={this.handleRequestClose} /> :
             <Button
-                raised
-                color="primary"
+                float
                 onClick = {() => this.setState({open: true})}
                 >
-                New Entry
+                <Icon name="add" />
             </Button>
             }
             </div>
