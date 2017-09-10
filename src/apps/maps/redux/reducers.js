@@ -11,7 +11,7 @@ const initial = {
 
 export const maps = createReducer({
   [actions.getMaps]: (state, payload) => {
-      return { id: payload.id, fetching:true, error: null };
+      return { id: payload.id, fetching:true, error: null, entries: state.entries };
   },
   [actions.mapSuccess]: (state, payload) => {
     return { entries: payload.entries, fetching:false, error: null };
@@ -20,12 +20,14 @@ export const maps = createReducer({
     return {
         name: payload.name,
         fetching:true,
-        error: null };
+        error: null,
+        entries: state.entries };
   },
   [actions.deleteMap]: (state, payload) => {
     return {
         map_id: payload.map_id,
         fetching:true,
-        error: null };
+        error: null,
+        entries: state.entries };
   },
 }, initial.maps);

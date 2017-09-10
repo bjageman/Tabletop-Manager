@@ -8,11 +8,13 @@ import InvisibleLink from 'apps/toolkit/components/web/links/InvisibleLink'
 import Login from 'apps/user/components/web/login/index'
 import AccountMenu from 'apps/user/components/web/tools/AccountMenu'
 
-import MdMenu from 'react-icons/lib/md/menu';
-import MdClose from 'react-icons/lib/md/close';
+import Icon from 'apps/toolkit/components/web/Icon'
 import AppBar, {AppBarItem} from 'apps/toolkit/components/web/navigation/AppBar'
 import { MenuItem } from 'apps/toolkit/components/web/Menu'
-import SideNav from 'apps/toolkit/components/web/navigation/SideNav'
+import Drawer from 'apps/toolkit/components/web/Drawer'
+
+import MdMenu from 'react-icons/lib/md/menu';
+import MdClose from 'react-icons/lib/md/close';
 
 class ToolBar extends React.Component {
     constructor(props){
@@ -37,15 +39,14 @@ class ToolBar extends React.Component {
             <div>
             <AppBar>
                 <AppBarItem onClick={this.props.toggleSidebar} >
-                    <MdMenu /> { campaign ? campaign.name : brandName }
+                    <Icon name="menu" /> { campaign ? campaign.name : brandName }
                 </AppBarItem>
                 { user ? <AccountMenu  /> : <Login color="contrast"/> }
             </AppBar>
-            <SideNav
+            <Drawer
                 open={this.props.sidebar}
+                onClick={this.props.toggleSidebar}
                 onRequestClose={this.props.toggleSidebar} >
-                <MenuItem style={{float:"right", backgroundColor: "gray", color: "white"}} onClick={this.props.toggleSidebar}><MdClose /></MenuItem>
-                {/*<UserCard />*/}
                 <InvisibleLink to="/"><MenuItem>Home</MenuItem></InvisibleLink>
                 { user ? <InvisibleLink to="/campaign"><MenuItem>My Campaigns</MenuItem></InvisibleLink> : null }
                 { campaign ?
@@ -55,7 +56,7 @@ class ToolBar extends React.Component {
                     </div>
                 : null
                 }
-            </SideNav>
+            </Drawer>
             </div>
         )
     }

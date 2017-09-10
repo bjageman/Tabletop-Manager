@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 import Menu, { MenuItem } from 'apps/toolkit/components/web/Menu';
+import Icon from 'apps/toolkit/components/web/Icon'
 
 import InvisibleLink from 'apps/toolkit/components/web/links/InvisibleLink'
 
@@ -29,7 +30,7 @@ class AccountMenu extends React.Component {
 
     render() {
         return(
-            <Menu title={this.props.user.username}>
+            <Menu title={<Icon name="person" />}>
                 <InvisibleLink to="/profile">
                     <MenuItem onClick={this.handleRequestClose}>Profile</MenuItem>
                 </InvisibleLink>

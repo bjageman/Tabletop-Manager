@@ -1,5 +1,6 @@
 import React from 'react'
-import Button from 'apps/toolkit/components/web/Button';
+import Button from 'apps/toolkit/components/web/Button'
+import Icon from 'apps/toolkit/components/web/Icon'
 import Dialog from './Dialog'
 
 class CreateCharacter extends React.Component {
@@ -9,12 +10,9 @@ class CreateCharacter extends React.Component {
         return(
             <div>
             <Button
-                raised
-                color="primary"
+                float
                 onClick = {() => this.setState({open: true})}
-                >
-            Create Character
-            </Button>
+                ><Icon name="add" /></Button>
             <Dialog
                 open={this.state.open}
                 onRequestClose={() => this.setState({ open: false })}

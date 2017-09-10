@@ -11,7 +11,7 @@ const initial = {
 
 export const journal = createReducer({
   [actions.getJournal]: (state, payload) => {
-    return { id: payload.id, fetching:true, error: null };
+    return { id: payload.id, fetching:true, error: null, entries: state.entries };
   },
   [actions.journalSuccess]: (state, payload) => {
     return { entries: payload.entries, fetching:false, error: null };
@@ -25,12 +25,14 @@ export const journal = createReducer({
         content: payload.content,
         journal_id: payload.journal_id,
         fetching:true,
-        error: null };
+        error: null,
+        entries: state.entries };
   },
   [actions.deleteJournalEntry]: (state, payload) => {
     return {
         entry_id: payload.entry_id,
         fetching:true,
-        error: null };
+        error: null,
+        entries: state.entries };
   },
 }, initial.journal);

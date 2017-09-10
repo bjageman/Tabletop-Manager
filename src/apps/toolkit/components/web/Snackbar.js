@@ -7,9 +7,11 @@ class Snackbar extends React.Component {
 
     if (this.props.open){
         return (
+        <div style={styles.backdrop}>
             <OutsideClickDetect onOutsideClick={() => this.props.onRequestClose()} >
-            <div style={styles.container}>{this.props.children}</div>
+                <div style={styles.container}>{this.props.children}</div>
             </OutsideClickDetect>
+        </div>
         );
     }else{
         return null
@@ -20,6 +22,17 @@ class Snackbar extends React.Component {
 }
 
 const styles = {
+    backdrop: {
+      width:"100%",
+      height: "100%",
+      display: "block",
+      position: "fixed",
+      margin: "auto",
+      zIndex: 1,
+      left: 0,
+      top: 0,
+      overflow: "auto",
+    },
     container: {
         minWidth: "250px", marginLeft: "-125px", backgroundColor: "#333",
         color: "#fff", textAlign: "center", borderRadius: "2px",

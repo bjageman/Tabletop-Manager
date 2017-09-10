@@ -32,8 +32,10 @@ character_base_url = '/<campaign_id>/characters'
 def get_character(character_id):
     try:
         character_id = int(character_id)
+        print(character_id)
         return Character.query.filter(Character.id == character_id).first()
     except ValueError:
+        print("error val")
         return Character.query.filter(Character.slug == character_id).first()
 
 #Create
@@ -48,9 +50,6 @@ def create_character(campaign_id):
     return jsonify(parse_character(character))
 
 #Read
-
-
-
 @campaign.route(character_base_url, methods=['GET'])
 def get_campaign_characters(campaign_id):
     campaign    = get_campaign(campaign_id)
@@ -71,13 +70,14 @@ def get_character_request(campaign_id, character_id):
     else:
         abort(404)
 
-#
-# #Update
-#
+#Update
 @campaign.route(character_base_url + '/<character_id>', methods=['POST', 'PUT'])
 def update_character(campaign_id, character_id):
+    print("UPDATE", character_id)
     user, campaign = request_campaign_auth(request, campaign_id)
+    print(user, campaign)
     character = get_character(character_id)
+    print("CHARACTER", character)
     if character is not None:
         data        = request.get_json()
         name        = get_optional_data(data, "name")

@@ -10,7 +10,13 @@ class Button extends React.Component {
     }
     setStyle(){
         var style = styles.button
-        style = this.props.raised ? { ...style, ...styles.raised } : { ...style, ...styles.flat }
+        if (this.props.raised){
+             style = {...style, ...styles.raised }
+        }else if (this.props.float){
+            style = {...style, ...styles.float }
+        }else{
+            style = { ...style, ...styles.flat }
+        }
         style =  this.state.active ? { ...style, ...style.active } : style
         style = this.state.hover ? { ...style, ...style.hover } : style
         style = {...style, ...this.props.style}
@@ -37,24 +43,30 @@ class Button extends React.Component {
 
 const styles = {
     button: {
+        border: "none",
         cursor: "pointer",
         fontSize: "15px",
         fontFamily: ["roboto", "sansSerif"],
-        paddingTop: "5px",
-        paddingBottom: "5px",
-        paddingLeft: "25px",
-        paddingRight: "25px",
-        margin: "5px",
-        border: "none",
         transition: "all 300ms ease",
     },
     float: {
-        boxShadow: "0px 6px 6px rgba(0, 0, 0, .38)",
+        position: "fixed",
+        bottom: "30px",
+        right: "30px",
+        boxShadow: "0px 2px 5px #666",
+        borderRadius:"50%",
+        height:"56px",
+        width:"56px",
+        backgroundColor:"rgba(255,87,34 ,1)",
+        color: "white",
+        textAlign: "center",
+        justifyContent: "center",
         active: {
             boxShadow: "0px 12px 12px rgba(0, 0, 0, .38)",
         }
     },
     flat: {
+        margin: "5px",
         padding: 0,
         background: "none",
         color: "#2196F3",

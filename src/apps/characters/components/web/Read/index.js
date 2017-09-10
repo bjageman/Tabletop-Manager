@@ -20,11 +20,13 @@ class CharacterEntry extends React.Component {
         <Card hoverFloat>
             <img style={{width:"100%"}} src={character.image || defaultImage} alt={character.name}/>
             <CardContent>
+                <div style={{display: "inline", float: "left"}}>
                 <h4>{character.name}</h4>
                 <p>by: <a href={`/users/profile/${character.author.id}`}>{character.author.username}</a></p>
-            </CardContent>
-            <CardContent>
-                <Delete character={character} /> <Update character={character} />
+                </div>
+                <div style={{position: "relative", display: "inline", float: "right", top:0}}>
+                    <Delete character={character} /> <Update character={character} />
+                </div>
             </CardContent>
         </Card>
         )

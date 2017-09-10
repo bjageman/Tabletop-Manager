@@ -21,7 +21,7 @@ class CampaignMapCard extends Component {
     const map = this.props.map
     return (
         <div>
-        <Card hoverFloat>
+        <Card>
             <Delete map={map} />
             <img onClick={() => this.setState({ open: true })} style={styles.map} src={map.image.url} alt={map.name} />
         </Card>
@@ -49,7 +49,7 @@ const styles = {
   },
   map: {
     width:"100%",
-    maxWidth: "400px",
+    // maxWidth: "400px",
     cursor: "pointer"
   },
 }

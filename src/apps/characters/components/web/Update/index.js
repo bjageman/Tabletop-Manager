@@ -2,6 +2,9 @@ import React from 'react'
 import MdCreate from 'react-icons/lib/md/create'
 import Dialog from '../Create/Dialog'
 
+import Button from 'apps/toolkit/components/web/Button';
+import Icon from 'apps/toolkit/components/web/Icon'
+
 class UpdateCharacter extends React.Component {
     constructor(props){
         super(props)
@@ -18,8 +21,10 @@ class UpdateCharacter extends React.Component {
     render(){
         const character = this.props.character
         return(
-            <div>
-            <MdCreate onClick = {() => this.setState({open: true})} />
+            <div style={{display: "inline"}}>
+            <Button onClick = {() => this.setState({open: true})}>
+                <Icon name="create"  />
+            </Button>
             <Dialog
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}

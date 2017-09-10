@@ -23,8 +23,6 @@ class Dialog extends React.Component {
     }
 }
 
-
-
 var styles = {
   backdrop: {
     width:"100%",
