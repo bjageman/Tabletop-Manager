@@ -37,6 +37,7 @@ var styles = {
     backgroundColor: "rgba(0,0,0,0.4)",
 },
   dialog: {
+    zIndex: 24,
     minWidth: "300px",
     borderRadius: "3px",
     backgroundColor: "rgba(245,245,245 ,1)",

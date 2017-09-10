@@ -12,14 +12,14 @@ class Icon extends React.Component {
         const name = this.props.name
         return(
             <div style={styles.icon} >
-                {name == "add" ? "+" : null}
-                {name == "delete" ? <MdDelete /> : null}
-                {name == "create" ? <MdCreate /> : null}
-                {name == "share" ? <MdShare /> : null}
-                {name == "favorite" ? <MdFavorite /> : null}
-                {name == "person" ? <MdPerson /> : null}
-                {name == "menu" ? <MdMenu /> : null}
-                {name == "close" ? <MdClose /> : null}
+                {name === "add" ? "+" : null}
+                {name === "delete" ? <MdDelete /> : null}
+                {name === "create" ? <MdCreate /> : null}
+                {name === "share" ? <MdShare /> : null}
+                {name === "favorite" ? <MdFavorite /> : null}
+                {name === "person" ? <MdPerson /> : null}
+                {name === "menu" ? <MdMenu /> : null}
+                {name === "close" ? <MdClose /> : null}
             </div>
         )
     }
@@ -38,7 +38,6 @@ const styles = {
         position: "absolute",
         top: "50%",
         left: "50%",
-        height: "50%",
         transform: "translate(-50%, -50%)",
         width: "20px",
         height: "20px",

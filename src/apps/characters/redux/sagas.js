@@ -6,7 +6,7 @@ export function* getCharacters(action) {
     try{
       let payload = action.payload
       let url = 'campaign/' + payload.id + "/characters"
-      
+
       const response = yield call(getDataApi, url);
       if (verifyData(response)) {
           yield put(actions.charactersSuccess({ entries: response.data }))
@@ -41,8 +41,8 @@ export function* deleteCharacter(action){
     try{
       let payload = action.payload
       let url = 'campaign/' + payload.campaign_id + "/characters/" + payload.character_id
-      
-      const response = yield call(deleteDataApi, url);
+
+      const response = yield call(deleteDataApi, url, payload.access_token);
       if (verifyData(response)) {
           yield put(actions.getCharacters({id: payload.campaign_id}))
           yield put(actions.success({ "message": response.data.message }))

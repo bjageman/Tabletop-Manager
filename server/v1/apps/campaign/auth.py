@@ -9,8 +9,8 @@ def verify_campaign_access(user, campaign):
 
 def request_campaign_auth(request, campaign_id):
     user = verify_auth(request)
+    print("user", user)
     campaign = Campaign.query.get(campaign_id)
-    print(verify_campaign_access(user, campaign))
     if user is None or not verify_campaign_access(user, campaign):
         abort(401)
     return user, campaign

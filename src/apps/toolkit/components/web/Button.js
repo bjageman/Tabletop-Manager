@@ -50,6 +50,7 @@ const styles = {
         transition: "all 300ms ease",
     },
     float: {
+        zIndex: 6,
         position: "fixed",
         bottom: "30px",
         right: "30px",
@@ -62,6 +63,7 @@ const styles = {
         textAlign: "center",
         justifyContent: "center",
         active: {
+            zIndex: 12,
             boxShadow: "0px 12px 12px rgba(0, 0, 0, .38)",
         }
     },
@@ -81,21 +83,23 @@ const styles = {
         minWidth: "88px",
         height: "36px",
         borderRadius: "5px",
+        paddingTop: "5px",
+        paddingBottom: "5px",
+        paddingLeft: "25px",
+        paddingRight: "25px",
         transition: "all 300ms ease",
         backgroundColor: "rgba(3,169,244 ,1)",
         color: "white",
         boxShadow: "0px 0px 0px rgba(0, 0, 0, .38)",
-    active: {
-        backgroundColor: "#0288D1",
-        boxShadow: "0px 2px 2px rgba(0, 0, 0, .38)",
+        active: {
+            backgroundColor: "#0288D1",
+            boxShadow: "0px 2px 2px rgba(0, 0, 0, .38)",
+        },
+        hover: {
+            backgroundColor: "#0288D1",
+            color: "white",
+        }
     },
-    hover: {
-        backgroundColor: "#0288D1",
-        color: "white",
-    }
-
-    },
-
 }
 
 export default Button

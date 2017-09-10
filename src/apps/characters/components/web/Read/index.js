@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Card, { CardContent, CardMedia } from 'apps/toolkit/components/web/Card'
+import Card, { CardContent } from 'apps/toolkit/components/web/Card'
 
 import Delete from '../Delete/'
 import Update from '../Update/'

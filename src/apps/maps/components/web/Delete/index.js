@@ -1,5 +1,4 @@
 import React from 'react'
-import MdDelete from 'react-icons/lib/md/delete'
 import Button from 'apps/toolkit/components/web/Button'
 import Icon from 'apps/toolkit/components/web/Icon'
 

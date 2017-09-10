@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'apps/toolkit/components/web/Button';
-
+import Icon from 'apps/toolkit/components/web/Icon'
 
 import CreateEventDialog from './Dialog'
 
@@ -23,10 +23,9 @@ class CreateEvent extends React.Component {
         return(
             <div>
             <Button
-                raised
-                color="primary"
+                float
                 onClick = {() => this.setState({open: true})}>
-                Create Event
+                <Icon name="add" />
             </Button>
 
             <CreateEventDialog

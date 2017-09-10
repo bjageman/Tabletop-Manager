@@ -52,6 +52,7 @@ const styles = {
         margin: "1%",
         marginTop: "10px",
         transition: "all 300ms ease",
+        maxWidth:"100%",
         hover: {
             boxShadow: "0px 8px 8px rgba(0, 0, 0, .38)",
         }
