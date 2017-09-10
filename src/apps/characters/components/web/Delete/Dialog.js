@@ -28,10 +28,7 @@ class CharacterDeleteDialog extends React.Component {
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose}
             >
-            
                 Are you sure you want to delete?
-
-
             <Button onClick = {this.handleDelete} color="primary">
               Delete
             </Button>

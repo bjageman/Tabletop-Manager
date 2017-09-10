@@ -10,11 +10,9 @@ class CharacterEditor extends React.Component {
         return(
             <div >
                 <TextInput
-
                   id="name"
                   name="name"
                   label="Name"
-                  margin="normal"
                   defaultValue={character.name || ""}
                   onChange={this.props.onChange}
                 />

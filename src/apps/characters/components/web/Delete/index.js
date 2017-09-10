@@ -1,6 +1,7 @@
 import React from 'react'
-import MdDelete from 'react-icons/lib/md/delete'
 import Dialog from './Dialog'
+import Button from 'apps/toolkit/components/web/Button';
+import Icon from 'apps/toolkit/components/web/Icon'
 
 class DeleteCharacter extends React.Component {
     constructor(props){
@@ -18,11 +19,11 @@ class DeleteCharacter extends React.Component {
     }
 
     render(){
-
-
         return(
-            <div>
-            <MdDelete onClick = {() => this.setState({open: true})} />
+            <div style={{display: "inline"}}>
+            <Button onClick = {() => this.setState({open: true})}>
+                <Icon name="delete"  />
+            </Button>
             <Dialog
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}
@@ -32,10 +33,5 @@ class DeleteCharacter extends React.Component {
         )
     }
 }
-
-export const styles = theme => ({
-  button: {
-  },
-});
 
 export default (DeleteCharacter)

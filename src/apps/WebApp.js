@@ -31,7 +31,7 @@ class WebApp extends Component {
     return (
       <ConnectedRouter history={history}>
           <div>
-          <div className="app" style={sidebar ? styles.sidebar: styles.full}>
+          <div className="app" style={styles.full}>
             <ToolBar sidebar={sidebar} toggleSidebar={() => this.setState({sidebar: !sidebar})} />
             <Notifications />
             <div style={styles.body}>

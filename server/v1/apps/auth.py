@@ -13,6 +13,7 @@ def decode_auth_token(auth_token):
         error_message = 'Invalid token. Please log in again.'
     except:
         error_message = 'Unknown JWT Authorization Error'
+    print(error_message)
     make_response(jsonify({'error': error_message}), 401)
     return error_message
 
@@ -26,6 +27,6 @@ def verify_auth(request):
         user_id = decode_auth_token(auth_token)
         user = User.query.get(user_id)
         if user is None:
-            abort(404)
+            abort(401)
         return user
     return None

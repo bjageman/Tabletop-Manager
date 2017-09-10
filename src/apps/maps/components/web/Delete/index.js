@@ -1,5 +1,7 @@
 import React from 'react'
 import MdDelete from 'react-icons/lib/md/delete'
+import Button from 'apps/toolkit/components/web/Button'
+import Icon from 'apps/toolkit/components/web/Icon'
 
 import Dialog from './Dialog'
 
@@ -15,7 +17,9 @@ class DeleteCharacter extends React.Component {
     render(){
         return(
             <div>
-            <MdDelete onClick = {() => this.setState({open: true})} />
+            <Button onClick = {() => this.setState({open: true})} >
+                <Icon name="delete" />
+            </Button>
             <Dialog
                 map={this.props.map}
                 open={this.state.open}

@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'apps/toolkit/components/web/Button';
-
+import Icon from 'apps/toolkit/components/web/Icon'
 import Dialog from './Dialog'
 
 class CreateMap extends React.Component {
@@ -12,11 +12,9 @@ class CreateMap extends React.Component {
         return(
             <div>
             <Button
-                raised color="primary"
+                float
                 onClick = {() => this.setState({open: true})}
-                >
-                Add Map
-            </Button>
+                ><Icon name="add" /></Button>
             <Dialog
                 open={this.state.open}
                 onRequestClose={() => this.setState({ open: false })}

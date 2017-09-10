@@ -19,16 +19,16 @@ class JournalListItem extends React.Component {
         return(
             <Card hoverFloat >
                 <CardContent>
-                <ReduxLink campaignLink to={link} >
-                {entry.name} - {entry.created}
-                {entry.author.email} {entry.author.image}
-                <CleanHTML html={entry.content.length > 350 ? entry.content.slice(0,350) + "..." : entry.content} />
-                </ReduxLink>
-                <MdShare />
-                <MdFavorite />
-                {this.props.is_owner ? <Update entry={entry} /> : null }
-                {this.props.is_owner ? <Delete entry={entry} /> : null }
-                </CardContent>
+                    <ReduxLink campaignLink to={link} >
+                        {entry.name} - {entry.created}
+                        {entry.author.email} {entry.author.image}
+                        <CleanHTML html={entry.content.length > 350 ? entry.content.slice(0,350) + "..." : entry.content} />
+                    </ReduxLink>
+                    <MdShare />
+                    <MdFavorite />
+                    {this.props.is_owner ? <Update entry={entry} /> : null }
+                    {this.props.is_owner ? <Delete entry={entry} /> : null }
+                    </CardContent>
             </Card>
         )
     }
