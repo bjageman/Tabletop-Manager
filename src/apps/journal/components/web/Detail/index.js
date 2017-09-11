@@ -3,8 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import Loading from 'apps/toolkit/components/web/loading/Linear'
-import CleanHTML from 'apps/toolkit/components/web/CleanHTML'
+import { LinearLoading, CleanHTML } from 'bjageman-react-toolkit'
 
 class JournalEntry extends React.Component {
     constructor(props){
@@ -31,7 +30,7 @@ class JournalEntry extends React.Component {
             )
         }else{
             return(
-                <Loading />
+                <LinearLoading />
             )
         }
     }

@@ -7,9 +7,7 @@ import CampaignSideBar from 'apps/campaign/components/web/SideBar'
 import Login from 'apps/user/components/web/login/index'
 import AccountMenu from 'apps/user/components/web/tools/AccountMenu'
 
-import Icon from 'apps/toolkit/components/web/Icon'
-import AppBar, {AppBarItem, AppBarButton} from 'apps/toolkit/components/web/navigation/AppBar'
-import Drawer from 'apps/toolkit/components/web/Drawer'
+import { Drawer, Icon, AppBar, AppBarItem, AppBarButton} from 'bjageman-react-toolkit'
 
 class ToolBar extends React.Component {
     state = { open: false }

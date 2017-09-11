@@ -8,8 +8,7 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 import CampaignListingToolBar from './ToolBar'
 
 //toolkit
-import Loading from 'apps/toolkit/components/web/loading/Linear'
-import Grid, { GridItem } from 'apps/toolkit/components/web/Grid'
+import { LinearLoading, Grid, GridItem } from 'bjageman-react-toolkit'
 import CampaignCard from './CampaignCard'
 
 class CampaignListing extends React.Component {
@@ -41,7 +40,7 @@ class CampaignListing extends React.Component {
             )
         }else if (loading){
             return(
-                <Loading />
+                <LinearLoading />
             )
         }else{
             return(

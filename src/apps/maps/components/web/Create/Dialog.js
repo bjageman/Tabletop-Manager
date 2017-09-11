@@ -2,14 +2,8 @@ import React from 'react'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
-//Material-UI Imports
 
-import Button from 'apps/toolkit/components/web/Button'
-
-
-import Dialog from 'apps/toolkit/components/web/Dialog'
-
-
+import {Button, Dialog} from 'bjageman-react-toolkit'
 
 class CreateDialogEvent extends React.Component {
     constructor(props){
@@ -51,9 +45,9 @@ class CreateDialogEvent extends React.Component {
             <Dialog
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose} >
-                
+
                     Create Content Here:
-                
+
                 <input name="file" type="file" id="fileinput"  onChange={this.handleInputChange}/>
                 <Button
                     raised

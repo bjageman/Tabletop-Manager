@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import Loading from 'apps/toolkit/components/web/loading/Linear'
+import { LinearLoading } from 'bjageman-react-toolkit'
 import ListItem from './List/'
 import Create from './Create/'
 
@@ -21,16 +21,12 @@ class Journal extends React.Component {
         if (journal){
             return(
                 <div id="campaign-journal">
-                    { journal.fetching ? <Loading /> : null }
+                    { journal.fetching ? <LinearLoading /> : null }
                     { is_owner ? <Create /> : null }
                     {journal.entries && journal.entries.map((entry, i) => (
                         <ListItem key={entry.id} entry={entry} is_owner={is_owner}/>
                     ))}
                 </div>
-            )
-        }else{
-            return(
-                <Loading />
             )
         }
     }

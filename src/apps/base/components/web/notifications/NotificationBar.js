@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import {Snackbar} from 'bjageman-react-toolkit';
+import { Snackbar } from 'bjageman-react-toolkit';
 
 class ErrorNotification extends Component {
   handleRequestClose = () => {

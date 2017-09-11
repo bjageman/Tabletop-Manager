@@ -3,11 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-//Material-UI Imports
-import Dialog from 'apps/toolkit/components/web/Dialog'
-
-import Button from 'apps/toolkit/components/web/Button'
-
+import {Dialog, Button} from 'bjageman-react-toolkit'
 
 class MapDeleteDialog extends React.Component {
     constructor(props){
@@ -25,14 +21,14 @@ class MapDeleteDialog extends React.Component {
     }
 
     render(){
-        // 
+        //
         return(
             <Dialog
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose} >
-            
+
                 Are you sure you want to delete?
-            
+
             <Button onClick = {this.handleDelete} color="primary">
               Delete
             </Button>

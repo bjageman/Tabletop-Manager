@@ -3,9 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import TextInput from 'apps/toolkit/components/web/forms/TextInput'
-import Dialog from 'apps/toolkit/components/web/Dialog';
-import Button from 'apps/toolkit/components/web/Button';
+import {TextInput, Dialog, Button} from 'bjageman-react-toolkit'
 
 class LoginDialog extends React.Component {
     constructor(props){

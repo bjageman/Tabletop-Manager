@@ -3,19 +3,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import Menu, { MenuItem } from 'apps/toolkit/components/web/Menu';
-import Icon from 'apps/toolkit/components/web/Icon'
-
-import InvisibleLink from 'apps/toolkit/components/web/links/InvisibleLink'
+import { Menu, MenuItem, Icon, InvisibleLink } from 'bjageman-react-toolkit';
 
 class AccountMenu extends React.Component {
     state = {
         open: false,
-        anchorEl: undefined
     }
 
     handleClick = event => {
-        this.setState({ open: true, anchorEl: event.currentTarget });
+        this.setState({ open: true });
     };
 
     handleRequestClose = () => {
@@ -24,7 +20,6 @@ class AccountMenu extends React.Component {
 
     handleLogOut = () => {
         this.props.logout()
-        // this.props.logOutCampaign()
         this.setState({ open: false });
     };
 

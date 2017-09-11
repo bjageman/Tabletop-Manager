@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import Card from 'apps/toolkit/components/web/Card';
+import {Card} from 'bjageman-react-toolkit';
 
 class CampaignDashboardMember extends React.Component {
     render(){

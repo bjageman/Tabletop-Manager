@@ -6,11 +6,9 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 import { stateToHTML } from 'draft-js-export-html'
 import { EditorState, convertFromHTML, ContentState } from 'draft-js'
 
-import ReduxLink from 'apps/toolkit/components/web/links/Redux'
-import TextInput from 'apps/toolkit/components/web/forms/TextInput'
-import Button from 'apps/toolkit/components/web/Button'
 import Editor from 'apps/toolkit/components/web/editor/'
-import Grid from 'apps/toolkit/components/web/Grid'
+import ReduxLink from 'apps/toolkit/components/web/links/Redux'
+import { TextInput, Button, Grid } from 'bjageman-react-toolkit'
 
 class CreateEntryEditor extends React.Component {
     constructor(props){

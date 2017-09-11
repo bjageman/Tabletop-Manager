@@ -3,13 +3,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import TextInput from 'apps/toolkit/components/web/forms/TextInput'
+import {TextInput} from 'bjageman-react-toolkit'
 
 import Save from '../save/'
 
 class CampaignListingToolBar extends React.Component {
     render(){
-        
+
         return(
             <div>
             <Save />

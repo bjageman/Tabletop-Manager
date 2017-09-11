@@ -3,8 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import { MenuItem } from 'apps/toolkit/components/web/Menu'
-import InvisibleLink from 'apps/toolkit/components/web/links/InvisibleLink'
+import { MenuItem, InvisibleLink } from 'bjageman-react-toolkit'
 
 const CampaignSidebarHeader = props => {
     const campaign = props.campaign

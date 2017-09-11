@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import Grid from 'apps/toolkit/components/web/Grid';
+import {Grid} from 'bjageman-react-toolkit';
 
 import Header from './Header'
 import Members from './Members'
