@@ -3,7 +3,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import { Menu, MenuItem, Icon, InvisibleLink } from 'bjageman-react-toolkit';
+import { Menu, MenuItem, Icon } from 'bjageman-react-toolkit';
+import InvisibleLink from 'apps/base/components/web/links/InvisibleLink'
 
 class AccountMenu extends React.Component {
     state = {

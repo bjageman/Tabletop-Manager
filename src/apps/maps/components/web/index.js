@@ -8,7 +8,7 @@ import { LinearLoading, Grid, GridItem } from 'bjageman-react-toolkit'
 import Read from './Read/.'
 import Create from './Create/'
 
-import { checkOwner } from 'apps/toolkit/utils'
+import { checkOwner } from 'utils'
 
 class CampaignMaps extends Component {
     constructor(props){

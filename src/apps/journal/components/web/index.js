@@ -7,7 +7,7 @@ import { LinearLoading } from 'bjageman-react-toolkit'
 import ListItem from './List/'
 import Create from './Create/'
 
-import { checkOwner } from 'apps/toolkit/utils'
+import { checkOwner } from 'utils'
 
 class Journal extends React.Component {
     constructor(props){

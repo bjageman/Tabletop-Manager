@@ -9,7 +9,7 @@ import { LinearLoading, Grid } from 'bjageman-react-toolkit'
 import Read from './Read/'
 import Create from './Create/'
 
-import { checkOwner } from 'apps/toolkit/utils'
+import { checkOwner } from 'utils'
 
 class CampaignCharacters extends React.Component {
     constructor(props){

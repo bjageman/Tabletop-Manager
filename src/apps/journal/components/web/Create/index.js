@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {Button, Icon } from 'bjageman-react-toolkit'
-import ReduxLink from 'apps/toolkit/components/web/links/Redux'
+import ReduxLink from 'apps/base/components/web/links/Redux'
 
 class CreateEntry extends React.Component {
     constructor(props){

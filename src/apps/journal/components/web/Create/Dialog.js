@@ -3,10 +3,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import { TextInput, Button, Dialog, Editor } from 'bjageman-react-toolkit'
-
-
-
+import { TextInput, Button, Dialog } from 'bjageman-react-toolkit'
+import Editor from './Editor'
 
 import { stateToHTML } from 'draft-js-export-html'
 import { EditorState, convertFromHTML, ContentState } from 'draft-js'

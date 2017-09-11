@@ -8,7 +8,7 @@ import Read from './Read/'
 import Search from './Read/Search'
 import Create from './Create/'
 
-import { checkOwner } from 'apps/toolkit/utils'
+import { checkOwner } from 'utils'
 
 class CampaignCalendar extends Component {
     constructor(props){
