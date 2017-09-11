@@ -1,6 +1,5 @@
 import React from 'react'
-import Button from 'apps/toolkit/components/web/Button'
-import Icon from 'apps/toolkit/components/web/Icon'
+import {Button, Icon} from 'bjageman-react-toolkit'
 
 import Dialog from './Dialog'
 

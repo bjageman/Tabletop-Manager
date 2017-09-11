@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import Loading from 'apps/toolkit/components/web/loading/Linear'
+import { LinearLoading } from 'bjageman-react-toolkit'
 import Read from './Read/'
 import Search from './Read/Search'
 import Create from './Create/'
@@ -20,7 +20,7 @@ class CampaignCalendar extends Component {
         const calendar = this.props.calendar
         return (
         <div>
-          { calendar && calendar.fetching ? <Loading /> : null }
+          { calendar && calendar.fetching ? <LinearLoading /> : null }
           <div >
                 <Search />
               { is_owner ? <Create /> : null }

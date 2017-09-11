@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Card, { CardContent } from 'apps/toolkit/components/web/Card'
+import { Card, CardContent } from 'bjageman-react-toolkit'
 
 import Delete from '../Delete/'
 import Update from '../Update/'

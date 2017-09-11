@@ -1,15 +1,12 @@
 import React from 'react'
 
-// import MdCreate from 'react-icons/lib/md/create'
-// import MdDelete from 'react-icons/lib/md/delete'
 import MdShare from 'react-icons/lib/md/share'
 import MdFavorite from 'react-icons/lib/md/favorite'
 
 import Delete from '../Delete/'
 import Update from '../Update/'
 
-import Card, {CardContent} from 'apps/toolkit/components/web/Card';
-import CleanHTML from 'apps/toolkit/components/web/CleanHTML'
+import { Card, CardContent, CleanHTML } from 'bjageman-react-toolkit'
 import ReduxLink from 'apps/toolkit/components/web/links/Redux'
 
 class JournalListItem extends React.Component {

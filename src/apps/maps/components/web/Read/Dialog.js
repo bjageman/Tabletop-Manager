@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Dialog from 'apps/toolkit/components/web/Dialog'
+import {Dialog} from 'bjageman-react-toolkit'
 
 class CampaignMapDialog extends React.Component {
     handleRequestClose = () => {

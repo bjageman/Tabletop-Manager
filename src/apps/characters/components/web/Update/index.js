@@ -1,8 +1,7 @@
 import React from 'react'
 import Dialog from '../Create/Dialog'
 
-import Button from 'apps/toolkit/components/web/Button';
-import Icon from 'apps/toolkit/components/web/Icon'
+import {Button, Icon} from 'bjageman-react-toolkit';
 
 class UpdateCharacter extends React.Component {
     constructor(props){

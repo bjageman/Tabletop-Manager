@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import Grid, { GridItem } from 'apps/toolkit/components/web/Grid'
-import Loading from 'apps/toolkit/components/web/loading/Linear'
+import { LinearLoading, Grid, GridItem } from 'bjageman-react-toolkit'
+
 import Read from './Read/.'
 import Create from './Create/'
 
@@ -21,7 +21,7 @@ class CampaignMaps extends Component {
         const campaignMaps = this.props.maps
         return (
           <div>
-              { campaignMaps.fetching ? <Loading /> : null }
+              { campaignMaps.fetching ? <LinearLoading /> : null }
               { is_owner ? <Create /> : null }
               <Grid>
                   { campaignMaps.entries && campaignMaps.entries.map((map, i) => (

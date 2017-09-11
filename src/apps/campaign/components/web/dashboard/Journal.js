@@ -5,10 +5,7 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 import { push } from 'react-router-redux'
 import  store  from 'redux/store'
 
-import Card from 'apps/toolkit/components/web/Card';
-import Button from 'apps/toolkit/components/web/Button'
-
-import CleanHTML from 'apps/toolkit/components/web/CleanHTML'
+import {Card, Button, CleanHTML} from 'bjageman-react-toolkit';
 
 class CampaignDashboardJournal extends React.Component {
     render(){

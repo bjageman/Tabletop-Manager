@@ -2,11 +2,9 @@ import React from 'react'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
-//Material-UI Imports
-import Dialog from 'apps/toolkit/components/web/Dialog'
 
-import TextInput from 'apps/toolkit/components/web/forms/TextInput'
-import Button from 'apps/toolkit/components/web/Button';
+import {Dialog, TextInput, Button} from 'bjageman-react-toolkit'
+
 
 class EntryCreateDialog extends React.Component {
     constructor(props){

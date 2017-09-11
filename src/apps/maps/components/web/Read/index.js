@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Dialog from './Dialog'
 import Delete from '../Delete/'
 
-import Card from 'apps/toolkit/components/web/Card'
+import {Card} from 'bjageman-react-toolkit'
 
 class CampaignMapCard extends Component {
   constructor(props){

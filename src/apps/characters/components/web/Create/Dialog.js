@@ -3,8 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import Dialog from 'apps/toolkit/components/web/Dialog'
-import Button from 'apps/toolkit/components/web/Button'
+import {Dialog, Button} from 'bjageman-react-toolkit'
 
 import Editor from './Editor'
 

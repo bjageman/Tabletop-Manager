@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from 'apps/toolkit/components/web/Card';
+import { Card } from 'bjageman-react-toolkit';
 
 import data from 'mocks/campaign.json'
 

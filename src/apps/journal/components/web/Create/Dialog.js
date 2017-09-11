@@ -3,17 +3,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import TextInput from 'apps/toolkit/components/web/forms/TextInput'
-import Button from 'apps/toolkit/components/web/Button'
+import { TextInput, Button, Dialog, Editor } from 'bjageman-react-toolkit'
 
 
 
 
 import { stateToHTML } from 'draft-js-export-html'
 import { EditorState, convertFromHTML, ContentState } from 'draft-js'
-
-import Dialog from 'apps/toolkit/components/web/Dialog'
-import Editor from 'apps/toolkit/components/web/editor/'
 
 class EntryCreateDialog extends React.Component {
     constructor(props){

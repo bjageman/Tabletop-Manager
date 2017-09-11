@@ -16,7 +16,7 @@ import Campaign from './campaign/components/web/'
 import CampaignListing from './campaign/components/web/listing/'
 import Maps from './maps/components/web/'
 
-import Notifications from 'apps/toolkit/components/web/notifications/'
+import Notifications from 'apps/base/components/web/notifications/'
 import ToolBar from 'apps/base/components/web/ToolBar'
 import { NotFound }from 'apps/base/components/web/Error'
 

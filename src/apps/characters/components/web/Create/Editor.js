@@ -1,6 +1,6 @@
 import React from 'react'
 //Material-UI Imports
-import TextInput from 'apps/toolkit/components/web/forms/TextInput'
+import {TextInput} from 'bjageman-react-toolkit'
 
 
 

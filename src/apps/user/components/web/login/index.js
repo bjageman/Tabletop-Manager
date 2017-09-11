@@ -3,7 +3,7 @@ import React from 'react'
 import LoginDialog from './Dialog/Login'
 import RegistrationDialog from './Dialog/Registration'
 
-import { AppBarButton } from 'apps/toolkit/components/web/navigation/AppBar'
+import { AppBarButton } from 'bjageman-react-toolkit'
 
 
 class Login extends React.Component {

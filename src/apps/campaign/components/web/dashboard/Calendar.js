@@ -3,8 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import Card from 'apps/toolkit/components/web/Card';
-import Button from 'apps/toolkit/components/web/Button'
+import { Card , Button } from 'bjageman-react-toolkit';
 
 import ReduxLink from 'apps/toolkit/components/web/links/Redux'
 

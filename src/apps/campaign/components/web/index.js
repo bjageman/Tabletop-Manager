@@ -14,7 +14,7 @@ import Wiki from 'apps/wiki/components/web/'
 import Calendar from 'apps/calendar/components/web/'
 
 
-import Loading from 'apps/toolkit/components/web/loading/Linear'
+import {LinearLoading} from 'bjageman-react-toolkit'
 
 import { checkOwner } from 'apps/toolkit/utils'
 
@@ -49,7 +49,7 @@ class Campaign extends React.Component {
             </div>
         )
     }else{
-        return <Loading />
+        return <LinearLoading />
     }
     }
 }

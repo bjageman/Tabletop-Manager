@@ -1,7 +1,7 @@
 import React from 'react'
 import Delete from '../Delete/'
 
-import Card, { CardContent } from 'apps/toolkit/components/web/Card';
+import { Card, CardContent } from 'bjageman-react-toolkit';
 
 class CampaignEvent extends React.Component {
 

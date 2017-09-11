@@ -2,11 +2,9 @@ import React from 'react'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
-//Material-UI Imports
-import Dialog from 'apps/toolkit/components/web/Dialog'
-import Button from 'apps/toolkit/components/web/Button'
 
-import TextInput from 'apps/toolkit/components/web/forms/TextInput'
+import { Dialog, Button, TextInput } from 'bjageman-react-toolkit'
+
 //DatePicker
 import Datetime from 'react-datetime';
 import moment from 'moment';
