@@ -1,8 +1,7 @@
 import React from 'react'
 import Button from 'apps/toolkit/components/web/Button'
 import Icon from 'apps/toolkit/components/web/Icon'
-
-import Editor from './Editor'
+import ReduxLink from 'apps/toolkit/components/web/links/Redux'
 
 class CreateEntry extends React.Component {
     constructor(props){
@@ -20,19 +19,16 @@ class CreateEntry extends React.Component {
     }
 
     render(){
-
+        const link = "journal/create"
         return(
-            <div>
-
-            {this.state.open ? <Editor onRequestClose={this.handleRequestClose} /> :
+            <ReduxLink campaignLink to={link} >
             <Button
                 float
                 onClick = {() => this.setState({open: true})}
                 >
                 <Icon name="add" />
             </Button>
-            }
-            </div>
+            </ReduxLink>
         )
     }
 }

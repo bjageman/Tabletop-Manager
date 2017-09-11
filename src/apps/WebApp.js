@@ -21,10 +21,6 @@ import ToolBar from 'apps/base/components/web/ToolBar'
 import { NotFound }from 'apps/base/components/web/Error'
 
 class WebApp extends Component {
-    constructor(props){
-        super(props)
-    }
-
     render() {
     return (
       <ConnectedRouter history={history}>

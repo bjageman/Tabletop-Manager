@@ -3,18 +3,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import TextInput from 'apps/toolkit/components/web/forms/TextInput'
-import Button from 'apps/toolkit/components/web/Button'
-
-
-
-
 import { stateToHTML } from 'draft-js-export-html'
 import { EditorState, convertFromHTML, ContentState } from 'draft-js'
 
+import ReduxLink from 'apps/toolkit/components/web/links/Redux'
+import TextInput from 'apps/toolkit/components/web/forms/TextInput'
+import Button from 'apps/toolkit/components/web/Button'
 import Editor from 'apps/toolkit/components/web/editor/'
 import Grid from 'apps/toolkit/components/web/Grid'
-
 
 class CreateEntryEditor extends React.Component {
     constructor(props){
@@ -62,7 +58,6 @@ class CreateEntryEditor extends React.Component {
             author_id: this.props.user.id,
             entry_id: this.props.entry ? this.props.entry.id: null,
         })
-        this.props.onRequestClose()
     }
 
     render(){
@@ -84,9 +79,11 @@ class CreateEntryEditor extends React.Component {
                             <Button raised onClick={this.handleSave}>
                               POST
                             </Button>
-                            <Button onClick={() => this.props.onRequestClose()}>
-                                Cancel
-                            </Button>
+                            <ReduxLink to=".">
+                                <Button>
+                                    Cancel
+                                </Button>
+                            </ReduxLink>
                         </div>
                     </div>
                     <Editor
