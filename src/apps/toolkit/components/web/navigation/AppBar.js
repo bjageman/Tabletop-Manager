@@ -17,23 +17,43 @@ class AppBar extends React.Component {
     }
 }
 
+export class AppBarButton extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = { hover: false }
+    }
+    render() {
+        var style = styles.listItem
+        style = this.props.right ? {...style, ...styles.right }: {...style, ...styles.left }
+        style = this.state.hover ? {...style, ...styles.listItem.hover} : style
+        return(
+            <div style={this.props.style}>
+                <li
+                    style={style}
+                    onClick={this.props.onClick}
+                    onMouseOver={() => this.setState({ hover: true })}
+                    onMouseLeave={() => this.setState({ hover: false })}
+                    >
+                    {this.props.children}
+                </li>
+            </div>
+
+        )
+    }
+}
+
 export class AppBarItem extends React.Component {
     constructor(props){
         super(props)
         this.state = { hover: false }
     }
     render() {
-        const position = this.props.right ? styles.right: styles.left
-        const linkStyle = this.state.hover ? {...styles.link, ...styles.link.hover} : styles.link
+        var style = styles.listItem
+        const position = this.props.right ? {...style, ...styles.right }: {...style, ...styles.left }
         return(
             <div style={this.props.style}>
-                <li
-                    style={position}
-                    onClick={this.props.onClick}
-                    onMouseOver={() => this.setState({ hover: true })}
-                    onMouseLeave={() => this.setState({ hover: false })}
-                    >
-                    <a style={linkStyle}>{this.props.children}</a>
+                <li style={position} >
+                    {this.props.children}
                 </li>
             </div>
 
@@ -55,15 +75,14 @@ const styles = {
     right: {
         float: "right",
     },
-    link: {
+    listItem: {
         fontFamily: "roboto",
-        cursor: "pointer",
         display: "block",
         color: "white",
         textAlign: "center",
         padding: "14px 16px",
-        textDecoration: "none",
         hover: {
+            cursor: "pointer",
             backgroundColor: "#555",
             color: "white",
         }

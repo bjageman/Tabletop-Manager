@@ -1,7 +1,7 @@
 import { takeEvery } from 'redux-saga/effects';
 import * as actions from './actions';
 
-import { registerUser, getAuthToken, getUser } from 'apps/user/redux/sagas'
+import { registerUser, getAuthToken, getUser, logout } from 'apps/user/redux/sagas'
 import { getJournal, getJournalEntry, saveJournalEntry, deleteJournalEntry } from 'apps/journal/redux/sagas'
 import { getCalendar, saveCalendarEvent, deleteCalendarEvent } from 'apps/calendar/redux/sagas'
 import { getCharacters, createCharacter, deleteCharacter } from 'apps/characters/redux/sagas'
@@ -14,6 +14,7 @@ export default function* rootSaga() {
   yield takeEvery(actions.register, registerUser);
   yield takeEvery(actions.login, getAuthToken);
   yield takeEvery(actions.getUser, getUser)
+  yield takeEvery(actions.logout, logout);
   //Journal
   yield takeEvery(actions.getJournal, getJournal)
   yield takeEvery(actions.getJournalEntry, getJournalEntry)

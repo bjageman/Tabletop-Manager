@@ -23,16 +23,14 @@ import { NotFound }from 'apps/base/components/web/Error'
 class WebApp extends Component {
     constructor(props){
         super(props)
-        this.state = { sidebar: false }
     }
 
     render() {
-    const sidebar = this.state.sidebar
     return (
       <ConnectedRouter history={history}>
           <div>
           <div className="app" style={styles.full}>
-            <ToolBar sidebar={sidebar} toggleSidebar={() => this.setState({sidebar: !sidebar})} />
+            <ToolBar />
             <Notifications />
             <div style={styles.body}>
                 <Switch>
@@ -56,14 +54,9 @@ class WebApp extends Component {
 
 const styles = {
     full: {
-        minHeight: "500px",
+        minHeight: "600px",
         transition: "0.5s",
         margin: 0
-    },
-    sidebar: {
-        minHeight: "500px",
-        transition: "margin-left .5s",
-        marginLeft: "250px"
     },
     body: {
         padding: "1% 1% 1% 2%"

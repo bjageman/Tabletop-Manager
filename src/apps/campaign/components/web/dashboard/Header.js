@@ -12,11 +12,17 @@ class CampaignDashboardHeader extends React.Component {
         return(
             <div>
             { headerImage && headerImage.url ?
-                <img src={headerImage.url} alt={name}/>
+                <img src={headerImage.url} alt={name} style={styles.image}/>
             : null }
             {name}
             </div>
         )
+    }
+}
+
+const styles = {
+    image: {
+        width:"100%",
     }
 }
 
