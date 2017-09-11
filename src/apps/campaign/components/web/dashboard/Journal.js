@@ -12,12 +12,12 @@ import CleanHTML from 'apps/toolkit/components/web/CleanHTML'
 
 class CampaignDashboardJournal extends React.Component {
     render(){
-        
+
         const entry = this.props.entry
         return(
         <Card>
             { entry ?
-            <div>
+            <div style={styles.card}>
                 <h2>Latest Entry</h2>
                 <div>
                     <p>{entry.name}</p>
@@ -35,5 +35,10 @@ class CampaignDashboardJournal extends React.Component {
     }
 }
 
+const styles = {
+    card: {
+        width: "350px",
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(CampaignDashboardJournal);

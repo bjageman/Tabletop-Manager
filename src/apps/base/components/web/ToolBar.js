@@ -3,24 +3,21 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import CampaignSideBar from 'apps/campaign/components/web/toolbar/SideBar'
+import CampaignSideBar from 'apps/campaign/components/web/SideBar'
 import InvisibleLink from 'apps/toolkit/components/web/links/InvisibleLink'
 import Login from 'apps/user/components/web/login/index'
 import AccountMenu from 'apps/user/components/web/tools/AccountMenu'
 
 import Icon from 'apps/toolkit/components/web/Icon'
-import AppBar, {AppBarItem} from 'apps/toolkit/components/web/navigation/AppBar'
+import AppBar, {AppBarItem, AppBarButton} from 'apps/toolkit/components/web/navigation/AppBar'
 import { MenuItem } from 'apps/toolkit/components/web/Menu'
 import Drawer from 'apps/toolkit/components/web/Drawer'
 
 class ToolBar extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = { sidebar: false };
-    }
+    state = { open: false }
 
     onRequestClose() {
-        this.setState({ sidebar: false })
+        this.setState({ open: false })
     }
 
     toggleDrawer = () => {
@@ -35,17 +32,21 @@ class ToolBar extends React.Component {
         return(
             <div>
             <AppBar>
-                <AppBarItem onClick={this.props.toggleSidebar} >
-                    <Icon name="menu" /> { campaign ? campaign.name : brandName }
+                { campaign ?
+                <AppBarButton onClick={this.toggleDrawer} >
+                    <Icon name="menu" /> {campaign.name}
+                </AppBarButton>
+                :
+                <AppBarItem >
+                    { brandName }
                 </AppBarItem>
+                }
                 { user ? <AccountMenu  /> : <Login color="contrast"/> }
             </AppBar>
             <Drawer
-                open={this.props.sidebar}
-                onClick={this.props.toggleSidebar}
-                onRequestClose={this.props.toggleSidebar} >
-                <InvisibleLink to="/"><MenuItem>Home</MenuItem></InvisibleLink>
-                { user ? <InvisibleLink to="/campaign"><MenuItem>My Campaigns</MenuItem></InvisibleLink> : null }
+                open={this.state.open}
+                onClick={this.toggleDrawer}
+                onRequestClose={this.toggleDrawer} >
                 { campaign ?
                     <div>
                         <hr />

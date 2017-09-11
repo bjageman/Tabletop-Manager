@@ -48,9 +48,9 @@ export class CardContent extends React.Component {
 
 const styles = {
     card : {
-        boxShadow: "0px 2px 2px rgba(0, 0, 0, .38)",
-        margin: "1%",
-        marginTop: "10px",
+        // boxShadow: "0px 2px 0px rgba(0, 0, 0, .38)",
+        // margin: "1%",
+        // marginTop: "10px",
         transition: "all 300ms ease",
         maxWidth:"100%",
         hover: {

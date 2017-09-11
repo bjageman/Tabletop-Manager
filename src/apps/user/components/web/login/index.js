@@ -3,7 +3,7 @@ import React from 'react'
 import LoginDialog from './Dialog/Login'
 import RegistrationDialog from './Dialog/Registration'
 
-import { AppBarItem } from 'apps/toolkit/components/web/navigation/AppBar'
+import { AppBarButton } from 'apps/toolkit/components/web/navigation/AppBar'
 
 
 class Login extends React.Component {
@@ -26,9 +26,9 @@ class Login extends React.Component {
     render(){
         return(
             <div id="login">
-            <AppBarItem right onClick={() => this.setState({ openLogin: true })}>
+            <AppBarButton right onClick={() => this.setState({ openLogin: true })}>
                 Login/SignUp
-            </AppBarItem>
+            </AppBarButton>
             <LoginDialog
                 open={this.state.openLogin}
                 openRegistration ={() => this.setState({ openRegistration: true, openLogin: false })}
