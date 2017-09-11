@@ -1,5 +1,7 @@
 import React from 'react'
-import { InvisibleLink, Card } from 'bjageman-react-toolkit'
+
+import InvisibleLink from 'apps/base/components/web/links/InvisibleLink'
+import { Card } from 'bjageman-react-toolkit'
 
 class CampaignCard extends React.Component {
     render(){

@@ -7,7 +7,7 @@ import Delete from '../Delete/'
 import Update from '../Update/'
 
 import { Card, CardContent, CleanHTML } from 'bjageman-react-toolkit'
-import ReduxLink from 'apps/toolkit/components/web/links/Redux'
+import ReduxLink from 'apps/base/components/web/links/Redux'
 
 class JournalListItem extends React.Component {
     render(){

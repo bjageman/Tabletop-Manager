@@ -5,7 +5,7 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 import { Card , Button } from 'bjageman-react-toolkit';
 
-import ReduxLink from 'apps/toolkit/components/web/links/Redux'
+import ReduxLink from 'apps/base/components/web/links/Redux'
 
 class CampaignDashboardCalendar extends React.Component {
     render(){

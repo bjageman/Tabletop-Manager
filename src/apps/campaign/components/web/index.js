@@ -16,7 +16,7 @@ import Calendar from 'apps/calendar/components/web/'
 
 import {LinearLoading} from 'bjageman-react-toolkit'
 
-import { checkOwner } from 'apps/toolkit/utils'
+import { checkOwner } from 'utils'
 
 class Campaign extends React.Component {
     constructor(props){
