@@ -6,23 +6,12 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 import { MenuItem } from 'apps/toolkit/components/web/Menu'
 import InvisibleLink from 'apps/toolkit/components/web/links/InvisibleLink'
 
-import Card, { CardContent } from 'apps/toolkit/components/web/Card';
-
-// class CampaignSideBarHeader extends React.Component {
-//     render(){
-//         const campaign = this.props.campaign
-//         return (
-//             <h1 style={{textAlign:"center"}}>{campaign.name}</h1>
-//         )
-//     }
-// }
-
 const CampaignSidebarHeader = props => {
     const campaign = props.campaign
     return (
         <div>
-        <h2 style={styles.header}>{campaign.name}</h2>
-        <hr />
+            <h2 style={styles.header}>{campaign.name}</h2>
+            <hr />
         </div>
     )
 }

@@ -31,7 +31,7 @@ def create_entry(campaign_id):
     entry = Entry(name=name, author=user, content=content, campaign=campaign)
     db.session.add(entry)
     db.session.commit()
-    return jsonify(parse_entries(campaign.entries))
+    return jsonify(parse_entry(entry))
 
 #Read
 

@@ -4,13 +4,11 @@ import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 import CampaignSideBar from 'apps/campaign/components/web/SideBar'
-import InvisibleLink from 'apps/toolkit/components/web/links/InvisibleLink'
 import Login from 'apps/user/components/web/login/index'
 import AccountMenu from 'apps/user/components/web/tools/AccountMenu'
 
 import Icon from 'apps/toolkit/components/web/Icon'
 import AppBar, {AppBarItem, AppBarButton} from 'apps/toolkit/components/web/navigation/AppBar'
-import { MenuItem } from 'apps/toolkit/components/web/Menu'
 import Drawer from 'apps/toolkit/components/web/Drawer'
 
 class ToolBar extends React.Component {

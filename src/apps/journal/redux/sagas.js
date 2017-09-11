@@ -1,6 +1,7 @@
 import * as actions from 'redux/actions';
 import { put, call } from 'redux-saga/effects';
 import { getDataApi, postDataApi, verifyData, deleteDataApi } from 'redux/api'
+import { push } from 'react-router-redux'
 
 export function* getJournal(action) {
     try{
@@ -44,6 +45,8 @@ export function* saveJournalEntry(action) {
       const response = yield call(postDataApi, url, data, payload.access_token);
       if (verifyData(response)) {
           yield put(actions.getJournal({ id: payload.campaign_id }))
+          console.log(response.data)
+          yield put(push("../journal/" + response.data.slug))
         }else{
           yield put(actions.error({ "message": response.data.error }))
         }
