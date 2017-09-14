@@ -28,21 +28,6 @@ def get_users_player(user, game):
         if player.user.id == user.id:
             return player
 
-@socketio.on('login')
-def login_websockets(data):
-    try:
-        username = data['username']
-        password = data['password']
-    except (AttributeError, KeyError):
-        emit_error("Bad Request")
-    user = authenticate(username, password)
-    if user is not None:
-        emit('user_login_success',{
-            "user": parse_user(user),
-        })
-    else:
-        emit_error("Incorrect Username/Password")
-
 @users.route('/login', methods=['POST'])
 def login_user():
     try:
@@ -96,11 +81,13 @@ def update_user(user, data):
 
 @users.route('', methods=['POST'])
 def register_or_update_user():
-    user = verify_auth(request)
     data = request.get_json()
+    username = get_optional_data(data, "username")
+    user = User.query.filter_by(username=username).first()
     if user is not None:
         return update_user(user, data)
     else:
+        user = verify_auth(request)
         return register_user(data)
 
 def send_mail(sender, recipients, subject, body, html):

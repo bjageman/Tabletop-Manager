@@ -15,4 +15,4 @@ def unauthorized(error):
 
 @users.errorhandler(400)
 def bad_request(error):
-    return make_response(jsonify({'error': 'Bad Request'}), 400)
+    return make_response(jsonify({'error': 'Unknown Error'}), 400)
