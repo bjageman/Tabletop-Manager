@@ -7,7 +7,7 @@ from v1.apps.users.models import User
 
 from v1.apps.config import DATABASE_TEST
 
-***REMOVED***, SocketIOTestClient
+from flask_socketio import SocketIO, SocketIOTestClient
 
 class TestingBase(unittest.TestCase):
     def initDB(self):
@@ -21,7 +21,7 @@ class TestingBase(unittest.TestCase):
 
     def setUp(self):
         app.config['TESTING'] = True
-        ***REMOVED***
+        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
         app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_TEST
         self.app = app.test_client()
         self.db = db

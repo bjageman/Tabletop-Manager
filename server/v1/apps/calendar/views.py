@@ -1,5 +1,5 @@
-***REMOVED***, emit, disconnect
-***REMOVED***, request, jsonify, abort
+from flask_socketio import SocketIO, emit, disconnect
+from flask import Flask, request, jsonify, abort
 from slugify import slugify
 
 import string, datetime

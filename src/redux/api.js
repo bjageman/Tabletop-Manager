@@ -22,7 +22,7 @@ export function verifyData(response){
 export function postAuthData(loginData) {
     return axios.post(myConfig.API_URL + "/auth", loginData, {'Content-Type': 'application/json'})
     .then(function (response) {
-    ***REMOVED***;
+        return response;
     })
     .catch(function (error) {
         console.log(error);
@@ -36,7 +36,7 @@ export function postDataApi(url, postData, token = null) {
     }
     return axiosRequest.post(url, postData)
     .then(function (response) {
-    ***REMOVED***;
+        return response;
     })
     .catch(function (error) {
         console.log(error);
@@ -50,7 +50,7 @@ export function getDataApi(url, token = null) {
     }
     return axiosRequest.get(url)
     .then(function (response) {
-    ***REMOVED***;
+        return response;
         })
     .catch(function (error) {
         console.log(error);
@@ -64,7 +64,7 @@ export function deleteDataApi(url, token = null) {
     }
     return axiosRequest.delete(url)
     .then(function (response) {
-    ***REMOVED***;
+        return response;
         })
     .catch(function (error) {
         console.log(error);
