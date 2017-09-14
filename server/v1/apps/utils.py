@@ -19,7 +19,6 @@ def check_for_invalid_data(data, value):
         return True
 
 def get_optional_data(data, value):
-    print("getting", value, "from", data)
     try:
         return data[value]
     except (AttributeError, KeyError, TypeError):
