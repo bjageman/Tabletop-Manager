@@ -30,9 +30,9 @@ calendar_base_url = '/<campaign_id>/calendar'
 @campaign.route(calendar_base_url, methods=['POST'])
 def create_calendar_event(campaign_id):
     data        = request.get_json()
-    name        = get_required_data(data, "name")
+    name        = get_required_data(data, "name", min_length=4)
     author_id   = get_required_data(data, "author_id")
-    start_time  = convert_string_to_datetime(get_optional_data(data, "start_time"))
+    start_time  = convert_string_to_datetime(get_required_data(data, "start_time"))
     end_time    = convert_string_to_datetime(get_optional_data(data, "end_time"))
     campaign    = Campaign.query.get(campaign_id)
     author      = User.query.get(author_id)

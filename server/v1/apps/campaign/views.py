@@ -34,7 +34,7 @@ def get_campaign(campaign_id):
 @campaign.route('', methods=['POST'])
 def create_campaign():
     data = request.get_json()
-    name       =   get_required_data(data, "name")
+    name       =   get_required_data(data, "name", min_length=4)
     author_id    =   get_required_data(data, "author_id")
     author = User.query.get(author_id)
     if author is not None:
@@ -63,8 +63,7 @@ def update_campaign_by_id(campaign_id):
     data = request.get_json()
     name       =   get_required_data(data, "name")
     campaign = get_campaign(campaign_id)
-    campaign.update({"name":name})
-    campaign = campaign.first()
+    campaign.name = name
     campaign.slug = slugify(campaign.name, '')
     db.session.commit()
     return jsonify(parse_campaign(campaign))

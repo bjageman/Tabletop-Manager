@@ -26,22 +26,30 @@ class CreateEntry extends React.Component {
     }
 
     render(){
-
+        const campaign = this.props.campaign
         return(
             <div>
-            <Button
-                float
-                onClick = {() => this.setState({open: true})}>
-                <Icon name="add" />
-            </Button>
+            { campaign ?
+                <Button onClick = {() => this.setState({open: true})}>
+                    <Icon name="create"  />
+                </Button>
+                :
+                <Button
+                    float
+                    onClick = {() => this.setState({open: true})}>
+                    <Icon name="add" />
+                </Button>
+            }
+
             <Dialog
                 open={this.state.open}
                 onRequestClose={this.handleRequestClose}
                 title={this.state.title}
+                campaign_data={campaign}
             />
             </div>
         )
     }
 }
 
-export default (CreateEntry)
+export default CreateEntry

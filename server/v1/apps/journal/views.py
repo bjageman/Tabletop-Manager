@@ -26,8 +26,8 @@ entry_base_url = '/<campaign_id>/journal'
 def create_entry(campaign_id):
     user, campaign = request_campaign_auth(request, campaign_id)
     data        = request.get_json()
-    name        = get_required_data(data, "name")
-    content     = get_required_data(data, "content")
+    name        = get_required_data(data, "name", min_length=4)
+    content     = get_required_data(data, "content", min_length=4)
     entry = Entry(name=name, author=user, content=content, campaign=campaign)
     db.session.add(entry)
     db.session.commit()

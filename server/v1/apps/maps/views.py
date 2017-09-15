@@ -36,7 +36,7 @@ def create_map(campaign_id):
         print("NO FILE")
         return jsonify({'error': "No File Given"})
     data     = request.form.to_dict()
-    name       = get_required_data(data, "name")
+    name       = get_required_data(data, "name", min_length=4)
     author_id   = get_required_data(data, "author_id")
     author      = User.query.get(author_id)
     file     = request.files['file']

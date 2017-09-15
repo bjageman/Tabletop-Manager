@@ -38,13 +38,9 @@ class CampaignListing extends React.Component {
                 </Grid>
             </div>
             )
-        }else if (loading){
-            return(
-                <LinearLoading />
-            )
         }else{
             return(
-                <Redirect to="/" />
+                <LinearLoading />
             )
         }
     }

@@ -11,7 +11,7 @@ class EntryCreateDialog extends React.Component {
         super(props)
         this.handleSave = this.handleSave.bind(this)
         this.state = {
-            name: ""
+            name: this.props.campaign_data ? this.props.campaign_data.name : "",
         }
     }
 
@@ -26,7 +26,7 @@ class EntryCreateDialog extends React.Component {
             access_token: this.props.user.access_token,
             name: this.state.name,
             author: this.props.user,
-            campaign_id: this.props.campaign ? this.props.campaign.id: null,
+            campaign_id: this.props.campaign_data.id,
         })
         this.props.onRequestClose()
     }

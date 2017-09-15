@@ -48,8 +48,8 @@ def get_user():
     return jsonify(parse_user_detailed(user))
 
 def register_user(data):
-    username = get_required_data(data, "username")
-    password = get_required_data(data, "password")
+    username = get_required_data(data, "username", min_length=4)
+    password = get_required_data(data, "password", min_length=4)
     if User.query.filter_by(username = username).first() is not None:
         abort(400)
     user = User(username = username)

@@ -3,10 +3,14 @@ import React from 'react'
 import InvisibleLink from 'apps/base/components/web/links/InvisibleLink'
 import { Card } from 'bjageman-react-toolkit'
 
+import Edit from '../save/'
+import Delete from '../delete/'
+
 class CampaignCard extends React.Component {
     render(){
     const campaign = this.props.campaign
     const image = campaign.image ? campaign.image.url : 'https://bravenewdungeon.files.wordpress.com/2013/08/ph-barroom-brawl.jpeg'
+    console.log(campaign)
     return(
         <Card key={campaign.id}>
             <InvisibleLink to={"/campaign/" + campaign.slug}>
@@ -16,6 +20,7 @@ class CampaignCard extends React.Component {
                     <p>{campaign.owner}</p>
                 </div>
             </InvisibleLink>
+            <Edit campaign={campaign}/><Delete campaign={campaign}/>
         </Card>
         )
     }

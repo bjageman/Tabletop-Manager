@@ -43,7 +43,7 @@ def get_character(character_id):
 def create_character(campaign_id):
     user, campaign = request_campaign_auth(request, campaign_id)
     data        = request.get_json()
-    name       = get_required_data(data, "name")
+    name       = get_required_data(data, "name", min_length=4)
     character = Character(name=name, author=user, campaign=campaign)
     db.session.add(character)
     db.session.commit()

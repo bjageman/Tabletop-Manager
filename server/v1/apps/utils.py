@@ -24,9 +24,13 @@ def get_optional_data(data, value):
     except (AttributeError, KeyError, TypeError):
         return None
 
-def get_required_data(data, value):
+def get_required_data(data, value, min_length=0):
     try:
-        return data[value]
+        result = data[value]
+        if len(str(result)) >= min_length:
+            return result
+        else:
+            abort(400)
     except (AttributeError, KeyError, TypeError):
         abort(400)
 

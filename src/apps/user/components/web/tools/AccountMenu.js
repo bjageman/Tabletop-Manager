@@ -30,7 +30,7 @@ class AccountMenu extends React.Component {
                 <InvisibleLink to="/profile">
                     <MenuItem onClick={this.handleRequestClose}>Profile</MenuItem>
                 </InvisibleLink>
-                <InvisibleLink to="/campaign">
+                <InvisibleLink to="/campaigns">
                     <MenuItem onClick={this.handleRequestClose}>My Campaigns</MenuItem>
                 </InvisibleLink>
                 <hr />

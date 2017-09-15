@@ -11,7 +11,7 @@ export function* getAuthToken(action) {
       if (verifyData(response)) {
           yield put(actions.loginSuccess({ "access_token": response.data.access_token }))
           yield put(actions.getUser({"access_token": response.data.access_token }))
-          yield put(push('/campaign'))
+          yield put(push('/campaigns'))
         }else{
           yield put(actions.error({ "message": response.data.error }))
         }
