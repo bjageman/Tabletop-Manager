@@ -22,9 +22,7 @@ export function* saveMap(action) {
     try{
       let payload = action.payload
       let url = 'campaign/' + payload.campaign_id + "/maps"
-      let data = payload.file
-      data.append('author_id', payload.author_id)
-      data.append('name', payload.name)
+      let data = payload.data
       const response = yield call(postDataApi, url, data, payload.access_token);
       if (verifyData(response)) {
           yield put(actions.getMaps({id: payload.campaign_id}))

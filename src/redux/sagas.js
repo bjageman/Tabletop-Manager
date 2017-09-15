@@ -4,7 +4,7 @@ import * as actions from './actions';
 import { registerUser, getAuthToken, getUser, logout } from 'apps/user/redux/sagas'
 import { getJournal, getJournalEntry, saveJournalEntry, deleteJournalEntry } from 'apps/journal/redux/sagas'
 import { getCalendar, saveCalendarEvent, deleteCalendarEvent } from 'apps/calendar/redux/sagas'
-import { getCharacters, createCharacter, deleteCharacter } from 'apps/characters/redux/sagas'
+import { getCharacter, getCharacters, createCharacter, deleteCharacter } from 'apps/characters/redux/sagas'
 import { getMaps, saveMap, deleteMap } from 'apps/maps/redux/sagas'
 import { getCampaign, saveCampaign, deleteCampaign } from 'apps/campaign/redux/sagas'
 
@@ -21,6 +21,7 @@ export default function* rootSaga() {
   yield takeEvery(actions.saveJournalEntry, saveJournalEntry)
   yield takeEvery(actions.deleteJournalEntry, deleteJournalEntry)
   //Characters
+  yield takeEvery(actions.getCharacter, getCharacter)
   yield takeEvery(actions.getCharacters, getCharacters)
   yield takeEvery(actions.createCharacter, createCharacter)
   yield takeEvery(actions.deleteCharacter, deleteCharacter)

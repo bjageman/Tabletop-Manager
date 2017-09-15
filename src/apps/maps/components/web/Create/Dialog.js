@@ -3,39 +3,31 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import {Button, Dialog} from 'bjageman-react-toolkit'
+import {Button, Dialog, TextInput} from 'bjageman-react-toolkit'
 
-class CreateDialogEvent extends React.Component {
-    constructor(props){
-        super(props)
-        this.handleUpload = this.handleUpload.bind(this)
-        this.state ={
-            name:"Placeholder Map",
-            file:""
-        }
-    }
-
+class CreateMapDialog extends React.Component {
     onChange = (editorState) => {
 
     };
 
+    handleFileUpload = (event) => {
+        this.setState({ image: event.target.files[0] })
+    }
+
     handleInputChange = (event) => {
-        const data = new FormData();
-        data.append('file', event.target.files[0]);
-        data.append('name', this.state.name);
         this.setState({
-            file: data,
+            [event.target.name]: event.target.value
         })
     }
 
-    handleUpload() {
-
+    handleSave = (event) => {
+        const data = new FormData();
+        data.append('file', this.state.image);
+        data.append('name', this.state.name)
         this.props.saveMap({
             access_token: this.props.user.access_token,
-            name: this.state.name,
-            author_id: this.props.user.id,
             campaign_id: this.props.campaign.id,
-            file: this.state.file,
+            data: data,
         })
         this.props.onRequestClose()
     }
@@ -45,14 +37,19 @@ class CreateDialogEvent extends React.Component {
             <Dialog
                 open={this.props.open}
                 onRequestClose={this.props.onRequestClose} >
-
                     Create Content Here:
-
-                <input name="file" type="file" id="fileinput"  onChange={this.handleInputChange}/>
+                <input name="file" type="file" id="fileinput"  onChange={this.handleFileUpload}/>
+                <TextInput
+                  id="name"
+                  label="Name"
+                  name="name"
+                  fullWidth
+                  onChange={this.handleInputChange}
+                />
                 <Button
                     raised
                     color="primary"
-                    onClick = {this.handleUpload}>
+                    onClick = {this.handleSave}>
                     Upload
                 </Button>
             </Dialog>
@@ -63,4 +60,4 @@ class CreateDialogEvent extends React.Component {
 export const styles = theme => ({
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateDialogEvent)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateMapDialog)

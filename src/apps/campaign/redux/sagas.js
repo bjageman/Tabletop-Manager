@@ -21,7 +21,7 @@ export function* getCampaign(action) {
 export function* saveCampaign(action) {
     try{
       let payload = action.payload
-      let data = {"name": payload.name, "author_id": payload.author.id }
+      let data = payload.data
       let url = 'campaign'
       if ( payload.campaign_id != null ){
           url = url + "/" + payload.campaign_id

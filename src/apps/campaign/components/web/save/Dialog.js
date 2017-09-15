@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import {Dialog, TextInput, Button} from 'bjageman-react-toolkit'
+import {Dialog, TextInput, FileInput, Button} from 'bjageman-react-toolkit'
 
 
 class EntryCreateDialog extends React.Component {
@@ -12,8 +12,14 @@ class EntryCreateDialog extends React.Component {
         this.handleSave = this.handleSave.bind(this)
         this.state = {
             name: this.props.campaign_data ? this.props.campaign_data.name : "",
+            image : null,
         }
     }
+
+    handleFileUpload = (event) => {
+        this.setState({ [event.target.name]: event.target.files[0] })
+    }
+
 
     handleInputChange = (event) => {
         this.setState({
@@ -22,11 +28,13 @@ class EntryCreateDialog extends React.Component {
     }
 
     handleSave() {
+        const data = new FormData();
+        data.append('image', this.state.image)
+        data.append('name', this.state.name)
         this.props.saveCampaign({
             access_token: this.props.user.access_token,
-            name: this.state.name,
-            author: this.props.user,
-            campaign_id: this.props.campaign_data.id,
+            data: data,
+            campaign_id: this.props.campaign_data ? this.props.campaign_data.id : null,
         })
         this.props.onRequestClose()
     }
@@ -35,8 +43,8 @@ class EntryCreateDialog extends React.Component {
         return(
             <Dialog
                 open={this.props.open}
-                onRequestClose={this.props.onRequestClose}
-            >
+                onRequestClose={this.props.onRequestClose} >
+                <FileInput name="image" label="Campaign Image" onChange={this.handleFileUpload} />
                 <TextInput
                   id="title"
                   label="Title"

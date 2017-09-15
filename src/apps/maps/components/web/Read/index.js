@@ -23,6 +23,7 @@ class CampaignMapCard extends Component {
         <div>
         <Card>
             <Delete map={map} />
+            {map.name}
             <img onClick={() => this.setState({ open: true })} style={styles.map} src={map.image.url} alt={map.name} />
         </Card>
         <Dialog

@@ -1,5 +1,5 @@
 import React from 'react'
-import Dialog from '../Create/Dialog'
+import Dialog from './Dialog'
 
 import {Button, Icon} from 'bjageman-react-toolkit';
 

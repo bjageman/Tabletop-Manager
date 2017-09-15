@@ -36,21 +36,16 @@ def create_map(campaign_id):
         print("NO FILE")
         return jsonify({'error': "No File Given"})
     data     = request.form.to_dict()
-    name       = get_required_data(data, "name", min_length=4)
-    author_id   = get_required_data(data, "author_id")
-    author      = User.query.get(author_id)
     file     = request.files['file']
+    name     = get_required_data(data, "name", min_length=4)
     file_upload_location = "campaigns/" + campaign.slug + "/maps/"
     file_results = upload_google_cloud_storage(file, file_upload_location)
-    if campaign is not None and author is not None:
-        image = Image(url=file_results['url'], blob=file_results['blob_name'])
-        map = CampaignMap(name=name, author=author, campaign=campaign, image=image)
-        db.session.add(map)
-        db.session.commit()
-        print(map.name, "uploaded!")
-        return jsonify(parse_map(map))
-    else:
-        abort(400)
+    image = Image(url=file_results['url'], blob=file_results['blob_name'])
+    map = CampaignMap(name=name, author=user, campaign=campaign, image=image)
+    db.session.add(map)
+    db.session.commit()
+    print(map.name, "uploaded!")
+    return jsonify(parse_map(map))
 
 #Read
 
@@ -97,7 +92,6 @@ def delete_map(campaign_id, map_id):
     map = get_map(map_id)
     name = map.name
     if map is not None:
-        print("DELETE")
         if map.image.blob is not None:
             delete_google_cloud_storage(map.image.blob)
         db.session.delete(map)

@@ -14,6 +14,9 @@ export const characters = createReducer({
   [actions.createCharacter]: (state, payload) => {
     return { fetching:true, error: null, entries: state.entries  }
   },
+  [actions.characterSuccess]: (state, payload) => {
+    return { entry: payload.entry, fetching:false, error: null }
+  },
   [actions.charactersSuccess]: (state, payload) => {
     return { entries: payload.entries, fetching:false, error: null }
   },

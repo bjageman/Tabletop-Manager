@@ -11,7 +11,9 @@ class User(Base, TimestampMixin):
     email = db.Column(db.String(64))
     gender = db.Column(db.String(32))
     admin = db.Column(db.Boolean,default=False)
-    image = db.Column(db.String(256))
+    image_id = db.Column(db.Integer, db.ForeignKey('image.id'))
+    image = db.relationship("Image")
+    
     def hash_password(self, password):
         self.password_hash = pwd_context.hash(password)
 

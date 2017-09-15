@@ -22,6 +22,7 @@ from .errors import *
 
 #Utils
 from v1.apps.utils import *
+from v1.apps.auth import verify_auth
 
 def get_campaign(campaign_id):
     try:
@@ -33,18 +34,21 @@ def get_campaign(campaign_id):
 #Create
 @campaign.route('', methods=['POST'])
 def create_campaign():
-    data = request.get_json()
-    name       =   get_required_data(data, "name", min_length=4)
-    author_id    =   get_required_data(data, "author_id")
-    author = User.query.get(author_id)
-    if author is not None:
-        campaign = Campaign(name=name, owner=author)
-        campaign.players.append(author)
-        db.session.add(campaign)
-        db.session.commit()
-        return jsonify(parse_campaign(campaign))
-    else:
-        abort(400)
+    user = verify_auth(request)
+    data = request.form.to_dict()
+    name = get_required_data(data, "name", min_length=4)
+    campaign = Campaign(name=name, owner=user)
+    image = None
+    if 'image' in request.files:
+        file     = request.files['image']
+        file_upload_location = "campaigns/" + campaign.slug + "/banner/"
+        file_results = upload_google_cloud_storage(file, file_upload_location)
+        image = Image(url=file_results['url'], blob=file_results['blob_name'])
+        campaign.image = image
+    campaign.players.append(user)
+    db.session.add(campaign)
+    db.session.commit()
+    return jsonify(parse_campaign(campaign))
 
 #Read
 
@@ -72,8 +76,11 @@ def update_campaign_by_id(campaign_id):
 @campaign.route('/<campaign_id>', methods=['DELETE'])
 def delete_campaign_by_id(campaign_id):
     campaign = get_campaign(campaign_id)
-    db.session.delete(campaign)
-    db.session.commit()
+    if campaign is not None:
+        if campaign.image.blob is not None:
+            delete_google_cloud_storage(campaign.image.blob)
+        db.session.delete(campaign)
+        db.session.commit()
     campaign = Campaign.query.get(campaign_id)
     if campaign is None:
         return jsonify({"deleted": campaign_id})

@@ -8,7 +8,7 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 import Dashboard from './dashboard/'
 import { JournalRouter } from 'apps/journal/components/web/router'
-import Characters from 'apps/characters/components/web/'
+import { CharacterRouter } from 'apps/characters/components/web/router'
 import Maps from 'apps/maps/components/web/'
 import Wiki from 'apps/wiki/components/web/'
 import Calendar from 'apps/calendar/components/web/'
@@ -39,7 +39,7 @@ class Campaign extends React.Component {
             <div>
                 <Route exact path={match.url} render={() => <Dashboard campaign={campaign} /> } />
                 <Route path={match.url + '/journal'} component={JournalRouter}  />
-                <Route path={match.url + '/characters'} component={Characters}  />
+                <Route path={match.url + '/characters'} component={CharacterRouter}  />
                 <Route path={match.url + '/maps'} component={Maps}              />
                 <Route path={match.url + '/calendar'} component={Calendar}      />
                 <Route path={match.url + '/wiki'} render={() =>

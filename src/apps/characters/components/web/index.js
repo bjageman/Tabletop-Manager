@@ -6,8 +6,8 @@ import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
 import { LinearLoading, Grid } from 'bjageman-react-toolkit'
 
-import Read from './Read/'
-import Create from './Create/'
+import CharacterCard from './Card'
+import SaveCharacter from './Save/'
 
 import { checkOwner } from 'utils'
 
@@ -24,10 +24,10 @@ class CampaignCharacters extends React.Component {
         return(
             <div>
             { characters && characters.fetching ? <LinearLoading /> : null }
-            { is_owner ? <Create /> : null }
+            { is_owner ? <SaveCharacter /> : null }
             <Grid>
                 { characters.entries && characters.entries.map((character, i) => (
-                    <Read character={character} />
+                    <CharacterCard character={character} />
                 ))}
             </Grid>
             </div>
