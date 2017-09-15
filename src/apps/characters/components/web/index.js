@@ -8,13 +8,13 @@ import { LinearLoading, Grid } from 'bjageman-react-toolkit'
 
 import CharacterCard from './Card'
 import SaveCharacter from './Save/'
+import Search from './Search'
 
 import { checkOwner } from 'utils'
 
 class CampaignCharacters extends React.Component {
     constructor(props){
         super(props)
-
         this.props.getCharacters({ id: this.props.campaign.id })
     }
 
@@ -25,6 +25,7 @@ class CampaignCharacters extends React.Component {
             <div>
             { characters && characters.fetching ? <LinearLoading /> : null }
             { is_owner ? <SaveCharacter /> : null }
+            <Search />
             <Grid>
                 { characters.entries && characters.entries.map((character, i) => (
                     <CharacterCard character={character} />

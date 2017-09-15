@@ -1,7 +1,6 @@
 import React from 'react'
 
-import {TextInput} from 'bjageman-react-toolkit'
-
+import { TextInput } from 'bjageman-react-toolkit'
 
 class CampaignEventSearch extends React.Component {
     render(){
@@ -15,9 +14,5 @@ class CampaignEventSearch extends React.Component {
         )
     }
 }
-
-export const styles = theme => ({  container:{
-  },
-});
 
 export default (CampaignEventSearch)

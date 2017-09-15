@@ -20,18 +20,20 @@ export function* getCharacter(action) {
 
 export function* getCharacters(action) {
     try{
-      let payload = action.payload
-      let url = 'campaign/' + payload.id + "/characters"
-
-      const response = yield call(getDataApi, url);
-      if (verifyData(response)) {
-          yield put(actions.charactersSuccess({ entries: response.data }))
-        }else{
-          yield put(actions.error({ "message": response.data.error }))
+        let payload = action.payload
+        let url = 'campaign/' + payload.id + "/characters"
+        if ( payload.search != null && payload.search.length > 0 ){
+            url = url + "?name=" + payload.search
         }
-      }catch(error){
+        const response = yield call(getDataApi, url);
+        if (verifyData(response)) {
+            yield put(actions.charactersSuccess({ entries: response.data }))
+        }else{
+            yield put(actions.error({ "message": response.data.error }))
+        }
+    }catch(error){
         yield put(actions.error({ "message": error.message }))
-      }
+    }
 }
 
 export function* createCharacter(action) {
