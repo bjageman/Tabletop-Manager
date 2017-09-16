@@ -10,14 +10,13 @@ class CampaignCard extends React.Component {
     render(){
     const campaign = this.props.campaign
     const image = campaign.image ? campaign.image.url : 'https://bravenewdungeon.files.wordpress.com/2013/08/ph-barroom-brawl.jpeg'
-    console.log(campaign)
     return(
-        <Card key={campaign.id}>
+        <Card>
             <InvisibleLink to={"/campaign/" + campaign.slug}>
                 <img src={image} alt={campaign.name} style={styles.image} />
-                <div class="container">
+                <div>
                     <h1><b>{campaign.name}</b></h1>
-                    <p>{campaign.owner}</p>
+                    <p>{campaign.owner.username}</p>
                 </div>
             </InvisibleLink>
             <Edit campaign={campaign}/><Delete campaign={campaign}/>

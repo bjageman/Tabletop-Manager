@@ -6,13 +6,16 @@ const initial = {
 };
 
 export const campaign = createReducer({
-  [actions.changeCampaignTab]: (state, payload) => {
-     return { ...state, index: payload.index }
-  },
-  [actions.updateCampaign]: (state, payload) => {
-    return payload;
-  },
-  [actions.logOutCampaign]: (state) => {
-      return null
-  }
+    [actions.getCampaigns]: (state, payload) => {
+      return { id: payload.id, fetching:true, error: null  }
+    },
+    [actions.campaignsSuccess]: (state, payload) => {
+        return { entries: payload.entries, fetching:false, error: null }
+    },
+    [actions.updateCampaign]: (state, payload) => {
+        return payload;
+    },
+    [actions.logOutCampaign]: (state) => {
+        return null
+    }
 }, initial.campaign);

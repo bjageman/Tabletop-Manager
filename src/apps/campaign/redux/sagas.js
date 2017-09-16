@@ -18,6 +18,25 @@ export function* getCampaign(action) {
       }
 }
 
+export function* getCampaigns(action) {
+    try{
+        let payload = action.payload
+        let url = 'campaign'
+        if ( payload.search != null && payload.search.length > 0 ){
+            url = url + "?name=" + payload.search
+        }
+        console.log("GETTING CAMPS", url)
+        const response = yield call(getDataApi, url, payload.access_token);
+        if (verifyData(response)) {
+            yield put(actions.campaignsSuccess({ entries: response.data }))
+        }else{
+            yield put(actions.error({ "message": response.data.error }))
+        }
+    }catch(error){
+        yield put(actions.error({ "message": error.message }))
+    }
+}
+
 export function* saveCampaign(action) {
     try{
       let payload = action.payload

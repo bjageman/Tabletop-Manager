@@ -1,15 +1,11 @@
 import React from 'react'
-import { Redirect } from 'react-router'
 //Redux
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-
 import CampaignListingToolBar from './ToolBar'
-
-//toolkit
-import { LinearLoading, Grid, GridItem } from 'bjageman-react-toolkit'
-import CampaignCard from './CampaignCard'
+import CampaignGridList from './GridList'
+import { LinearLoading} from 'bjageman-react-toolkit'
 
 class CampaignListing extends React.Component {
     constructor(props){
@@ -17,25 +13,17 @@ class CampaignListing extends React.Component {
         if (this.props.user){
             this.props.getUser({"access_token": this.props.user.access_token})
         }
-        if (this.props.campaign){
-            this.props.logOutCampaign()
-        }
     }
 
     render(){
         const user = this.props.user
+        const campaigns = this.props.campaign ? this.props.campaign.entries : null
         const loading = false
         if (user){
             return(
             <div>
                 <CampaignListingToolBar />
-                <Grid>
-                    {user.campaigns ? user.campaigns.map((campaign, i) => (
-                        <GridItem>
-                        <CampaignCard campaign={campaign} />
-                        </GridItem>
-                    )): null }
-                </Grid>
+                <CampaignGridList />
             </div>
             )
         }else{

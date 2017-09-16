@@ -3,8 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { mapStateToProps, mapDispatchToProps } from 'redux/utils'
 
-import {TextInput} from 'bjageman-react-toolkit'
-
+import Search from './Search'
 import Save from '../save/'
 
 class CampaignListingToolBar extends React.Component {
@@ -12,13 +11,9 @@ class CampaignListingToolBar extends React.Component {
 
         return(
             <div>
+            <Search />
             <Save />
-            <TextInput
-                placeholder="Search Campaigns"
-                inputProps={{
-                    'aria-label': 'Description',
-                }}
-                />
+
             </div>
         )
     }

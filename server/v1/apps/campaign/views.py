@@ -51,10 +51,23 @@ def create_campaign():
     return jsonify(parse_campaign(campaign))
 
 #Read
+@campaign.route('', methods=['GET'])
+def get_campaigns():
+    user = verify_auth(request)
+    campaigns = Campaign.query.filter_by(owner=user)
+    data = request.args
+    name = get_optional_data(data, "name")
+    campaigns = search_by_name(campaigns, Campaign, name)
+    return jsonify(parse_campaigns(campaigns))
+
+
 
 @campaign.route('/<campaign_id>', methods=['GET'])
 def get_campaign_request(campaign_id):
     campaign = get_campaign(campaign_id)
+    data = request.args
+    name = get_optional_data(data, "name")
+    characters = search_by_name(campaign, Campaign, name)
     if campaign is not None:
         return jsonify(parse_campaign_detailed(campaign))
     else:
