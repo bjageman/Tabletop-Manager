@@ -34,10 +34,4 @@ class DeleteCharacter extends React.Component {
     }
 }
 
-export const styles = theme => ({
-  button: {
-      color: "red",
-  },
-});
-
 export default (DeleteCharacter)
